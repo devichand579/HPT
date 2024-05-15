@@ -1,5 +1,5 @@
 # prompt_engineering
-  '''bash
+  bash '''
  #Directories:
 -> llama3_prompting - contains code Notebooks for all prompting strategies using Llama3-8B Instruct model
 -> mistral_promoting - contains code Notebooks for all prompting strategies using Mistral-7B Instruct model
