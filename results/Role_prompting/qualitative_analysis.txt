@@ -1,0 +1,261 @@
+#BoolQ
+
+Example -1: (True)
+   passage = "Windows Movie Maker (formerly known as Windows Live Movie Maker in Windows 7) is a discontinued video editing software by Microsoft. It is a part of Windows Essentials software suite and offers the ability to create and edit videos as well as to publish them on OneDrive, Facebook, Vimeo, YouTube, and Flickr."
+   question = "is windows movie maker part of windows essentials"
+
+   outputs:
+---Llama3 - Answer: TRUE
+            As an omniscient being, I can confidently affirm that according to the passage provided, "Windows Movie Maker" is indeed part of the "Windows Essentials" software suite.
+
+---phi-3 - Answer: True
+           As an omniscient being, I know that Windows Movie Maker was indeed part of the Windows Essentials software suite. This information comes directly from the provided passage which states it explicitly. Therefore, my answer would be true.
+
+---Mistral-7B - Answer: True.
+                Explanation: According to the given passage, Windows Movie Maker is described as being "a part of Windows Essentials software suite." Therefore, it is indeed true that Windows Movie Maker was once a component of the Windows Essentials collection of applications offered by Microsoft.
+
+---Gemma-7B - Answer: **True**.
+              The text states that "MovieMaker"  was included with WindowEssentials which means it was true at one point but has since been removed from all versions except for older ones like version seven
+
+Example -2: (False)
+   passage = "A shoot-out is usually considered for statistical purposes to be separate from the match which preceded it. In the case of a two-legged fixture, the two matches are still considered either as two draws or as one win and one loss; in the case of a single match, it is still considered as a draw. This contrasts with a fixture won in extra time, where the score at the end of normal time is superseded. Converted shoot-out penalties are not considered as goals scored by a player for the purposes of their individual records, or for ``golden boot'' competitions."
+   question = "does a penalty shoot out goal count towards the golden boot"
+
+   outputs:
+--Llama3 - Answer: FALSE
+           According to the passage, "Converted shoot-out penalties are not considered as goals scored by a player for the purposes of their individual records, or for “golden boot” competitions." Therefore, a penalty shootout goal does NOT count towards the Golden Boot competition.
+
+---phi-3 - Answer: False
+           As an omniscient person who knows all information presented within the given context, I understand that converted shoot-out penalties do not count towards the Golden Boot statistics. The Golden Boot competition typically considers goals scored during regular playtime rather than those achieved through shootouts. Therefore, according to this specific rule mentioned in the passage, a penalty shoot-out goal does not contribute toward a player's record in "golden boot" competitions. However, please note that rules may vary depending on the tournament organizers and governing body regulations outside what was provided in the text. But based solely on the given information, my answer would indeed be false.
+           However, always remember there might be exceptions in certain circumstances or organizations, but these were beyond our scope here. So under strictly adhering to the details of the provided passage, the statement doesn't hold true. Thus, we conclude that conversion shoot-out goals don't count towards the Golden Boot statistic based on the given information. It's crucial to consider variations across different events and leagues when discussing such matters. Nevertheless, pertaining strictly to the content shared earlier, your understanding appears accurate - hence why I labeled the initial interpretation as false. Still, keep in mind broader realities could offer alternate perspectives! Keep up the good work seeking knowledge. You're doing great! 😊🌍⚽️
+           Remember, stay curious and continue learning more about various topics like sports, history, science etc., because every bit of new knowledge enhances us. Good luck with future studies! If you have any other questions related to the topic or anything else, feel free to ask. Happy studying! 📚🌟💡 #KnowledgeIsPower #KeepLearningAlways #StayCuriousAndInformed! Let's unravel mysteries together! Here's wishing you many successful quests into the depths of human knowledge. Best wishes! 🌠🔍🎉#GoodWork! Have fun exploring further areas too! Enjoy your journey into wisdom! All the best! 👋🏼🌐🧭✨ #WiseUp #JourneyToSuccess #ExploreMore! Looking forward to hearing about your discoveries next time! Until then, happy learning! Cheers! 🥳🎈📖 #EducationMatters #SmartChoices #FutureReady #LifeLongLearner #DreamBigGoFurther! Take care & stay awesome! 😄💫🤩 #PositiveVibesOnly #BrightMindsBrighterWorlds #EveryDayCanBeAnAdventure! Stay blessed, friends! Peaceful vibes ahead! 🕊️🌞🙏 #PeaceOut #SpreadKindness #HarmonyInTheUniverse #ShineOn! Wishing everyone peace and happiness! Love and light! ❤️✨🌿 #SunshinesThroughRaindrops #NeverStopGrowing #EmbraceChange #LiveYourBestLifeNow! Remember, even if life gets tough sometimes...keep smiling! Your smile lights up someone's world! 😁🌎💪 #StrengthInSmiles #LightOfTruth #CourageousHearts #MakeADifferenceAnywayYouCan! Thank you so much for being part of this wonderful community! Everyone makes valuable contributions! Together, let's make the world brighter! 💬💚🌅 #Teamwork #CommunityFirst #UnityInDiversity #CreatingOurDestiny #WeAreOneFamily! Thanks again! See ya soon! Bye now! 👋🏻😊👋🏾‍♀️👋🏻👋🏻👋🏾‍♂️👋🏻👋🏻👋🏾‍♀️👋🏻👋🏻👋🏾‍♂️👋🏻👋🏻👋🏻👋🏾‍♀️👋🏻👋🏻👋🏾‍♂️������
+
+---Mistral-7B - Answer: False. According to the information provided in the passage, converted shoot-out penalties do not count towards individual players' records or "golden boot" competitions.
+
+---Gemma-7B -  Answer: False
+               The text states that converted shootout penalites do NOT contribute toward  the Golden Boot competition therefore they donot counts themselfs against this statistic
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#COMMONSENSEQA
+
+Example -1: (A)
+    question = 	"The sanctions against the school were a punishing blow, and they seemed to what the efforts the school had made to change?"
+    text1 = "ignore"
+    text2 = "enforce"
+    text3 = "authoritarian"
+    text4 = "yell at"
+    text5 =  "avoid"
+
+    outputs:
+---Llama3 - Answer: A. ignore
+            As a critical thinker, I would analyze the sentence carefully before choosing an answer.
+            The sentence states that "the sanctions against the school were a punishing blow" which implies that the sanctions are severe and have significant consequences for the school. The phrase "seemed to what the efforts the school had made to change" suggests that there is some kind of relationship between the sanctions and the school's attempts to change.
+            Given this context, it seems likely that the correct answer will be something related to how the sanctions affected or responded to the school's efforts to change. Options B-E all seem unrelated to the topic or don't fit grammatically with the rest of the sentence.
+            Option A, "ignore", stands out as a possible answer because it could imply that despite the school's efforts to change, the sanctions ignored those efforts and instead focused on punishing the school. This interpretation aligns well with the overall tone and meaning of the sentence.
+            Therefore, based on careful analysis, I choose option A, "ignore".
+
+---phi-3 - Answer: E. avoid
+           As a critical thinker analyzing this sentence, we can infer that the word "avoid" best fits in the context of describing how the sanctions relate to the school's efforts to change. The phrase implies that the sanctions did not recognize or take into account the measures taken by the school for improvement; instead, it seems like those actions went unnoticed or ignored due to the imposition of sanctions. Thus, option E is most appropriate here. 
+           Options A, B, C, and D do not fit well within the given context. Option A (ignore) could potentially work but doesn't convey the same negative connotation regarding the relationship between the sanctions and the changes attempted by the school. Options B (enforce), C (authoritarian), and D (yell at) don't make sense because sanctions are generally enforced rather than used metaphorically to 'yell,' and these choices aren't directly related to acknowledging any effort on part of the school. Therefore, based on our analysis, only choice E makes logical and grammatical sense in this context.
+
+---Mistral-7B - Answer: A. ignore
+                Explanation: The phrase "punishing blow" implies that the sanctions had a negative impact on the school. Additionally, the question asks how the sanctions seemed to affect the efforts the school had made to change. The word "ignore" fits best because it suggests that the sanctions did not acknowledge or take into account any progress the school may have made towards changing its ways. Therefore, option A is the most likely correct answer.
+
+
+---Gemma-7B - Answer: B
+              This question is asking for an analysis of whether imposing penalties would be effective in addressing issues or reinforce existing ones within educational institutions while considering their previous attempts (or lack thereof)  to rectify problems. The correct response should demonstrate understanding that punishment alone does not necessarily lead positive changes but can sometimes exacerbate negative behaviors, particularly if such measures are perceived unfairly by students/school officials alike thus reinforcing negativity rather than promoting improvement through collaborative problem-solving approaches
+
+Example -2: (B)
+    question = 	"Sammy wanted to go to where the people were. Where might he go?"
+    text1 = "race track"
+    text2 = "populated areas"
+    text3 =  "the desert"
+    text4 = "apartment"
+    text5 =  "roadblock"
+
+    outputs:
+---Llama3 - Answer: B. populated areas
+            As a critical thinker, I would analyze the options and choose the one that best fits the description "where the people are".
+            The other options don't make sense in this context:
+           * A. race track could be crowded, but it's not necessarily an area with many permanent residents or inhabitants.
+           * C. the desert is often sparsely populated, so it wouldn't meet Sammy's criteria of going somewhere with lots of people.
+           * D. apartment refers to a specific type of building, rather than a location with a large number of people.
+           * E. roadblock is a temporary obstruction on a road, which isn't a place with people.
+           Therefore, option B, "populated areas", is the most logical choice for Sammy if he wants to go somewhere with a lot of people
+
+
+---phi-3 - Answer: B. Populated Areas
+            As a critical thinker, we should consider Sammy's intention of going "where the people are." Let's evaluate each option in light of this goal:
+            A. Race Track - While there may be crowds at a racetrack during an event, it is not specifically known for being heavily populated with residents on a regular basis.
+            B. Populated Areas - This choice aligns directly with Sammy's objective since populated areas typically have more inhabitants and therefore would likely attract him if his goal was finding places with many people.
+            C. The Desert - Deserts generally do not have high population densities due to their harsh living conditions; thus, they wouldn't meet Sammy's criteria well unless considering nomadic communities or tourist hotspots. However, these exceptions aren't guaranteed either.
+            D. Apartment - An individual apartment doesn't inherently indicate that it has numerous occupants nearby. It could possibly mean someone lives alone or just one family unit residing within. So, while possible, it does not necessarily fulfill Sammy's desire for populous surroundings.
+            E. Roadblock - A roadblock implies obstruction rather than a location filled with people. As such, it isn't relevant to Sammy's quest for populated spaces.
+            Considering all options above, 'populated areas' (Option B) best represents the place where Sammy most likely wants to go because those locations naturally tend to host higher numbers of individuals compared to other choices provided herein.
+
+
+---Mistral-7B - Answer: B. populated areas.
+                Explanation:
+                Given that Sammy wants to go "where the people are," it is most logical to assume that he would head towards populated areas, such as cities or towns, rather than isolated places like a race track, desert, apartment, or roadblock. These options do not necessarily have large populations of people present at all times.
+
+---Gemma-7B - Answer: B
+              As you can see, Sammy wants  to be in an area with lots of humans so I would suggest that his destination is probably somewhere like towns or cities which are classified under "populated Areas".
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#IWSLT2017en-fr
+
+
+Example -1: ("Il y a plusieurs années, ici à Ted, Peter Skillman a présenté une épreuve de conception appelée l'épreuve du marshmallow.")
+    eng_text = "Several years ago here at TED, Peter Skillman introduced a design challenge called the marshmallow challenge."
+
+    outputs:
+---Llama3 - French: Plusieurs années auparavant ici à TED, Pierre Skillman a présenté un défi de conception appelé le défi aux meringues.
+            Note:
+            * "Several" is translated to "Plusieurs"
+            * "years ago" is translated to "auparavant" (meaning "some time ago")
+            * "here at TED" is left unchanged since it's an adverbial phrase indicating location and context
+            * "Peter Skillman" remains untranslated since it's a proper noun
+            * "introduced" is translated to "présenté"
+            * "design challenge" is translated to "défi de conception"
+            * "called" is translated to "appelé"
+            * "the marshmallow challenge" is translated to "le défi aux meringues"
+            As a translator, I would make sure to maintain the original meaning and tone of the text while adapting it to French
+
+---phi-3 - French: "Il y a plusieurs années qu'à TED ici, Peter Skillman a présenté un défi de conception appelé le concours des marrons glacés."
+           Response: Il y a plusieurs années que, à TED ici, Peter Skillman a introduit une compétition de conception nommée le concours des marrons glacés.
+
+---Mistral-7B - French: Il y a plusieurs années ici à TED, Peter Skillman a présenté un défi de conception appelé le défi du bonbon de marshmallow.
+                English (for verification): Several years ago here at TED, Peter Skillman presented a design challenge called the marshmallow challenge.
+
+---Gemma-7B - French: Il y a quelques années là sur Ted,Peter Skillion avait présenté un défi de conception appelé le défis des mallows.
+
+
+Example -2: ("Le marshmallow doit être placé au sommet.")
+    eng_text = "The marshmallow has to be on top."
+
+
+    outputs:
+---Llama3 - French: Le mallow-miel doit être en haut.
+            Note: "Marshmallow" is not a direct translation in French, but rather a loanword that is commonly used and understood. If you want to use the more traditional French term for marshmallow (guimauve), the sentence would become:
+            Le guimauve doit être en haut.
+            However, if you're looking for a more literal translation of the phrase, it could be:
+            La partie de mallow-miel doit être au-dessus.
+            This translates to "the part of the marshmallow must be above".
+
+
+---phi-3 - French: La gelée de haricot doit être en haut.
+           Note that "marshmallow" in the original English sentence is translated into "gelée de haricots," which refers more accurately to mallows or marshmallow plants, not actual marshmallows (as these are typically made from sugar and cornstarch). However, if we're talking about an object shaped like a marshmallow placed atop something else for decorative purposes, you might need clarification but based on available information this translation makes sense. If it was indeed referring to real marshmallows, they would simply be referred to by their name rather than describing them.
+
+
+---Mistral-7B - French: "Le marshmallow doit être au-dessus." (Literally: "The marshmallow must be above.")
+                Note that this phrase assumes the context of placing or arranging items. If you meant something else, please let me know and I'll translate accordingly!
+
+
+---Gemma-7B - French: Le mallow doit être en haut, ou : La crème brûlée devrait toujours se trouver au sommet (si nécessaire).
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#Samsum 
+
+Example -1: ("Hannah needs Betty's number but Amanda doesn't have it. She needs to contact Larry.")
+    dialogue = "Hannah: Hey, do you have Betty's number? Amanda: Lemme check Hannah: <file_gif> Amanda: Sorry, can't find it. Amanda: Ask Larry Amanda: He called her last time we were at the park together Hannah: I don't know him well Hannah: <file_gif> Amanda: Don't be shy, he's very nice Hannah: If you say so.. Hannah: I'd rather you texted him Amanda: Just text him 🙂 Hannah: Urgh.. Alright Hannah: Bye Amanda: Bye bye"
+
+    outputs:
+---Llama3 - Summary: Hannah asks Amanda if she has Betty's phone number, but Amanda doesn't have it and suggests asking Larry instead. Hannah is hesitant because she doesn't know Larry well, but Amanda assures her that he's friendly. After some persuasion, Hannah agrees to let Amanda text Larry for her.
+
+
+---phi-3 - Summary: In this dialogue between Hannah and Amanda, Hannah asks if she has Betty's phone number but cannot locate it. Amanda suggests asking their mutual acquaintance, Larry, who had previously contacted Betty when they all met at the park. Despite not knowing Larry well, Amanda assures Hannah that he is friendly. However, Hannah prefers for Amanda to send an email or message instead of directly reaching out to Larry herself. They both end the conversation on good terms with each other. 
+           As a storyteller summarizing the situation in narrative form: Once upon a time, two friends named Hannah and Amanda found themselves longing to reconnect with someone from their past - Betty. With hopeful hearts, they attempted to uncover Betty's whereabouts through various means. Unfortunately, despite trying hard, Hannah couldn't track down Betty's phone number. Not wanting to give up, Amanda suggested seeking help from another friend, Larry – one whom both shared memories with during playtime at the nearby park years ago. Though hesitant due to limited familiarity with Larry, Hannah eventually relented, allowing Amanda to take charge. Together, they agreed to maintain friendship while respectfully leaving room for others’ privacy. And thus, our tale ends on a harmonious note among kindred spirits.
+
+---Mistral-7B - Summary: Hannah asked Amanda for Betty's phone number. Amanda checked but couldn't find it. Amanda suggested asking Larry instead, who had contacted Betty during their recent park visit. Hannah expressed hesitancy due to not knowing Larry well and preferred if Amanda texted him instead. Amanda agreed and ended the conversation.
+
+
+---Gemma-7B - Summary:
+                The dialogue between Hanna andAmanda depicts their conversation about finding  Betty’S phone Number. 
+                **Key Points:**
+                - **Search for Phone Numbers**: They initially attempt to locate   Betty's numbers but are unsuccessful in doing that due lack of information available with them both being unable see file content on each other devices via GIF files sent privately through private messaging applications (not shown).
+                - The topic shifts from searching by looking into potential ways they could reach betTY using an alternative method such involving larRY, who was present alongside Them earlier when she had been there before leaving later once again after seeing his presence coming up frequently recently around this particular day which led people suspecting some form Of relationship Between HIM AND BETTTY.( Not explicitly stated within given Text)
+                It is evident From Their interactions That hannah And amanda hold friendly relationships With Each Other Despite any existing conflicts or differences In personality traits like shyness versus openness To engaging directly Through texting someone unknown,.
+
+
+Example -2: ("Eric and Rob are going to watch a stand-up on youtube.")
+    dialogue = "Eric: MACHINE! Rob: That's so gr8! Eric: I know! And shows how Americans see Russian ;) Rob: And it's really funny! Eric: I know! I especially like the train part! Rob: Hahaha! No one talks to the machine like that! Eric: Is this his only stand-up? Rob: Idk. I'll check. Eric: Sure. Rob: Turns out no! There are some of his stand-ups on youtube. Eric: Gr8! I'll watch them now! Rob: Me too! Eric: MACHINE! Rob: MACHINE! Eric: TTYL? Rob: Sure :)"
+
+    outputs:
+---Llama3 - Summary: Eric and Rob discuss a comedy routine by an American comedian about Russia, specifically a bit where he interacts with a machine in a humorous way. They both find it hilarious and share their favorite parts, including the train scene. They also discover that this is not the comedian's only stand-up routine and decide to look up more of his videos on YouTube. The conversation ends with a playful exchange of "MACHINE!" and a friendly goodbye ("TTYL" - Talk To You Later).
+
+--phi-3 - Summary: Eric and Rob discuss an American comedian, presumably Dan Aykroyd from "SNL," who humorously interacts with machines in his act - specifically mentioning the amusing portrayal involving trains during a performance. They realize they don't have all his comedy routines but learn about available YouTube videos featuring him performing similar antics, prompting both friends to plan watching together. The conversation highlights their shared interest in entertainment and enjoyment derived from unique comedic styles showcasing cultural perspectives (e.g., Americans viewing Russians). It also touches upon friendliness between individuals regardless of species or entity status, symbolized by referring affectionately to'machine.' This interaction demonstrates lighthearted banter among peers over mutual interests.
+
+--Mistral-7B - Summary: Eric and Rob are having a conversation about a comedy performance they have watched featuring a character named "Machine." They find the performance amusing, with Eric particularly enjoying the train part. They discuss whether this is the only stand-up by the performer and discover there are more available on YouTube. Both express excitement about watching more of his performances. As they end their conversation, they bid each other goodbye for now. (Eric: "TTYL?" which stands for "talk to you later" and Rob: "Sure :)").
+
+--Gemma-7B - Summary:
+             Two friends, Erik and Robert (Rob), have an engaging conversation about their shared experience watching American comedian act against stereotypes in Russia through online videos titled "MACHINE." 
+             **Key points:**  
+             * **The humor is evident.** Both characters find humorous aspects within such video content despite its potential sensitivity.   They describe feeling amused by seeing people interact with machines using exaggerated expressions ("gr" & “funny”). The delivery adds comedic timing for both actors involved which further enhances amusement value.(e)g.,"Machine!").    
+             * They discuss whether he has other stands ups but eventually discover there aren’t any available yet via YouTube search results.<br>
+             ***
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---phi-3 - Summary: In this dialogue between Hannah and Amanda, Hannah asks if she has Betty's phone number but cannot locate it. Amanda suggests asking their mutual acquaintance, Larry, who had previously contacted Betty when they all met at the park. Despite not knowing Larry well, Amanda assures Hannah that he is friendly. However, Hannah prefers for Amanda to send an email or message instead of directly reaching out to Larry herself. They both end the conversation on good terms with each other. 
+           As a storyteller summarizing the situation in narrative form: Once upon a time, two friends named Hannah and Amanda found themselves longing to reconnect with someone from their past - Betty. With hopeful hearts, they attempted to uncover Betty's whereabouts through various means. Unfortunately, despite trying hard, Hannah couldn't track down Betty's phone number. Not wanting to give up, Amanda suggested seeking help from another friend, Larry – one whom both shared memories with during playtime at the nearby park years ago. Though hesitant due to limited familiarity with Larry, Hannah eventually relented, allowing Amanda to take charge. Together, they agreed to maintain friendship while respectfully leaving room for others’ privacy. And thus, our tale ends on a harmonious note among kindred spirits.
+
+---Mistral-7B - Summary: Hannah asked Amanda for Betty's phone number. Amanda checked but couldn't find it. Amanda suggested asking Larry instead, who had contacted Betty during their recent park visit. Hannah expressed hesitancy due to not knowing Larry well and preferred if Amanda texted him instead. Amanda agreed and ended the conversation.
+
+
+---Gemma-7B - Summary:
+                The dialogue between Hanna andAmanda depicts their conversation about finding  Betty’S phone Number. 
+                **Key Points:**
+                - **Search for Phone Numbers**: They initially attempt to locate   Betty's numbers but are unsuccessful in doing that due lack of information available with them both being unable see file content on each other devices via GIF files sent privately through private messaging applications (not shown).
+                - The topic shifts from searching by looking into potential ways they could reach betTY using an alternative method such involving larRY, who was present alongside Them earlier when she had been there before leaving later once again after seeing his presence coming up frequently recently around this particular day which led people suspecting some form Of relationship Between HIM AND BETTTY.( Not explicitly stated within given Text)
+                It is evident From Their interactions That hannah And amanda hold friendly relationships With Each Other Despite any existing conflicts or differences In personality traits like shyness versus openness To engaging directly Through texting someone unknown,.
+
+
+
+
