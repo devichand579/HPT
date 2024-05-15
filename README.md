@@ -1,5 +1,5 @@
 # prompt_engineering
-  bash '''
+```bash
  #Directories:
 -> llama3_prompting - contains code Notebooks for all prompting strategies using Llama3-8B Instruct model
 -> mistral_promoting - contains code Notebooks for all prompting strategies using Mistral-7B Instruct model
@@ -74,4 +74,4 @@ we recommend to set it according to your capacity of GPU for paralell processing
 data structures for evaluation using the metric (for corresponding task).
 4.The fifth cell is for computing the score of the metric.
 5.The next two cells correspond to qualitative analysis of the prompt.
-'''
+```
