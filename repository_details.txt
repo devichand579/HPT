@@ -3,35 +3,41 @@
 -> mistral_promoting - contains code Notebooks for all prompting strategies using Mistral-7B Instruct model
 -> phi3_prompting - contains code Notebooks for all prompting strategies using Phi-3 mini-4K Instruct model
 -> gemma_prompting - contains code Notebooks for all prompting strategies using Gemma-7B Instruct model
-
+-> results - contains results of all prompting techniques
 
 #Structure
-
+---------------------------------------------------------------------------------------------------------------
 _llama3_prompting
 |
 |_llama3_role_all.ipynb -- Role prompting on all datasets using Llama3-8B Instruct (run complete)
 |
 |_llama3_zcot_all.ipynb -- Zero shot chain of thought prompting on all datasets using Llama3-8B Instruct
-
+---------------------------------------------------------------------------------------------------------------
 _phi3_prompting
 |
 |_phi3_role_all.ipynb -- Role prompting on all datasets using Phi-3 mini-4K Instruct (run complete)
 |
 |_phi3_zcot_all.ipynb -- Zero shot chain of thought prompting on all datasets using Phi-3 mini-4K Instruct
-
+---------------------------------------------------------------------------------------------------------------
 _mistral_prompting
 |
 |_mistral_role_all.ipynb -- Role prompting on all datasets using Mistral-7B Instruct Instruct (run complete)
 |
 |_mistral_zcot_all.ipynb -- Zero shot chain of thought prompting on all datasets Mistral-7B Instruct Instruct
-
+---------------------------------------------------------------------------------------------------------------
 _gemma_prompting
 |
 |_Gemma_role_all.ipynb -- Role prompting on all datasets using Gemma-7B Instruct Instruct (run complete)
 |
 |_Gemma_zcot_all.ipynb -- Zero shot chain of thought prompting on all datasets Gemma-7B Instruct Instruct
-
-
+---------------------------------------------------------------------------------------------------------------
+_results
+|
+|_Role_prompting____quantitaive_analysis.txt (run complete)
+|                 |_qualitative_analysis.txt (run complete)
+|
+|
+---------------------------------------------------------------------------------------------------------------
 # General Information
 
 **Each Notebook implements the prompting technique on all the four different tasks.**
