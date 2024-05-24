@@ -1,0 +1,13 @@
+git+https://github.com/huggingface/evaluate@a4bdc10c48a450b978d91389a48dbb5297835c7d
+absl-py
+nltk
+rouge_score>=0.1.2
+datasets
+nltk
+numpy 
+six
+collectipns
+math
+evaluate
+re 
+func_tools
