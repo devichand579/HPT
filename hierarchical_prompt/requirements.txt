@@ -11,3 +11,9 @@ math
 evaluate
 re 
 func_tools
+transformers
+accelerate
+bitsandbytes
+torch 
+torcheval
+langchain
