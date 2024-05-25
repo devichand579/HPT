@@ -1,4 +1,6 @@
-class AnswerProcessor:
+from abc import ABC
+
+class AnswerProcessor(ABC):
     """
     An utility class to post-process the model output for different datasets.
     """

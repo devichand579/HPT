@@ -3,11 +3,12 @@ import torch
 from langchain import HuggingFacePipeline
 import os
 import numpy as np
+from abc import ABC
 hf_token = os.getenv('HF_TOKEN')
 
 
  
-class Model:
+class Model(ABC):
     def __init__(self):
         self.model_names = {
             "llama3": "meta-llama/Meta-Llama-3-8B-Instruct",

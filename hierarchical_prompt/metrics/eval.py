@@ -1,9 +1,9 @@
 """
     An utility class for evaluating BoolQ, CSQA, IWSLT 2017 and Samsum datasets.
 """
+from abc import ABC
 
-
-class Eval:
+class Eval(ABC):
     """
     compute_cls_accuracy(preds, gts)
         Computes classification accuracy.

@@ -4,8 +4,9 @@
 
 
 from datasets import load_dataset
+from abc import ABC
 
-class DatasetLoader:
+class DatasetLoader(ABC):
     def __init__(self):
         self.datasets = {
             "qa": None,
