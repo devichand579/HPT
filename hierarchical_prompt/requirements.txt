@@ -17,3 +17,4 @@ bitsandbytes
 torch 
 torcheval
 langchain
+argparse    

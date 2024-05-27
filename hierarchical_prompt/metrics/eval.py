@@ -15,6 +15,14 @@ class Eval(ABC):
         Computes the Rouge score for summarisation tasks.
  
     """
+    def __init__(self,name):
+        self.methods = {
+            "boolq": [self.compute_cls_accuracy, self.compute_f1_score],
+            "csqa": [self.compute_cls_accuracy, self.compute_f1_score],
+            "iwslt": [self.compute_bleu],
+            "samsum": [self.compute_rouge]
+        }
+        self.metric = self.methods.get(name, lambda x: x)
     
     @staticmethod
     def compute_cls_accuracy(preds, gts):

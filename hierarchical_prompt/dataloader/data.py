@@ -9,18 +9,18 @@ from abc import ABC
 class DatasetLoader(ABC):
     def __init__(self):
         self.datasets = {
-            "qa": None,
-            "reasoning": None,
-            "french": None,
-            "summarization": None
+            "boolq": None,
+            "csqa": None,
+            "iwslt": None,
+            "samsum": None
         }
     
     def load_datasets(self):
         # Load the datasets and store them in the dictionary
-        self.datasets["qa"] = load_dataset("google/boolq", split="validation")
-        self.datasets["reasoning"] = load_dataset("tau/commonsense_qa", split="validation")
-        self.datasets["french"] = load_dataset("iwslt2017", "iwslt2017-en-fr", split="validation")
-        self.datasets["summarization"] = load_dataset("samsum", split="test")
+        self.datasets["boolq"] = load_dataset("google/boolq", split="validation")
+        self.datasets["csqa"] = load_dataset("tau/commonsense_qa", split="validation")
+        self.datasets["iwslt"] = load_dataset("iwslt2017", "iwslt2017-en-fr", split="validation")
+        self.datasets["samsum"] = load_dataset("samsum", split="test")
     
     def get_dataset(self, name):
         if self.datasets[name] is None:

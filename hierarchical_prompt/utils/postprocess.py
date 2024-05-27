@@ -4,8 +4,14 @@ class AnswerProcessor(ABC):
     """
     An utility class to post-process the model output for different datasets.
     """
-    def __init__(self):
-        pass
+    def __init__(self,name):
+        self.dataset_processors = {
+            "boolq": self.pp_boolq,
+            "csqa": self.pp_csqa,
+            "iwslt": self.pp_iwlst,
+            "samsum": self.pp_samsum
+        }
+        self.processor = self.dataset_processors.get(name, lambda x: x)
 
     def pp_boolq(self, text):
         """Process Boolean Questions (BoolQ) text."""
