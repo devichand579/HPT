@@ -105,13 +105,13 @@ class LLama3(Model):
         final_idx = np.argmax(scores)
         return preds[final_idx]
     
-    def generate_text_f(self,prompt):
+    def generate_pipe_f(self):
         llm_f = HuggingFacePipeline(self.pipe_f)
-        return llm_f(prompt)
+        return llm_f
     
-    def generate_text_nf(self,prompt):
+    def generate_pipe_nf(self):
         llm_nf = HuggingFacePipeline(self.pipe_nf)
-        return llm_nf(prompt)
+        return llm_nf
     
 class Phi3(Model):
     def __init__(self):
@@ -134,13 +134,13 @@ class Phi3(Model):
                                )
         
     
-    def generate_text_f(self,prompt):
-        phi_f = HuggingFacePipeline(self.pipe_f)
-        return phi_f(prompt)
+    def generate_pipe_f(self):
+        llm_f = HuggingFacePipeline(self.pipe_f)
+        return llm_f
     
-    def generate_text_nf(self,prompt):
-        phi_nf = HuggingFacePipeline(self.pipe_nf)
-        return phi_nf(prompt)
+    def generate_pipe_nf(self):
+        llm_nf = HuggingFacePipeline(self.pipe_nf)
+        return llm_nf
     
 class Mistral(Model):
     def __init__(self):
@@ -163,13 +163,13 @@ class Mistral(Model):
                                )
         
     
-    def generate_text_f(self,prompt):
-        mistral_f = HuggingFacePipeline(self.pipe_f)
-        return mistral_f(prompt)
+    def generate_pipe_f(self):
+        llm_f = HuggingFacePipeline(self.pipe_f)
+        return llm_f
     
-    def generate_text_nf(self,prompt):
-        mistral_nf = HuggingFacePipeline(self.pipe_nf)
-        return mistral_nf(prompt)
+    def generate_pipe_nf(self):
+        llm_nf = HuggingFacePipeline(self.pipe_nf)
+        return llm_nf
     
 class Gemma(Model):
     def __init__(self):
@@ -193,10 +193,10 @@ class Gemma(Model):
                                )
         
     
-    def generate_text_f(self,prompt):
-        gemma_f = HuggingFacePipeline(self.pipe_f)
-        return gemma_f(prompt)
+    def generate_pipe_f(self):
+        llm_f = HuggingFacePipeline(self.pipe_f)
+        return llm_f
     
-    def generate_text_nf(self,prompt):
-        gemma_nf = HuggingFacePipeline(self.pipe_nf)
-        return gemma_nf(prompt)
+    def generate_pipe_nf(self):
+        llm_nf = HuggingFacePipeline(self.pipe_nf)
+        return llm_nf
