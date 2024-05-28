@@ -48,6 +48,6 @@ class HPDatasetLoader(DatasetLoader):
             return ValueError(f'Dataset {name} not supported')
         
 # Example usage
-dataset_loader = HPDatasetLoader()
-boolq_dataset = dataset_loader.get_dataset("boolq")
-csqa_dataset = dataset_loader.get_dataset("csqa")
+# dataset_loader = HPDatasetLoader()
+# boolq_dataset = dataset_loader.get_dataset("boolq")
+# csqa_dataset = dataset_loader.get_dataset("csqa")
