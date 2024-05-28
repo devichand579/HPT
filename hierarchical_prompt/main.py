@@ -17,7 +17,7 @@ prompts = {
 
 
 class ManualHierarchicalPrompt(ABC):
-    def __init__(self, model, dataset, metric, text_processor, prompts,task,interelation=False):
+    def __init__(self, model, dataset, metric, text_processor, prompts,task, prefix, suffix, interelation=False):
         self.model = model
         self.dataset = dataset
         self.metric = metric
@@ -25,6 +25,8 @@ class ManualHierarchicalPrompt(ABC):
         self.text_processor = text_processor
         self.prompts = prompts
         self.task = task
+        self.prefix = prefix
+        self.suffix = suffix
 
     def prompt_process(self,item):
         level_Score = 1
@@ -47,9 +49,16 @@ class ManualHierarchicalPrompt(ABC):
                         else:
                             chain = prompt | llm_f
                             predictions = chain.invoke({'question': question,'passage':passage})
+                elif i==5:
+                    pass
+                
+                else :
+                    template = self.prompts[i].get_prompt(self.task)
+                    template = self.prefix + template + self.suffix +"Answer:"
+                    prompt = PromptTemplate.from_template(template)
+                    chain = prompt | llm_f
+                    predictions = chain.invoke({'question': question,'passage':passage})
 
-                template = self.prompts[i].get_prompt(self.task)
-                prompt = PromptTemplate.from_template(template)
             elif self.task == "csqa":
                 question = item['question'][0]
                 text1 = item['choices'][0]['text'][0] 
@@ -58,8 +67,16 @@ class ManualHierarchicalPrompt(ABC):
                 text4 = item['choices'][0]['text'][3] 
                 text5 = item['choices'][0]['text'][4] 
                 ans = item['answerKey']
-                template = self.prompts[i].get_prompt(self.task)
-                prompt = PromptTemplate.from_template(template)
+                if i==4:
+                    pass
+                elif i==5:
+                    pass
+                else:
+                    template = self.prompts[i].get_prompt(self.task)
+                    template = self.prefix + template + self.suffix +"Answer:"
+                    prompt = PromptTemplate.from_template(template)
+                    chain = prompt | llm_f
+                    predictions = chain.invoke({'question': question,'text1':text1,'text2':text2,'text3':text3,'text4':text4,'text5':text5})
 
             elif self.task == "iwslt":
                 eng_text = item['translation'][0]['en']
@@ -87,12 +104,20 @@ def main(args):
     model_name = args.arg3
     if model_name == "llama3":
         model = LLama3()
+        prefix = "<|start_header_id|>user<|end_header_id|>\n"
+        suffix = "<|eot_id|><|start_header_id|>assistant<|end_header_id|>\n"
     elif model_name == "gemma":
         model = Gemma()
+        prefix = "<bos><start_of_turn>user\n"
+        suffix = "<end_of_turn>\n<start_of_turn>model\n"
     elif model_name == "phi3":
         model = Phi3()
+        prefix ="<|endoftext|><|user|>\n"
+        suffix = "<|end|>\n<|assistant|>\n"
     elif model_name == "mistral":
         model = Mistral()
+        prefix = "<s>[INST]\n"
+        suffix = "[/INST]\n"
     dataset_name = args.arg4
     if(dataset_name == "iwslt" or dataset_name == "samsum"):
         thres = args.thres
@@ -101,7 +126,7 @@ def main(args):
     text_processor = AnswerProcessor(dataset_name).processor
     eval = Eval(dataset_name).metric
     if HP_framework == "man":
-        manual_hp = ManualHierarchicalPrompt(model, dataset, eval, text_processor, prompts, interelation, dataset_name)
+        manual_hp = ManualHierarchicalPrompt(model, dataset, eval, text_processor, prompts,dataset_name, prefix, suffix, interelation)
 
 
 
