@@ -25,7 +25,7 @@ hp_scores = {
 
 
 class ManualHierarchicalPrompt(ABC):
-    def __init__(self, model, gen_model, dataset, metric_list, text_processor, prompts,task, prefix, suffix):
+    def __init__(self, model, gen_model, dataset, metric_list, text_processor, prompts,task, prefix, suffix,thres=0):
         self.model = model 
         self.gen_model = gen_model 
         self.dataset = dataset 
@@ -35,6 +35,7 @@ class ManualHierarchicalPrompt(ABC):
         self.task = task   
         self.prefix = prefix  
         self.suffix = suffix 
+        self.thres = thres
         self.predictions = []
         self.references = []
         self.scores = []
@@ -239,17 +240,207 @@ class ManualHierarchicalPrompt(ABC):
                 eng_text = item['translation'][0]['en']
                 answer  = item['translation']['fr']
 
-                # retrieve a template and create a prompt
-                template = self.prompts[i].get_prompt(self.task)
-                prompt = PromptTemplate.from_template(template)
+                # level 4
+                if i==4:
+                    # retrieve multiple levels of least-to-most prompting
+                    templates = self.prompts[i].get_prompt(self.task)
+                    pred = ""
+                    # iterate over the templates
+                    for i in range(len(templates)):
+                        
+
+                        # for intermediate templates, use llm_nf
+                        if i != len(templates)-1:
+                            template = self.prefix + templates[i] + self.suffix 
+                            prompt = PromptTemplate.from_template(template)
+                            chain = prompt | llm_nf
+                            pred = chain.invoke({'text': eng_text,'pred':pred})
+                        # for final template, use llm_f
+                        else:
+                            template = self.prefix + templates[i] + self.suffix + "French:"
+                            prompt = PromptTemplate.from_template(template)
+                            chain = prompt | llm_f
+                            pred = chain.invoke({'text': eng_text,'pred':pred})
+
+                    # process the prediction
+                    final_ans = self.text_processor(pred)
+                    bleu_score  = self.metrics[0]
+                    eval_score = bleu_score(final_ans,answer)
+                    if  eval_score >= self.thres:
+                        self.scores.append(i)
+                        self.predictions.append(pred)
+                        self.references.append(answer)
+                        break
+                    else:
+                        continue
+
+                # level 5
+                elif i==5:
+                    gen_prefix = "<|start_header_id|>user<|end_header_id|>\n"
+                    gen_suffix = "<|eot_id|><|start_header_id|>assistant<|end_header_id|>\n"
+                    # retrieve the template and create a prompt chain using llm_nf
+                    template, gen_knowledge_template = self.prompts[i].get_prompt(self.task)
+                    gen_knowledge_template = format(gen_knowledge_template,eng_text=eng_text)
+                    knowledge_template = gen_prefix + gen_knowledge_template + gen_suffix
+                    know_prompts_list = []
+                    for i in range(3):
+                        know_prompts_list.append(knowledge_template)
+                    generated_knowledge = self.gen_model.generate_knowledge(know_prompts_list)
+              
+                    # create the final prompt and chain using llm_f
+                    template = self.prefix + template + self.suffix + "French:"
+                    prompt = PromptTemplate.from_template(template)
+                    chain = prompt | llm_f
+                    pred = chain.invoke({'eng_text': eng_text,'pred':generated_knowledge})
+
+                    # process the prediction
+                    final_ans = self.text_processor(pred)
+                    bleu_score  = self.metrics[0]
+                    eval_score = bleu_score(final_ans,answer)
+                    if  eval_score >= self.thres:
+                        self.scores.append(i)
+                        self.predictions.append(pred)
+                        self.references.append(answer)
+                        break
+                    else:
+                        continue
+                    
+                
+                # for other levels, retrieve the prompt template, add the prefix and suffix, and create a prompt chain using llm_f
+                else :
+                    template = self.prompts[i].get_prompt(self.task)
+                    template = self.prefix + template + self.suffix +"French:"
+                    prompt = PromptTemplate.from_template(template)
+                    chain = prompt | llm_f
+                    pred = chain.invoke({'eng_text': eng_text})
+                    final_ans = self.text_processor(pred)
+                    bleu_score  = self.metrics[0]
+                    eval_score = bleu_score(final_ans,answer)
+                    if  eval_score >= self.thres:
+                        self.scores.append(i)
+                        self.predictions.append(pred)
+                        self.references.append(answer)
+                        break
+                    else:
+                        continue
+
 
             # handles dialogue summarization tasks
             elif self.task == "samsum":
                 # extract the dialogue and summary
                 dialogue = item['dialogue']
-                ans = item['summary']
-                template = self.prompts[i].get_prompt(self.task)
-                prompt = PromptTemplate.from_template(template)
+                answer = item['summary']
+                
+                # level 4
+                if i==4:
+                    # retrieve multiple levels of least-to-most prompting
+                    templates = self.prompts[i].get_prompt(self.task)
+                    pred = ""
+                    # iterate over the templates
+                    for i in range(len(templates)):
+                        
+
+                        # for intermediate templates, use llm_nf
+                        if i != len(templates)-1:
+                            template = self.prefix + templates[i] + self.suffix 
+                            prompt = PromptTemplate.from_template(template)
+                            chain = prompt | llm_nf
+                            pred = chain.invoke({'text': dialogue,'pred':pred})
+                        # for final template, use llm_f
+                        else:
+                            template = self.prefix + templates[i] + self.suffix + "Summary:"
+                            prompt = PromptTemplate.from_template(template)
+                            chain = prompt | llm_f
+                            pred = chain.invoke({'text': dialogue,'pred':pred})
+
+                    # process the prediction
+                    final_ans = self.text_processor(pred)
+                    rouge_score  = self.metrics[0]
+                    eval_score = rouge_score(final_ans,answer)
+                    if  eval_score >= self.thres:
+                        self.scores.append(i)
+                        self.predictions.append(pred)
+                        self.references.append(answer)
+                        break
+                    else:
+                        continue
+
+                # level 5
+                elif i==5:
+                    gen_prefix = "<|start_header_id|>user<|end_header_id|>\n"
+                    gen_suffix = "<|eot_id|><|start_header_id|>assistant<|end_header_id|>\n"
+                    # retrieve the template and create a prompt chain using llm_nf
+                    template, gen_knowledge_template = self.prompts[i].get_prompt(self.task)
+                    gen_knowledge_template = format(gen_knowledge_template,eng_text=eng_text)
+                    knowledge_template = gen_prefix + gen_knowledge_template + gen_suffix
+                    know_prompts_list = []
+                    for i in range(3):
+                        know_prompts_list.append(knowledge_template)
+                    generated_knowledge = self.gen_model.generate_knowledge(know_prompts_list)
+              
+                    # create the final prompt and chain using llm_f
+                    template = self.prefix + template + self.suffix + "Summary:"
+                    prompt = PromptTemplate.from_template(template)
+                    chain = prompt | llm_f
+                    pred = chain.invoke({'dialogue': dialogue,'pred':generated_knowledge})
+
+                    # process the prediction
+                    final_ans = self.text_processor(pred)
+                    rouge_score  = self.metrics[0]
+                    eval_score = rouge_score(final_ans,answer)
+                    if  eval_score >= self.thres:
+                        self.scores.append(i)
+                        self.predictions.append(pred)
+                        self.references.append(answer)
+                        break
+                    else:
+                        continue
+                    
+                
+                # for other levels, retrieve the prompt template, add the prefix and suffix, and create a prompt chain using llm_f
+                else :
+                    template = self.prompts[i].get_prompt(self.task)
+                    template = self.prefix + template + self.suffix + "Summary:"
+                    prompt = PromptTemplate.from_template(template)
+                    chain = prompt | llm_f
+                    pred = chain.invoke({'dialogue': dialogue})
+                    final_ans = self.text_processor(pred)
+                    rouge_score  = self.metrics[0]
+                    eval_score = rouge_score(final_ans,answer)
+                    if  eval_score >= self.thres:
+                        self.scores.append(i)
+                        self.predictions.append(pred)
+                        self.references.append(answer)
+                        break
+                    else:
+                        continue
+    def process_dataset(self):
+        '''
+        processes the entire dataset using hierarchical prompts
+        '''
+        for item in self.dataset:
+            self.prompt_process(item)
+    
+    def compute_scores(self):
+        '''
+        computes the scores for the predictions
+        '''
+        hp_score  = sum(self.scores)/len(self.scores)
+        if self.task == "boolq":
+            acc = self.metrics[0](self.predictions,self.references)
+            f1 = self.metrics[1](self.predictions,self.references)
+            return hp_score, acc, f1
+        elif self.task == "csqa":
+            acc = self.metrics[0](self.predictions,self.references)
+            f1 = self.metrics[1](self.predictions,self.references)
+            return hp_score, acc, f1
+        elif self.task == "iwslt":
+            bleu = self.metrics[0](self.predictions,self.references)
+            return hp_score, bleu
+        elif self.task == "samsum":
+            rouge = self.metrics[0](self.predictions,self.references)
+            return hp_score, rouge
+
             
 
 
@@ -506,7 +697,7 @@ def main(args):
         gen_model = LLama3()
 
     if HP_framework == "man":
-        manual_hp = ManualHierarchicalPrompt(model, gen_model, dataset, eval_list, text_processor, prompts, dataset_name, prefix, suffix)
+        manual_hp = ManualHierarchicalPrompt(model, gen_model, dataset, eval_list, text_processor, prompts, dataset_name, prefix, suffix,thres)
     elif HP_framework == "auto":
         adaptive_hp = AdaptiveHierarchicalPrompt(model, dataset, eval, text_processor, prompts, dataset_name, prefix, suffix)
         for item in dataset:
