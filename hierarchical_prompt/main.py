@@ -18,15 +18,18 @@ prompts = {
 
 
 class ManualHierarchicalPrompt(ABC):
-    def __init__(self, model, dataset, metric, text_processor, prompts,task, prefix, suffix):
+    def __init__(self, model, dataset, metric_list, text_processor, prompts,task, prefix, suffix):
         self.model = model  
         self.dataset = dataset 
-        self.metric = metric   
+        self.metrics = metric_list  
         self.text_processor = text_processor    
         self.prompts = prompts
         self.task = task   
         self.prefix = prefix  
         self.suffix = suffix 
+        self.predictions = []
+        self.references = []
+        self.scores = []
     '''
     Prompt processing method
     '''
@@ -34,10 +37,9 @@ class ManualHierarchicalPrompt(ABC):
         '''
         processes a single item from the dataset using hierarchical prompts
         '''
-        level_Score = 1 # to track the score at each level
         for i in range(1,6):
-            llm_f = self.model.generate_pipe_f()    # final pipeline
-            llm_nf = self.model.generate_pipe_nf()  # non-final pipeline
+            llm_f = self.model.generate_pipe_f()    # full_text pipeline
+            llm_nf = self.model.generate_pipe_nf()  # non_full_text pipeline
 
             # handles passage and ques-ans pairs
             if self.task == "boolq":
@@ -48,22 +50,35 @@ class ManualHierarchicalPrompt(ABC):
 
                 # level 4
                 if i==4:
-                    # retrieve multiple prompt strategies
+                    # retrieve multiple levels of least-to-most prompting
                     templates = self.prompts[i].get_prompt(self.task)
-                    predictions = ""
+                    pred = ""
                     # iterate over the templates
                     for i in range(len(templates)):
                         # and create a prompt chain for each of them
-                        prompt = PromptTemplate.from_template(templates[i])
+                        template = self.prefix + templates[i] + self.suffix
+                        prompt = PromptTemplate.from_template(template)
 
                         # for intermediate templates, use llm_nf
                         if i != len(templates)-1:
                             chain = prompt | llm_nf
-                            predictions = chain.invoke({'question': question,'passage':passage})
+                            pred = chain.invoke({'question': question,'passage':passage})
                         # for final template, use llm_f
                         else:
                             chain = prompt | llm_f
-                            predictions = chain.invoke({'question': question,'passage':passage})
+                            pred = chain.invoke({'question': question,'passage':passage})
+
+                    # process the prediction
+                    final_ans = self.text_processor(pred)
+                    if final_ans == ans:
+                        self.scores.append(i)
+                        self.predictions.append(pred)
+                        self.references.append(ans)
+                        break
+                    else:
+                        continue
+
+                # level 5
                 elif i==5:
                     pass
                 
