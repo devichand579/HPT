@@ -54,7 +54,11 @@ class ManualHierarchicalPrompt(ABC):
                 #extracting the passage, question, and answer from the item
                 passage = item['passage']
                 question = item['question']
-                ans = item['answer']
+                answer = item['answer']
+                if answer == "true":
+                    ans = 1
+                else:
+                    ans = 0
 
                 # level 4
                 if i==4:
@@ -70,11 +74,11 @@ class ManualHierarchicalPrompt(ABC):
                         # for intermediate templates, use llm_nf
                         if i != len(templates)-1:
                             chain = prompt | llm_nf
-                            pred = chain.invoke({'question': question,'passage':passage})
+                            pred = chain.invoke({'question': question,'passage':passage, 'pred':pred})
                         # for final template, use llm_f
                         else:
                             chain = prompt | llm_f
-                            pred = chain.invoke({'question': question,'passage':passage})
+                            pred = chain.invoke({'question': question,'passage':passage, 'pred':pred})
 
                     # process the prediction
                     final_ans = self.text_processor(pred)
@@ -92,17 +96,18 @@ class ManualHierarchicalPrompt(ABC):
                     gen_suffix = "<|eot_id|><|start_header_id|>assistant<|end_header_id|>\n"
                     # retrieve the template and create a prompt chain using llm_nf
                     template, gen_knowledge_template = self.prompts[i].get_prompt(self.task)
+                    gen_knowledge_template = format(gen_knowledge_template,passage=passage)
                     knowledge_template = gen_prefix + gen_knowledge_template + gen_suffix
                     know_prompts_list = []
                     for i in range(3):
                         know_prompts_list.append(knowledge_template)
                     generated_knowledge = self.gen_model.generate_knowledge(know_prompts_list)
               
-                    generated_knowledge = llm_nf.invoke({'question': question,'passage':passage})
-                    prompt_text = template.format(passage=passage, question=question, pred=generated_knowledge)
-                    prompt = PromptTemplate.from_template(prompt_text)
+                    # create the final prompt and chain using llm_f
+                    template = self.prefix + template + self.suffix + "Answer:"
+                    prompt = PromptTemplate.from_template(template)
                     chain = prompt | llm_f
-                    pred = chain.invoke({'question': question,'passage':passage})
+                    pred = chain.invoke({'question': question,'passage':passage,'pred':generated_knowledge})
 
                     # process the prediction
                     final_ans = self.text_processor(pred)
@@ -142,18 +147,92 @@ class ManualHierarchicalPrompt(ABC):
                 text5 = item['choices'][0]['text'][4] 
 
                 # extract the answer key
-                ans = item['answerKey']
+                answer = item['answerKey']
+                if answer == "A":
+                    ans = 0
+                elif answer == "B":
+                    ans = 1
+                elif answer == "C":
+                    ans = 2
+                elif answer == "D":
+                    ans = 3
+                elif answer == "E":
+                    ans = 4
+                # level 4
                 if i==4:
-                    pass
+                    # retrieve multiple levels of least-to-most prompting
+                    templates = self.prompts[i].get_prompt(self.task)
+                    pred = ""
+                    # iterate over the templates
+                    for i in range(len(templates)):
+                        # and create a prompt chain for each of them
+                        template = self.prefix + templates[i] + self.suffix + "Answer:"
+                        prompt = PromptTemplate.from_template(template)
+
+                        # for intermediate templates, use llm_nf
+                        if i != len(templates)-1:
+                            chain = prompt | llm_nf
+                            pred = chain.invoke({'question': question,'text1':text1,'text2':text2,'text3':text3,'text4':text4,'text5':text5,'pred':pred})
+                        # for final template, use llm_f
+                        else:
+                            chain = prompt | llm_f
+                            pred = chain.invoke({'question': question,'text1':text1,'text2':text2,'text3':text3,'text4':text4,'text5':text5,'pred':pred})
+
+                    # process the prediction
+                    final_ans = self.text_processor(pred)
+                    if final_ans == ans:
+                        self.scores.append(i)
+                        self.predictions.append(pred)
+                        self.references.append(ans)
+                        break
+                    else:
+                        continue
+
+                # level 5
                 elif i==5:
-                    pass
-                else:
+                    gen_prefix = "<|start_header_id|>user<|end_header_id|>\n"
+                    gen_suffix = "<|eot_id|><|start_header_id|>assistant<|end_header_id|>\n"
+                    # retrieve the template and create a prompt chain using llm_nf
+                    template, gen_knowledge_template = self.prompts[i].get_prompt(self.task)
+                    gen_knowledge_template = format(gen_knowledge_template,question=question)
+                    knowledge_template = gen_prefix + gen_knowledge_template + gen_suffix
+                    know_prompts_list = []
+                    for i in range(3):
+                        know_prompts_list.append(knowledge_template)
+                    generated_knowledge = self.gen_model.generate_knowledge(know_prompts_list)
+              
+                    # create the final prompt and chain using llm_f
+                    template = self.prefix + template + self.suffix + "Answer:"
+                    prompt = PromptTemplate.from_template(template)
+                    chain = prompt | llm_f
+                    pred = chain.invoke({'question': question,'text1':text1,'text2':text2,'text3':text3,'text4':text4,'text5':text5,'pred':generated_knowledge})
+
+                    # process the prediction
+                    final_ans = self.text_processor(pred)
+                    if final_ans == ans:
+                        self.scores.append(i)
+                        self.predictions.append(pred)
+                        self.references.append(ans)
+                        break
+                    else:
+                        continue
+                    
+                
+                # for other levels, retrieve the prompt template, add the prefix and suffix, and create a prompt chain using llm_f
+                else :
                     template = self.prompts[i].get_prompt(self.task)
                     template = self.prefix + template + self.suffix +"Answer:"
                     prompt = PromptTemplate.from_template(template)
                     chain = prompt | llm_f
-                    predictions = chain.invoke({'question': question,'text1':text1,'text2':text2,'text3':text3,'text4':text4,'text5':text5})
-
+                    pred = chain.invoke({'question': question,'text1':text1,'text2':text2,'text3':text3,'text4':text4,'text5':text5})
+                    final_ans = self.text_processor(pred)
+                    if final_ans == ans:
+                        self.scores.append(i)
+                        self.predictions.append(pred)
+                        self.references.append(ans)
+                        break
+                    else:
+                        continue
             # handles translation tasks
             elif self.task == "iwslt":
                 # extract english text and answer in french

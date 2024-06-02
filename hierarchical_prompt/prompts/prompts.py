@@ -101,15 +101,13 @@ class Leasttomost(Promptloader):
     def __init__(self):
         super().__init__()
         self.prompts["boolq"] = ["Summarize the main points of this passage: '{passage}'","Analyze this question to identify its key components: '{question}'","Find the part of the passage that relates to this question: '{question}'\nPassage: '{passage}'","Based on the passage, what is the answer to this question: '{question}'\nRelevant Information: '{predictions}'"]
-        self.prompts["csqa"] = ["Analyze this question: '{question}'", "Based on the analysis, Discard wrong answers among the options:A {text1}\nB {text2}\nC {text3}\nD {text4}\nE {text5}", "Elaborate about the correct answer from the remaining options for the question: '{question}'\nR","Based on the analysis : '{predictions}', Choose the correct answer from the options: A {text1}\nB {text2}\nC {text3}\nD {text4}\nE {text5}"]
+        self.prompts["csqa"] = ["Analyze this question: '{question}'", "Based on the analysis, Discard wrong answers among the options:A {text1}\nB {text2}\nC {text3}\nD {text4}\nE {text5}", "Elaborate about the correct answer from the remaining options for the question: '{question}'\n","Based on the analysis : '{predictions}', Choose the correct answer from the options: A {text1}\nB {text2}\nC {text3}\nD {text4}\nE {text5}"]
         self.prompts["iwslt"] = ["What is the main idea or theme of this text? '{text}'","Identify and list the key phrases or terms in this text: '{text}'","Translate the following key phrases into french: '{predictions}'","Translate '{text}' into french, incorporating the translations of the key phrases: '{predictions}'"]
         self.prompts["samsum"] = ["List the main points or key ideas present in this dialogue: '{text}'.","Elaborate on the following key points, providing additional details or context: '{predictions}'.","Using the listed key points and their elaborations, draft a concise summary of this text: '{text}'.","Refine this draft summary to make it more concise and coherent, ensuring it captures the essence of the text: '{text}'."]
 
-    def get_prompt(self, task,interelation=False):
+    def get_prompt(self, task):
         if task not in self.prompts:
             return f"Prompt for '{task}' not found"
-        if interelation:
-            return self.interelation_prompts[task], self.prompts[task]
         else :
             return self.prompts[task]
         
