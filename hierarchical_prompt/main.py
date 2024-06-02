@@ -341,16 +341,16 @@ def main(args):
     
     if model_name == "llama3":
         model = LLama3()
-        prefix = "user\n"
-        suffix = "assistant\n"
+        prefix = "<|start_header_id|>user<|end_header_id|>\n"
+        suffix = "<|eot_id|><|start_header_id|>assistant<|end_header_id|>\n"
     elif model_name == "gemma":
         model = Gemma()
         prefix = "<bos><start_of_turn>user\n"
         suffix = "<end_of_turn>\n<start_of_turn>model\n"
     elif model_name == "phi3":
         model = Phi3()
-        prefix = "\n"
-        suffix = "\n\n"
+        prefix = "<|endoftext|><|user|>\n"
+        suffix = "<|end|>\n<|assistant|>\n"
     elif model_name == "mistral":
         model = Mistral()
         prefix = "<s>[INST]\n"
