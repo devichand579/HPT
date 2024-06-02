@@ -85,7 +85,7 @@ class ManualHierarchicalPrompt(ABC):
                     final_ans = self.text_processor(pred)
                     if final_ans == ans:
                         self.scores.append(i)
-                        self.predictions.append(pred)
+                        self.predictions.append(final_ans)
                         self.references.append(ans)
                         break
                     else:
@@ -114,11 +114,14 @@ class ManualHierarchicalPrompt(ABC):
                     final_ans = self.text_processor(pred)
                     if final_ans == ans:
                         self.scores.append(i)
-                        self.predictions.append(pred)
+                        self.predictions.append(final_ans)
                         self.references.append(ans)
                         break
                     else:
-                        continue
+                        i = i + hp_scores[self.task]
+                        self.scores.append(i)
+                        self.predictions.append(final_ans)
+                        self.references.append(ans)
                     
                 
                 # for other levels, retrieve the prompt template, add the prefix and suffix, and create a prompt chain using llm_f
@@ -131,7 +134,7 @@ class ManualHierarchicalPrompt(ABC):
                     final_ans = self.text_processor(pred)
                     if final_ans == ans:
                         self.scores.append(i)
-                        self.predictions.append(pred)
+                        self.predictions.append(final_ans)
                         self.references.append(ans)
                         break
                     else:
@@ -183,7 +186,7 @@ class ManualHierarchicalPrompt(ABC):
                     final_ans = self.text_processor(pred)
                     if final_ans == ans:
                         self.scores.append(i)
-                        self.predictions.append(pred)
+                        self.predictions.append(final_ans)
                         self.references.append(ans)
                         break
                     else:
@@ -212,11 +215,14 @@ class ManualHierarchicalPrompt(ABC):
                     final_ans = self.text_processor(pred)
                     if final_ans == ans:
                         self.scores.append(i)
-                        self.predictions.append(pred)
+                        self.predictions.append(final_ans)
                         self.references.append(ans)
                         break
                     else:
-                        continue
+                        i = i + hp_scores[self.task]
+                        self.scores.append(i)
+                        self.predictions.append(final_ans)
+                        self.references.append(ans)
                     
                 
                 # for other levels, retrieve the prompt template, add the prefix and suffix, and create a prompt chain using llm_f
@@ -229,7 +235,7 @@ class ManualHierarchicalPrompt(ABC):
                     final_ans = self.text_processor(pred)
                     if final_ans == ans:
                         self.scores.append(i)
-                        self.predictions.append(pred)
+                        self.predictions.append(final_ans)
                         self.references.append(ans)
                         break
                     else:
@@ -268,7 +274,7 @@ class ManualHierarchicalPrompt(ABC):
                     eval_score = bleu_score(final_ans,answer)
                     if  eval_score >= self.thres:
                         self.scores.append(i)
-                        self.predictions.append(pred)
+                        self.predictions.append(final_ans)
                         self.references.append(answer)
                         break
                     else:
@@ -299,12 +305,15 @@ class ManualHierarchicalPrompt(ABC):
                     eval_score = bleu_score(final_ans,answer)
                     if  eval_score >= self.thres:
                         self.scores.append(i)
-                        self.predictions.append(pred)
+                        self.predictions.append(final_ans)
                         self.references.append(answer)
                         break
                     else:
-                        continue
-                    
+                        i = i + hp_scores[self.task]
+                        self.scores.append(i)
+                        self.predictions.append(final_ans)
+                        self.references.append(answer)
+                
                 
                 # for other levels, retrieve the prompt template, add the prefix and suffix, and create a prompt chain using llm_f
                 else :
@@ -318,7 +327,7 @@ class ManualHierarchicalPrompt(ABC):
                     eval_score = bleu_score(final_ans,answer)
                     if  eval_score >= self.thres:
                         self.scores.append(i)
-                        self.predictions.append(pred)
+                        self.predictions.append(final_ans)
                         self.references.append(answer)
                         break
                     else:
@@ -359,7 +368,7 @@ class ManualHierarchicalPrompt(ABC):
                     eval_score = rouge_score(final_ans,answer)
                     if  eval_score >= self.thres:
                         self.scores.append(i)
-                        self.predictions.append(pred)
+                        self.predictions.append(final_ans)
                         self.references.append(answer)
                         break
                     else:
@@ -394,7 +403,10 @@ class ManualHierarchicalPrompt(ABC):
                         self.references.append(answer)
                         break
                     else:
-                        continue
+                        i = i + hp_scores[self.task]
+                        self.scores.append(i)
+                        self.predictions.append(final_ans)
+                        self.references.append(answer)
                     
                 
                 # for other levels, retrieve the prompt template, add the prefix and suffix, and create a prompt chain using llm_f
@@ -409,7 +421,7 @@ class ManualHierarchicalPrompt(ABC):
                     eval_score = rouge_score(final_ans,answer)
                     if  eval_score >= self.thres:
                         self.scores.append(i)
-                        self.predictions.append(pred)
+                        self.predictions.append(final_ans)
                         self.references.append(answer)
                         break
                     else:
@@ -420,6 +432,7 @@ class ManualHierarchicalPrompt(ABC):
         '''
         for item in self.dataset:
             self.prompt_process(item)
+            
     
     def compute_scores(self):
         '''
