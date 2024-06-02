@@ -16,10 +16,18 @@ prompts = {
     5 : generatedknowledge()
 }
 
+hp_scores = {
+    "boolq": ,
+    "csqa": ,
+    "iwslt": ,
+    "samsum": 
+}
+
 
 class ManualHierarchicalPrompt(ABC):
-    def __init__(self, model, dataset, metric_list, text_processor, prompts,task, prefix, suffix):
-        self.model = model  
+    def __init__(self, model, gen_model, dataset, metric_list, text_processor, prompts,task, prefix, suffix):
+        self.model = model 
+        self.gen_model = gen_model 
         self.dataset = dataset 
         self.metrics = metric_list  
         self.text_processor = text_processor    
@@ -80,6 +88,31 @@ class ManualHierarchicalPrompt(ABC):
 
                 # level 5
                 elif i==5:
+                    gen_prefix = "<|start_header_id|>user<|end_header_id|>\n"
+                    gen_suffix = "<|eot_id|><|start_header_id|>assistant<|end_header_id|>\n"
+                    # retrieve the template and create a prompt chain using llm_nf
+                    template, gen_knowledge_template = self.prompts[i].get_prompt(self.task)
+                    knowledge_template = gen_prefix + gen_knowledge_template + gen_suffix
+                    know_prompts_list = []
+                    for i in range(3):
+                        know_prompts_list.append(knowledge_template)
+                    generated_knowledge = self.gen_model.generate_knowledge(know_prompts_list)
+              
+                    generated_knowledge = llm_nf.invoke({'question': question,'passage':passage})
+                    prompt_text = template.format(passage=passage, question=question, pred=generated_knowledge)
+                    prompt = PromptTemplate.from_template(prompt_text)
+                    chain = prompt | llm_f
+                    pred = chain.invoke({'question': question,'passage':passage})
+
+                    # process the prediction
+                    final_ans = self.text_processor(pred)
+                    if final_ans == ans:
+                        self.scores.append(i)
+                        self.predictions.append(pred)
+                        self.references.append(ans)
+                        break
+                    else:
+                        continue
                     
                 
                 # for other levels, retrieve the prompt template, add the prefix and suffix, and create a prompt chain using llm_f
@@ -388,8 +421,13 @@ def main(args):
     text_processor = AnswerProcessor(dataset_name).processor
     eval_list  = Eval(dataset_name).metric
 
+    if model_name == "llama3":
+        gen_model = model
+    else :
+        gen_model = LLama3()
+
     if HP_framework == "man":
-        manual_hp = ManualHierarchicalPrompt(model, dataset, eval_list, text_processor, prompts, dataset_name, prefix, suffix)
+        manual_hp = ManualHierarchicalPrompt(model, gen_model, dataset, eval_list, text_processor, prompts, dataset_name, prefix, suffix)
     elif HP_framework == "auto":
         adaptive_hp = AdaptiveHierarchicalPrompt(model, dataset, eval, text_processor, prompts, dataset_name, prefix, suffix)
         for item in dataset:
