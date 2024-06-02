@@ -29,11 +29,9 @@ class Roleprompt(Promptloader):
         self.prompts["iwslt"] = "Translate '{eng_text}' to french as a Translator."
         self.prompts["samsum"] = "Summarise the Dialogue: '{dialogue}' as a Storyteller."   
 
-    def get_prompt(self, task,interelation=False):
+    def get_prompt(self, task):
         if task not in self.prompts:
             return f"Prompt for '{task}' not found"
-        if interelation:
-            return self.interelation_prompts[task], self.prompts[task]
         else :
             return self.prompts[task]
         
@@ -45,11 +43,9 @@ class ZeroshotCoT(Promptloader):
         self.prompts["iwslt"] = "Translate '{eng_text}' to french. Let's translate step by step."
         self.prompts["samsum"] = "Summarise the Dialogue: '{dialogue}'. Let's summarise step by step."   
 
-    def get_prompt(self, task,interelation=False):
+    def get_prompt(self, task):
         if task not in self.prompts:
             return f"Prompt for '{task}' not found"
-        if interelation:
-            return self.interelation_prompts[task], self.prompts[task]
         else :
             return self.prompts[task]
 
@@ -95,11 +91,9 @@ class threeshotCoT(Promptloader):
         self.prompts["iwslt"] = f"Translate '{ex_en1}' to french.\nFrench: {ex_fr1}.\nTranslate '{ex_en2}' to french.\nFrench: {ex_fr2}.\nTranslate '{ex_en3}' to french.\nFrench: {ex_fr3}.\nTranslate '{eng_text}' to french."
         self.prompts["samsum"] = f"Summarise the Dialogue: '{ex_dialogue1}'.\nSummary: {ex_sum1}.\nSummarise the Dialogue: '{ex_dialogue2}'.\nSummary: {ex_sum2}.\nSummarise the Dialogue: '{ex_dialogue3}'.\nSummary: {ex_sum3}.\nSummarise the Dialogue: '{dialogue}'"   
 
-    def get_prompt(self, task,interelation=False):
+    def get_prompt(self, task):
         if task not in self.prompts:
             return f"Prompt for '{task}' not found"
-        if interelation:
-            return self.interelation_prompts[task], self.prompts[task]
         else :
             return self.prompts[task]
         
@@ -135,10 +129,8 @@ class generatedknowledge(Promptloader):
         }
  
 
-    def get_prompt(self, task,interelation=False):
+    def get_prompt(self, task):
         if task not in self.prompts:
             return f"Prompt for '{task}' not found"
-        if interelation:
-            return self.interelation_prompts[task], self.prompts[task], self.gen_knowledge[task]
         else :
             return self.prompts[task], self.gen_knowledge[task]

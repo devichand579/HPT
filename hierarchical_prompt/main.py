@@ -56,7 +56,7 @@ class ManualHierarchicalPrompt(ABC):
                     # iterate over the templates
                     for i in range(len(templates)):
                         # and create a prompt chain for each of them
-                        template = self.prefix + templates[i] + self.suffix
+                        template = self.prefix + templates[i] + self.suffix + "Answer:"
                         prompt = PromptTemplate.from_template(template)
 
                         # for intermediate templates, use llm_nf
@@ -80,15 +80,23 @@ class ManualHierarchicalPrompt(ABC):
 
                 # level 5
                 elif i==5:
-                    pass
+                    
                 
-                # for other levels, retrieve a single template, add the prefix and suffix, and create a prompt chain using llm_f
+                # for other levels, retrieve the prompt template, add the prefix and suffix, and create a prompt chain using llm_f
                 else :
                     template = self.prompts[i].get_prompt(self.task)
                     template = self.prefix + template + self.suffix +"Answer:"
                     prompt = PromptTemplate.from_template(template)
                     chain = prompt | llm_f
-                    predictions = chain.invoke({'question': question,'passage':passage})
+                    pred = chain.invoke({'question': question,'passage':passage})
+                    final_ans = self.text_processor(pred)
+                    if final_ans == ans:
+                        self.scores.append(i)
+                        self.predictions.append(pred)
+                        self.references.append(ans)
+                        break
+                    else:
+                        continue
 
             # handles multiple-choice questions
             elif self.task == "csqa":
