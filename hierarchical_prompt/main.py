@@ -1,4 +1,4 @@
-from dataloader import HPDatasetLoader
+from dataloader import DatasetLoader
 from metrics import Eval
 from models import LLama3, Gemma, Phi3, Mistral
 from prompts import Roleprompt, ZeroshotCoT, threeshotCoT, Leasttomost, generatedknowledge
@@ -360,13 +360,13 @@ def main(args):
     if dataset_name in ["iwslt", "samsum"]:
         thres = args.thres
 
-    data_loader = HPDatasetLoader()
+    data_loader = DatasetLoader()
     dataset = data_loader.get_dataset(dataset_name)
     text_processor = AnswerProcessor(dataset_name).processor
-    eval = Eval(dataset_name).metric
+    eval_list  = Eval(dataset_name).metric
 
     if HP_framework == "man":
-        manual_hp = ManualHierarchicalPrompt(model, dataset, eval, text_processor, prompts, dataset_name, prefix, suffix)
+        manual_hp = ManualHierarchicalPrompt(model, dataset, eval_list, text_processor, prompts, dataset_name, prefix, suffix)
     elif HP_framework == "auto":
         adaptive_hp = AdaptiveHierarchicalPrompt(model, dataset, eval, text_processor, prompts, dataset_name, prefix, suffix)
         for item in dataset:
