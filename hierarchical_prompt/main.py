@@ -18,16 +18,15 @@ prompts = {
 
 
 class ManualHierarchicalPrompt(ABC):
-    def __init__(self, model, dataset, metric, text_processor, prompts,task, prefix, suffix, interelation=False):
-        self.model = model  # model used for generating predictions
-        self.dataset = dataset  # dataset to process
-        self.metric = metric    # metric for evaluating predictions
-        self.interelation = interelation    # a flag idicating whether to consider interrelations between prompts
-        self.text_processor = text_processor    # processor for handling text data
-        self.prompts = prompts  # dictionary of prompt generation strategies
-        self.task = task    # the specific task
-        self.prefix = prefix    # string added before prompt
-        self.suffix = suffix    # string added after prompt
+    def __init__(self, model, dataset, metric, text_processor, prompts,task, prefix, suffix):
+        self.model = model  
+        self.dataset = dataset 
+        self.metric = metric   
+        self.text_processor = text_processor    
+        self.prompts = prompts
+        self.task = task   
+        self.prefix = prefix  
+        self.suffix = suffix 
     '''
     Prompt processing method
     '''
@@ -120,11 +119,10 @@ class ManualHierarchicalPrompt(ABC):
 
 
 class AdaptiveHierarchicalPrompt(ABC):
-    def __init__(self, model, dataset, metric, text_processor, prompts, task, prefix, suffix, interelation=False):
+    def __init__(self, model, dataset, metric, text_processor, prompts, task, prefix, suffix):
         self.model = model
         self.dataset = dataset
         self.metric = metric
-        self.interelation = interelation
         self.text_processor = text_processor
         self.prompts = prompts
         self.task = task
@@ -339,8 +337,7 @@ class AdaptiveHierarchicalPrompt(ABC):
 
 def main(args):
     HP_framework = args.arg1
-    interelation = args.arg2 == "yes"
-    model_name = args.arg3
+    model_name = args.arg2
     
     if model_name == "llama3":
         model = LLama3()
@@ -359,7 +356,7 @@ def main(args):
         prefix = "<s>[INST]\n"
         suffix = "[/INST]\n"
     
-    dataset_name = args.arg4
+    dataset_name = args.arg3
     if dataset_name in ["iwslt", "samsum"]:
         thres = args.thres
 
@@ -369,18 +366,17 @@ def main(args):
     eval = Eval(dataset_name).metric
 
     if HP_framework == "man":
-        manual_hp = ManualHierarchicalPrompt(model, dataset, eval, text_processor, prompts, dataset_name, prefix, suffix, interelation)
+        manual_hp = ManualHierarchicalPrompt(model, dataset, eval, text_processor, prompts, dataset_name, prefix, suffix)
     elif HP_framework == "auto":
-        adaptive_hp = AdaptiveHierarchicalPrompt(model, dataset, eval, text_processor, prompts, dataset_name, prefix, suffix, interelation)
+        adaptive_hp = AdaptiveHierarchicalPrompt(model, dataset, eval, text_processor, prompts, dataset_name, prefix, suffix)
         for item in dataset:
             adaptive_hp.prompt_process(item)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Arguments for hierarchical prompt generation.')
     parser.add_argument('arg1', type=str, help='Manual or automatic prompt generation.')
-    parser.add_argument('arg2', type=str, help='Interelation between prompts.')
-    parser.add_argument('arg3', type=str, help='Model to be used.')
-    parser.add_argument('arg4', type=str, help='Dataset to be used.')
-    parser.add_argument('--thres', type=int, help='Threshold needed for some of the datasets', default=0)
+    parser.add_argument('arg2', type=str, help='Model to be used.')
+    parser.add_argument('arg3', type=str, help='Dataset to be used.')
+    parser.add_argument('--thres', type=int, help='Threshold needed for iwslt and samsum datasets', default=0)
     args = parser.parse_args()
     main(args)

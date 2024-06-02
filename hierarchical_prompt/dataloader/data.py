@@ -16,38 +16,25 @@ class DatasetLoader(ABC):
             "iwslt": None,
             "samsum": None
         }
-    def load_dataset_name(self, name, split):
-        pass
+
+    def load_datasets(self):
+        # Load the datasets and store them in the dictionary
+        self.datasets["boolq"] = load_dataset("google/boolq", split="validation")
+        self.datasets["csqa"] = load_dataset("tau/commonsense_qa", split="validation")
+        self.datasets["iwslt"] = load_dataset("iwslt2017", "iwslt2017-en-fr", split="validation")
+        self.datasets["samsum"] = load_dataset("samsum", split="test")
     
-    def get_dataset(self, name, split='validation'):
+    def get_dataset(self, name):
         if name not in self.datasets:
             logging.info(f'Dataset {name} not supported')
             return f'Dataset {name} not found'
         
-        if self.datasets[name] is None:
-            logging.info(f'Logging dataset {name} with split {split}')
+        elif self.datasets[name] is None:
+            logging.info(f' Dataset {name} is not loaded')
             try:
-                self.load_dataset_name(name, split)
+                self.load_datasets(name)
             except Exception as e:
                 logging.error(f'Failed to load dataset {name}:{e}')
                 return f'Failed to load dataset {name}:{e}'
         
         return self.datasets[name]
-    
-class HPDatasetLoader(DatasetLoader):
-    def load_dataset_name(self, name, split='validation'):
-        if name == 'boolq':
-            self.datasets[name] = load_dataset('google/boolq', split=split)
-        elif name == 'csqa':
-            self.datasets[name] = load_dataset('tau/commonsense_qa', split=split)
-        elif name == 'iwslt':
-            self.datasets[name] = load_dataset('iwslt2017','iwslt2017-en-fr', split=split)
-        elif name == 'samsum':
-            self.datasets[name] = load_dataset('samsum', split=split)
-        else:
-            return ValueError(f'Dataset {name} not supported')
-        
-# Example usage
-# dataset_loader = HPDatasetLoader()
-# boolq_dataset = dataset_loader.get_dataset("boolq")
-# csqa_dataset = dataset_loader.get_dataset("csqa")

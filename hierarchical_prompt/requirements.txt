@@ -6,7 +6,7 @@ datasets
 nltk
 numpy 
 six
-collectipns
+collections
 math
 evaluate
 re 
@@ -17,4 +17,5 @@ bitsandbytes
 torch 
 torcheval
 langchain
-argparse    
+argparse 
+logging   

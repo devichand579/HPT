@@ -10,18 +10,15 @@ class Promptloader(ABC):
            "iwslt": None,
            "samsum": None
        }
-       self.interelation_prompts = {
-           "boolq": "The response for the previous prompt which has resulted in a wrong answer: '{response}'",
-           "csqa": "The response for the previous prompt which has resulted in a wrong answer: '{response}'",
-           "iwslt": "The response for the previous prompt which was unable to cross the evaluation threshold: '{response}'",
-           "samsum": "The response for the previous prompt which was unable to cross the evaluation threshold: '{response}'"
-       }
+
        self.generate_knowledge_prompts = {
               "boolq": "Generate Knowledge about the passage: {passage}",
               "csqa": "Generate Knowledge about the question: {question}",
               "iwslt": "Generate definitions in french of each word in the text: {eng_text}",
               "samsum": "Generate interpretation about the dialogue: {dialogue}"
-         }
+        }
+       
+       self.adaptive_prompt = ""
 
 
 class Roleprompt(Promptloader):
