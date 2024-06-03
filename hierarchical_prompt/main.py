@@ -423,6 +423,7 @@ class ManualHierarchicalPrompt(ABC):
                     eval_score = rouge_score(final_ans,answer)
                     print(eval_score)
                     if  eval_score >= self.thres:
+                        print(i)
                         self.scores.append(i)
                         self.predictions.append(final_ans)
                         self.references.append(answer)
