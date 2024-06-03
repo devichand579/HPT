@@ -21,3 +21,4 @@ pytest
 flash-attn
 sentencepiece
 protobuf
+py7zr
