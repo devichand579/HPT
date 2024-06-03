@@ -352,16 +352,16 @@ class ManualHierarchicalPrompt(ABC):
 
                         # for intermediate templates, use llm_nf
                         if i != len(templates)-1:
-                            template = self.prefix + templates[i] + self.suffix 
+                            template = self.prefix + templates[i].format(dialogue=dialogue, pred=pred) + self.suffix
                             prompt = PromptTemplate.from_template(template)
                             chain = prompt | llm_nf
-                            pred = chain.invoke({'text': dialogue,'pred':pred})
+                            pred = chain.invoke({'dialogue': dialogue,'pred':pred})
                         # for final template, use llm_f
                         else:
-                            template = self.prefix + templates[i] + self.suffix + "Summary:"
+                            template = self.prefix + templates[i].format(dialogue=dialogue, pred=pred) + self.suffix + "Summary:"
                             prompt = PromptTemplate.from_template(template)
                             chain = prompt | llm_f
-                            pred = chain.invoke({'text': dialogue,'pred':pred})
+                            pred = chain.invoke({'dialogue': dialogue,'pred':pred})
 
                     # process the prediction
                     final_ans = self.text_processor(pred)
@@ -381,7 +381,7 @@ class ManualHierarchicalPrompt(ABC):
                     gen_suffix = "<|eot_id|><|start_header_id|>assistant<|end_header_id|>\n"
                     # retrieve the template and create a prompt chain using llm_nf
                     template, gen_knowledge_template = self.prompts[i].get_prompt(self.task)
-                    gen_knowledge_template = format(gen_knowledge_template,eng_text=eng_text)
+                    gen_knowledge_template = gen_knowledge_template.format(dialogue=dialogue)
                     knowledge_template = gen_prefix + gen_knowledge_template + gen_suffix
                     know_prompts_list = []
                     for i in range(3):
@@ -389,7 +389,7 @@ class ManualHierarchicalPrompt(ABC):
                     generated_knowledge = self.gen_model.generate_knowledge(know_prompts_list)
               
                     # create the final prompt and chain using llm_f
-                    template = self.prefix + template + self.suffix + "Summary:"
+                    template = self.prefix + template.format(dialogue=dialogue, pred = generated_knowledge) + self.suffix + "Summary:"
                     prompt = PromptTemplate.from_template(template)
                     chain = prompt | llm_f
                     pred = chain.invoke({'dialogue': dialogue,'pred':generated_knowledge})
@@ -412,7 +412,7 @@ class ManualHierarchicalPrompt(ABC):
                 
                 # for other levels, retrieve the prompt template, add the prefix and suffix, and create a prompt chain using llm_f
                 else :
-                    template = self.prompts[i].get_prompt(self.task)
+                    template = self.prompts[i].get_prompt(self.task).format(dialogue=dialogue)
                     template = self.prefix + template + self.suffix + "Summary:"
                     prompt = PromptTemplate.from_template(template)
                     chain = prompt | llm_f
