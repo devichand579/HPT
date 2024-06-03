@@ -124,4 +124,4 @@ class generatedknowledge(Promptloader):
         if task not in self.prompts:
             return f"Prompt for '{task}' not found"
         else :
-            return self.prompts[task], self.gen_knowledge[task]
+            return self.prompts[task], self.generate_knowledge_prompts[task]
