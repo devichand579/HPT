@@ -130,11 +130,12 @@ class ManualHierarchicalPrompt(ABC):
                 else :
                     template = self.prompts[i].get_prompt(self.task).format(passage=passage, question=question)
                     template = self.prefix + template + self.suffix +"Answer:"
-                    prompt = PromptTemplate.from_template(template)
-                    chain = prompt | llm_f
-                    pred = chain.invoke({'question': question,'passage':passage})
-                    final_ans = self.text_processor(pred)
+                    pred = llm_f(template)
+                    print(pred)
+                    final_ans = self.text_processor(pred[0]['generated_text'])
+                    print(final_ans)
                     if final_ans == ans:
+                        print("level",i)
                         self.scores.append(i)
                         self.predictions.append(final_ans)
                         self.references.append(ans)
@@ -411,19 +412,14 @@ class ManualHierarchicalPrompt(ABC):
                         self.references.append(answer)
                     
                 
-                # for other levels, retrieve the prompt template, add the prefix and suffix, and create a prompt chain using llm_f
                 else :
                     template = self.prompts[i].get_prompt(self.task).format(dialogue=dialogue)
                     template = self.prefix + template + self.suffix + "Summary:"
                     pred = llm_f(template)
-                    print(pred)
                     final_ans = self.text_processor(pred[0]['generated_text'])
-                    print(final_ans)
                     rouge_score  = self.metrics[0]
                     eval_score = rouge_score(final_ans,answer)
-                    print(eval_score)
                     if  eval_score >= self.thres:
-                        print(i)
                         self.scores.append(i)
                         self.predictions.append(final_ans)
                         self.references.append(answer)
