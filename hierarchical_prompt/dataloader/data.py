@@ -19,10 +19,10 @@ class DatasetLoader(ABC):
 
     def load_datasets(self):
         # Load the datasets and store them in the dictionary
-        self.datasets["boolq"] = load_dataset("google/boolq", split="validation")
-        self.datasets["csqa"] = load_dataset("tau/commonsense_qa", split="validation")
-        self.datasets["iwslt"] = load_dataset("iwslt2017", "iwslt2017-en-fr", split="validation")
-        self.datasets["samsum"] = load_dataset("samsum", split="test")
+        self.datasets["boolq"] = load_dataset("google/boolq", split="validation",trust_remote_code=True)
+        self.datasets["csqa"] = load_dataset("tau/commonsense_qa", split="validation",trust_remote_code=True)
+        self.datasets["iwslt"] = load_dataset("iwslt2017", "iwslt2017-en-fr", split="validation",trust_remote_code=True)
+        self.datasets["samsum"] = load_dataset("samsum", split="test",trust_remote_code=True)
     
     def get_dataset(self, name):
         if name not in self.datasets:
