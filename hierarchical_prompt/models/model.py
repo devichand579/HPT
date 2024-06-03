@@ -1,6 +1,7 @@
 from transformers import BitsAndBytesConfig, AutoModelForCausalLM, AutoTokenizer, GenerationConfig, pipeline
 import torch
-from langchain import HuggingFacePipeline
+from langchain
+from langchain_community import HuggingFacePipeline
 import os
 import numpy as np
 from abc import ABC

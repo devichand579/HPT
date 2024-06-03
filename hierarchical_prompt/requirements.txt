@@ -13,3 +13,4 @@ torch
 langchain
 argparse
 langchain_community 
+langchain_core
