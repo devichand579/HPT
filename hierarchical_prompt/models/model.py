@@ -69,7 +69,7 @@ class LLama3(Model):
                                 generation_config=self.generation_config
                                )
         self.pipe_nf = pipeline(
-
+                                "text-generation",
                                 model=self.model,
                                 tokenizer=self.tokenizer,
                                 eos_token_id=self.terminators,
