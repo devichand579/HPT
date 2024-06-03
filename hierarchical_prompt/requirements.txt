@@ -6,7 +6,6 @@ datasets
 nltk
 numpy 
 six
-math
 evaluate
 re 
 func_tools
