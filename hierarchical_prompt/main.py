@@ -6,7 +6,8 @@ from utils import AnswerProcessor
 from abc import ABC
 import argparse
 import json
-from langchain import PromptTemplate, HuggingFacePipeline
+from langchain_core.prompts import PromptTemplate
+from langchain_community.llms.huggingface_pipeline import HuggingFacePipeline
 
 #Prompts Dictionary
 prompts = {

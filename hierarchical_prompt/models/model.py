@@ -1,6 +1,6 @@
 from transformers import BitsAndBytesConfig, AutoModelForCausalLM, AutoTokenizer, GenerationConfig, pipeline
 import torch
-from langchain import HuggingFacePipeline
+from langchain_community.llms.huggingface_pipeline import HuggingFacePipeline
 import os
 import numpy as np
 from abc import ABC
@@ -9,7 +9,7 @@ hf_token = os.getenv('HF_TOKEN')
 
  
 class Model(ABC):
-    def __init__(self):
+    def __init__(self,name = None):
         self.model_names = {
             "llama3": "meta-llama/Meta-Llama-3-8B-Instruct",
             "phi3": "microsoft/Phi-3-small-8k-instruct",
@@ -52,8 +52,7 @@ class Model(ABC):
 
 class LLama3(Model):
     def __init__(self):
-        super().__init__()
-        self.load_model("llama3")
+        super().__init__("llama3")
         self.terminators = [
                             self.tokenizer.eos_token_id,
                             self.tokenizer.convert_tokens_to_ids("<|eot_id|>")
@@ -115,8 +114,7 @@ class LLama3(Model):
     
 class Phi3(Model):
     def __init__(self):
-        super().__init__()
-        self.load_model("phi3")
+        super().__init__("phi3")
         self.pipe_f = pipeline(
                                 "text-generation",
                                 model=self.model,
@@ -144,8 +142,7 @@ class Phi3(Model):
     
 class Mistral(Model):
     def __init__(self):
-        super().__init__()
-        self.load_model("mistral")
+        super().__init__("mistral")
         self.pipe_f = pipeline(
                                 "text-generation",
                                 model=self.model,
@@ -173,8 +170,7 @@ class Mistral(Model):
     
 class Gemma(Model):
     def __init__(self):
-        super().__init__()
-        self.load_model("gemma")
+        super().__init__("gemma")
         self.model.bfloat16()
         self.pipe_f = pipeline(
                                 "text-generation",
