@@ -41,7 +41,7 @@ class Model(ABC):
                 torch_dtype=torch.bfloat16,
                 trust_remote_code=True,
                 device_map="auto",
-                quantization_config=self.quantization_config,
+                quantization_config=self.quantization_config, 
                 token = hf_token
                 )
         self.tokenizer = AutoTokenizer.from_pretrained(model_name, token = hf_token)

@@ -18,3 +18,4 @@ python-dotenv
 tiktoken
 einops
 pytest
+flash-attn
