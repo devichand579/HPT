@@ -19,3 +19,4 @@ tiktoken
 einops
 pytest
 flash-attn
+sentencepiece

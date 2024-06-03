@@ -13,7 +13,7 @@ hf_token = os.getenv('HF_TOKEN')
 class Model(ABC):
     def __init__(self,name = None):
         self.model_names = {
-            "llama3": "meta-llama/Meta-Llama-3-8B-Instruct",
+            "llama3":   "meta-llama/Meta-Llama-3-8B-Instruct",
             "phi3": "microsoft/Phi-3-small-8k-instruct",
             "mistral": "mistralai/Mistral-7B-Instruct-v0.3",
             "gemma": "google/gemma-1.1-7b-it"
@@ -34,8 +34,8 @@ class Model(ABC):
     def load_model(self,name):
         model_name = self.model_names.get(name)
         if model_name is None:
-            raise ValueError(f"Model name '{self.name}' is not supported.")
-        
+            raise ValueError(f"Model name '{name}' is not supported.")
+        print(model_name)
         self.model = AutoModelForCausalLM.from_pretrained(
                 model_name,
                 torch_dtype=torch.bfloat16,
