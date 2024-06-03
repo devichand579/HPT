@@ -1,3 +1,3 @@
 
-pip install -r requirements.txt
+conda install -r requirements.txt
 python main.py "$@"
