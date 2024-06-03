@@ -417,10 +417,11 @@ class ManualHierarchicalPrompt(ABC):
                     template = self.prefix + template + self.suffix + "Summary:"
                     pred = llm_f(template)
                     print(pred)
-                    final_ans = self.text_processor(pred)
+                    final_ans = self.text_processor(pred[0]['generated_text'])
                     print(final_ans)
                     rouge_score  = self.metrics[0]
                     eval_score = rouge_score(final_ans,answer)
+                    print(eval_score)
                     if  eval_score >= self.thres:
                         self.scores.append(i)
                         self.predictions.append(final_ans)
