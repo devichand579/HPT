@@ -2,6 +2,7 @@
     An utility class for evaluating BoolQ, CSQA, IWSLT 2017 and Samsum datasets.
 """
 from abc import ABC
+import logging
 
 class Eval(ABC):
     """
