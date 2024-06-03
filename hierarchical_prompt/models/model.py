@@ -69,6 +69,7 @@ class LLama3(Model):
                                 generation_config=self.generation_config
                                )
         self.pipe_nf = pipeline(
+
                                 model=self.model,
                                 tokenizer=self.tokenizer,
                                 eos_token_id=self.terminators,
@@ -118,7 +119,7 @@ class Phi3(Model):
     def __init__(self):
         super().__init__("phi3")
         self.pipe_f = pipeline(
-                                "text-generation",
+                               "text-generation",
                                 model=self.model,
                                 tokenizer=self.tokenizer,
                                 do_sample=True,
@@ -126,6 +127,7 @@ class Phi3(Model):
                                 generation_config=self.generation_config
                                )
         self.pipe_nf = pipeline(
+                                "text-generation",
                                 model=self.model,
                                 tokenizer=self.tokenizer,
                                 do_sample=True,
@@ -146,7 +148,7 @@ class Mistral(Model):
     def __init__(self):
         super().__init__("mistral")
         self.pipe_f = pipeline(
-                                "text-generation",
+                               "text-generation",
                                 model=self.model,
                                 tokenizer=self.tokenizer,
                                 do_sample=True,
@@ -154,6 +156,7 @@ class Mistral(Model):
                                 generation_config=self.generation_config
                                )
         self.pipe_nf = pipeline(
+                                "text-generation",
                                 model=self.model,
                                 tokenizer=self.tokenizer,
                                 do_sample=True,
@@ -183,6 +186,7 @@ class Gemma(Model):
                                 generation_config=self.generation_config
                                )
         self.pipe_nf = pipeline(
+                                "text-generation",
                                 model=self.model,
                                 tokenizer=self.tokenizer,
                                 do_sample=True,
