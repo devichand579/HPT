@@ -12,10 +12,10 @@ class Promptloader(ABC):
        }
 
        self.generate_knowledge_prompts = {
-              "boolq": "Generate Knowledge about the passage: {passage}",
-              "csqa": "Generate Knowledge about the question: {question}",
-              "iwslt": "Generate definitions in french of each word in the text: {eng_text}",
-              "samsum": "Generate interpretation about the dialogue: {dialogue}"
+              "boolq": ("Generate Knowledge about the passage: {1}").format("{passage}"),
+                "csqa": ("Generate Knowledge about the question: {1}").format("{question}"),
+                "iwslt": ("Generate definitions in french of each word in the text: {1}").format("{eng_text}"),
+                "samsum": ("Generate interpretation about the dialogue: {1}").format("{dialogue}")
         }
        
        self.adaptive_prompt = ""
@@ -24,10 +24,10 @@ class Promptloader(ABC):
 class Roleprompt(Promptloader):
     def __init__(self):
         super().__init__()
-        self.prompts["boolq"] = "Based on the passage:'{passage}'\nAnswer True/False to the question: '{question}' as an Omniscient person."
-        self.prompts["csqa"] = "Choose the answer as a critical thinker.\n{question}\nA {text1}\nB {text2}\nC {text3}\nD {text4}\nE {text5}"
-        self.prompts["iwslt"] = "Translate '{eng_text}' to french as a Translator."
-        self.prompts["samsum"] = "Summarise the Dialogue: '{dialogue}' as a Storyteller."   
+        self.prompts["boolq"] = ("Based on the passage:'{1}'\nAnswer True/False to the question: '{2}' as a Reader.").format("{passage}", "{question}")
+        self.prompts["csqa"] = ("Choose the answer.\n{1}\nA {text1}\nB {text2}\nC {text3}\nD {text4}\nE {text5} as a Reader.").format("{question}")
+        self.prompts["iwslt"] = ("Translate '{1}' to french as a Translator.").format("{eng_text}")
+        self.prompts["samsum"] = ("Summarise the Dialogue: '{1}' as a Summariser.").format("{dialogue}")  
 
     def get_prompt(self, task):
         if task not in self.prompts:
@@ -86,10 +86,10 @@ class threeshotCoT(Promptloader):
         ex_sum2 = "Maddie will buy a white bread and apples on John's request."
         ex_sum3 = "Rob is doing shopping at the grocery store. Ann ordered him to buy a cucumber, some tomatoes, bananas and apples."
 
-        self.prompts["boolq"] = f"Based on the passage:'{passage1}'\nAnswer True/False to the question: '{question1}'.\nAnswer: {ans1}.\nExplaination: {exp1}.\nBased on the passage:'{passage2}'\nAnswer True/False to the question: '{question2}'.\nAnswer: {ans2}.\nExplaination: {exp2}.\nBased on the passage:'{passage3}'\nAnswer True/False to the question: '{question3}'.\nAnswer: {ans3}.\nExplaination: {exp3}.\nBased on the passage:'{passage}'\nAnswer True/False to the question: '{question}'"
-        self.prompts["csqa"] = f"Choose the answer.\n{question_1}\nA bank\nB library\nC department store\nD mall\nE new york\nAnswer: A\nExplaination: {exp_1}.Choose the answer.\n{question_2}\nA doctor\nB bookstore\nC market\nD train station\nE mortuary\nAnswer: B\nExplaination: {exp_2}.\nChoose the answer.\n{question_3}\nA pants\nB record albums\nC record store\nD cheese\nE wallpaper\nAnswer: E\nExplaination: {exp_3}.\nChoose the answer.\n{question}\nA {text1}\nB {text2}\nC {text3}\nD {text4}\nE {text5}"
-        self.prompts["iwslt"] = f"Translate '{ex_en1}' to french.\nFrench: {ex_fr1}.\nTranslate '{ex_en2}' to french.\nFrench: {ex_fr2}.\nTranslate '{ex_en3}' to french.\nFrench: {ex_fr3}.\nTranslate '{eng_text}' to french."
-        self.prompts["samsum"] = f"Summarise the Dialogue: '{ex_dialogue1}'.\nSummary: {ex_sum1}.\nSummarise the Dialogue: '{ex_dialogue2}'.\nSummary: {ex_sum2}.\nSummarise the Dialogue: '{ex_dialogue3}'.\nSummary: {ex_sum3}.\nSummarise the Dialogue: '{dialogue}'"   
+        self.prompts["boolq"] = ("Based on the passage:'{1}'\nAnswer True/False to the question: '{2}'.\nAnswer: {3}.\nExplaination: {4}.\nBased on the passage:'{5}'\nAnswer True/False to the question: '{6}'.\nAnswer: {7}.\nExplaination: {8}.\nBased on the passage:'{9}'\nAnswer True/False to the question: '{10}'.\nAnswer: {11}.\nExplaination: {12}.\nBased on the passage:'{13}'\nAnswer True/False to the question: '{14}'").format( passage1, question1, ans1, exp1, passage2, question2, ans2, exp2,  passage3, question3, ans3, exp3, "{passage}", "{question}" )
+        self.prompts["csqa"] = ("Choose the answer.\n{0}\nA bank\nB library\nC department store\nD mall\nE new york\nAnswer: A\nExplanation: {1}.\nChoose the answer.\n{2}\nA doctor\nB bookstore\nC market\nD train station\nE mortuary\nAnswer: B\nExplanation: {3}.\nChoose the answer.\n{4}\nA pants\nB record albums\nC record store\nD cheese\nE wallpaper\nAnswer: E\nExplanation: {5}.\nChoose the answer.\n{6}\nA {7}\nB {8}\nC {9}\nD {10}\nE {11}").format( question_1, exp_1, question_2, exp_2, question_3, exp_3, "{question}", "{text1}", "{text2}", "{text3}", "{text4}", "{text5}" )
+        self.prompts["iwslt"] = ("Translate '{0}' to French.\nFrench: {1}.\nTranslate '{2}' to French.\nFrench: {3}.\nTranslate '{4}' to French.\nFrench: {5}.\nTranslate '{6}' to French.").format( ex_en1, ex_fr1, ex_en2, ex_fr2, ex_en3, ex_fr3, "{eng_text}" )
+        self.prompts["summarise"] = ("Summarise the Dialogue: '{0}'.\nSummary: {1}.\nSummarise the Dialogue: '{2}'.\nSummary: {3}.\nSummarise the Dialogue: '{4}'.\nSummary: {5}.\nSummarise the Dialogue: '{6}'").format( ex_dialogue1, ex_sum1, ex_dialogue2, ex_sum2, ex_dialogue3, ex_sum3, "{dialogue}" )
 
     def get_prompt(self, task):
         if task not in self.prompts:
