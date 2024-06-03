@@ -7,7 +7,6 @@ from abc import ABC
 import argparse
 import json
 from langchain_core.prompts import PromptTemplate
-from langchain_community.llms.huggingface_pipeline import HuggingFacePipeline
 
 #Prompts Dictionary
 prompts = {
@@ -49,8 +48,8 @@ class ManualHierarchicalPrompt(ABC):
         processes a single item from the dataset using hierarchical prompts
         '''
         for i in range(1,6):
-            llm_f = self.model.generate_pipe_f()    # full_text pipeline
-            llm_nf = self.model.generate_pipe_nf()  # non_full_text pipeline
+            llm_f = self.model.pipe_f    # full_text pipeline
+            llm_nf = self.model.pipe_nf # non_full_text pipeline
 
             # handles passage and ques-ans pairs
             if self.task == "boolq":

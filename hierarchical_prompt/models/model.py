@@ -1,6 +1,5 @@
 from transformers import BitsAndBytesConfig, AutoModelForCausalLM, AutoTokenizer, GenerationConfig, pipeline
 import torch
-from langchain_community.llms.huggingface_pipeline import HuggingFacePipeline
 import os
 import numpy as np
 from abc import ABC
@@ -111,13 +110,6 @@ class LLama3(Model):
         final_idx = np.argmax(scores)
         return preds[final_idx]
     
-    def generate_pipe_f(self):
-        llm_f = HuggingFacePipeline(self.pipe_f)
-        return llm_f
-    
-    def generate_pipe_nf(self):
-        llm_nf = HuggingFacePipeline(self.pipe_nf)
-        return llm_nf
     
 class Phi3(Model):
     def __init__(self):
@@ -142,14 +134,6 @@ class Phi3(Model):
         logging.info("Phi3 text generation pipelines created successfully")
         
     
-    def generate_pipe_f(self):
-        llm_f = HuggingFacePipeline(self.pipe_f)
-        return llm_f
-    
-    def generate_pipe_nf(self):
-        llm_nf = HuggingFacePipeline(self.pipe_nf)
-        return llm_nf
-    
 class Mistral(Model):
     def __init__(self):
         super().__init__("mistral")
@@ -172,14 +156,7 @@ class Mistral(Model):
 
         logging.info("Mistral text generation pipelines created successfully")
         
-    
-    def generate_pipe_f(self):
-        llm_f = HuggingFacePipeline(self.pipe_f)
-        return llm_f
-    
-    def generate_pipe_nf(self):
-        llm_nf = HuggingFacePipeline(self.pipe_nf)
-        return llm_nf
+ 
     
 class Gemma(Model):
     def __init__(self):
@@ -203,12 +180,4 @@ class Gemma(Model):
                                )
 
         logging.info("Gemma text generation pipelines created successfully")
-        
-    
-    def generate_pipe_f(self):
-        llm_f = HuggingFacePipeline(self.pipe_f)
-        return llm_f
-    
-    def generate_pipe_nf(self):
-        llm_nf = HuggingFacePipeline(self.pipe_nf)
-        return llm_nf
+   
