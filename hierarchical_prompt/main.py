@@ -749,6 +749,6 @@ if __name__ == "__main__":
     parser.add_argument('arg1', type=str, help='Manual or automatic prompt generation.')
     parser.add_argument('arg2', type=str, help='Model to be used.')
     parser.add_argument('arg3', type=str, help='Dataset to be used.')
-    parser.add_argument('--thres', type=int, help='Threshold needed for iwslt and samsum datasets', default=0)
+    parser.add_argument('--thres', type=float , help='Threshold needed for iwslt and samsum datasets', default=0)
     args = parser.parse_args()
     main(args)
