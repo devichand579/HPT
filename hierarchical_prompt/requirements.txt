@@ -15,4 +15,4 @@ argparse
 langchain_community 
 langchain_core
 python-dotenv
-
+tiktoken
