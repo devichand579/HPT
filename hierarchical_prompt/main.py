@@ -5,6 +5,7 @@ from prompts import Roleprompt, ZeroshotCoT, threeshotCoT, Leasttomost, generate
 from utils import AnswerProcessor
 from abc import ABC
 import argparse
+import json
 from langchain import PromptTemplate, HuggingFacePipeline
 
 #Prompts Dictionary
@@ -17,10 +18,10 @@ prompts = {
 }
 
 hp_scores = {
-    "boolq": ,
-    "csqa": ,
-    "iwslt": ,
-    "samsum": 
+    "boolq": 1.71,
+    "csqa": 2.52,
+    "iwslt": 1.92,
+    "samsum": 2.23
 }
 
 
@@ -442,17 +443,35 @@ class ManualHierarchicalPrompt(ABC):
         if self.task == "boolq":
             acc = self.metrics[0](self.predictions,self.references)
             f1 = self.metrics[1](self.predictions,self.references)
-            return hp_score, acc, f1
+            scores = {
+                "hp_score": hp_score,
+                "accuracy": acc,
+                "f1": f1
+            }
+            return scores
         elif self.task == "csqa":
             acc = self.metrics[0](self.predictions,self.references)
             f1 = self.metrics[1](self.predictions,self.references)
-            return hp_score, acc, f1
+            scores = {
+                "hp_score": hp_score,
+                "accuracy": acc,
+                "f1": f1
+            }
+            return scores
         elif self.task == "iwslt":
             bleu = self.metrics[0](self.predictions,self.references)
-            return hp_score, bleu
+            scores = {
+                "hp_score": hp_score,
+                "bleu": bleu
+            }
+            return scores
         elif self.task == "samsum":
             rouge = self.metrics[0](self.predictions,self.references)
-            return hp_score, rouge
+            scores = {
+                "hp_score": hp_score,
+                "rouge": rouge
+            }
+            return scores
 
             
 
@@ -711,6 +730,15 @@ def main(args):
 
     if HP_framework == "man":
         manual_hp = ManualHierarchicalPrompt(model, gen_model, dataset, eval_list, text_processor, prompts, dataset_name, prefix, suffix,thres)
+        manual_hp.process_dataset()
+        scores = manual_hp.compute_scores()
+        with open("results.txt", "a") as file:
+            if dataset_name in ["iwslt", "samsum"]:
+                file.write("Dataset:" + dataset_name + "\n" + "Model:" + model_name + "\n" + "Threshold:" + thres + "\n" + json.dumps(scores, indent=4) + "\n")
+            else :
+                file.write("Dataset:" + dataset_name + "\n" + "Model:" + model_name + "\n" + json.dumps(scores, indent=4) + "\n")
+
+
     # elif HP_framework == "auto":
     #     adaptive_hp = AdaptiveHierarchicalPrompt(model, dataset, eval, text_processor, prompts, dataset_name, prefix, suffix)
     #     for item in dataset:

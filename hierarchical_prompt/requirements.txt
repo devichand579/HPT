@@ -19,3 +19,4 @@ torcheval
 langchain
 argparse 
 logging   
+json
