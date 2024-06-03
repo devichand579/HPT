@@ -7,6 +7,7 @@ from abc import ABC
 import argparse
 import json
 from langchain_core.prompts import PromptTemplate
+import logging
 
 #Prompts Dictionary
 prompts = {
