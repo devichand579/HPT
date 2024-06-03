@@ -23,6 +23,7 @@ class Eval(ABC):
             "samsum": [self.compute_rouge]
         }
         self.metric = self.methods.get(name, lambda x: x)
+        logging.info(f"***{name} evaluator created successfully***")
     
     @staticmethod
     def compute_cls_accuracy(preds, gts):

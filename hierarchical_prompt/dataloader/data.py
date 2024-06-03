@@ -30,4 +30,5 @@ class DatasetLoader(ABC):
             return f'Dataset {name} not found'
         
         self.load_datasets()
+        logging.info(f"***Dataset {name} loaded successfully***")
         return self.datasets[name]

@@ -12,6 +12,7 @@ class AnswerProcessor(ABC):
             "samsum": self.pp_samsum
         }
         self.processor = self.dataset_processors.get(name, lambda x: x)
+        logging.info(f"***{name} post-processor created successfully***")
 
     def pp_boolq(self, text):
         """Process Boolean Questions (BoolQ) text."""

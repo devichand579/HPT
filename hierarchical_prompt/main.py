@@ -414,10 +414,10 @@ class ManualHierarchicalPrompt(ABC):
                 else :
                     template = self.prompts[i].get_prompt(self.task).format(dialogue=dialogue)
                     template = self.prefix + template + self.suffix + "Summary:"
-                    prompt = PromptTemplate.from_template(template)
-                    chain = prompt | llm_f
-                    pred = chain.invoke({'dialogue': dialogue})
+                    pred = llm_f(template)
+                    print(pred)
                     final_ans = self.text_processor(pred)
+                    print(final_ans)
                     rouge_score  = self.metrics[0]
                     eval_score = rouge_score(final_ans,answer)
                     if  eval_score >= self.thres:
@@ -730,6 +730,7 @@ def main(args):
 
     if HP_framework == "man":
         manual_hp = ManualHierarchicalPrompt(model, gen_model, dataset, eval_list, text_processor, prompts, dataset_name, prefix, suffix,thres)
+        logging.info("***Processing dataset using manual hierarchical prompt framework***")
         manual_hp.process_dataset()
         scores = manual_hp.compute_scores()
         with open("results.txt", "a") as file:

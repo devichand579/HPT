@@ -44,9 +44,9 @@ class Model(ABC):
                 quantization_config=self.quantization_config, 
                 token = hf_token
                 )
-        logging.info(f"Model {name} loaded successfully")
+        logging.info(f"***Model {name} loaded successfully***")
         self.tokenizer = AutoTokenizer.from_pretrained(model_name, token = hf_token)
-        logging.info(f"Tokenizer for {name} loaded successfully")
+        logging.info(f"***Tokenizer for {name} loaded successfully***")
         self.generation_config = GenerationConfig.from_pretrained(model_name)
         self.generation_config.max_new_tokens = 1024 
         self.generation_config.temperature = 0.6 
@@ -79,7 +79,7 @@ class LLama3(Model):
                                 return_full_text=False,
                                 generation_config=self.generation_config
                                )
-        logging.info("LLama3 text generation pipelines created successfully")
+        logging.info("***LLama3 text generation pipelines created successfully***")
         
     def generate_knowledge(self,prompts):
 
@@ -131,7 +131,7 @@ class Phi3(Model):
                                 generation_config=self.generation_config
                                )
 
-        logging.info("Phi3 text generation pipelines created successfully")
+        logging.info("***Phi3 text generation pipelines created successfully***")
         
     
 class Mistral(Model):
@@ -154,7 +154,7 @@ class Mistral(Model):
                                 generation_config=self.generation_config
                                )
 
-        logging.info("Mistral text generation pipelines created successfully")
+        logging.info("***Mistral text generation pipelines created successfully***")
         
  
     
@@ -179,5 +179,5 @@ class Gemma(Model):
                                 generation_config=self.generation_config
                                )
 
-        logging.info("Gemma text generation pipelines created successfully")
+        logging.info("***Gemma text generation pipelines created successfully***")
    
