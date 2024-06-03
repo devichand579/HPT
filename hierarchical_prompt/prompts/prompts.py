@@ -25,7 +25,7 @@ class Roleprompt(Promptloader):
     def __init__(self):
         super().__init__()
         self.prompts["boolq"] = ("Based on the passage:'{1}'\nAnswer True/False to the question: '{2}' as a Reader.").format("{passage}", "{question}")
-        self.prompts["csqa"] = ("Choose the answer.\n{1}\nA {text1}\nB {text2}\nC {text3}\nD {text4}\nE {text5} as a Reader.").format("{question}")
+        self.prompts["csqa"] = ("Choose the answer.\n{1}\nA {2}\nB {3}\nC {4}\nD {5}\nE {6} as a Reader.").format("{question}", "{text1}", "{text2}", "{text3}", "{text4}", "{text5}")
         self.prompts["iwslt"] = ("Translate '{1}' to french as a Translator.").format("{eng_text}")
         self.prompts["samsum"] = ("Summarise the Dialogue: '{1}' as a Summariser.").format("{dialogue}")  
 
@@ -38,10 +38,10 @@ class Roleprompt(Promptloader):
 class ZeroshotCoT(Promptloader):
     def __init__(self):
         super().__init__()
-        self.prompts["boolq"] = "Based on the passage:'{passage}'\nAnswer True/False to the question: '{question}'. Let's think step by step."
-        self.prompts["csqa"] = "Choose the answer.\n{question}\nA {text1}\nB {text2}\nC {text3}\nD {text4}\nE {text5}\nLet's think step by step."
-        self.prompts["iwslt"] = "Translate '{eng_text}' to french. Let's translate step by step."
-        self.prompts["samsum"] = "Summarise the Dialogue: '{dialogue}'. Let's summarise step by step."   
+        self.prompts["boolq"] = ("Based on the passage:'{1}'\nAnswer True/False to the question: '{2}'.\nLet's think step by step.").format("{passage}", "{question}")
+        self.prompts["csqa"] = ("Choose the answer.\n{1}\nA {2}\nB {3}\nC {4}\nD {5}\nE {6}\nLet's think step by step.").format("{question}", "{text1}", "{text2}", "{text3}", "{text4}", "{text5}")
+        self.prompts["iwslt"] = ("Translate '{1}' to french.\nLet's think step by step.").format("{eng_text}")
+        self.prompts["samsum"] = ("Summarise the Dialogue: '{1}'.\nLet's think step by step.").format("{dialogue}")   
 
     def get_prompt(self, task):
         if task not in self.prompts:
@@ -114,17 +114,10 @@ class Leasttomost(Promptloader):
 class generatedknowledge(Promptloader):
     def __init__(self):
         super().__init__()
-        self.prompts["boolq"] = "Based on the passage:'{passage}'\nAnswer True/False to the question: '{question}' using interpretation of the passage:{pred}."
-        self.prompts["csqa"] = "Choose the answer.\n{question}\nKnowledge:{pred}\nA. {text1}\nB. {text2}\nC. {text3}\nD. {text4}\nE. {text5}"
-        self.prompts["iwslt"] = "Translate '{eng_text}' to french with definitions:{pred}"
-        self.prompts["samsum"] = "Summarise the Dialogue: '{dialogue}' with the interpretation:{pred}"
-
-        self.gen_knowledge = {
-            "boolq": "Generate Knowledge about the passage: {passage}",
-            "csqa": "Generate Knowledge about the question: {question}",
-            "iwslt": "Generate definitions in french of each word in the text: {eng_text}",
-            "samsum": "Generate interpretation about the dialogue: {dialogue}"
-        }
+        self.prompts["boolq"] = ("Based on the passage:'{1}'\nAnswer True/False to the question: '{2}' using interpretation of the passage:{3}.").format("{passage}", "{question}", "{pred}")
+        self.prompts["csqa"] = ("Choose the answer.\n{1}\nA {2}\nB {3}\nC {4}\nD {5}\nE {6} using interpretation of the question:{7}").format("{question}", "{text1}", "{text2}", "{text3}", "{text4}", "{text5}", "{pred}")
+        self.prompts["iwslt"] = ("Translate '{1}' to french using interpretation of the text:{2}").format("{eng_text}", "{pred}")
+        self.prompts["samsum"] = ("Summarise the Dialogue: '{1}' using interpretation of the dialogue:{2}").format("{dialogue}", "{pred}")
  
 
     def get_prompt(self, task):
