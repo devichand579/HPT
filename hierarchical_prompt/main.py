@@ -432,7 +432,7 @@ class ManualHierarchicalPrompt(ABC):
         '''
         for item in self.dataset:
             self.prompt_process(item)
-            
+
     
     def compute_scores(self):
         '''
@@ -457,221 +457,221 @@ class ManualHierarchicalPrompt(ABC):
             
 
 
-class AdaptiveHierarchicalPrompt(ABC):
-    def __init__(self, model, dataset, metric, text_processor, prompts, task, prefix, suffix):
-        self.model = model
-        self.dataset = dataset
-        self.metric = metric
-        self.text_processor = text_processor
-        self.prompts = prompts
-        self.task = task
-        self.prefix = prefix
-        self.suffix = suffix
+# class AdaptiveHierarchicalPrompt(ABC):
+#     def __init__(self, model, dataset, metric, text_processor, prompts, task, prefix, suffix):
+#         self.model = model
+#         self.dataset = dataset
+#         self.metric = metric
+#         self.text_processor = text_processor
+#         self.prompts = prompts
+#         self.task = task
+#         self.prefix = prefix
+    #     self.suffix = suffix
 
-    def select_prompt_level(self, item):
-        # Use LLaMA3 or another model to choose the prompt level based on the item
-        # Here, llm_selection_model is an instance of the model used for selecting the prompt level
-        selection_prompt = f"Select the appropriate prompt level (1-5) for the following item: {item}"
-        selected_level = self.model.select_prompt_level(selection_prompt)
-        return int(selected_level.strip())
+    # def select_prompt_level(self, item):
+    #     # Use LLaMA3 or another model to choose the prompt level based on the item
+    #     # Here, llm_selection_model is an instance of the model used for selecting the prompt level
+    #     selection_prompt = f"Select the appropriate prompt level (1-5) for the following item: {item}"
+    #     selected_level = self.model.select_prompt_level(selection_prompt)
+    #     return int(selected_level.strip())
 
-    def prompt_process(self, item):
-        selected_level = self.select_prompt_level(item)
-        llm_f = self.model.generate_pipe_f()
-        llm_nf = self.model.generate_pipe_nf()
+    # def prompt_process(self, item):
+    #     selected_level = self.select_prompt_level(item)
+    #     llm_f = self.model.generate_pipe_f()
+    #     llm_nf = self.model.generate_pipe_nf()
 
-        passage = item['passage']
-        question = item['question']
-        ans = item['answer']
+    #     passage = item['passage']
+    #     question = item['question']
+    #     ans = item['answer']
         
-        if self.task == "boolq":
-            if selected_level == 1:
-                template = self.prompts[selected_level].get_prompt(self.task)
-                prompt_text = template.format(passage=passage, question=question)
-                prompt = PromptTemplate.from_template(prompt_text)
-                chain = prompt | llm_f
-                predictions = chain.invoke({'question': question, 'passage': passage})
+    #     if self.task == "boolq":
+    #         if selected_level == 1:
+    #             template = self.prompts[selected_level].get_prompt(self.task)
+    #             prompt_text = template.format(passage=passage, question=question)
+    #             prompt = PromptTemplate.from_template(prompt_text)
+    #             chain = prompt | llm_f
+    #             predictions = chain.invoke({'question': question, 'passage': passage})
 
-            elif selected_level == 2:
-                template = self.prompts[selected_level].get_prompt(self.task)
-                prompt_text = template.format(passage=passage, question=question)
-                prompt = PromptTemplate.from_template(prompt_text)
-                chain = prompt | llm_f
-                predictions = chain.invoke({'question': question, 'passage': passage})
+    #         elif selected_level == 2:
+    #             template = self.prompts[selected_level].get_prompt(self.task)
+    #             prompt_text = template.format(passage=passage, question=question)
+    #             prompt = PromptTemplate.from_template(prompt_text)
+    #             chain = prompt | llm_f
+    #             predictions = chain.invoke({'question': question, 'passage': passage})
 
-            elif selected_level == 3:
-                template = self.prompts[selected_level].get_prompt(self.task)
-                prompt_text = template.format(passage=passage, question=question)
-                prompt = PromptTemplate.from_template(prompt_text)
-                chain = prompt | llm_f
-                predictions = chain.invoke({'question': question, 'passage': passage})
+    #         elif selected_level == 3:
+    #             template = self.prompts[selected_level].get_prompt(self.task)
+    #             prompt_text = template.format(passage=passage, question=question)
+    #             prompt = PromptTemplate.from_template(prompt_text)
+    #             chain = prompt | llm_f
+    #             predictions = chain.invoke({'question': question, 'passage': passage})
 
-            elif selected_level == 4:
-                templates = self.prompts[selected_level].get_prompt(self.task)
-                predictions = ""
-                for i in range(len(templates)):
-                    prompt_text = templates[i].format(passage=passage, question=question, predictions=predictions)
-                    prompt = PromptTemplate.from_template(prompt_text)
-                    if i != len(templates) - 1:
-                        chain = prompt | llm_nf
-                    else:
-                        chain = prompt | llm_f
-                    predictions = chain.invoke({'question': question, 'passage': passage})
+    #         elif selected_level == 4:
+    #             templates = self.prompts[selected_level].get_prompt(self.task)
+    #             predictions = ""
+    #             for i in range(len(templates)):
+    #                 prompt_text = templates[i].format(passage=passage, question=question, predictions=predictions)
+    #                 prompt = PromptTemplate.from_template(prompt_text)
+    #                 if i != len(templates) - 1:
+    #                     chain = prompt | llm_nf
+    #                 else:
+    #                     chain = prompt | llm_f
+    #                 predictions = chain.invoke({'question': question, 'passage': passage})
 
-            elif selected_level == 5:
-                template, gen_knowledge_prompt = self.prompts[selected_level].get_prompt(self.task)
-                knowledge_prompt_text = gen_knowledge_prompt.format(passage=passage)
-                generated_knowledge = llm_nf.invoke({'passage': passage, 'question': question})
-                prompt_text = template.format(passage=passage, question=question, pred=generated_knowledge)
-                prompt = PromptTemplate.from_template(prompt_text)
-                chain = prompt | llm_f
-                predictions = chain.invoke({'question': question, 'passage': passage})
+    #         elif selected_level == 5:
+    #             template, gen_knowledge_prompt = self.prompts[selected_level].get_prompt(self.task)
+    #             knowledge_prompt_text = gen_knowledge_prompt.format(passage=passage)
+    #             generated_knowledge = llm_nf.invoke({'passage': passage, 'question': question})
+    #             prompt_text = template.format(passage=passage, question=question, pred=generated_knowledge)
+    #             prompt = PromptTemplate.from_template(prompt_text)
+    #             chain = prompt | llm_f
+    #             predictions = chain.invoke({'question': question, 'passage': passage})
 
-        if self.task == 'csqa':
-            question = item['question']
-            choices = item['choices']
-            text1 = choices[0]['text']
-            text2 = choices[1]['text']
-            text3 = choices[2]['text']
-            text4 = choices[3]['text']
-            text5 = choices[4]['text']
-            ans = item['answerKey']
+    #     if self.task == 'csqa':
+    #         question = item['question']
+    #         choices = item['choices']
+    #         text1 = choices[0]['text']
+    #         text2 = choices[1]['text']
+    #         text3 = choices[2]['text']
+    #         text4 = choices[3]['text']
+    #         text5 = choices[4]['text']
+    #         ans = item['answerKey']
 
-            if selected_level == 1:
-                template = self.prompts[selected_level].get_prompt(self.task)
-                prompt_text = template.format(question=question, text1=text1, text2=text2, text3=text3, text4=text4, text5=text5)
-                prompt = PromptTemplate.from_template(prompt_text)
-                chain = prompt | llm_f
-                predictions = chain.invoke({'question': question, 'text1': text1, 'text2': text2, 'text3': text3, 'text4': text4, 'text5': text5})
+    #         if selected_level == 1:
+    #             template = self.prompts[selected_level].get_prompt(self.task)
+    #             prompt_text = template.format(question=question, text1=text1, text2=text2, text3=text3, text4=text4, text5=text5)
+    #             prompt = PromptTemplate.from_template(prompt_text)
+    #             chain = prompt | llm_f
+    #             predictions = chain.invoke({'question': question, 'text1': text1, 'text2': text2, 'text3': text3, 'text4': text4, 'text5': text5})
 
-            elif selected_level == 2:
-                template = self.prompts[selected_level].get_prompt(self.task)
-                prompt_text = template.format(question=question, text1=text1, text2=text2, text3=text3, text4=text4, text5=text5)
-                prompt = PromptTemplate.from_template(prompt_text)
-                chain = prompt | llm_f
-                predictions = chain.invoke({'question': question, 'text1': text1, 'text2': text2, 'text3': text3, 'text4': text4, 'text5': text5})
+    #         elif selected_level == 2:
+    #             template = self.prompts[selected_level].get_prompt(self.task)
+    #             prompt_text = template.format(question=question, text1=text1, text2=text2, text3=text3, text4=text4, text5=text5)
+    #             prompt = PromptTemplate.from_template(prompt_text)
+    #             chain = prompt | llm_f
+    #             predictions = chain.invoke({'question': question, 'text1': text1, 'text2': text2, 'text3': text3, 'text4': text4, 'text5': text5})
 
-            elif selected_level == 3:
-                template = self.prompts[selected_level].get_prompt(self.task)
-                prompt_text = template.format(question=question, text1=text1, text2=text2, text3=text3, text4=text4, text5=text5)
-                prompt = PromptTemplate.from_template(prompt_text)
-                chain = prompt | llm_f
-                predictions = chain.invoke({'question': question, 'text1': text1, 'text2': text2, 'text3': text3, 'text4': text4, 'text5': text5})
+    #         elif selected_level == 3:
+    #             template = self.prompts[selected_level].get_prompt(self.task)
+    #             prompt_text = template.format(question=question, text1=text1, text2=text2, text3=text3, text4=text4, text5=text5)
+    #             prompt = PromptTemplate.from_template(prompt_text)
+    #             chain = prompt | llm_f
+    #             predictions = chain.invoke({'question': question, 'text1': text1, 'text2': text2, 'text3': text3, 'text4': text4, 'text5': text5})
 
-            elif selected_level == 4:
-                templates = self.prompts[selected_level].get_prompt(self.task)
-                predictions = ""
-                for i in range(len(templates)):
-                    prompt_text = templates[i].format(question=question, text1=text1, text2=text2, text3=text3, text4=text4, text5=text5, predictions=predictions)
-                    prompt = PromptTemplate.from_template(prompt_text)
-                    if i != len(templates) - 1:
-                        chain = prompt | llm_nf
-                    else:
-                        chain = prompt | llm_f
-                    predictions = chain.invoke({'question': question, 'text1': text1, 'text2': text2, 'text3': text3, 'text4': text4, 'text5': text5})
+    #         elif selected_level == 4:
+    #             templates = self.prompts[selected_level].get_prompt(self.task)
+    #             predictions = ""
+    #             for i in range(len(templates)):
+    #                 prompt_text = templates[i].format(question=question, text1=text1, text2=text2, text3=text3, text4=text4, text5=text5, predictions=predictions)
+    #                 prompt = PromptTemplate.from_template(prompt_text)
+    #                 if i != len(templates) - 1:
+    #                     chain = prompt | llm_nf
+    #                 else:
+    #                     chain = prompt | llm_f
+    #                 predictions = chain.invoke({'question': question, 'text1': text1, 'text2': text2, 'text3': text3, 'text4': text4, 'text5': text5})
 
-            elif selected_level == 5:
-                template, gen_knowledge_prompt = self.prompts[selected_level].get_prompt(self.task)
-                knowledge_prompt_text = gen_knowledge_prompt.format(question=question)
-                generated_knowledge = llm_nf.invoke({'question': question})
-                prompt_text = template.format(question=question, text1=text1, text2=text2, text3=text3, text4=text4, text5=text5, pred=generated_knowledge)
-                prompt = PromptTemplate.from_template(prompt_text)
-                chain = prompt | llm_f
-                predictions = chain.invoke({'question': question, 'text1': text1, 'text2': text2, 'text3': text3, 'text4': text4, 'text5': text5})
+    #         elif selected_level == 5:
+    #             template, gen_knowledge_prompt = self.prompts[selected_level].get_prompt(self.task)
+    #             knowledge_prompt_text = gen_knowledge_prompt.format(question=question)
+    #             generated_knowledge = llm_nf.invoke({'question': question})
+    #             prompt_text = template.format(question=question, text1=text1, text2=text2, text3=text3, text4=text4, text5=text5, pred=generated_knowledge)
+    #             prompt = PromptTemplate.from_template(prompt_text)
+    #             chain = prompt | llm_f
+    #             predictions = chain.invoke({'question': question, 'text1': text1, 'text2': text2, 'text3': text3, 'text4': text4, 'text5': text5})
 
-        if self.task == 'iwslt':
-            eng_text = item['translation']['en']
-            fr_text = item['translation']['fr']
+    #     if self.task == 'iwslt':
+    #         eng_text = item['translation']['en']
+    #         fr_text = item['translation']['fr']
 
-            if selected_level == 1:
-                template = self.prompts[selected_level].get_prompt(self.task)
-                prompt_text = template.format(eng_text=eng_text)
-                prompt = PromptTemplate.from_template(prompt_text)
-                chain = prompt | llm_f
-                predictions = chain.invoke({'eng_text': eng_text})
+    #         if selected_level == 1:
+    #             template = self.prompts[selected_level].get_prompt(self.task)
+    #             prompt_text = template.format(eng_text=eng_text)
+    #             prompt = PromptTemplate.from_template(prompt_text)
+    #             chain = prompt | llm_f
+    #             predictions = chain.invoke({'eng_text': eng_text})
 
-            elif selected_level == 2:
-                template = self.prompts[selected_level].get_prompt(self.task)
-                prompt_text = template.format(eng_text=eng_text)
-                prompt = PromptTemplate.from_template(prompt_text)
-                chain = prompt | llm_f
-                predictions = chain.invoke({'eng_text': eng_text})
+    #         elif selected_level == 2:
+    #             template = self.prompts[selected_level].get_prompt(self.task)
+    #             prompt_text = template.format(eng_text=eng_text)
+    #             prompt = PromptTemplate.from_template(prompt_text)
+    #             chain = prompt | llm_f
+    #             predictions = chain.invoke({'eng_text': eng_text})
 
-            elif selected_level == 3:
-                template = self.prompts[selected_level].get_prompt(self.task)
-                prompt_text = template.format(eng_text=eng_text)
-                prompt = PromptTemplate.from_template(prompt_text)
-                chain = prompt | llm_f
-                predictions = chain.invoke({'eng_text': eng_text})
+    #         elif selected_level == 3:
+    #             template = self.prompts[selected_level].get_prompt(self.task)
+    #             prompt_text = template.format(eng_text=eng_text)
+    #             prompt = PromptTemplate.from_template(prompt_text)
+    #             chain = prompt | llm_f
+    #             predictions = chain.invoke({'eng_text': eng_text})
 
-            elif selected_level == 4:
-                templates = self.prompts[selected_level].get_prompt(self.task)
-                predictions = ""
-                for i in range(len(templates)):
-                    prompt_text = templates[i].format(eng_text=eng_text, predictions=predictions)
-                    prompt = PromptTemplate.from_template(prompt_text)
-                    if i != len(templates) - 1:
-                        chain = prompt | llm_nf
-                    else:
-                        chain = prompt | llm_f
-                    predictions = chain.invoke({'eng_text': eng_text})
+    #         elif selected_level == 4:
+    #             templates = self.prompts[selected_level].get_prompt(self.task)
+    #             predictions = ""
+    #             for i in range(len(templates)):
+    #                 prompt_text = templates[i].format(eng_text=eng_text, predictions=predictions)
+    #                 prompt = PromptTemplate.from_template(prompt_text)
+    #                 if i != len(templates) - 1:
+    #                     chain = prompt | llm_nf
+    #                 else:
+    #                     chain = prompt | llm_f
+    #                 predictions = chain.invoke({'eng_text': eng_text})
 
-            elif selected_level == 5:
-                template, gen_knowledge_prompt = self.prompts[selected_level].get_prompt(self.task)
-                knowledge_prompt_text = gen_knowledge_prompt.format(eng_text=eng_text)
-                generated_knowledge = llm_nf.invoke({'eng_text': eng_text})
-                prompt_text = template.format(eng_text=eng_text, pred=generated_knowledge)
-                prompt = PromptTemplate.from_template(prompt_text)
-                chain = prompt | llm_f
-                predictions = chain.invoke({'eng_text': eng_text})
+    #         elif selected_level == 5:
+    #             template, gen_knowledge_prompt = self.prompts[selected_level].get_prompt(self.task)
+    #             knowledge_prompt_text = gen_knowledge_prompt.format(eng_text=eng_text)
+    #             generated_knowledge = llm_nf.invoke({'eng_text': eng_text})
+    #             prompt_text = template.format(eng_text=eng_text, pred=generated_knowledge)
+    #             prompt = PromptTemplate.from_template(prompt_text)
+    #             chain = prompt | llm_f
+    #             predictions = chain.invoke({'eng_text': eng_text})
 
-        if self.task == 'samsum':
-            dialogue = item['dialogue']
-            summary = item['summary']
+    #     if self.task == 'samsum':
+    #         dialogue = item['dialogue']
+    #         summary = item['summary']
 
-            if selected_level == 1:
-                template = self.prompts[selected_level].get_prompt(self.task)
-                prompt_text = template.format(dialogue=dialogue)
-                prompt = PromptTemplate.from_template(prompt_text)
-                chain = prompt | llm_f
-                predictions = chain.invoke({'dialogue': dialogue})
+    #         if selected_level == 1:
+    #             template = self.prompts[selected_level].get_prompt(self.task)
+    #             prompt_text = template.format(dialogue=dialogue)
+    #             prompt = PromptTemplate.from_template(prompt_text)
+    #             chain = prompt | llm_f
+    #             predictions = chain.invoke({'dialogue': dialogue})
 
-            elif selected_level == 2:
-                template = self.prompts[selected_level].get_prompt(self.task)
-                prompt_text = template.format(dialogue=dialogue)
-                prompt = PromptTemplate.from_template(prompt_text)
-                chain = prompt | llm_f
-                predictions = chain.invoke({'dialogue': dialogue})
+    #         elif selected_level == 2:
+    #             template = self.prompts[selected_level].get_prompt(self.task)
+    #             prompt_text = template.format(dialogue=dialogue)
+    #             prompt = PromptTemplate.from_template(prompt_text)
+    #             chain = prompt | llm_f
+    #             predictions = chain.invoke({'dialogue': dialogue})
 
-            elif selected_level == 3:
-                template = self.prompts[selected_level].get_prompt(self.task)
-                prompt_text = template.format(dialogue=dialogue)
-                prompt = PromptTemplate.from_template(prompt_text)
-                chain = prompt | llm_f
-                predictions = chain.invoke({'dialogue': dialogue})
+    #         elif selected_level == 3:
+    #             template = self.prompts[selected_level].get_prompt(self.task)
+    #             prompt_text = template.format(dialogue=dialogue)
+    #             prompt = PromptTemplate.from_template(prompt_text)
+    #             chain = prompt | llm_f
+    #             predictions = chain.invoke({'dialogue': dialogue})
 
-            elif selected_level == 4:
-                templates = self.prompts[selected_level].get_prompt(self.task)
-                predictions = ""
-                for i in range(len(templates)):
-                    prompt_text = templates[i].format(dialogue=dialogue, predictions=predictions)
-                    prompt = PromptTemplate.from_template(prompt_text)
-                    if i != len(templates) - 1:
-                        chain = prompt | llm_nf
-                    else:
-                        chain = prompt | llm_f
-                    predictions = chain.invoke({'dialogue': dialogue})
+    #         elif selected_level == 4:
+    #             templates = self.prompts[selected_level].get_prompt(self.task)
+    #             predictions = ""
+    #             for i in range(len(templates)):
+    #                 prompt_text = templates[i].format(dialogue=dialogue, predictions=predictions)
+    #                 prompt = PromptTemplate.from_template(prompt_text)
+    #                 if i != len(templates) - 1:
+    #                     chain = prompt | llm_nf
+    #                 else:
+    #                     chain = prompt | llm_f
+    #                 predictions = chain.invoke({'dialogue': dialogue})
 
-            elif selected_level == 5:
-                template, gen_knowledge_prompt = self.prompts[selected_level].get_prompt(self.task)
-                knowledge_prompt_text = gen_knowledge_prompt.format(dialogue=dialogue)
-                generated_knowledge = llm_nf.invoke({'dialogue': dialogue})
-                prompt_text = template.format(dialogue=dialogue, pred=generated_knowledge)
-                prompt = PromptTemplate.from_template(prompt_text)
-                chain = prompt | llm_f
-                predictions = chain.invoke({'dialogue': dialogue})
+    #         elif selected_level == 5:
+    #             template, gen_knowledge_prompt = self.prompts[selected_level].get_prompt(self.task)
+    #             knowledge_prompt_text = gen_knowledge_prompt.format(dialogue=dialogue)
+    #             generated_knowledge = llm_nf.invoke({'dialogue': dialogue})
+    #             prompt_text = template.format(dialogue=dialogue, pred=generated_knowledge)
+    #             prompt = PromptTemplate.from_template(prompt_text)
+    #             chain = prompt | llm_f
+    #             predictions = chain.invoke({'dialogue': dialogue})
 
-        return predictions
+    #     return predictions
 
 
 def main(args):
@@ -711,10 +711,10 @@ def main(args):
 
     if HP_framework == "man":
         manual_hp = ManualHierarchicalPrompt(model, gen_model, dataset, eval_list, text_processor, prompts, dataset_name, prefix, suffix,thres)
-    elif HP_framework == "auto":
-        adaptive_hp = AdaptiveHierarchicalPrompt(model, dataset, eval, text_processor, prompts, dataset_name, prefix, suffix)
-        for item in dataset:
-            adaptive_hp.prompt_process(item)
+    # elif HP_framework == "auto":
+    #     adaptive_hp = AdaptiveHierarchicalPrompt(model, dataset, eval, text_processor, prompts, dataset_name, prefix, suffix)
+    #     for item in dataset:
+    #         adaptive_hp.prompt_process(item)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Arguments for hierarchical prompt generation.')
