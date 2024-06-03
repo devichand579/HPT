@@ -27,7 +27,7 @@ class Model(ABC):
         self.pipe_nf = None
         self.pipe_f = None
         self.generation_config = None
-        self.load_model()
+        self.load_model(name)
 
     def load_model(self,name):
         model_name = self.model_names.get(name)
