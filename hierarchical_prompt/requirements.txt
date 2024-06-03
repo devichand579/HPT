@@ -6,7 +6,6 @@ datasets
 nltk
 numpy 
 six
-collections
 math
 evaluate
 re 
