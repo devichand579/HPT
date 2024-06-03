@@ -4,6 +4,8 @@ from langchain_community.llms.huggingface_pipeline import HuggingFacePipeline
 import os
 import numpy as np
 from abc import ABC
+from dotenv import load_dotenv
+load_dotenv()
 hf_token = os.getenv('HF_TOKEN')
 
 
