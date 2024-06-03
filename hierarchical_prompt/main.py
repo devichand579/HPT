@@ -715,6 +715,8 @@ def main(args):
     dataset_name = args.arg3
     if dataset_name in ["iwslt", "samsum"]:
         thres = args.thres
+    else :
+        thres = 0
 
     data_loader = DatasetLoader()
     dataset = data_loader.get_dataset(dataset_name)
