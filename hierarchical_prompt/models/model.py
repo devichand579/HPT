@@ -6,7 +6,7 @@ import numpy as np
 from abc import ABC
 from dotenv import load_dotenv
 load_dotenv()
-hf_token = "ohf_QQjQLVewvQyQMoALFwlHhyyPYNKxyTgPha"
+hf_token = "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"
 
 
  
