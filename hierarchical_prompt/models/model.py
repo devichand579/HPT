@@ -36,7 +36,7 @@ class Model(ABC):
         if model_name is None:
             raise ValueError(f"Model name '{self.name}' is not supported.")
         
-        model = AutoModelForCausalLM.from_pretrained(
+        self.model = AutoModelForCausalLM.from_pretrained(
                 model_name,
                 torch_dtype=torch.bfloat16,
                 trust_remote_code=True,
