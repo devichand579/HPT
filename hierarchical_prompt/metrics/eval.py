@@ -144,7 +144,7 @@ class Eval(ABC):
             The set of Rouge scores.
         """
         from .rouge.rouge import Rouge
-        metric = Rouge
+        metric = Rouge()
         results = metric.compute(predictions=preds, references=gts)
         return results
 
