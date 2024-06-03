@@ -126,7 +126,6 @@ class ManualHierarchicalPrompt(ABC):
                         self.references.append(ans)
                     
                 
-                # for other levels, retrieve the prompt template, add the prefix and suffix, and create a prompt chain using llm_f
                 else :
                     template = self.prompts[i].get_prompt(self.task).format(passage=passage, question=question)
                     template = self.prefix + template + self.suffix +"Answer:"
