@@ -4,6 +4,7 @@ from langchain_community.llms.huggingface_pipeline import HuggingFacePipeline
 import os
 import numpy as np
 from abc import ABC
+import logging 
 from dotenv import load_dotenv
 load_dotenv()
 hf_token = os.getenv('HF_TOKEN')
@@ -44,7 +45,9 @@ class Model(ABC):
                 quantization_config=self.quantization_config, 
                 token = hf_token
                 )
+        logging.info(f"Model {name} loaded successfully")
         self.tokenizer = AutoTokenizer.from_pretrained(model_name, token = hf_token)
+        logging.info(f"Tokenizer for {name} loaded successfully")
         self.generation_config = GenerationConfig.from_pretrained(model_name)
         self.generation_config.max_new_tokens = 1024 
         self.generation_config.temperature = 0.6 
@@ -77,6 +80,7 @@ class LLama3(Model):
                                 return_full_text=False,
                                 generation_config=self.generation_config
                                )
+        logging.info("LLama3 text generation pipelines created successfully")
         
     def generate_knowledge(self,prompts):
 
@@ -134,6 +138,8 @@ class Phi3(Model):
                                 return_full_text=False,
                                 generation_config=self.generation_config
                                )
+
+        logging.info("Phi3 text generation pipelines created successfully")
         
     
     def generate_pipe_f(self):
@@ -163,6 +169,8 @@ class Mistral(Model):
                                 return_full_text=False,
                                 generation_config=self.generation_config
                                )
+
+        logging.info("Mistral text generation pipelines created successfully")
         
     
     def generate_pipe_f(self):
@@ -193,6 +201,8 @@ class Gemma(Model):
                                 return_full_text=False,
                                 generation_config=self.generation_config
                                )
+
+        logging.info("Gemma text generation pipelines created successfully")
         
     
     def generate_pipe_f(self):

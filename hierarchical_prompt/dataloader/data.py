@@ -29,12 +29,5 @@ class DatasetLoader(ABC):
             logging.info(f'Dataset {name} not supported')
             return f'Dataset {name} not found'
         
-        elif self.datasets[name] is None:
-            logging.info(f' Dataset {name} is not loaded')
-            try:
-                self.load_datasets(name)
-            except Exception as e:
-                logging.error(f'Failed to load dataset {name}:{e}')
-                return f'Failed to load dataset {name}:{e}'
-        
+        self.load_datasets()
         return self.datasets[name]

@@ -20,3 +20,4 @@ einops
 pytest
 flash-attn
 sentencepiece
+protobuf
