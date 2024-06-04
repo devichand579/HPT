@@ -41,6 +41,7 @@ class AnswerProcessor(ABC):
         for i, line in enumerate(lines):
             if "answer:" in line:
                 answer_sentence = lines[i].replace('answer:', '').strip()
+                print(answer_sentence)
                 if 'a' in answer_sentence:
                     return 0
                 elif 'b' in answer_sentence:

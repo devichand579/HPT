@@ -71,7 +71,7 @@ class ManualHierarchicalPrompt(ABC):
                     templates = self.prompts[i].get_prompt(self.task)
                     # iterate over the templates
                     for i in range(len(templates)):
-                        # and create a prompt chain for each of them
+                        
                         template = self.prefix + templates[i].format(passage=passage, question=question, pred=pred_txt) + self.suffix + "Answer:"
                         # for intermediate templates, use llm_nf
                         if i != len(templates)-1:
@@ -99,7 +99,7 @@ class ManualHierarchicalPrompt(ABC):
                 elif i==5:
                     gen_prefix = "<|start_header_id|>user<|end_header_id|>\n"
                     gen_suffix = "<|eot_id|><|start_header_id|>assistant<|end_header_id|>\n"
-                    # retrieve the template and create a prompt chain using llm_nf
+                    
                     template, gen_knowledge_template = self.prompts[i].get_prompt(self.task)
                     gen_knowledge_template = gen_knowledge_template.format(passage=passage)
                     knowledge_template = gen_prefix + gen_knowledge_template + gen_suffix
@@ -108,7 +108,7 @@ class ManualHierarchicalPrompt(ABC):
                         know_prompts_list.append(knowledge_template)
                     generated_knowledge = self.gen_model.generate_knowledge(know_prompts_list)
               
-                    # create the final prompt and chain using llm_f
+                    
                     template = self.prefix + template.format(passage=passage, question=question, pred = generated_knowledge) + self.suffix + "Answer:"
                     pred = llm_f(template)
                     # process the prediction
@@ -172,30 +172,33 @@ class ManualHierarchicalPrompt(ABC):
                 if i==4:
                     # retrieve multiple levels of least-to-most prompting
                     templates = self.prompts[i].get_prompt(self.task)
-                    pred = ""
+                    pred_text = ""
                     # iterate over the templates
                     for i in range(len(templates)):
-                        # and create a prompt chain for each of them
-                        template = self.prefix + templates[i].format(question=question, text1=text1, text2=text2, text3=text3, text4=text4, text5=text5, pred=pred) + self.suffix + "Answer:"
-                        prompt = PromptTemplate.from_template(template)
+                        
+                        template = self.prefix + templates[i].format(question=question, text1=text1, text2=text2, text3=text3, text4=text4, text5=text5, pred=pred_text) + self.suffix + "Answer:"
 
                         # for intermediate templates, use llm_nf
                         if i != len(templates)-1:
-                            chain = prompt | llm_nf
-                            pred = chain.invoke({'question': question,'text1':text1,'text2':text2,'text3':text3,'text4':text4,'text5':text5,'pred':pred})
+                            pred = llm_nf(template)
+                            pred_text = pred[0]['generated_text']
                         # for final template, use llm_f
                         else:
-                            chain = prompt | llm_f
-                            pred = chain.invoke({'question': question,'text1':text1,'text2':text2,'text3':text3,'text4':text4,'text5':text5,'pred':pred})
-
+                            pred = llm_f(template)
+                            pred_text = pred[0]['generated_text']
+                    print("pred_text",pred_text)
                     # process the prediction
-                    final_ans = self.text_processor(pred)
+                    final_ans = self.text_processor(pred_text)
+                    print("ans",ans)
+                    print("final_ans",final_ans)
                     if final_ans == ans:
-                        self.scores.append(i)
+                        print("level",level)
+                        self.scores.append(level)
                         self.predictions.append(final_ans)
                         self.references.append(ans)
                         break
                     else:
+                        level = level + 1
                         continue
 
                 # level 5
@@ -211,22 +214,24 @@ class ManualHierarchicalPrompt(ABC):
                         know_prompts_list.append(knowledge_template)
                     generated_knowledge = self.gen_model.generate_knowledge(know_prompts_list)
               
-                    # create the final prompt and chain using llm_f
+                    
                     template = self.prefix + template.format(question=question, text1=text1, text2=text2, text3=text3, text4=text4, text5=text5, pred = generated_knowledge) + self.suffix + "Answer:"
-                    prompt = PromptTemplate.from_template(template)
-                    chain = prompt | llm_f
-                    pred = chain.invoke({'question': question,'text1':text1,'text2':text2,'text3':text3,'text4':text4,'text5':text5,'pred':generated_knowledge})
+                    pred = llm_f(template)
+                    print("pred",pred)
 
                     # process the prediction
-                    final_ans = self.text_processor(pred)
+                    final_ans = self.text_processor(pred[0]['generated_text'])
+                    print("ans",ans)
+                    print("final_ans",final_ans)
                     if final_ans == ans:
-                        self.scores.append(i)
+                        print("level",level)
+                        self.scores.append(level)
                         self.predictions.append(final_ans)
                         self.references.append(ans)
                         break
                     else:
-                        i = i + hp_scores[self.task]
-                        self.scores.append(i)
+                        level = level + hp_scores[self.task]
+                        self.scores.append(level)
                         self.predictions.append(final_ans)
                         self.references.append(ans)
                     
@@ -235,16 +240,19 @@ class ManualHierarchicalPrompt(ABC):
                 else :
                     template = self.prompts[i].get_prompt(self.task).format(question=question, text1=text1, text2=text2, text3=text3, text4=text4, text5=text5)
                     template = self.prefix + template + self.suffix +"Answer:"
-                    prompt = PromptTemplate.from_template(template)
-                    chain = prompt | llm_f
-                    pred = chain.invoke({'question': question,'text1':text1,'text2':text2,'text3':text3,'text4':text4,'text5':text5})
-                    final_ans = self.text_processor(pred)
+                    pred = llm_f(template)
+                    print("pred",pred)
+                    final_ans = self.text_processor(pred[0]['generated_text'])
+                    print("ans",ans)
+                    print("final_ans",final_ans)
                     if final_ans == ans:
-                        self.scores.append(i)
+                        print("level",level)
+                        self.scores.append(level)
                         self.predictions.append(final_ans)
                         self.references.append(ans)
                         break
                     else:
+                        level = level + 1
                         continue
             # handles translation tasks
             elif self.task == "iwslt":
