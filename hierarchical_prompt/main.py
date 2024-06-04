@@ -391,7 +391,7 @@ class ManualHierarchicalPrompt(ABC):
                     gen_prefix = "<|start_header_id|>user<|end_header_id|>\n"
                     gen_suffix = "<|eot_id|><|start_header_id|>assistant<|end_header_id|>\n"
                     template, gen_knowledge_template = self.prompts[i].get_prompt(self.task)
-                    gen_knowledge_template = gen_knowledge_template.format(eng_text=eng_text)
+                    gen_knowledge_template = gen_knowledge_template.format(dialogue=dialogue)
                     knowledge_template = gen_prefix + gen_knowledge_template + gen_suffix
                     know_prompts_list = []
                     for i in range(3):
