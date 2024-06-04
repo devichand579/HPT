@@ -374,7 +374,7 @@ class ManualHierarchicalPrompt(ABC):
                     print("final_ans",final_ans)
                     print("answer",answer)
                     rogue_score  = self.metrics[0]
-                    eval_score = rogue_score([final_ans],[answer])
+                    eval_score["rouge1"] = rogue_score([final_ans],[answer])
                     print("eval_score",eval_score)
                     if  eval_score >= self.thres:
                         print("level",level)
@@ -406,7 +406,7 @@ class ManualHierarchicalPrompt(ABC):
                     print("final_ans",final_ans)
                     print("answer",answer)
                     rogue_score  = self.metrics[0]
-                    eval_score = rogue_score([final_ans],[answer])
+                    eval_score["rouge1"] = rogue_score([final_ans],[answer])
                     print("eval_score",eval_score)
                     if  eval_score >= self.thres:
                         print("level",level)
@@ -430,7 +430,7 @@ class ManualHierarchicalPrompt(ABC):
                     print("final_ans",final_ans)
                     print("answer",answer)
                     rogue_score  = self.metrics[0]
-                    eval_score = rogue_score([final_ans],[answer])
+                    eval_score["rouge1"] = rogue_score([final_ans],[answer])
                     print("eval_score",eval_score)
                     if  eval_score >= self.thres:
                         print("level",level)
