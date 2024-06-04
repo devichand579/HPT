@@ -361,20 +361,20 @@ class ManualHierarchicalPrompt(ABC):
                     for i in range(len(templates)):
                         
                         if i != len(templates)-1:
-                            template = self.prefix + templates[i].format(eng_text=eng_text, pred=pred_text) + self.suffix
+                            template = self.prefix + templates[i].format(dialogue=dialogue, pred=pred_text) + self.suffix
                             pred = llm_nf(template)
                             pred_text = pred[0]['generated_text']
                         # for final template, use llm_f
                         else:
-                            template = self.prefix + templates[i].format(eng_text=eng_text, pred=pred_text) + self.suffix + "Summary:"
+                            template = self.prefix + templates[i].format(dialogue=dialogue, pred=pred_text) + self.suffix + "Summary:"
                             pred = llm_f(template)
                             pred_text = pred[0]['generated_text']
                     # process the prediction
                     final_ans = self.text_processor(pred_text)
                     print("final_ans",final_ans)
                     print("answer",answer)
-                    bleu_score  = self.metrics[0]
-                    eval_score = bleu_score([final_ans],[answer])
+                    rogue_score  = self.metrics[0]
+                    eval_score = rogue_score([final_ans],[answer])
                     print("eval_score",eval_score)
                     if  eval_score >= self.thres:
                         print("level",level)
@@ -405,8 +405,8 @@ class ManualHierarchicalPrompt(ABC):
                     final_ans = self.text_processor(pred[0]['generated_text'])
                     print("final_ans",final_ans)
                     print("answer",answer)
-                    bleu_score  = self.metrics[0]
-                    eval_score = bleu_score([final_ans],[answer])
+                    rogue_score  = self.metrics[0]
+                    eval_score = rogue_score([final_ans],[answer])
                     print("eval_score",eval_score)
                     if  eval_score >= self.thres:
                         print("level",level)
@@ -423,14 +423,14 @@ class ManualHierarchicalPrompt(ABC):
                 
                 # for other levels, retrieve the prompt template, add the prefix and suffix, and create a prompt chain using llm_f
                 else :
-                    template = self.prompts[i].get_prompt(self.task).format(eng_text=eng_text)
+                    template = self.prompts[i].get_prompt(self.task).format(dialogue=dialogue)
                     template = self.prefix + template + self.suffix + "Summary:"
                     pred = llm_f(template)
                     final_ans = self.text_processor(pred[0]['generated_text'])
                     print("final_ans",final_ans)
                     print("answer",answer)
-                    bleu_score  = self.metrics[0]
-                    eval_score = bleu_score([final_ans],[answer])
+                    rogue_score  = self.metrics[0]
+                    eval_score = rogue_score([final_ans],[answer])
                     print("eval_score",eval_score)
                     if  eval_score >= self.thres:
                         print("level",level)

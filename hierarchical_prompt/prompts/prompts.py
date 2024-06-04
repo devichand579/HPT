@@ -24,8 +24,8 @@ class Promptloader(ABC):
 class Roleprompt(Promptloader):
     def __init__(self):
         super().__init__()
-        self.prompts["boolq"] = ("Based on the passage:'{0}'\nAnswer True/False to the question: '{1}' as a Reader.").format("{passage}", "{question}")
-        self.prompts["csqa"] = ("Choose the answer.\n{0}\nA {1}\nB {2}\nC {3}\nD {4}\nE {5} as a Reader.").format("{question}", "{text1}", "{text2}", "{text3}", "{text4}", "{text5}")
+        self.prompts["boolq"] = ("Based on the passage:'{0}'\nAnswer True/False to the question: '{1}' as an Omniscent person.").format("{passage}", "{question}")
+        self.prompts["csqa"] = ("Choose the answer.\n{0}\nA {1}\nB {2}\nC {3}\nD {4}\nE {5} as a critical thinker.").format("{question}", "{text1}", "{text2}", "{text3}", "{text4}", "{text5}")
         self.prompts["iwslt"] = ("Translate '{0}' to french as a Translator.").format("{eng_text}")
         self.prompts["samsum"] = ("Summarise the Dialogue: '{0}' as a Summariser.").format("{dialogue}")  
 
