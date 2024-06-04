@@ -154,8 +154,7 @@ class ManualHierarchicalPrompt(ABC):
                 text2 = item['choices']['text'][1] 
                 text3 = item['choices']['text'][2]
                 text4 = item['choices']['text'][3] 
-                text5 = item['choices']['text'][4] 
-                print("question",question)  
+                text5 = item['choices']['text'][4]  
                 # extract the answer key
                 answer = item['answerKey']
                 if answer == "A":
@@ -186,7 +185,6 @@ class ManualHierarchicalPrompt(ABC):
                         else:
                             pred = llm_f(template)
                             pred_text = pred[0]['generated_text']
-                    print("pred_text",pred_text)
                     # process the prediction
                     final_ans = self.text_processor(pred_text)
                     print("ans",ans)
@@ -217,7 +215,6 @@ class ManualHierarchicalPrompt(ABC):
                     
                     template = self.prefix + template.format(question=question, text1=text1, text2=text2, text3=text3, text4=text4, text5=text5, pred = generated_knowledge) + self.suffix + "Answer:"
                     pred = llm_f(template)
-                    print("pred",pred)
 
                     # process the prediction
                     final_ans = self.text_processor(pred[0]['generated_text'])
@@ -236,12 +233,10 @@ class ManualHierarchicalPrompt(ABC):
                         self.references.append(ans)
                     
                 
-                # for other levels, retrieve the prompt template, add the prefix and suffix, and create a prompt chain using llm_f
                 else :
                     template = self.prompts[i].get_prompt(self.task).format(question=question, text1=text1, text2=text2, text3=text3, text4=text4, text5=text5)
                     template = self.prefix + template + self.suffix +"Answer:"
                     pred = llm_f(template)
-                    print("pred",pred)
                     final_ans = self.text_processor(pred[0]['generated_text'])
                     print("ans",ans)
                     print("final_ans",final_ans)
@@ -254,6 +249,7 @@ class ManualHierarchicalPrompt(ABC):
                     else:
                         level = level + 1
                         continue
+                    
             # handles translation tasks
             elif self.task == "iwslt":
                 # extract english text and answer in french
