@@ -185,6 +185,7 @@ class ManualHierarchicalPrompt(ABC):
                         else:
                             pred = llm_f(template)
                             pred_text = pred[0]['generated_text']
+                        print(pred_text)
                     # process the prediction
                     final_ans = self.text_processor(pred_text)
                     print("ans",ans)
@@ -215,7 +216,7 @@ class ManualHierarchicalPrompt(ABC):
                     
                     template = self.prefix + template.format(question=question, text1=text1, text2=text2, text3=text3, text4=text4, text5=text5, pred = generated_knowledge) + self.suffix + "Answer:"
                     pred = llm_f(template)
-
+                    print(pred)
                     # process the prediction
                     final_ans = self.text_processor(pred[0]['generated_text'])
                     print("ans",ans)
