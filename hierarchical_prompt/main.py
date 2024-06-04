@@ -50,8 +50,8 @@ class ManualHierarchicalPrompt(ABC):
         '''
         level = 1
         for i in range(1,6):
-            llm_f = self.model.pipe_f.to('cuda')   # full_text pipeline
-            llm_nf = self.model.pipe_nf.to('cuda') # non_full_text pipeline
+            llm_f = self.model.pipe_f   # full_text pipeline
+            llm_nf = self.model.pipe_nf # non_full_text pipeline
 
             # handles passage and ques-ans pairs
             if self.task == "boolq":
