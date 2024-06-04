@@ -37,16 +37,22 @@ class AnswerProcessor(ABC):
         """Process Commonsense QA (CSQA) text."""
         text = text.lower()
         lines = text.split('\n')
-        answer_map = {'a': 0, 'b': 1, 'c': 2, 'd': 3, 'e': 4}
-
         for i, line in enumerate(lines):
             if "answer:" in line:
                 answer_sentence = lines[i].replace('answer:', '').strip()
                 print(answer_sentence)
-                for char in answer_map:
-                    if char in answer_sentence:
-                        return answer_map[char]
-                return 0
+                if answer_sentence.startswith('a ') or answer_sentence.startswith('a.') or answer_sentence.startswith('a)') or answer_sentence.startswith('(a'):
+                    return 0
+                elif answer_sentence.startswith('b ') or answer_sentence.startswith('b.') or answer_sentence.startswith('b)') or answer_sentence.startswith('(b'):
+                    return 1
+                elif answer_sentence.startswith('c ') or answer_sentence.startswith('c.') or answer_sentence.startswith('c)') or answer_sentence.startswith('(c'):
+                    return 2
+                elif answer_sentence.startswith('d ') or answer_sentence.startswith('d.') or answer_sentence.startswith('d)') or answer_sentence.startswith('(d'):
+                    return 3
+                elif answer_sentence.startswith('e ') or answer_sentence.startswith('e.') or answer_sentence.startswith('e)') or answer_sentence.startswith('(e'):
+                    return 4
+                else:
+                    return 0
 
     def pp_iwlst(self, passage):
         """Process International Workshop on Spoken Language Translation (IWSLT) text."""
