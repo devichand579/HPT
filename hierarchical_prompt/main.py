@@ -253,7 +253,7 @@ class ManualHierarchicalPrompt(ABC):
             # handles translation tasks
             elif self.task == "iwslt":
                 # extract english text and answer in french
-                eng_text = item['translation'][0]['en']
+                eng_text = item['translation']['en']
                 answer  = item['translation']['fr']
                 print("eng_text",eng_text)
                 print("answer",answer)
