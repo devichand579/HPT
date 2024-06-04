@@ -41,7 +41,6 @@ class Model(ABC):
                 torch_dtype=torch.bfloat16,
                 trust_remote_code=True,
                 device_map="auto",
-                trust_remote_code=True,
                 quantization_config=self.quantization_config, 
                 token = hf_token
                 )
