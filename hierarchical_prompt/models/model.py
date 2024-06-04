@@ -5,7 +5,6 @@ import numpy as np
 from abc import ABC
 import logging 
 from dotenv import load_dotenv
-from accelerate import Accelerator
 load_dotenv()
 hf_token = os.getenv('HF_TOKEN')
 
@@ -117,10 +116,6 @@ class Phi3(Model):
     def __init__(self):
         super().__init__("phi3")
         
-        self.accelerator = Accelerator()
-        self.model, self.tokenizer = self.accelerator.prepare(self.model, self.tokenizer)
-
-        device = 0 if torch.cuda.is_available() else -1
 
         self.pipe_f = pipeline(
             "text-generation",
