@@ -215,7 +215,7 @@ class ManualHierarchicalPrompt(ABC):
                     
                     template = self.prefix + template.format(question=question, text1=text1, text2=text2, text3=text3, text4=text4, text5=text5, pred = generated_knowledge) + self.suffix + "Answer:"
                     pred = llm_f(template)
-                    
+
                     # process the prediction
                     final_ans = self.text_processor(pred[0]['generated_text'])
                     print("ans",ans)
@@ -255,46 +255,45 @@ class ManualHierarchicalPrompt(ABC):
                 # extract english text and answer in french
                 eng_text = item['translation'][0]['en']
                 answer  = item['translation']['fr']
-
+                print("eng_text",eng_text)
+                print("answer",answer)
                 # level 4
                 if i==4:
                     # retrieve multiple levels of least-to-most prompting
                     templates = self.prompts[i].get_prompt(self.task)
-                    pred = ""
+                    pred_text = ""
                     # iterate over the templates
                     for i in range(len(templates)):
                         
-
-                        # for intermediate templates, use llm_nf
                         if i != len(templates)-1:
-                            template = self.prefix + templates[i].format(eng_text=eng_text, pred=pred) + self.suffix
-                            prompt = PromptTemplate.from_template(template)
-                            chain = prompt | llm_nf
-                            pred = chain.invoke({'text': eng_text,'pred':pred})
+                            template = self.prefix + templates[i].format(eng_text=eng_text, pred=pred_text) + self.suffix
+                            pred = llm_nf(template)
+                            pred_text = pred[0]['generated_text']
                         # for final template, use llm_f
                         else:
-                            template = self.prefix + templates[i].format(eng_text=eng_text, pred=pred) + self.suffix + "French:"
-                            prompt = PromptTemplate.from_template(template)
-                            chain = prompt | llm_f
-                            pred = chain.invoke({'text': eng_text,'pred':pred})
-
+                            template = self.prefix + templates[i].format(eng_text=eng_text, pred=pred_text) + self.suffix + "French:"
+                            pred = llm_f(template)
+                            pred_text = pred[0]['generated_text']
+                    print("pred_text",pred_text)
                     # process the prediction
-                    final_ans = self.text_processor(pred)
+                    final_ans = self.text_processor(pred_text)
+                    print("final_ans",final_ans)
                     bleu_score  = self.metrics[0]
-                    eval_score = bleu_score(final_ans,answer)
+                    eval_score = bleu_score([final_ans],[answer])
+                    print("eval_score",eval_score)
                     if  eval_score >= self.thres:
-                        self.scores.append(i)
+                        self.scores.append(level)
                         self.predictions.append(final_ans)
                         self.references.append(answer)
                         break
                     else:
+                        level = level + 1
                         continue
 
                 # level 5
                 elif i==5:
                     gen_prefix = "<|start_header_id|>user<|end_header_id|>\n"
                     gen_suffix = "<|eot_id|><|start_header_id|>assistant<|end_header_id|>\n"
-                    # retrieve the template and create a prompt chain using llm_nf
                     template, gen_knowledge_template = self.prompts[i].get_prompt(self.task)
                     gen_knowledge_template = gen_knowledge_template.format(eng_text=eng_text)
                     knowledge_template = gen_prefix + gen_knowledge_template + gen_suffix
@@ -305,22 +304,22 @@ class ManualHierarchicalPrompt(ABC):
               
                     # create the final prompt and chain using llm_f
                     template = self.prefix + template.format(eng_text=eng_text, pred = generated_knowledge) + self.suffix + "French:"
-                    prompt = PromptTemplate.from_template(template)
-                    chain = prompt | llm_f
-                    pred = chain.invoke({'eng_text': eng_text,'pred':generated_knowledge})
-
+                    pred = llm_f(template)
+                    print("pred",pred)
                     # process the prediction
-                    final_ans = self.text_processor(pred)
+                    final_ans = self.text_processor(pred[0]['generated_text'])
+                    print("final_ans",final_ans)
                     bleu_score  = self.metrics[0]
-                    eval_score = bleu_score(final_ans,answer)
+                    eval_score = bleu_score([final_ans],[answer])
+                    print("eval_score",eval_score)
                     if  eval_score >= self.thres:
-                        self.scores.append(i)
+                        self.scores.append(level)
                         self.predictions.append(final_ans)
                         self.references.append(answer)
                         break
                     else:
-                        i = i + hp_scores[self.task]
-                        self.scores.append(i)
+                        level = level + hp_scores[self.task]
+                        self.scores.append(level)
                         self.predictions.append(final_ans)
                         self.references.append(answer)
                 
@@ -329,18 +328,18 @@ class ManualHierarchicalPrompt(ABC):
                 else :
                     template = self.prompts[i].get_prompt(self.task).format(eng_text=eng_text)
                     template = self.prefix + template + self.suffix +"French:"
-                    prompt = PromptTemplate.from_template(template)
-                    chain = prompt | llm_f
-                    pred = chain.invoke({'eng_text': eng_text})
-                    final_ans = self.text_processor(pred)
+                    pred = llm_f(template)
+                    final_ans = self.text_processor(pred[0]['generated_text'])
                     bleu_score  = self.metrics[0]
-                    eval_score = bleu_score(final_ans,answer)
+                    eval_score = bleu_score([final_ans],[answer])
+                    print("eval_score",eval_score)
                     if  eval_score >= self.thres:
-                        self.scores.append(i)
+                        self.scores.append(level)
                         self.predictions.append(final_ans)
                         self.references.append(answer)
                         break
                     else:
+                        level = level + 1
                         continue
 
 
