@@ -37,21 +37,15 @@ class AnswerProcessor(ABC):
         """Process Commonsense QA (CSQA) text."""
         text = text.lower()
         lines = text.split('\n')
+        answer_map = {'a': 0, 'b': 1, 'c': 2, 'd': 3, 'e': 4}
 
         for i, line in enumerate(lines):
             if "answer:" in line:
                 answer_sentence = lines[i].replace('answer:', '').strip()
                 print(answer_sentence)
-                if 'a' in answer_sentence:
-                    return 0
-                elif 'b' in answer_sentence:
-                    return 1
-                elif 'c' in answer_sentence:
-                    return 2
-                elif 'd' in answer_sentence:
-                    return 3
-                elif 'e' in answer_sentence:
-                    return 4
+                first_char = answer_sentence[0]
+                if first_char in answer_map:
+                    return answer_map[first_char]
                 else:
                     return 0
 
