@@ -41,15 +41,15 @@ class AnswerProcessor(ABC):
             if "answer:" in line:
                 answer_sentence = lines[i].replace('answer:', '').strip()
                 print(answer_sentence)
-                if answer_sentence.startswith('a') or answer_sentence.startswith('a.') or answer_sentence.startswith('a)') or answer_sentence.startswith('( a') or answer_sentence.startswith('**a') or answer_sentence.startswith('**a.') or answer_sentence.startswith('**( a') or answer_sentence.startswith('** a)'):
+                if answer_sentence.startswith('a') or answer_sentence.startswith('a.') or answer_sentence.startswith('a)') or answer_sentence.startswith('( a') or answer_sentence.startswith('** a') or answer_sentence.startswith('**a.') or answer_sentence.startswith('**( a') or answer_sentence.startswith('** a)'):
                     return 0
-                elif answer_sentence.startswith('b') or answer_sentence.startswith('b.') or answer_sentence.startswith('b)') or answer_sentence.startswith('( b') or answer_sentence.startswith('**b') or answer_sentence.startswith('**b.') or answer_sentence.startswith('**( b') or answer_sentence.startswith('** b)'):
+                elif answer_sentence.startswith('b') or answer_sentence.startswith('b.') or answer_sentence.startswith('b)') or answer_sentence.startswith('( b') or answer_sentence.startswith('** b') or answer_sentence.startswith('**b.') or answer_sentence.startswith('**( b') or answer_sentence.startswith('** b)'):
                     return 1
-                elif answer_sentence.startswith('c') or answer_sentence.startswith('c.') or answer_sentence.startswith('c)') or answer_sentence.startswith('( c') or answer_sentence.startswith('**c') or answer_sentence.startswith('**c.') or answer_sentence.startswith('**( c') or answer_sentence.startswith('** c)'):
+                elif answer_sentence.startswith('c') or answer_sentence.startswith('c.') or answer_sentence.startswith('c)') or answer_sentence.startswith('( c') or answer_sentence.startswith('** c') or answer_sentence.startswith('**c.') or answer_sentence.startswith('**( c') or answer_sentence.startswith('** c)'):
                     return 2
-                elif answer_sentence.startswith('d') or answer_sentence.startswith('d.') or answer_sentence.startswith('d)') or answer_sentence.startswith('( d') or answer_sentence.startswith('**d') or answer_sentence.startswith('**d.') or answer_sentence.startswith('**( d') or answer_sentence.startswith('** d)'):
+                elif answer_sentence.startswith('d') or answer_sentence.startswith('d.') or answer_sentence.startswith('d)') or answer_sentence.startswith('( d') or answer_sentence.startswith('** d') or answer_sentence.startswith('**d.') or answer_sentence.startswith('**( d') or answer_sentence.startswith('** d)'):
                     return 3
-                elif answer_sentence.startswith('e') or answer_sentence.startswith('e.') or answer_sentence.startswith('e)') or answer_sentence.startswith('( e') or answer_sentence.startswith('**e') or answer_sentence.startswith('**e.') or answer_sentence.startswith('**( e') or answer_sentence.startswith('** e)'):
+                elif answer_sentence.startswith('e') or answer_sentence.startswith('e.') or answer_sentence.startswith('e)') or answer_sentence.startswith('( e') or answer_sentence.startswith('** e') or answer_sentence.startswith('**e.') or answer_sentence.startswith('**( e') or answer_sentence.startswith('** e)'):
                     return 4
                 else:
                     return 0
