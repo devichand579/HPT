@@ -150,11 +150,11 @@ class ManualHierarchicalPrompt(ABC):
             elif self.task == "csqa":
                 # extract the question and choices 
                 question = item['question'][0]
-                text1 = item['choices'][0]['text'][0] 
-                text2 = item['choices'][0]['text'][1] 
-                text3 = item['choices'][0]['text'][2]
-                text4 = item['choices'][0]['text'][3] 
-                text5 = item['choices'][0]['text'][4] 
+                text1 = item['choices']['text'][0] 
+                text2 = item['choices']['text'][1] 
+                text3 = item['choices']['text'][2]
+                text4 = item['choices']['text'][3] 
+                text5 = item['choices']['text'][4] 
 
                 # extract the answer key
                 answer = item['answerKey']
