@@ -58,7 +58,6 @@ class ManualHierarchicalPrompt(ABC):
                 passage = item['passage']
                 question = item['question']
                 answer = item['answer']
-                print(answer)
                 if answer == True:
                     ans = 1
                 else:
@@ -81,11 +80,10 @@ class ManualHierarchicalPrompt(ABC):
                         else:
                             pred = llm_f(template)
                             pred_txt = pred[0]['generated_text']
-                        print(pred_txt)
                     # process the prediction
                     final_ans = self.text_processor(pred_txt)
-                    print("final_ans",final_ans)
                     print("ans",ans)
+                    print("final_ans",final_ans)
                     if final_ans == ans:
                         print("level",i)
                         self.scores.append(i)
@@ -111,11 +109,10 @@ class ManualHierarchicalPrompt(ABC):
                     # create the final prompt and chain using llm_f
                     template = self.prefix + template.format(passage=passage, question=question, pred = generated_knowledge) + self.suffix + "Answer:"
                     pred = llm_f(template)
-                    print(pred)
                     # process the prediction
                     final_ans = self.text_processor(pred[0]['generated_text'])
-                    print("final_ans",final_ans)
                     print("ans",ans)
+                    print("final_ans",final_ans)
                     if final_ans == ans:
                         print("level",i)
                         self.scores.append(i)
@@ -124,6 +121,7 @@ class ManualHierarchicalPrompt(ABC):
                         break
                     else:
                         i = i + hp_scores[self.task]
+                        print("level",i)
                         self.scores.append(i)
                         self.predictions.append(final_ans)
                         self.references.append(ans)
@@ -131,12 +129,11 @@ class ManualHierarchicalPrompt(ABC):
                 
                 else :
                     template = self.prompts[i].get_prompt(self.task).format(passage=passage, question=question)
-                    template = self.prefix + template + self.suffix +"Answer:"
+                    template = self.prefix + template + self.suffix + "Answer:"
                     pred = llm_f(template)
-                    print(pred)
                     final_ans = self.text_processor(pred[0]['generated_text'])
-                    print("final_ans",final_ans)
                     print("ans",ans)
+                    print("final_ans",final_ans)
                     if final_ans == ans:
                         print("level",i)
                         self.scores.append(i)
@@ -433,7 +430,10 @@ class ManualHierarchicalPrompt(ABC):
         '''
         processes the entire dataset using hierarchical prompts
         '''
+        i=0
         for item in self.dataset:
+            print("item",i)
+            i=i+1
             self.prompt_process(item)
 
     

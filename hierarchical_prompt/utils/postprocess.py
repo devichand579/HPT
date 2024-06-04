@@ -24,6 +24,7 @@ class AnswerProcessor(ABC):
         for line in lines:
             if "answer:" in line:
                 answer_sentence = line.replace('answer:', '').strip()
+                print(answer_sentence)
                 for word in l1:
                     if word in answer_sentence:
                         return 1
