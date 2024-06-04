@@ -255,8 +255,6 @@ class ManualHierarchicalPrompt(ABC):
                 # extract english text and answer in french
                 eng_text = item['translation']['en']
                 answer  = item['translation']['fr']
-                print("eng_text",eng_text)
-                print("answer",answer)
                 # level 4
                 if i==4:
                     # retrieve multiple levels of least-to-most prompting
@@ -278,10 +276,12 @@ class ManualHierarchicalPrompt(ABC):
                     # process the prediction
                     final_ans = self.text_processor(pred_text)
                     print("final_ans",final_ans)
+                    print("answer",answer)
                     bleu_score  = self.metrics[0]
                     eval_score = bleu_score([final_ans],[answer])
                     print("eval_score",eval_score)
                     if  eval_score >= self.thres:
+                        print("level",level)
                         self.scores.append(level)
                         self.predictions.append(final_ans)
                         self.references.append(answer)
@@ -309,10 +309,12 @@ class ManualHierarchicalPrompt(ABC):
                     # process the prediction
                     final_ans = self.text_processor(pred[0]['generated_text'])
                     print("final_ans",final_ans)
+                    print("answer",answer)
                     bleu_score  = self.metrics[0]
                     eval_score = bleu_score([final_ans],[answer])
                     print("eval_score",eval_score)
                     if  eval_score >= self.thres:
+                        print("level",level)
                         self.scores.append(level)
                         self.predictions.append(final_ans)
                         self.references.append(answer)
@@ -329,11 +331,15 @@ class ManualHierarchicalPrompt(ABC):
                     template = self.prompts[i].get_prompt(self.task).format(eng_text=eng_text)
                     template = self.prefix + template + self.suffix +"French:"
                     pred = llm_f(template)
+                    print("pred",pred)
                     final_ans = self.text_processor(pred[0]['generated_text'])
+                    print("final_ans",final_ans)
+                    print("answer",answer)
                     bleu_score  = self.metrics[0]
                     eval_score = bleu_score([final_ans],[answer])
                     print("eval_score",eval_score)
                     if  eval_score >= self.thres:
+                        print("level",level)
                         self.scores.append(level)
                         self.predictions.append(final_ans)
                         self.references.append(answer)
