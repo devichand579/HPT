@@ -126,7 +126,6 @@ class Phi3(Model):
             "text-generation",
             model=self.model,
             tokenizer=self.tokenizer,
-            device=device,
             do_sample=True,
             return_full_text=True,
             generation_config=self.generation_config
@@ -135,7 +134,6 @@ class Phi3(Model):
             "text-generation",
             model=self.model,
             tokenizer=self.tokenizer,
-            device=device,
             do_sample=True,
             return_full_text=False,
             generation_config=self.generation_config
