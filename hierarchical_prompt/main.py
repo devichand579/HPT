@@ -122,9 +122,9 @@ class ManualHierarchicalPrompt(ABC):
                         self.references.append(ans)
                         break
                     else:
-                        i = i + hp_scores[self.task]
-                        print("level",i)
-                        self.scores.append(i)
+                        level = i + hp_scores[self.task]
+                        print("level",level)
+                        self.scores.append(level)
                         self.predictions.append(final_ans)
                         self.references.append(ans)
                     
