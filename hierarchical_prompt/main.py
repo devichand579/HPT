@@ -272,7 +272,6 @@ class ManualHierarchicalPrompt(ABC):
                             template = self.prefix + templates[i].format(eng_text=eng_text, pred=pred_text) + self.suffix + "French:"
                             pred = llm_f(template)
                             pred_text = pred[0]['generated_text']
-                    print("pred_text",pred_text)
                     # process the prediction
                     final_ans = self.text_processor(pred_text)
                     print("final_ans",final_ans)
@@ -305,7 +304,6 @@ class ManualHierarchicalPrompt(ABC):
                     # create the final prompt and chain using llm_f
                     template = self.prefix + template.format(eng_text=eng_text, pred = generated_knowledge) + self.suffix + "French:"
                     pred = llm_f(template)
-                    print("pred",pred)
                     # process the prediction
                     final_ans = self.text_processor(pred[0]['generated_text'])
                     print("final_ans",final_ans)
@@ -329,9 +327,8 @@ class ManualHierarchicalPrompt(ABC):
                 # for other levels, retrieve the prompt template, add the prefix and suffix, and create a prompt chain using llm_f
                 else :
                     template = self.prompts[i].get_prompt(self.task).format(eng_text=eng_text)
-                    template = self.prefix + template + self.suffix +"French:"
+                    template = self.prefix + template + self.suffix + "French:"
                     pred = llm_f(template)
-                    print("pred",pred)
                     final_ans = self.text_processor(pred[0]['generated_text'])
                     print("final_ans",final_ans)
                     print("answer",answer)
