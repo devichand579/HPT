@@ -48,6 +48,7 @@ class ManualHierarchicalPrompt(ABC):
         '''
         processes a single item from the dataset using hierarchical prompts
         '''
+        level = 1
         for i in range(1,6):
             llm_f = self.model.pipe_f    # full_text pipeline
             llm_nf = self.model.pipe_nf # non_full_text pipeline
@@ -86,12 +87,13 @@ class ManualHierarchicalPrompt(ABC):
                     print("ans",ans)
                     print("final_ans",final_ans)
                     if final_ans == ans:
-                        print("level",i)
-                        self.scores.append(i)
+                        print("level",level)
+                        self.scores.append(level)
                         self.predictions.append(final_ans)
                         self.references.append(ans)
                         break
                     else:
+                        level = level + 1
                         continue
 
                 # level 5
@@ -116,13 +118,13 @@ class ManualHierarchicalPrompt(ABC):
                     print("ans",ans)
                     print("final_ans",final_ans)
                     if final_ans == ans:
-                        print("level",i)
-                        self.scores.append(i)
+                        print("level",level)
+                        self.scores.append(level)
                         self.predictions.append(final_ans)
                         self.references.append(ans)
                         break
                     else:
-                        level = i + hp_scores[self.task]
+                        level = level + hp_scores[self.task]
                         print("level",level)
                         self.scores.append(level)
                         self.predictions.append(final_ans)
@@ -138,12 +140,13 @@ class ManualHierarchicalPrompt(ABC):
                     print("ans",ans)
                     print("final_ans",final_ans)
                     if final_ans == ans:
-                        print("level",i)
-                        self.scores.append(i)
+                        print("level",level)
+                        self.scores.append(level)
                         self.predictions.append(final_ans)
                         self.references.append(ans)
                         break
                     else:
+                        level = level + 1
                         continue
 
             # handles multiple-choice questions
