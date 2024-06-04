@@ -155,7 +155,7 @@ class ManualHierarchicalPrompt(ABC):
                 text3 = item['choices']['text'][2]
                 text4 = item['choices']['text'][3] 
                 text5 = item['choices']['text'][4] 
-
+                print("question",question)  
                 # extract the answer key
                 answer = item['answerKey']
                 if answer == "A":
