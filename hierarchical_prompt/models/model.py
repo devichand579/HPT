@@ -32,6 +32,7 @@ class Model(ABC):
         self.load_model(name)
 
     def load_model(self,name):
+        print(name)
         model_name = self.model_names.get(name)
         if model_name is None:
             raise ValueError(f"Model name '{name}' is not supported.")
@@ -112,27 +113,27 @@ class LLama3(Model):
         return preds[final_idx]
     
     
-class Phi3(Model):
-    def __init__(self):
-        super().__init__("phi3")
-        self.pipe_f = pipeline(
-                               "text-generation",
-                                model=self.model,
-                                tokenizer=self.tokenizer,
-                                do_sample=True,
-                                return_full_text=True,
-                                generation_config=self.generation_config
-                               )
-        self.pipe_nf = pipeline(
-                                "text-generation",
-                                model=self.model,
-                                tokenizer=self.tokenizer,
-                                do_sample=True,
-                                return_full_text=False,
-                                generation_config=self.generation_config
-                               )
+# class Phi3(Model):
+#     def __init__(self):
+#         super().__init__("phi3")
+#         self.pipe_f = pipeline(
+#                                "text-generation",
+#                                 model=self.model,
+#                                 tokenizer=self.tokenizer,
+#                                 do_sample=True,
+#                                 return_full_text=True,
+#                                 generation_config=self.generation_config
+#                                )
+#         self.pipe_nf = pipeline(
+#                                 "text-generation",
+#                                 model=self.model,
+#                                 tokenizer=self.tokenizer,
+#                                 do_sample=True,
+#                                 return_full_text=False,
+#                                 generation_config=self.generation_config
+#                                )
 
-        logging.info("***Phi3 text generation pipelines created successfully***")
+#         logging.info("***Phi3 text generation pipelines created successfully***")
 
 
 class Phi3(Model):
