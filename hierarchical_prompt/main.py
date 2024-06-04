@@ -149,7 +149,7 @@ class ManualHierarchicalPrompt(ABC):
             # handles multiple-choice questions
             elif self.task == "csqa":
                 # extract the question and choices 
-                question = item['question'][0]
+                question = item['question']
                 text1 = item['choices']['text'][0] 
                 text2 = item['choices']['text'][1] 
                 text3 = item['choices']['text'][2]
