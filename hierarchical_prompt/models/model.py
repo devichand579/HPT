@@ -88,7 +88,7 @@ class LLama3(Model):
         for prompt in prompts:
             inputs = self.tokenizer(prompt, return_tensors="pt")
             input_ids = inputs.input_ids
-            input_ids = input_ids.to('cuda')
+            input_ids = input_ids.to(self.model.device)
             outputs = self.model.generate(
             **inputs,
             max_new_tokens=1024,
