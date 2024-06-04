@@ -237,6 +237,7 @@ class ManualHierarchicalPrompt(ABC):
                     template = self.prompts[i].get_prompt(self.task).format(question=question, text1=text1, text2=text2, text3=text3, text4=text4, text5=text5)
                     template = self.prefix + template + self.suffix +"Answer:"
                     pred = llm_f(template)
+                    print("pred",pred)
                     final_ans = self.text_processor(pred[0]['generated_text'])
                     print("ans",ans)
                     print("final_ans",final_ans)
@@ -249,7 +250,7 @@ class ManualHierarchicalPrompt(ABC):
                     else:
                         level = level + 1
                         continue
-                    
+
             # handles translation tasks
             elif self.task == "iwslt":
                 # extract english text and answer in french
