@@ -114,8 +114,8 @@ class LLama3(Model):
     
 
 class Phi3(Model):
-    def _init_(self):
-        super()._init_("phi3")
+    def __init__(self):
+        super().__init__("phi3")
         
         self.accelerator = Accelerator()
         self.model, self.tokenizer = self.accelerator.prepare(self.model, self.tokenizer)
