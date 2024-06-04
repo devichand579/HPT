@@ -43,11 +43,10 @@ class AnswerProcessor(ABC):
             if "answer:" in line:
                 answer_sentence = lines[i].replace('answer:', '').strip()
                 print(answer_sentence)
-                first_char = answer_sentence[0]
-                if first_char in answer_map:
-                    return answer_map[first_char]
-                else:
-                    return 0
+                for char in answer_map:
+                    if char in answer_sentence:
+                        return answer_map[char]
+                return 0
 
     def pp_iwlst(self, passage):
         """Process International Workshop on Spoken Language Translation (IWSLT) text."""
