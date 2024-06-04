@@ -113,7 +113,7 @@ class LLama3(Model):
     
     
 class Phi3(Model):
-    def _init_(self):
+    def __init__(self):
         super().__init__("phi3")
 
        
