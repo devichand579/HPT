@@ -31,4 +31,4 @@ class DatasetLoader(ABC):
         
         self.load_datasets()
         logging.info(f"***Dataset {name} loaded successfully***")
-        return self.datasets[name]
+        return self.datasets[name].select(range(30))
