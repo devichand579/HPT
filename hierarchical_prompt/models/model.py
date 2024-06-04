@@ -113,26 +113,30 @@ class LLama3(Model):
     
     
 class Phi3(Model):
-    def __init__(self):
-        super().__init__("phi3")
+    def _init_(self):
+        super()._init_("phi3")
+        device = 0 if torch.cuda.is_available() else -1
+        
         self.pipe_f = pipeline(
-                               "text-generation",
-                                model=self.model,
-                                tokenizer=self.tokenizer,
-                                do_sample=True,
-                                return_full_text=True,
-                                generation_config=self.generation_config
-                               )
+            "text-generation",
+            model=self.model.to('cuda') if device == 0 else self.model,
+            tokenizer=self.tokenizer,
+            device=device,
+            do_sample=True,
+            return_full_text=True,
+            generation_config=self.generation_config
+        )
         self.pipe_nf = pipeline(
-                                "text-generation",
-                                model=self.model,
-                                tokenizer=self.tokenizer,
-                                do_sample=True,
-                                return_full_text=False,
-                                generation_config=self.generation_config
-                               )
+            "text-generation",
+            model=self.model.to('cuda') if device == 0 else self.model,
+            tokenizer=self.tokenizer,
+            device=device,
+            do_sample=True,
+            return_full_text=False,
+            generation_config=self.generation_config
+        )
 
-        logging.info("***Phi3 text generation pipelines created successfully***")
+        logging.info("**Phi3 text generation pipelines created successfully**")
         
     
 class Mistral(Model):
