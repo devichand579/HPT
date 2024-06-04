@@ -58,6 +58,7 @@ class ManualHierarchicalPrompt(ABC):
                 passage = item['passage']
                 question = item['question']
                 answer = item['answer']
+                print(answer)
                 if answer == "true":
                     ans = 1
                 else:
