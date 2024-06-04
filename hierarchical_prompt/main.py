@@ -399,7 +399,7 @@ class ManualHierarchicalPrompt(ABC):
                     generated_knowledge = self.gen_model.generate_knowledge(know_prompts_list)
               
                     # create the final prompt and chain using llm_f
-                    template = self.prefix + template.format(eng_text=eng_text, pred = generated_knowledge) + self.suffix + "Summary:"
+                    template = self.prefix + template.format(dialogue=dialogue, pred = generated_knowledge) + self.suffix + "Summary:"
                     pred = llm_f(template)
                     # process the prediction
                     final_ans = self.text_processor(pred[0]['generated_text'])
