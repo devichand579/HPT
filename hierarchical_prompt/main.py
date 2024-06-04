@@ -374,9 +374,9 @@ class ManualHierarchicalPrompt(ABC):
                     print("final_ans",final_ans)
                     print("answer",answer)
                     rogue_score  = self.metrics[0]
-                    eval_score["rouge1"] = rogue_score([final_ans],[answer])
+                    eval_score = rogue_score([final_ans],[answer])
                     print("eval_score",eval_score)
-                    if  eval_score >= self.thres:
+                    if  eval_score["rouge1"] >= self.thres:
                         print("level",level)
                         self.scores.append(level)
                         self.predictions.append(final_ans)
@@ -406,9 +406,9 @@ class ManualHierarchicalPrompt(ABC):
                     print("final_ans",final_ans)
                     print("answer",answer)
                     rogue_score  = self.metrics[0]
-                    eval_score["rouge1"] = rogue_score([final_ans],[answer])
+                    eval_score = rogue_score([final_ans],[answer])
                     print("eval_score",eval_score)
-                    if  eval_score >= self.thres:
+                    if  eval_score["rouge1"] >= self.thres:
                         print("level",level)
                         self.scores.append(level)
                         self.predictions.append(final_ans)
@@ -430,9 +430,9 @@ class ManualHierarchicalPrompt(ABC):
                     print("final_ans",final_ans)
                     print("answer",answer)
                     rogue_score  = self.metrics[0]
-                    eval_score["rouge1"] = rogue_score([final_ans],[answer])
+                    eval_score = rogue_score([final_ans],[answer])
                     print("eval_score",eval_score)
-                    if  eval_score >= self.thres:
+                    if  eval_score["rouge1"] >= self.thres:
                         print("level",level)
                         self.scores.append(level)
                         self.predictions.append(final_ans)
@@ -754,7 +754,7 @@ def main(args):
         scores = manual_hp.compute_scores()
         with open("results.txt", "a") as file:
             if dataset_name in ["iwslt", "samsum"]:
-                file.write("Dataset:" + dataset_name + "\n" + "Model:" + model_name + "\n" + "Threshold:" + thres + "\n" + json.dumps(scores, indent=4) + "\n")
+                file.write("Dataset:" + dataset_name + "\n" + "Model:" + model_name + "\n" + "Threshold:" + str(thres) + "\n" + json.dumps(scores, indent=4) + "\n")
             else :
                 file.write("Dataset:" + dataset_name + "\n" + "Model:" + model_name + "\n" + json.dumps(scores, indent=4) + "\n")
 
