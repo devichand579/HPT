@@ -59,7 +59,7 @@ class ManualHierarchicalPrompt(ABC):
                 question = item['question']
                 answer = item['answer']
                 print(answer)
-                if answer == "true":
+                if answer == "True":
                     ans = 1
                 else:
                     ans = 0
