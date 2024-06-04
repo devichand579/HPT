@@ -5,6 +5,7 @@ import numpy as np
 from abc import ABC
 import logging 
 from dotenv import load_dotenv
+from accelerate import Accelerator
 load_dotenv()
 hf_token = os.getenv('HF_TOKEN')
 
@@ -111,15 +112,21 @@ class LLama3(Model):
         final_idx = np.argmax(scores)
         return preds[final_idx]
     
-    
+
 class Phi3(Model):
-    def __init__(self):
-        super().__init__("phi3")
+    def _init_(self):
+        super()._init_("phi3")
+        
+        self.accelerator = Accelerator()
+        self.model, self.tokenizer = self.accelerator.prepare(self.model, self.tokenizer)
+
+        device = 0 if torch.cuda.is_available() else -1
 
         self.pipe_f = pipeline(
             "text-generation",
             model=self.model,
             tokenizer=self.tokenizer,
+            device=device,
             do_sample=True,
             return_full_text=True,
             generation_config=self.generation_config
@@ -128,12 +135,13 @@ class Phi3(Model):
             "text-generation",
             model=self.model,
             tokenizer=self.tokenizer,
+            device=device,
             do_sample=True,
             return_full_text=False,
             generation_config=self.generation_config
         )
 
-        logging.info("**Phi3 text generation pipelines created successfully**")
+        logging.info("*Phi3 text generation pipelines created successfully*")
 
         
     
