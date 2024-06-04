@@ -114,7 +114,7 @@ class LLama3(Model):
     
 class Phi3(Model):
     def _init_(self):
-        super()._init_("phi3")
+        super().__init__("phi3")
 
        
         device = 0 if torch.cuda.is_available() else -1
@@ -139,7 +139,6 @@ class Phi3(Model):
         )
 
         logging.info("**Phi3 text generation pipelines created successfully**")
-
 
         
     
