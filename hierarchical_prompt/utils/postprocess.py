@@ -39,7 +39,6 @@ class AnswerProcessor(ABC):
         for i, line in enumerate(lines):
             if "answer:" in line:
                 answer_sentence = lines[i].replace('answer:', '').strip()
-                print(answer_sentence)
                 if answer_sentence.startswith('a') or answer_sentence.startswith('a.') or answer_sentence.startswith('a)') or answer_sentence.startswith('( a') or answer_sentence.startswith('** a') or answer_sentence.startswith('**a.') or answer_sentence.startswith('**( a') or answer_sentence.startswith('** a)'):
                     return 0
                 elif answer_sentence.startswith('b') or answer_sentence.startswith('b.') or answer_sentence.startswith('b)') or answer_sentence.startswith('( b') or answer_sentence.startswith('** b') or answer_sentence.startswith('**b.') or answer_sentence.startswith('**( b') or answer_sentence.startswith('** b)'):
