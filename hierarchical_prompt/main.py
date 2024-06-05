@@ -402,10 +402,7 @@ class ManualHierarchicalPrompt(ABC):
         '''
         processes the entire dataset using hierarchical prompts
         '''
-        i=0
         for item in self.dataset:
-            print("item",i)
-            i=i+1
             self.prompt_process(item)
         logging.info("***Dataset processed successfully***")
 
