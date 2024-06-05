@@ -114,9 +114,9 @@ class Leasttomost(Promptloader):
 class generatedknowledge(Promptloader):
     def __init__(self):
         super().__init__()
-        self.prompts["boolq"] = ("Based on the passage:'{0}'\nAnswer True/False to the question: '{1}' using interpretation of the passage:{2}.").format("{passage}", "{question}", "{pred}")
-        self.prompts["csqa"] = ("Choose the answer.\n{0}\nA {1}\nB {2}\nC {3}\nD {4}\nE {5} using interpretation of the question:{6}").format("{question}", "{text1}", "{text2}", "{text3}", "{text4}", "{text5}", "{pred}")
-        self.prompts["iwslt"] = ("Translate '{0}' to french using interpretation of the text:{1}").format("{eng_text}", "{pred}")
+        self.prompts["boolq"] = ("Based on the passage:'{0}'\nAnswer True/False to the question: '{1}' using knowledge of the passage:{2}.").format("{passage}", "{question}", "{pred}")
+        self.prompts["csqa"] = ("Choose the answer.\n{0}\nA {1}\nB {2}\nC {3}\nD {4}\nE {5} using knowledge of the question:{6}").format("{question}", "{text1}", "{text2}", "{text3}", "{text4}", "{text5}", "{pred}")
+        self.prompts["iwslt"] = ("Translate '{0}' to french using definitions of the keywords:{1}").format("{eng_text}", "{pred}")
         self.prompts["samsum"] = ("Summarise the Dialogue: '{0}' using interpretation of the dialogue:{1}").format("{dialogue}", "{pred}")
  
 
