@@ -352,13 +352,9 @@ class ManualHierarchicalPrompt(ABC):
                             pred_text = pred[0]['generated_text']
                     # process the prediction
                     final_ans = self.text_processor(pred_text)
-                    print("final_ans",final_ans)
-                    print("answer",answer)
                     rogue_score  = self.metrics[0]
                     eval_score = rogue_score([final_ans],[answer])
-                    print("eval_score",eval_score)
                     if  eval_score["rouge1"] >= self.thres:
-                        print("level",level)
                         self.scores.append(level)
                         self.predictions.append(final_ans)
                         self.references.append(answer)
@@ -379,18 +375,14 @@ class ManualHierarchicalPrompt(ABC):
                         know_prompts_list.append(knowledge_template)
                     generated_knowledge = self.gen_model.generate_knowledge(know_prompts_list)
               
-                    # create the final prompt and chain using llm_f
+                  
                     template = self.prefix + template.format(dialogue=dialogue, pred = generated_knowledge) + self.suffix + "Summary:"
                     pred = llm_f(template)
                     # process the prediction
                     final_ans = self.text_processor(pred[0]['generated_text'])
-                    print("final_ans",final_ans)
-                    print("answer",answer)
                     rogue_score  = self.metrics[0]
                     eval_score = rogue_score([final_ans],[answer])
-                    print("eval_score",eval_score)
                     if  eval_score["rouge1"] >= self.thres:
-                        print("level",level)
                         self.scores.append(level)
                         self.predictions.append(final_ans)
                         self.references.append(answer)
@@ -408,13 +400,9 @@ class ManualHierarchicalPrompt(ABC):
                     template = self.prefix + template + self.suffix + "Summary:"
                     pred = llm_f(template)
                     final_ans = self.text_processor(pred[0]['generated_text'])
-                    print("final_ans",final_ans)
-                    print("answer",answer)
                     rogue_score  = self.metrics[0]
                     eval_score = rogue_score([final_ans],[answer])
-                    print("eval_score",eval_score)
                     if  eval_score["rouge1"] >= self.thres:
-                        print("level",level)
                         self.scores.append(level)
                         self.predictions.append(final_ans)
                         self.references.append(answer)
