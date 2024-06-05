@@ -419,6 +419,7 @@ class ManualHierarchicalPrompt(ABC):
             print("item",i)
             i=i+1
             self.prompt_process(item)
+        logging.info("***Dataset processed successfully***")
 
     
     def compute_scores(self):
