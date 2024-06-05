@@ -111,7 +111,6 @@ class ManualHierarchicalPrompt(ABC):
                     # process the prediction
                     final_ans = self.text_processor(pred[0]['generated_text'])
                     if final_ans == ans:
-                        print("level",level)
                         self.scores.append(level)
                         self.predictions.append(final_ans)
                         self.references.append(ans)
@@ -178,10 +177,7 @@ class ManualHierarchicalPrompt(ABC):
                             pred_text = pred[0]['generated_text']
                     # process the prediction
                     final_ans = self.text_processor(pred_text)
-                    print("ans",ans)
-                    print("final_ans",final_ans)
                     if final_ans == ans:
-                        print("level",level)
                         self.scores.append(level)
                         self.predictions.append(final_ans)
                         self.references.append(ans)
@@ -194,7 +190,7 @@ class ManualHierarchicalPrompt(ABC):
                 elif i==5:
                     gen_prefix = "<|start_header_id|>user<|end_header_id|>\n"
                     gen_suffix = "<|eot_id|><|start_header_id|>assistant<|end_header_id|>\n"
-                    # retrieve the template and create a prompt chain using llm_nf
+
                     template, gen_knowledge_template = self.prompts[i].get_prompt(self.task)
                     gen_knowledge_template = gen_knowledge_template.format(question=question)
                     knowledge_template = gen_prefix + gen_knowledge_template + gen_suffix
@@ -209,10 +205,7 @@ class ManualHierarchicalPrompt(ABC):
 
                     # process the prediction
                     final_ans = self.text_processor(pred[0]['generated_text'])
-                    print("ans",ans)
-                    print("final_ans",final_ans)
                     if final_ans == ans:
-                        print("level",level)
                         self.scores.append(level)
                         self.predictions.append(final_ans)
                         self.references.append(ans)
@@ -229,10 +222,7 @@ class ManualHierarchicalPrompt(ABC):
                     template = self.prefix + template + self.suffix +"Answer:"
                     pred = llm_f(template)
                     final_ans = self.text_processor(pred[0]['generated_text'])
-                    print("ans",ans)
-                    print("final_ans",final_ans)
                     if final_ans == ans:
-                        print("level",level)
                         self.scores.append(level)
                         self.predictions.append(final_ans)
                         self.references.append(ans)
