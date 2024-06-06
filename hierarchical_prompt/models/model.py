@@ -33,6 +33,7 @@ class Model(ABC):
 
     def load_model(self,name):
         model_name = self.model_names.get(name)
+        print(model_name)
         if model_name is None:
             raise ValueError(f"Model name '{name}' is not supported.")
         
