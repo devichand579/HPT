@@ -679,7 +679,7 @@ def main(args):
         suffix = "<end_of_turn>\n<start_of_turn>model\n"
     elif model_name == "phi3":
         model = Phi3()
-        prefix = "<|user|>\n"
+        prefix = "<|endoftext|><|user|>\n"
         suffix = "<|end|>\n<|assistant|>\n"
     elif model_name == "mistral":
         model = Mistral()

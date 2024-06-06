@@ -14,7 +14,7 @@ class Model(ABC):
     def __init__(self,name = None):
         self.model_names = {
             "llama3":   "meta-llama/Meta-Llama-3-8B-Instruct",
-            "phi3": "microsoft/Phi-3-mini-4k-instruct",
+            "phi3": "microsoft/Phi-3-small-8k-instruct",
             "mistral": "mistralai/Mistral-7B-Instruct-v0.3",
             "gemma": "google/gemma-1.1-7b-it"
         }
