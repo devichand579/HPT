@@ -32,6 +32,7 @@ class Model(ABC):
         self.load_model(name)
 
     def load_model(self,name):
+        print(name)
         model_name = self.model_names.get(name)
         print(model_name)
         if model_name is None:
