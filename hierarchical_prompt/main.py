@@ -540,7 +540,6 @@ class AdaptiveHierarchicalPrompt(ABC):
                 template = self.prompts[i].get_prompt(self.task).format(passage=passage, question=question)
                 template = self.prefix + template + self.suffix + "Answer:"
                 pred = llm_f(template)
-                print(pred[0]['generated_text'])
                 final_ans = self.text_processor(pred[0]['generated_text'])
                 print(final_ans)
                 print(ans)
@@ -645,7 +644,6 @@ class AdaptiveHierarchicalPrompt(ABC):
                     else:
                         pred = llm_f(template)
                         pred_txt = pred[0]['generated_text']
-                    print(pred_txt)
                 # process the prediction
                 final_ans = self.text_processor(pred_txt)
                 print(final_ans)
@@ -785,7 +783,6 @@ class AdaptiveHierarchicalPrompt(ABC):
                     
                 template = self.prefix + template.format(passage=passage, question=question, pred = generated_knowledge) + self.suffix + "Answer:"
                 pred = llm_f(template)
-                print(pred)
                 # process the prediction
                 final_ans = self.text_processor(pred[0]['generated_text'])
                 print(final_ans)
@@ -935,6 +932,7 @@ class AdaptiveHierarchicalPrompt(ABC):
             while i<limit:
                 i = i+1
                 level = self.select_prompt_level(item,prev)
+                print(level)
                 llm_level, prev = self.prompt_process(item,level)
                 if llm_level == level:
                     break
