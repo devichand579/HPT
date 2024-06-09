@@ -506,7 +506,7 @@ class AdaptiveHierarchicalPrompt(ABC):
             task_template = self.basic_tasks[self.task]
             template = self.prefix + template.format(task_template, dialogue, prev) + self.suffix + "Level:"
             pred = llm_f(template)
-
+        print(pred[0]['generated_text'])
         level = self.adaptive_processor(pred[0]['generated_text'])
         return int(level)
 
@@ -533,8 +533,12 @@ class AdaptiveHierarchicalPrompt(ABC):
                 template = self.prompts[i].get_prompt(self.task).format(passage=passage, question=question)
                 template = self.prefix + template + self.suffix + "Answer:"
                 pred = llm_f(template)
+                print(pred[0]['generated_text'])
                 final_ans = self.text_processor(pred[0]['generated_text'])
+                print(final_ans)
+                print(ans)
                 if final_ans == ans:
+                    print("Level",level)
                     self.scores.append(level)
                     self.predictions.append(final_ans)
                     self.references.append(ans)
@@ -633,9 +637,13 @@ class AdaptiveHierarchicalPrompt(ABC):
                     else:
                         pred = llm_f(template)
                         pred_txt = pred[0]['generated_text']
+                    print(pred_txt)
                 # process the prediction
                 final_ans = self.text_processor(pred_txt)
+                print(final_ans)
+                print(ans)
                 if final_ans == ans:
+                    print("Level",level)
                     self.scores.append(level)
                     self.predictions.append(final_ans)
                     self.references.append(ans)
@@ -768,9 +776,13 @@ class AdaptiveHierarchicalPrompt(ABC):
                     
                 template = self.prefix + template.format(passage=passage, question=question, pred = generated_knowledge) + self.suffix + "Answer:"
                 pred = llm_f(template)
+                print(pred)
                 # process the prediction
                 final_ans = self.text_processor(pred[0]['generated_text'])
+                print(final_ans)
+                print(ans)    
                 if final_ans == ans:
+                    print("Level",level)
                     self.scores.append(level)
                     self.predictions.append(final_ans)
                     self.references.append(ans)
@@ -921,6 +933,7 @@ class AdaptiveHierarchicalPrompt(ABC):
                     prev = "The model was unable to solve the task at this level of prompting. The previous response was: " + prev + "\n"
                     continue
             if i == limit:
+                print("Level",i+hp_scores[self.task])
                 self.scores.append(i + hp_scores[self.task])
                 final_ans = self.text_processor(prev[0]['generated_text'])
                 self.predictions.append(final_ans)
