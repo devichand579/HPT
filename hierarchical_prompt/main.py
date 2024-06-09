@@ -7,6 +7,7 @@ from abc import ABC
 import argparse
 import json
 import logging
+import re
 
 #Prompts Dictionary
 prompts = {
@@ -507,8 +508,13 @@ class AdaptiveHierarchicalPrompt(ABC):
             template = self.prefix + template.format(prev_res=prev_res ,task = task_template) + self.suffix + "Level:"
             pred = llm_f(template)
         print(pred[0]['generated_text'])
-        level = self.adaptive_processor(pred[0]['generated_text'])
-        return int(level)
+        level_txt = self.adaptive_processor(pred[0]['generated_text'])
+        match = re.search(r'\d+', level_txt)
+        if match:
+            level  = int(match.group())
+        else :
+            level = 1
+        return level
 
     '''
     Prompt processing method
