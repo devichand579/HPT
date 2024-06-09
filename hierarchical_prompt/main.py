@@ -471,7 +471,7 @@ class AdaptiveHierarchicalPrompt(ABC):
         self.prompt_loader = Promptloader()
         self.adaptive_processor = AdaptiveProcessor().processor
 
-    def select_prompt_level(self,item,prev = ""):
+    def select_prompt_level(self,item,prev_res = ""):
         '''
         selects the prompt level based on the item
         '''
