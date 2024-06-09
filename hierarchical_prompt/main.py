@@ -480,8 +480,8 @@ class AdaptiveHierarchicalPrompt(ABC):
             passage = item['passage']
             question = item['question']
             template  = self.prompt_loader.adaptive_prompt
-            task_template = self.basic_tasks[self.task]
-            template = self.prefix + template.format(task_template, passage, question, prev_res) + self.suffix + "Level:"
+            task_template = self.basic_tasks[self.task].format(passage=passage, question=question)
+            template = self.prefix + template.format(prev_res=prev_res ,task = task_template) + self.suffix + "Level:"
             pred = llm_f(template)
         if self.task == "csqa":
             question = item['question']
@@ -491,20 +491,20 @@ class AdaptiveHierarchicalPrompt(ABC):
             text4 = item['choices']['text'][3] 
             text5 = item['choices']['text'][4]  
             template  = self.prompt_loader.adaptive_prompt
-            task_template = self.basic_tasks[self.task]
-            template = self.prefix + template.format(task_template, question, text1, text2, text3, text4, text5, prev_res) + self.suffix + "Level:"
+            task_template = self.basic_tasks[self.task].format(question=question, text1=text1, text2=text2, text3=text3, text4=text4, text5=text5)
+            template = self.prefix + template.format(prev_res=prev_res ,task = task_template) + self.suffix + "Level:"
             pred = llm_f(template)
         if self.task == "iwslt":
             eng_text = item['translation']['en']
             template  = self.prompt_loader.adaptive_prompt
-            task_template = self.basic_tasks[self.task]
-            template = self.prefix + template.format(task_template, eng_text, prev_res) + self.suffix + "Level:"
+            task_template = self.basic_tasks[self.task].format(eng_text=eng_text)
+            template = self.prefix + template.format(prev_res=prev_res ,task = task_template) + self.suffix + "Level:"
             pred = llm_f(template)
         if self.task == "samsum":
             dialogue = item['dialogue']
             template  = self.prompt_loader.adaptive_prompt
-            task_template = self.basic_tasks[self.task]
-            template = self.prefix + template.format(task_template, dialogue, prev_res) + self.suffix + "Level:"
+            task_template = self.basic_tasks[self.task].format(dialogue=dialogue)
+            template = self.prefix + template.format(prev_res=prev_res ,task = task_template) + self.suffix + "Level:"
             pred = llm_f(template)
         print(pred[0]['generated_text'])
         level = self.adaptive_processor(pred[0]['generated_text'])
