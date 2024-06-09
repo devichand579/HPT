@@ -521,6 +521,7 @@ class AdaptiveHierarchicalPrompt(ABC):
         llm_nf = self.model.pipe_nf # non_full_text pipeline
         if level ==1 or level == 2 or level == 3:
             # handles passage and ques-ans pairs
+            i=level
             if self.task == "boolq":
                 #extracting the passage, question, and answer from the item
                 passage = item['passage']
@@ -614,6 +615,7 @@ class AdaptiveHierarchicalPrompt(ABC):
 
         if level==4:
             # handles passage and ques-ans pairs
+            i = level
             if self.task == "boolq":
                 #extracting the passage, question, and answer from the item
                 passage = item['passage']
@@ -753,6 +755,7 @@ class AdaptiveHierarchicalPrompt(ABC):
                     return 0, pred[0]['generated_text']
         if level == 5:
             # handles passage and ques-ans pairs
+            i = level
             if self.task == "boolq":
                 #extracting the passage, question, and answer from the item
                 passage = item['passage']
