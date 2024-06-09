@@ -481,7 +481,7 @@ class AdaptiveHierarchicalPrompt(ABC):
             question = item['question']
             template  = self.prompt_loader.adaptive_prompt
             task_template = self.basic_tasks[self.task]
-            template = self.prefix + template.format(task_template, passage, question, prev) + self.suffix + "Level:"
+            template = self.prefix + template.format(task_template, passage, question, prev_res) + self.suffix + "Level:"
             pred = llm_f(template)
         if self.task == "csqa":
             question = item['question']
@@ -492,19 +492,19 @@ class AdaptiveHierarchicalPrompt(ABC):
             text5 = item['choices']['text'][4]  
             template  = self.prompt_loader.adaptive_prompt
             task_template = self.basic_tasks[self.task]
-            template = self.prefix + template.format(task_template, question, text1, text2, text3, text4, text5, prev) + self.suffix + "Level:"
+            template = self.prefix + template.format(task_template, question, text1, text2, text3, text4, text5, prev_res) + self.suffix + "Level:"
             pred = llm_f(template)
         if self.task == "iwslt":
             eng_text = item['translation']['en']
             template  = self.prompt_loader.adaptive_prompt
             task_template = self.basic_tasks[self.task]
-            template = self.prefix + template.format(task_template, eng_text, prev) + self.suffix + "Level:"
+            template = self.prefix + template.format(task_template, eng_text, prev_res) + self.suffix + "Level:"
             pred = llm_f(template)
         if self.task == "samsum":
             dialogue = item['dialogue']
             template  = self.prompt_loader.adaptive_prompt
             task_template = self.basic_tasks[self.task]
-            template = self.prefix + template.format(task_template, dialogue, prev) + self.suffix + "Level:"
+            template = self.prefix + template.format(task_template, dialogue, prev_res) + self.suffix + "Level:"
             pred = llm_f(template)
         print(pred[0]['generated_text'])
         level = self.adaptive_processor(pred[0]['generated_text'])
