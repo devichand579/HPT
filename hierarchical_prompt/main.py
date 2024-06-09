@@ -476,7 +476,7 @@ class AdaptiveHierarchicalPrompt(ABC):
         '''
         selects the prompt level based on the item
         '''
-        llm_f = self.model.pipe_f   # full_text pipeline
+        llm_f = self.gen_model.pipe_f   # full_text pipeline
         if self.task == "boolq":
             passage = item['passage']
             question = item['question']
