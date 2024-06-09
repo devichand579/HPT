@@ -1,1 +1,1 @@
-from .postprocess import AnswerProcessor
+from .postprocess import AnswerProcessor, AdaptiveProcessor

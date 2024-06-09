@@ -64,3 +64,21 @@ class AnswerProcessor(ABC):
         """Process SAMSum text."""
         result = passage.split("Summary:")[-1].strip()
         return result
+    
+    
+    
+class AdaptiveProcessor(ABC):
+    """
+    An utility class to post-process the model output for adaptive hierarchical prompt framework.
+    """
+
+    def __init__(self):
+        self.processor = self.adaptive_processor
+    
+    def adaptive_processor(self, text):
+        """ Process text for adaptive hierarchical prompt framework."""
+        lines = text.split('\n')
+        for i, line in enumerate(lines):
+            if 'Level:' in line:
+                ans = lines[i].replace('Level:', '').strip()
+                return ans

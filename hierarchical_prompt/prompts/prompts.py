@@ -18,7 +18,8 @@ class Promptloader(ABC):
                 "samsum": ("Generate interpretation about the dialogue: {0}").format("{dialogue}")
         }
        
-       self.adaptive_prompt = ""
+       
+       self.adaptive_prompt = ("{0}Choose the most effective prompting strategy among five prompting strategies for the task.\nTask:{1}\nThe prompting strategies are:\n1: Role Prompting -  Defines a role for the model in solving the task.\n2: Zero-shot Chain of Thought prompting - stimulate reasoning and problem-solving by including the phrase 'Let's think step by step' without offering previous examples related to the task.\n3: Three-shot Chain of Thought prompting -  Offers three examples related to the task to guide the model's reasoning process.\n4: Least-to-most prompting  -  Uses a sequential method to derive essential insights from the task in order to solve it.\n5: Generated Knowledge Prompting - Integration and application of external knowledge to accomplish the task. The external knowledge is generated using some other model based on the task.\nSelect only the index(Don't provide the name) of the most effective prompting strategy.").format("{prev_res}","{task}")
 
 
 class Roleprompt(Promptloader):
