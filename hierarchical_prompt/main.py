@@ -510,7 +510,6 @@ class AdaptiveHierarchicalPrompt(ABC):
             template = gen_prefix + template.format(prev_res=prev_res ,task = task_template) + gen_suffix + "Level:"
             pred = llm_f(template)
         level_txt = self.adaptive_processor(pred[0]['generated_text'])
-        print(level_txt)
         match = re.search(r'\d+', level_txt)
         if match:
             level  = int(match.group())
@@ -913,13 +912,11 @@ class AdaptiveHierarchicalPrompt(ABC):
             while i<limit:
                 i = i+1
                 level = self.select_prompt_level(item,prev)
-                print("Current LEvel",level)
                 if level == 0:
                     continue
                 llm_level, prev = self.prompt_process(item,level)
                 if llm_level == level:
                     self.scores.append(level + i)
-                    print("item solved at level",llm_level)
                     break
                 if llm_level ==0:
                     pred= prev
