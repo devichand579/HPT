@@ -541,7 +541,6 @@ class AdaptiveHierarchicalPrompt(ABC):
                 pred = llm_f(template)
                 final_ans = self.text_processor(pred[0]['generated_text'])
                 if final_ans == ans:
-                    self.scores.append(level)
                     self.predictions.append(final_ans)
                     self.references.append(ans)
                     return level, pred[0]['generated_text']
@@ -572,7 +571,6 @@ class AdaptiveHierarchicalPrompt(ABC):
                 pred = llm_f(template)
                 final_ans = self.text_processor(pred[0]['generated_text'])
                 if final_ans == ans:
-                    self.scores.append(level)
                     self.predictions.append(final_ans)
                     self.references.append(ans)
                     return level, pred[0]['generated_text']
@@ -589,7 +587,6 @@ class AdaptiveHierarchicalPrompt(ABC):
                 bleu_score  = self.metrics[0]
                 eval_score = bleu_score([final_ans],[answer])
                 if  eval_score >= self.thres:
-                    self.scores.append(level)
                     self.predictions.append(final_ans)
                     self.references.append(answer)
                     return level, pred[0]['generated_text']
@@ -606,7 +603,6 @@ class AdaptiveHierarchicalPrompt(ABC):
                 rogue_score  = self.metrics[0]
                 eval_score = rogue_score([final_ans],[answer])
                 if  eval_score["rouge1"] >= self.thres:
-                    self.scores.append(level)
                     self.predictions.append(final_ans)
                     self.references.append(answer)
                     return level,pred[0]['generated_text']
@@ -643,7 +639,6 @@ class AdaptiveHierarchicalPrompt(ABC):
                 # process the prediction
                 final_ans = self.text_processor(pred_txt)
                 if final_ans == ans:
-                    self.scores.append(level)
                     self.predictions.append(final_ans)
                     self.references.append(ans)
                     return level, pred[0]['generated_text']
@@ -686,7 +681,6 @@ class AdaptiveHierarchicalPrompt(ABC):
                 # process the prediction
                 final_ans = self.text_processor(pred_text)
                 if final_ans == ans:
-                    self.scores.append(level)
                     self.predictions.append(final_ans)
                     self.references.append(ans)
                     return level, pred[0]['generated_text']
@@ -715,7 +709,6 @@ class AdaptiveHierarchicalPrompt(ABC):
                 bleu_score = self.metrics[0]
                 eval_score = bleu_score([final_ans], [answer])
                 if eval_score >= self.thres:
-                    self.scores.append(level)
                     self.predictions.append(final_ans)
                     self.references.append(answer)
                     return level, pred[0]['generated_text']
@@ -744,7 +737,6 @@ class AdaptiveHierarchicalPrompt(ABC):
                 rogue_score = self.metrics[0]
                 eval_score = rogue_score([final_ans], [answer])
                 if eval_score["rouge1"] >= self.thres:
-                    self.scores.append(level)
                     self.predictions.append(final_ans)
                     self.references.append(answer)
                     return level, pred[0]['generated_text']
@@ -779,7 +771,6 @@ class AdaptiveHierarchicalPrompt(ABC):
                 # process the prediction
                 final_ans = self.text_processor(pred[0]['generated_text'])   
                 if final_ans == ans:
-                    self.scores.append(level)
                     self.predictions.append(final_ans)
                     self.references.append(ans)
                     return level,pred[0]['generated_text']
@@ -822,7 +813,6 @@ class AdaptiveHierarchicalPrompt(ABC):
                 # process the prediction
                 final_ans = self.text_processor(pred[0]['generated_text'])
                 if final_ans == ans:
-                    self.scores.append(level)
                     self.predictions.append(final_ans)
                     self.references.append(ans)
                     return level, pred[0]['generated_text']
@@ -851,7 +841,6 @@ class AdaptiveHierarchicalPrompt(ABC):
                 bleu_score  = self.metrics[0]
                 eval_score = bleu_score([final_ans],[answer])
                 if  eval_score >= self.thres:
-                    self.scores.append(level)
                     self.predictions.append(final_ans)
                     self.references.append(answer)
                     return level, pred[0]['generated_text']
@@ -879,7 +868,6 @@ class AdaptiveHierarchicalPrompt(ABC):
                 rogue_score  = self.metrics[0]
                 eval_score = rogue_score([final_ans],[answer])
                 if  eval_score["rouge1"] >= self.thres:
-                    self.scores.append(level)
                     self.predictions.append(final_ans)
                     self.references.append(answer)
                     return level, pred[0]['generated_text']
@@ -925,14 +913,14 @@ class AdaptiveHierarchicalPrompt(ABC):
                 print("Current LEvel",level)
                 llm_level, prev = self.prompt_process(item,level)
                 if llm_level == level:
+                    self.scores.append(level + i*hp_scores[self.task])
                     print("item solved at level",llm_level)
                     break
                 if llm_level ==0:
                     prev = "The model was unable to solve the task at this level of prompting. The previous response was: " + prev + "\n"
                     continue
             if i == limit:
-                print("Level",i+hp_scores[self.task])
-                self.scores.append(i + hp_scores[self.task])
+                self.scores.append(i + i*hp_scores[self.task])
                 final_ans = self.text_processor(prev)
                 self.predictions.append(final_ans)
                 self.references.append(ans)
