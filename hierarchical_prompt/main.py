@@ -911,17 +911,20 @@ class AdaptiveHierarchicalPrompt(ABC):
                 i = i+1
                 level = self.select_prompt_level(item,prev)
                 print("Current LEvel",level)
+                if level == 0:
+                    continue
                 llm_level, prev = self.prompt_process(item,level)
                 if llm_level == level:
                     self.scores.append(level + i*hp_scores[self.task])
                     print("item solved at level",llm_level)
                     break
                 if llm_level ==0:
+                    pred= prev
                     prev = "The model was unable to solve the task at this level of prompting. The previous response was: " + prev + "\n"
                     continue
             if i == limit:
                 self.scores.append(i + i*hp_scores[self.task])
-                final_ans = self.text_processor(prev)
+                final_ans = self.text_processor(pred)
                 self.predictions.append(final_ans)
                 self.references.append(ans)
         logging.info("***Dataset processed successfully***")
