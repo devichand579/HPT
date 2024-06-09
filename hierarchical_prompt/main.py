@@ -508,6 +508,7 @@ class AdaptiveHierarchicalPrompt(ABC):
             template = self.prefix + template.format(prev_res=prev_res ,task = task_template) + self.suffix + "Level:"
             pred = llm_f(template)
         level_txt = self.adaptive_processor(pred[0]['generated_text'])
+        print(level_txt)
         match = re.search(r'\d+', level_txt)
         if match:
             level  = int(match.group())
@@ -922,7 +923,7 @@ class AdaptiveHierarchicalPrompt(ABC):
                     pred= prev
                     prev = "The model was unable to solve the task at this level of prompting. The previous response was: " + prev + "\n"
                     continue
-            if i == limit:
+            if i == limit and level!=0:
                 self.scores.append(i + i*hp_scores[self.task])
                 final_ans = self.text_processor(pred)
                 self.predictions.append(final_ans)
