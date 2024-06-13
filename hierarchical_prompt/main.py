@@ -515,6 +515,7 @@ class AdaptiveHierarchicalPrompt(ABC):
             level  = int(match.group())
         else :
             level = 1
+        print(level)
         return level
 
     '''
@@ -526,6 +527,7 @@ class AdaptiveHierarchicalPrompt(ABC):
         '''
         llm_f = self.model.pipe_f   # full_text pipeline
         llm_nf = self.model.pipe_nf # non_full_text pipeline
+        final_ans = ""
         if level ==1 or level == 2 or level == 3:
             # handles passage and ques-ans pairs
             i=level
@@ -912,7 +914,7 @@ class AdaptiveHierarchicalPrompt(ABC):
             while i<limit:
                 i = i+1
                 level = self.select_prompt_level(item,prev)
-                if level == 0:
+                if level == 0 or level > 5:
                     continue
                 llm_level, prev = self.prompt_process(item,level)
                 if llm_level == level:
