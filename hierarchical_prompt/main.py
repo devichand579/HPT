@@ -515,7 +515,6 @@ class AdaptiveHierarchicalPrompt(ABC):
             level  = int(match.group())
         else :
             level = 1
-        print(level)
         return level
 
     '''
