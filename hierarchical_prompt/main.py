@@ -545,9 +545,9 @@ class AdaptiveHierarchicalPrompt(ABC):
                 if final_ans == ans:
                     self.predictions.append(final_ans)
                     self.references.append(ans)
-                    return level, pred[0]['generated_text']
+                    return level, pred[0]['generated_text'] + ""
                 else:
-                    return 0, pred[0]['generated_text']
+                    return 0, pred[0]['generated_text'] + ""
             if self.task == "csqa":
                # extract the question and choices 
                 question = item['question']
@@ -575,9 +575,9 @@ class AdaptiveHierarchicalPrompt(ABC):
                 if final_ans == ans:
                     self.predictions.append(final_ans)
                     self.references.append(ans)
-                    return level, pred[0]['generated_text']
+                    return level, pred[0]['generated_text'] + ""
                 else:
-                    return 0, pred[0]['generated_text']
+                    return 0, pred[0]['generated_text'] + ""
             if self.task == "iwslt":
                 # extract english text and answer in french
                 eng_text = item['translation']['en']
@@ -591,9 +591,9 @@ class AdaptiveHierarchicalPrompt(ABC):
                 if  eval_score >= self.thres:
                     self.predictions.append(final_ans)
                     self.references.append(answer)
-                    return level, pred[0]['generated_text']
+                    return level, pred[0]['generated_text'] + ""
                 else:
-                    return 0, pred[0]['generated_text']
+                    return 0, pred[0]['generated_text'] + ""
             if self.task == "samsum":
                 # extract the dialogue and summary
                 dialogue = item['dialogue']
@@ -607,9 +607,9 @@ class AdaptiveHierarchicalPrompt(ABC):
                 if  eval_score["rouge1"] >= self.thres:
                     self.predictions.append(final_ans)
                     self.references.append(answer)
-                    return level,pred[0]['generated_text']
+                    return level,pred[0]['generated_text'] + ""
                 else:
-                    return 0, pred[0]['generated_text']
+                    return 0, pred[0]['generated_text'] + ""
                 
 
         if level==4:
@@ -643,9 +643,9 @@ class AdaptiveHierarchicalPrompt(ABC):
                 if final_ans == ans:
                     self.predictions.append(final_ans)
                     self.references.append(ans)
-                    return level, pred[0]['generated_text']
+                    return level, pred[0]['generated_text'] + ""
                 else:
-                    return 0, pred[0]['generated_text']
+                    return 0, pred[0]['generated_text'] + ""
             if self.task == "csqa":
                 # extract the question and choices
                 question = item['question']
@@ -685,9 +685,9 @@ class AdaptiveHierarchicalPrompt(ABC):
                 if final_ans == ans:
                     self.predictions.append(final_ans)
                     self.references.append(ans)
-                    return level, pred[0]['generated_text']
+                    return level, pred[0]['generated_text'] + ""
                 else:
-                    return 0, pred[0]['generated_text']
+                    return 0, pred[0]['generated_text'] + ""
             if self.task == "iwslt":
                 # extract english text and answer in french
                 eng_text = item['translation']['en']
@@ -713,9 +713,9 @@ class AdaptiveHierarchicalPrompt(ABC):
                 if eval_score >= self.thres:
                     self.predictions.append(final_ans)
                     self.references.append(answer)
-                    return level, pred[0]['generated_text']
+                    return level, pred[0]['generated_text'] + ""
                 else:
-                    return 0, pred[0]['generated_text']
+                    return 0, pred[0]['generated_text'] + ""
             if self.task == "samsum":
                 # extract the dialogue and summary
                 dialogue = item['dialogue']
@@ -741,9 +741,9 @@ class AdaptiveHierarchicalPrompt(ABC):
                 if eval_score["rouge1"] >= self.thres:
                     self.predictions.append(final_ans)
                     self.references.append(answer)
-                    return level, pred[0]['generated_text']
+                    return level, pred[0]['generated_text'] + ""
                 else:
-                    return 0, pred[0]['generated_text']
+                    return 0, pred[0]['generated_text'] + ""
         if level == 5:
             # handles passage and ques-ans pairs
             i = level
@@ -775,9 +775,9 @@ class AdaptiveHierarchicalPrompt(ABC):
                 if final_ans == ans:
                     self.predictions.append(final_ans)
                     self.references.append(ans)
-                    return level,pred[0]['generated_text']
+                    return level,pred[0]['generated_text'] + ""
                 else:
-                    return 0, pred[0]['generated_text']
+                    return 0, pred[0]['generated_text'] + ""
             if self.task == "csqa":
                 # extract the question and choices 
                 question = item['question']
@@ -817,9 +817,9 @@ class AdaptiveHierarchicalPrompt(ABC):
                 if final_ans == ans:
                     self.predictions.append(final_ans)
                     self.references.append(ans)
-                    return level, pred[0]['generated_text']
+                    return level, pred[0]['generated_text'] + ""
                 else:
-                    return 0, pred[0]['generated_text']
+                    return 0, pred[0]['generated_text'] + ""
                 
             if self.task == "iwslt":
                 # extract english text and answer in french
@@ -845,9 +845,9 @@ class AdaptiveHierarchicalPrompt(ABC):
                 if  eval_score >= self.thres:
                     self.predictions.append(final_ans)
                     self.references.append(answer)
-                    return level, pred[0]['generated_text']
+                    return level, pred[0]['generated_text'] + ""
                 else:
-                    return 0, pred[0]['generated_text']
+                    return 0, pred[0]['generated_text'] + ""
             if self.task == "samsum":
                 # extract the dialogue and summary
                 dialogue = item['dialogue']
@@ -872,9 +872,9 @@ class AdaptiveHierarchicalPrompt(ABC):
                 if  eval_score["rouge1"] >= self.thres:
                     self.predictions.append(final_ans)
                     self.references.append(answer)
-                    return level, pred[0]['generated_text']
+                    return level, pred[0]['generated_text'] + ""
                 else:
-                    return 0, pred[0]['generated_text']
+                    return 0, pred[0]['generated_text'] + ""
                     
 
     def process_dataset(self):
