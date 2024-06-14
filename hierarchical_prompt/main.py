@@ -510,6 +510,7 @@ class AdaptiveHierarchicalPrompt(ABC):
             template = gen_prefix + template.format(prev_res=prev_res ,task = task_template) + gen_suffix + "Level:"
             pred = llm_f(template)
         level_txt = self.adaptive_processor(pred[0]['generated_text'])
+        print(pred[0]['generated_text'])
         match = re.search(r'\d+', level_txt)
         if match:
             level  = int(match.group())
