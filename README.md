@@ -54,21 +54,32 @@ To run both the frameworks, use the following command structure:
 bash run.sh method model dataset [--thres num]
 ```
 method
-- man
-- auto
+
+  - man
+  - auto
+    
 model
-- llama3
-- phi3
-- gemma
-- mistral
+
+  - llama3
+  - phi3
+  - gemma
+  - mistral
+    
 dataset
-- boolq
-- csqa
-- iwslt
-- samsum
-if dataset if iwslt or samsum, add '--thres num'
+
+  - boolq
+  - csqa
+  - iwslt
+  - samsum
+    
+If the dataset are IWSLT or SamSum, add '--thres num'
+
 num
-- 0.15
-- 0.20
-  Example: bash run.sh man llama3 iwslt --thres 0.15
+  - 0.15
+  - 0.20
+    
+Example: 
+   ```sh
+   bash run.sh man llama3 iwslt --thres 0.15
+   ```
 
