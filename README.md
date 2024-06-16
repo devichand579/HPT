@@ -38,7 +38,13 @@ To get started, follow these setup commands:
     ```sh
     conda activate <your_environment_name>
     ```
-4. **Install the dependencies**
+    
+4. **Navigate to the main codebase**
+   ```sh
+   cd hierarchical_prompt
+   ```
+   
+5. **Install the dependencies**
    ```sh
    pip install -r requirements.txt
    ```
@@ -49,3 +55,4 @@ To run the framework, use the following command structure:
 
 ```sh
 method model dataset [--thres num]
+```
