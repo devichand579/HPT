@@ -41,7 +41,7 @@ To get started on a linux setup, follow these setup commands:
    pip install -r requirements.txt
    ```
 4. **Adding your Hugging Face token**
-   Create a .env file
+   - Create a .env file
    ```sh
    HF_TOKEN = "your HF Token"
    ```
