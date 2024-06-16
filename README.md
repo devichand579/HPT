@@ -13,7 +13,7 @@ The datasets used in this framework are:
 
 ## Models Used
 
-The following models are utilized in this framework:
+The following instruction-tuned models are utilized in this framework:
 
 - **Llama 3 8B**
 - **Mistral 7B**
