@@ -10,6 +10,7 @@ The datasets used in this framework are:
 - **CommonsenseQA**: A dataset for commonsense reasoning.
 - **IWSLT2017**: A dataset for multilingual translation.
 - **SAMsum**: A dataset for summarization of conversations.
+  The HP-Scores and scoring policy of the corresponding datasets scored by Human experts can be found in [HP-Scores](./HP_scores) directory.
 
 ## Models Used
 
@@ -22,37 +23,52 @@ The following instruction-tuned models are utilized in this framework:
 
 ## Setup Commands
 
-To get started, follow these setup commands:
+To get started on a linux setup, follow these setup commands:
 
-1. **Start the SSH agent in the background:**
-    ```sh
-    eval "$(ssh-agent -s)"
-    ```
 
-2. **Add your SSH private key to the SSH agent:**
-    ```sh
-    ssh-add ./hp
-    ```
-
-3. **Activate your conda environment:**
+1. **Activate your conda environment:**
     ```sh
     conda activate <your_environment_name>
     ```
     
-4. **Navigate to the main codebase**
+2. **Navigate to the main codebase**
    ```sh
    cd hierarchical_prompt
    ```
    
-5. **Install the dependencies**
+3. **Install the dependencies**
    ```sh
    pip install -r requirements.txt
+   ```
+4. **Adding your Hugging Face token**
+   Create a .env file
+   ```sh
+   HF_TOKEN = "your HF Token"
    ```
 
 ## Running the Framework
 
-To run the framework, use the following command structure:
+To run both the frameworks, use the following command structure:
 
 ```sh
-method model dataset [--thres num]
+bash run.sh method model dataset [--thres num]
 ```
+method
+- man
+- auto
+model
+- llama3
+- phi3
+- gemma
+- mistral
+dataset
+- boolq
+- csqa
+- iwslt
+- samsum
+if dataset if iwslt or samsum, add '--thres num'
+num
+- 0.15
+- 0.20
+  Example: bash run.sh man llama3 iwslt --thres 0.15
+
