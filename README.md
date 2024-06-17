@@ -3,7 +3,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/devichand579/HPT">
-    <img src="imgs/hpt_logo.png" alt="Logo" width="300">
+    <img src="imgs/hpt_logo.png" alt="Logo" width="100">
   </a>
 
 <!-- <h3 align="center">USB</h3> -->
