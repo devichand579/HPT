@@ -3,7 +3,7 @@
     <a href="https://github.com/devichand579/HPT">
       <img src="imgs/hpt_logo.png" alt="Logo" height="100">
     </a>
-    <span style="font-size: 2.5em; font-weight: bold; margin-left: 10px;">
+    <span style="font-size: 100px; font-weight: bold; line-height: 1; margin-left: 10px;">
       Hierarchical Prompting Taxonomy
     </span>
   </div>
@@ -14,7 +14,11 @@
     ·
     <a href="">Leaderboard</a>
   </div>
+  <div style="font-size: 1.5em; font-weight: bold; margin-top: 10px;">
+    A Universal Evaluation Framework for Large Language Models
+  </div>
 </div>
+
 
 
 
