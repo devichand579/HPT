@@ -1,9 +1,9 @@
 <div align="center">
-  <div style="display: inline-flex; align-items: center;">
+  <div style="display: flex; align-items: center; justify-content: center;">
     <a href="https://github.com/devichand579/HPT">
       <img src="imgs/hpt_logo.png" alt="Logo" height="75">
     </a>
-    <span style="font-size: 75px; font-weight: bold; line-height: 1; margin-left: 10px;">
+    <span style="font-size: 75px; font-weight: bold; margin-left: 10px;">
       Hierarchical Prompting Taxonomy
     </span>
   </div>
@@ -18,6 +18,7 @@
     A Universal Evaluation Framework for Large Language Models
   </div>
 </div>
+
 
 
 
