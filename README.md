@@ -1,3 +1,8 @@
+![GitHub stars](https://img.shields.io/github/stars/devichand579/HPT)
+![GitHub forks](https://img.shields.io/github/forks/devichand579/HPT)
+![GitHub contributors](https://img.shields.io/github/contributors/devichand579/HPT)
+![GitHub contributors](https://img.shields.io/github/issues/devichand579/HPT)
+
 <div align="center">
   <div style="display: flex; align-items: center; justify-content: center;">
     <a href="https://github.com/devichand579/HPT">
