@@ -3,7 +3,7 @@
     <a href="https://github.com/devichand579/HPT">
       <img src="imgs/hpt_logo.png" alt="Logo" height="75">
     </a>
-    <span style="font-size: 75px; font-weight: bold; margin-left: 10px;">
+    <span style="font-size: 225px; font-weight: bold; margin-left: 10px;">
       <strong>Hierarchical Prompting Taxonomy</strong>
     </span>
   </div>
