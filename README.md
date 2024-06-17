@@ -1,7 +1,7 @@
 <div align="center">
   <div style="display: inline-flex; align-items: center;">
     <a href="https://github.com/devichand579/HPT">
-      <img src="imgs/hpt_logo.png" alt="Logo" height="100">
+      <img src="imgs/hpt_logo.png" alt="Logo" height="50">
     </a>
     <span style="font-size: 100px; font-weight: bold; line-height: 1; margin-left: 10px;">
       Hierarchical Prompting Taxonomy
