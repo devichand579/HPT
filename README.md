@@ -19,30 +19,55 @@
   </div>
 </div>
 
+## News
+## Introduction
+## Demo
+## Installation
+## Usage
+## Datasets and models 
+### Datasets
+HPT currently supports different datasets, models and prompt engineering methods employed by HPF. You are welcome to add more.
+
+
+- Question-answering datasets:
+  - BoolQ
+- Reasoning datasets:
+  - CommonsenseQA
+- Translation datasets:
+  - IWSLT-2017
+- Summarization datasets:
+  - SamSum
+
+
+### Models
+
+- Language models:
+  - Llama 3 8B
+  - Mistral 7B
+  - Phi 3 3.8B
+  - Gemma 7B
+
+
+### Prompt Engineering
+
+- Role Prompting
+- Zero-shot Chain-of-Thought Prompting
+- Three-shot Chain-of-Thought Prompting
+- Least-to-Most Prompting
+- Generated Knowledge Prompting
+## Benchmark Results
+## References 
+## Contributing 
+## Cite Us
 
 
 
 
 
 
-## Dataset
 
-The datasets used in this framework are:
 
-- **BoolQ**: A dataset for yes/no questions.
-- **CommonsenseQA**: A dataset for commonsense reasoning.
-- **IWSLT2017**: A dataset for multilingual translation.
-- **SAMsum**: A dataset for summarization of conversations.
-  The HP-Scores and scoring policy of the corresponding datasets scored by Human experts can be found in [HP-Scores](./HP_scores) directory.
 
-## Models Used
-
-The following instruction-tuned models are utilized in this framework:
-
-- **Llama 3 8B**
-- **Mistral 7B**
-- **Phi 3 3.8B**
-- **Gemma 7B**
 
 ## Setup Commands
 
