@@ -25,9 +25,8 @@
 ## Installation
 ## Usage
 ## Datasets and models 
-### Datasets
 HPT currently supports different datasets, models and prompt engineering methods employed by HPF. You are welcome to add more.
-
+### Datasets
 
 - Question-answering datasets:
   - BoolQ
