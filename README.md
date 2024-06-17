@@ -15,7 +15,7 @@
     <a href="">Leaderboard</a>
   </div>
   <div style="font-size: 1.5em; font-weight: bold; margin-top: 10px;">
-    A Universal Evaluation Framework for Large Language Models
+    <strong>A Universal Evaluation Framework for Large Language Models</strong>
   </div>
 </div>
 
