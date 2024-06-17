@@ -1,4 +1,5 @@
 git+https://github.com/huggingface/evaluate@a4bdc10c48a450b978d91389a48dbb5297835c7d
+pandas
 absl-py
 nltk
 rouge_score>=0.1.2
