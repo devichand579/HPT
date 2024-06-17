@@ -1,27 +1,23 @@
 <!-- PROJECT LOGO -->
 
-<br />
-<div align="center">
+<div align="left">
   <a href="https://github.com/devichand579/HPT">
-    <img src="imgs/hpt_logo.png" alt="Logo" width="100">
+    <img src="imgs/hpt_logo.png" alt="Logo" width="100" style="vertical-align: middle;">
   </a>
-
-<!-- <h3 align="center">USB</h3> -->
-
-<p align="center">
-    <strong>Hierarchical Prompting Taxonomy</strong>: A Universal Evaluation Framework for Large Language Models
-    <!-- <br />
-    <a href="https://github.com/microsoft/promptbench"><strong>Explore the docs »</strong></a>
-    <br /> -->
-    <br />
-    <a href="">Paper</a>
-    ·
-    <a href="">Documentation</a>
-    ·
-    <a href="">Leaderboard</a>
-    ·
-  </p>
+  <span style="font-size: 1.5em; font-weight: bold; vertical-align: middle;">
+    Hierarchical Prompting Taxonomy: A Universal Evaluation Framework for Large Language Models
+  </span>
 </div>
+
+<!-- Optional buttons for additional links -->
+<div align="left" style="margin-top: 10px;">
+  <a href="">Paper</a>
+  ·
+  <a href="">Documentation</a>
+  ·
+  <a href="">Leaderboard</a>
+</div>
+
 
 ## Dataset
 
