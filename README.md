@@ -1,9 +1,9 @@
 <div align="center">
-  <div style="display: flex; align-items: center; justify-content: center;">
+  <div style="display: inline-flex; align-items: center;">
     <a href="https://github.com/devichand579/HPT">
-      <img src="imgs/hpt_logo.png" alt="Logo" width="100">
+      <img src="imgs/hpt_logo.png" alt="Logo" height="100">
     </a>
-    <span style="font-size: 1.5em; font-weight: bold; margin-left: 10px;">
+    <span style="font-size: 2.5em; font-weight: bold; margin-left: 10px;">
       Hierarchical Prompting Taxonomy
     </span>
   </div>
@@ -15,6 +15,7 @@
     <a href="">Leaderboard</a>
   </div>
 </div>
+
 
 
 
