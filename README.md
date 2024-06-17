@@ -4,7 +4,7 @@
       <img src="imgs/hpt_logo.png" alt="Logo" height="75">
     </a>
     <span style="font-size: 75px; font-weight: bold; margin-left: 10px;">
-      Hierarchical Prompting Taxonomy
+      <strong>Hierarchical Prompting Taxonomy</strong>
     </span>
   </div>
   <div style="margin-top: 10px;">
