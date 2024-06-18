@@ -1,7 +1,10 @@
-![GitHub stars](https://img.shields.io/github/stars/devichand579/HPT)
-![GitHub forks](https://img.shields.io/github/forks/devichand579/HPT)
-![GitHub contributors](https://img.shields.io/github/contributors/devichand579/HPT)
-![GitHub issues](https://img.shields.io/github/issues/devichand579/HPT)
+<p align="center">
+  <img src="https://img.shields.io/github/stars/devichand579/HPT" alt="GitHub stars" height="30"/>
+  <img src="https://img.shields.io/github/forks/devichand579/HPT" alt="GitHub forks" height="30"/>
+  <img src="https://img.shields.io/github/contributors/devichand579/HPT" alt="GitHub contributors" height="30"/>
+  <img src="https://img.shields.io/github/issues/devichand579/HPT" alt="GitHub issues" height="30"/>
+</p>
+
 
 <div align="center">
   <div style="display: flex; align-items: center; justify-content: center;">
@@ -44,7 +47,7 @@
 
 ## News
 ## Introduction
-**Hierarchical Prompting Taxonomy** (HPT) is a universal evaluation framework for large language models. It is designed to evaluate the performance of large language models on a variety of tasks and datasets assigning **HP-Score** for each dataset relative to different models. The framework employs **Hierarchical Prompt Framework** (HPF) which supports a wide range of tasks, including question-answering, reasoning, translation, and summarization, and provides a set of pre-defined prompts tailored for for each task based on it's complexity. Refer to paper at : [Paper](..)
+**Hierarchical Prompting Taxonomy** (HPT) is a universal evaluation framework for large language models. It is designed to evaluate the performance of large language models on a variety of tasks and datasets assigning **HP-Score** for each dataset relative to different models. The HPT employs **Hierarchical Prompt Framework** (HPF) which supports a wide range of tasks, including question-answering, reasoning, translation, and summarization, and provides a set of pre-defined prompts tailored for for each task based on it's complexity. Refer to paper at : [Paper](..)
 ![HPT](imgs/hpt.png)
 ### Features of HPT and HPF
 ## Demo
