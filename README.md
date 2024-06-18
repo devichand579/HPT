@@ -128,7 +128,7 @@ HPT currently supports different datasets, models and prompt engineering methods
 - Reasoning datasets:
   - CommonsenseQA
 - Translation datasets:
-  - IWSLT-2017
+  - IWSLT-2017 en-fr
 - Summarization datasets:
   - SamSum
 
