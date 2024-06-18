@@ -81,7 +81,7 @@ To get started on a linux setup, follow these setup commands:
         - iwslt
         - samsum
         
-     - If the dataset are IWSLT or SamSum, add '--thres num'
+     - If the datasets are IWSLT or SamSum, add '--thres num'
 
     - num
         - 0.15
