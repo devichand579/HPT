@@ -1,4 +1,4 @@
-<div align="center" style="display: flex; justify-content: center; gap: 10px;">
+<div align="center" style="display: flex; justify-content: center; gap: 20px;">
   <img src="https://img.shields.io/github/stars/devichand579/HPT" alt="GitHub stars" height="20"/>
   <img src="https://img.shields.io/github/forks/devichand579/HPT" alt="GitHub forks" height="20"/>
   <img src="https://img.shields.io/github/contributors/devichand579/HPT" alt="GitHub contributors" height="20"/>
