@@ -26,6 +26,9 @@
 
 ## News
 ## Introduction
+**Hierarchical Prompting Taxonomy** (HPT) is a universal evaluation framework for large language models. It is designed to evaluate the performance of large language models on a variety of tasks and datasets assigning **HP-Score** for each dataset relative to different models. The framework employs **Hierarchical Prompt Framework** (HPF) which supports a wide range of tasks, including question-answering, reasoning, translation, and summarization, and provides a set of pre-defined prompts tailored for for each task based on it's complexity.
+![HPT](imgs/hpt.png)
+### Features of HPT and HPF
 ## Demo
 Refer to [examples](./examples/) directory for using the framework on different datasets and models.
 ## Installation
