@@ -1,10 +1,9 @@
-<div align="center" style="display: flex; justify-content: center; gap: 30px;">
-  <img src="https://img.shields.io/github/stars/devichand579/HPT" alt="GitHub stars" height="20"/>
-  <img src="https://img.shields.io/github/forks/devichand579/HPT" alt="GitHub forks" height="20"/>
-  <img src="https://img.shields.io/github/contributors/devichand579/HPT" alt="GitHub contributors" height="20"/>
-  <img src="https://img.shields.io/github/issues/devichand579/HPT" alt="GitHub issues" height="20"/>
-</div>
-
+<p align="center">
+  <img src="https://img.shields.io/github/stars/devichand579/HPT" alt="GitHub stars" height="25"/>
+  <img src="https://img.shields.io/github/forks/devichand579/HPT" alt="GitHub forks" height="25"/>
+  <img src="https://img.shields.io/github/contributors/devichand579/HPT" alt="GitHub contributors" height="25"/>
+  <img src="https://img.shields.io/github/issues/devichand579/HPT" alt="GitHub issues" height="25"/>
+</p>
 
 
 <div align="center">
