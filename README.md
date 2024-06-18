@@ -47,7 +47,7 @@
 
 ## News
 ## Introduction
-**Hierarchical Prompting Taxonomy** (HPT) is a universal evaluation framework for large language models. It is designed to evaluate the performance of large language models on a variety of tasks and datasets assigning **HP-Score** for each dataset relative to different models. The HPT employs **Hierarchical Prompt Framework** (HPF) which supports a wide range of tasks, including question-answering, reasoning, translation, and summarization, and provides a set of pre-defined prompts tailored for for each task based on it's complexity. Refer to paper at : [Paper](..)
+**Hierarchical Prompting Taxonomy** (HPT) is a universal evaluation framework for large language models. It is designed to evaluate the performance of large language models on a variety of tasks and datasets assigning **HP-Score** for each dataset relative to different models. The HPT employs **Hierarchical Prompt Framework** (HPF) which supports a wide range of tasks, including question-answering, reasoning, translation, and summarization. It provides a set of pre-defined prompts tailored for each task based on its complexity. Refer to paper at : [Paper](..)
 
 ![HPT](imgs/hpt.png)
 ### Features of HPT and HPF
@@ -66,7 +66,7 @@ git clone https://github.com/devichand579/HPT.git
 ```
 ## Usage
 ### Linux
-To get started on a linux setup, follow these setup commands:
+To get started on a Linux setup, follow these setup commands:
 1. **Activate your conda environment:**
     ```sh
     conda activate hpt
@@ -86,7 +86,7 @@ To get started on a linux setup, follow these setup commands:
    HF_TOKEN = "your HF Token"
    ```
 
-5. **To run both the frameworks, use the following command structure**
+5. **To run both frameworks, use the following command structure**
     ```sh
     bash run.sh method model dataset [--thres num]
     ```
