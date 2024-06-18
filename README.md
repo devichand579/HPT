@@ -69,23 +69,23 @@ To get started on a linux setup, follow these setup commands:
       - man
       - auto
         
-     - model
-      - llama3
-      - phi3
-      - gemma
-      - mistral
+    - model
+        - llama3
+        - phi3
+        - gemma
+        - mistral
         
-     - dataset
-      - boolq
-      - csqa
-      - iwslt
-      - samsum
+    - dataset
+        - boolq
+        - csqa
+        - iwslt
+        - samsum
         
      - If the dataset are IWSLT or SamSum, add '--thres num'
 
     - num
-      - 0.15
-      - 0.20
+        - 0.15
+        - 0.20
         
     - Example commands: 
       ```sh
