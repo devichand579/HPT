@@ -1,8 +1,8 @@
 <p align="center">
-  <img src="https://img.shields.io/github/stars/devichand579/HPT" alt="GitHub stars" height="30"/>
-  <img src="https://img.shields.io/github/forks/devichand579/HPT" alt="GitHub forks" height="30"/>
-  <img src="https://img.shields.io/github/contributors/devichand579/HPT" alt="GitHub contributors" height="30"/>
-  <img src="https://img.shields.io/github/issues/devichand579/HPT" alt="GitHub issues" height="30"/>
+  <img src="https://img.shields.io/github/stars/devichand579/HPT" alt="GitHub stars" height="20"/>
+  <img src="https://img.shields.io/github/forks/devichand579/HPT" alt="GitHub forks" height="20"/>
+  <img src="https://img.shields.io/github/contributors/devichand579/HPT" alt="GitHub contributors" height="20"/>
+  <img src="https://img.shields.io/github/issues/devichand579/HPT" alt="GitHub issues" height="20"/>
 </p>
 
 
