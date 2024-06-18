@@ -24,9 +24,27 @@
   </div>
 </div>
 
+<!-- TABLE OF CONTENTS -->
+
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li><a href="#news">News</a></li>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#demo">Demo</a></li>
+    <li><a href="#installation">Installation</a></li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#supported-datasets-and-models">Datasets and Models</a></li>
+    <li><a href="#benchmark-results">Benchmark Results</a></li>
+    <li><a href="#references">References</a></li>
+    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#cite-us">Cite Us</a></li>
+  </ol>
+</details>
+
 ## News
 ## Introduction
-**Hierarchical Prompting Taxonomy** (HPT) is a universal evaluation framework for large language models. It is designed to evaluate the performance of large language models on a variety of tasks and datasets assigning **HP-Score** for each dataset relative to different models. The framework employs **Hierarchical Prompt Framework** (HPF) which supports a wide range of tasks, including question-answering, reasoning, translation, and summarization, and provides a set of pre-defined prompts tailored for for each task based on it's complexity.
+**Hierarchical Prompting Taxonomy** (HPT) is a universal evaluation framework for large language models. It is designed to evaluate the performance of large language models on a variety of tasks and datasets assigning **HP-Score** for each dataset relative to different models. The framework employs **Hierarchical Prompt Framework** (HPF) which supports a wide range of tasks, including question-answering, reasoning, translation, and summarization, and provides a set of pre-defined prompts tailored for for each task based on it's complexity. Refer to paper at : [Paper](..)
 ![HPT](imgs/hpt.png)
 ### Features of HPT and HPF
 ## Demo
