@@ -27,8 +27,73 @@
 ## News
 ## Introduction
 ## Demo
+Refer to [examples](./examples/) directory for using the framework on different datasets and models.
 ## Installation
+### pip install
+To install the package, run the following command:
+```sh
+pip install hpt
+```
+### Cloning the Repository
+To clone the repository, run the following command:
+```sh
+git clone https://github.com/devichand579/HPT.git
+```
 ## Usage
+### Linux
+To get started on a linux setup, follow these setup commands:
+1. **Activate your conda environment:**
+    ```sh
+    conda activate hpt
+    ```
+3. **Navigate to the main codebase**
+   ```sh
+   cd HPT/hierarchical_prompt
+   ```
+   
+3. **Install the dependencies**
+   ```sh
+   pip install -r requirements.txt
+   ```
+4. **Add your Hugging Face token**
+   - Create a .env file in the conda environment
+   ```sh
+   HF_TOKEN = "your HF Token"
+   ```
+
+5. **To run both the frameworks, use the following command structure**
+    ```sh
+    bash run.sh method model dataset [--thres num]
+    ```
+    - method
+      - man
+      - auto
+        
+     - model
+      - llama3
+      - phi3
+      - gemma
+      - mistral
+        
+     - dataset
+      - boolq
+      - csqa
+      - iwslt
+      - samsum
+        
+     - If the dataset are IWSLT or SamSum, add '--thres num'
+
+    - num
+      - 0.15
+      - 0.20
+        
+    - Example commands: 
+      ```sh
+      bash run.sh man llama3 iwslt --thres 0.15
+      ```
+      ```sh
+      bash run.sh auto phi3 boolq 
+      ```
 ## Datasets and models 
 HPT currently supports different datasets, models and prompt engineering methods employed by HPF. You are welcome to add more.
 ### Datasets
@@ -64,74 +129,4 @@ HPT currently supports different datasets, models and prompt engineering methods
 ## Contributing 
 ## Cite Us
 
-
-
-
-
-
-
-
-
-
-## Setup Commands
-
-To get started on a linux setup, follow these setup commands:
-
-
-1. **Activate your conda environment:**
-    ```sh
-    conda activate <your_environment_name>
-    ```
-    
-2. **Navigate to the main codebase**
-   ```sh
-   cd hierarchical_prompt
-   ```
-   
-3. **Install the dependencies**
-   ```sh
-   pip install -r requirements.txt
-   ```
-4. **Adding your Hugging Face token**
-   - Create a .env file
-   ```sh
-   HF_TOKEN = "your HF Token"
-   ```
-
-## Running the Framework
-
-To run both the frameworks, use the following command structure:
-
-```sh
-bash run.sh method model dataset [--thres num]
-```
-method
-
-  - man
-  - auto
-    
-model
-
-  - llama3
-  - phi3
-  - gemma
-  - mistral
-    
-dataset
-
-  - boolq
-  - csqa
-  - iwslt
-  - samsum
-    
-If the dataset are IWSLT or SamSum, add '--thres num'
-
-num
-  - 0.15
-  - 0.20
-    
-Example: 
-   ```sh
-   bash run.sh man llama3 iwslt --thres 0.15
-   ```
 
