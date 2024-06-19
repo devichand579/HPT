@@ -33,7 +33,7 @@
   <ol>
     <li><a href="#news">News</a></li>
     <li><a href="#introduction">Introduction</a></li>
-    <li><a href="#demo">Demo</a></li>
+    <!-- <li><a href="#demo">Demo</a></li> -->
     <li><a href="#installation">Installation</a></li>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#supported-datasets-and-models">Datasets and Models</a></li>
@@ -45,19 +45,20 @@
 </details>
 
 ## News
+[18-06-24] HPT is published ! Check out the paper [here](https://arxiv.org/abs/2406.12644).
 ## Introduction
 **Hierarchical Prompting Taxonomy** (HPT) is a universal evaluation framework for large language models. It is designed to evaluate the performance of large language models on a variety of tasks and datasets assigning **HP-Score** for each dataset relative to different models. The HPT employs **Hierarchical Prompt Framework** (HPF) which supports a wide range of tasks, including question-answering, reasoning, translation, and summarization. It provides a set of pre-defined prompts tailored for each task based on its complexity. Refer to paper at : [https://arxiv.org/abs/2406.12644](https://arxiv.org/abs/2406.12644)
 
 ![HPT](imgs/hpt.png)
 ### Features of HPT and HPF
-## Demo
-Refer to [examples](./examples/) directory for using the framework on different datasets and models.
+<!-- ## Demo -->
+<!-- Refer to [examples](./examples/) directory for using the framework on different datasets and models. -->
 ## Installation
-### pip install
+<!-- ### pip install
 To install the package, run the following command:
 ```sh
 pip install hpt
-```
+``` -->
 ### Cloning the Repository
 To clone the repository, run the following command:
 ```sh
@@ -148,12 +149,12 @@ HPT currently supports different datasets, models and prompt engineering methods
 - Three-shot Chain-of-Thought Prompting
 - Least-to-Most Prompting
 - Generated Knowledge Prompting
-## Benchmark Results
+<!-- ## Benchmark Results -->
 ## References 
 ## Contributing 
 ## Cite Us
 If you find our work useful, please cite us !
-```sh
+```bibtex
 @misc{budagam2024hierarchical,
       title={Hierarchical Prompting Taxonomy: A Universal Evaluation Framework for Large Language Models}, 
       author={Devichand Budagam and Sankalp KJ and Ashutosh Kumar and Vinija Jain and Aman Chadha},
