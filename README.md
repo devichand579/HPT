@@ -1,6 +1,6 @@
 <p align="center">
-  <img src="https://img.shields.io/github/stars/devichand579/HPT?style=social" alt="GitHub stars" height="25"/>
-  <img src="https://img.shields.io/github/forks/devichand579/HPT?style=social" alt="GitHub forks" height="25"/>
+  <img src="https://img.shields.io/github/stars/devichand579/HPT" alt="GitHub stars" height="25"/>
+  <img src="https://img.shields.io/github/forks/devichand579/HPT" alt="GitHub forks" height="25"/>
   <img src="https://img.shields.io/github/contributors/devichand579/HPT" alt="GitHub contributors" height="25"/>
   <img src="https://img.shields.io/github/issues/devichand579/HPT" alt="GitHub issues" height="25"/>
 </p>
