@@ -38,8 +38,8 @@
     <li><a href="#usage">Usage</a></li>
     <li><a href="#supported-datasets-and-models">Datasets and Models</a></li>
     <!-- <li><a href="#benchmark-results">Benchmark Results</a></li> -->
-    <li><a href="#references">References</a></li>
-    <li><a href="#contributing">Contributing</a></li>
+    <!-- <li><a href="#references">References</a></li>
+    <li><a href="#contributing">Contributing</a></li> -->
     <li><a href="#cite-us">Cite Us</a></li>
   </ol>
 </details>
@@ -47,10 +47,10 @@
 ## News
 [18-06-24] HPT is published ! Check out the paper [here](https://arxiv.org/abs/2406.12644).
 ## Introduction
-**Hierarchical Prompting Taxonomy** (HPT) is a universal evaluation framework for large language models. It is designed to evaluate the performance of large language models on a variety of tasks and datasets assigning **HP-Score** for each dataset relative to different models. The HPT employs **Hierarchical Prompt Framework** (HPF) which supports a wide range of tasks, including question-answering, reasoning, translation, and summarization. It provides a set of pre-defined prompts tailored for each task based on its complexity. Refer to paper at : [https://arxiv.org/abs/2406.12644](https://arxiv.org/abs/2406.12644)
+**Hierarchical Prompting Taxonomy** (HPT) is a universal evaluation framework for large language models. It is designed to evaluate the performance of large language models on a variety of tasks and datasets assigning **HP-Score** for each dataset relative to different models. The HPT employs **Hierarchical Prompt Framework** (HPF) which supports a wide range of tasks, including question-answering, reasoning, translation, and summarization. It provides a set of pre-defined prompting strategies tailored for each task based on its complexity. Refer to paper at : [https://arxiv.org/abs/2406.12644](https://arxiv.org/abs/2406.12644)
 
 ![HPT](imgs/hpt.png)
-### Features of HPT and HPF
+<!-- ### Features of HPT and HPF -->
 <!-- ## Demo -->
 <!-- Refer to [examples](./examples/) directory for using the framework on different datasets and models. -->
 ## Installation
@@ -150,8 +150,8 @@ HPT currently supports different datasets, models and prompt engineering methods
 - Least-to-Most Prompting
 - Generated Knowledge Prompting
 <!-- ## Benchmark Results -->
-## References 
-## Contributing 
+<!-- ## References 
+## Contributing  -->
 ## Cite Us
 If you find our work useful, please cite us !
 ```bibtex
