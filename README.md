@@ -39,7 +39,7 @@
     <li><a href="#usage">Usage</a></li>
     <li><a href="#supported-datasets-and-models">Datasets and Models</a></li>
     <li><a href="#benchmark-results">Benchmark Results</a></li>
-    <!-- <li><a href="#references">References</a></li> -->
+    <li><a href="#references">References</a></li>
     <li><a href="#contributing">Contributing</a></li> 
     <li><a href="#cite-us">Cite Us</a></li>
   </ol>
@@ -58,7 +58,12 @@
 **Hierarchical Prompting Taxonomy** (HPT) is a universal evaluation framework for large language models. It is designed to evaluate the performance of large language models on a variety of tasks and datasets assigning **HP-Score** for each dataset relative to different models. The HPT employs **Hierarchical Prompt Framework** (HPF) which supports a wide range of tasks, including question-answering, reasoning, translation, and summarization. It provides a set of pre-defined prompting strategies tailored for each task based on its complexity. Refer to paper at : [https://arxiv.org/abs/2406.12644](https://arxiv.org/abs/2406.12644)
 
 ![HPT](imgs/hpt.png)
-<!-- ### Features of HPT and HPF -->
+ ### Features of HPT
+- **Universal Evaluation Framework**: HPT is a universal evaluation framework that can support a wide range of datasets and LLMs.
+- **Hierarchical Prompt Framework**: HPF is a set of prompting strategies tailored for each task based on its complexity employed by the HPT. HPF is made available in two modes: manual and adaptive. Adaptive HPF selects the best prompting strategy for a given task adaptively by a LLM (prompt-selector).
+- **HP-Score**: HPT assigns an HP-Score for each dataset relative to different agents(including LLMs and humans). HP-Score is a measure of the capability of an agent to perform a task related to a dataset. Lower HP-Score indicates better performance over the dataset.
+
+
 <p align="right" style="font-size: 14px; color: #555; margin-top: 20px;">
   <a href="#readme-top" style="text-decoration: none; color: blue; font-weight: bold;">
     ↑ Back to Top ↑
@@ -132,7 +137,7 @@ To get started on a Linux setup, follow these setup commands:
     - num
         - 0.15
         - 0.20
-        
+        - or higher thresholds apart from our experiments.
     - Example commands: 
       ```sh
       bash run.sh man llama3 iwslt --thres 0.15
