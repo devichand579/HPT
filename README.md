@@ -34,11 +34,11 @@
   <ol>
     <li><a href="#news">News</a></li>
     <li><a href="#introduction">Introduction</a></li>
-    <!-- <li><a href="#demo">Demo</a></li> -->
+    <li><a href="#demo">Demo</a></li>
     <li><a href="#installation">Installation</a></li>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#supported-datasets-and-models">Datasets and Models</a></li>
-    <!-- <li><a href="#benchmark-results">Benchmark Results</a></li> -->
+    <li><a href="#benchmark-results">Benchmark Results</a></li>
     <!-- <li><a href="#references">References</a></li> -->
     <li><a href="#contributing">Contributing</a></li> 
     <li><a href="#cite-us">Cite Us</a></li>
@@ -65,8 +65,8 @@
   </a>
 </p>
 
-<!-- ## Demo -->
-<!-- Refer to [examples](./examples/) directory for using the framework on different datasets and models. -->
+## Demo
+ Refer to [examples](./examples/) directory for using the framework on different datasets and models.
 ## Installation
 <!-- ### pip install
 To install the package, run the following command:
@@ -182,7 +182,8 @@ HPT currently supports different datasets, models and prompt engineering methods
   </a>
 </p>
 
-## Benchmark Results -->
+## Benchmark Results
+The benchmark results for different datasets and models are available in the [leaderboad](..).
 ## References 
 ## Contributing 
 This project aims to build open-source evaluation frameworks for assessing LLMs and other agents. This project welcomes contributions and suggestions. Please see the details on [how to contribute](contribute.md).
