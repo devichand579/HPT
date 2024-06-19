@@ -39,8 +39,8 @@
     <li><a href="#usage">Usage</a></li>
     <li><a href="#supported-datasets-and-models">Datasets and Models</a></li>
     <!-- <li><a href="#benchmark-results">Benchmark Results</a></li> -->
-    <!-- <li><a href="#references">References</a></li>
-    <li><a href="#contributing">Contributing</a></li> -->
+    <!-- <li><a href="#references">References</a></li> -->
+    <li><a href="#contributing">Contributing</a></li> 
     <li><a href="#cite-us">Cite Us</a></li>
   </ol>
 </details>
