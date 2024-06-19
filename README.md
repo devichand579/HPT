@@ -46,11 +46,24 @@
 
 ## News
 [18-06-24] HPT is published ! Check out the paper [here](https://arxiv.org/abs/2406.12644).
+
+<p align="right" style="font-size: 14px; color: #555; margin-top: 20px;">
+  <a href="#readme-top" style="text-decoration: none; color: blue; font-weight: bold;">
+    ↑ Back to Top ↑
+  </a>
+</p>
+
 ## Introduction
 **Hierarchical Prompting Taxonomy** (HPT) is a universal evaluation framework for large language models. It is designed to evaluate the performance of large language models on a variety of tasks and datasets assigning **HP-Score** for each dataset relative to different models. The HPT employs **Hierarchical Prompt Framework** (HPF) which supports a wide range of tasks, including question-answering, reasoning, translation, and summarization. It provides a set of pre-defined prompting strategies tailored for each task based on its complexity. Refer to paper at : [https://arxiv.org/abs/2406.12644](https://arxiv.org/abs/2406.12644)
 
 ![HPT](imgs/hpt.png)
 <!-- ### Features of HPT and HPF -->
+<p align="right" style="font-size: 14px; color: #555; margin-top: 20px;">
+  <a href="#readme-top" style="text-decoration: none; color: blue; font-weight: bold;">
+    ↑ Back to Top ↑
+  </a>
+</p>
+
 <!-- ## Demo -->
 <!-- Refer to [examples](./examples/) directory for using the framework on different datasets and models. -->
 ## Installation
@@ -64,6 +77,13 @@ To clone the repository, run the following command:
 ```sh
 git clone https://github.com/devichand579/HPT.git
 ```
+
+<p align="right" style="font-size: 14px; color: #555; margin-top: 20px;">
+  <a href="#readme-top" style="text-decoration: none; color: blue; font-weight: bold;">
+    ↑ Back to Top ↑
+  </a>
+</p>
+
 ## Usage
 ### Linux
 To get started on a Linux setup, follow these setup commands:
@@ -119,6 +139,12 @@ To get started on a Linux setup, follow these setup commands:
       ```sh
       bash run.sh auto phi3 boolq 
       ```
+<p align="right" style="font-size: 14px; color: #555; margin-top: 20px;">
+  <a href="#readme-top" style="text-decoration: none; color: blue; font-weight: bold;">
+    ↑ Back to Top ↑
+  </a>
+</p>
+
 ## Datasets and models 
 HPT currently supports different datasets, models and prompt engineering methods employed by HPF. You are welcome to add more.
 ### Datasets
@@ -141,7 +167,6 @@ HPT currently supports different datasets, models and prompt engineering methods
   - Phi 3 3.8B
   - Gemma 7B
 
-
 ### Prompt Engineering
 
 - Role Prompting
@@ -149,6 +174,13 @@ HPT currently supports different datasets, models and prompt engineering methods
 - Three-shot Chain-of-Thought Prompting
 - Least-to-Most Prompting
 - Generated Knowledge Prompting
+
+<p align="right" style="font-size: 14px; color: #555; margin-top: 20px;">
+  <a href="#readme-top" style="text-decoration: none; color: blue; font-weight: bold;">
+    ↑ Back to Top ↑
+  </a>
+</p>
+
 <!-- ## Benchmark Results -->
 <!-- ## References 
 ## Contributing  -->
@@ -164,5 +196,10 @@ If you find our work useful, please cite us !
       primaryClass={id='cs.CL' full_name='Computation and Language' is_active=True alt_name='cmp-lg' in_archive='cs' is_general=False description='Covers natural language processing. Roughly includes material in ACM Subject Class I.2.7. Note that work on artificial languages (programming languages, logics, formal systems) that does not explicitly address natural-language issues broadly construed (natural-language processing, computational linguistics, speech, text retrieval, etc.) is not appropriate for this area.'}
 }
 ```
+<p align="right" style="font-size: 14px; color: #555; margin-top: 20px;">
+  <a href="#readme-top" style="text-decoration: none; color: blue; font-weight: bold;">
+    ↑ Back to Top ↑
+  </a>
+</p>
 
 
