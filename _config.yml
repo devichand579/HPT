@@ -2,22 +2,21 @@ title: Just the Docs Template
 description: A starter template for a Jekyll site using the Just the Docs theme!
 theme: just-the-docs
 
-url: https://ashu1069.github.io
-baseurl: /HPTBenchmark
+url: https://devichand579.github.io
+baseurl: /HPT
 
 aux_links:
   Template Repository: 
-    - https://github.com/ashu1069/HPTBenchmark
-
+    - https://github.com/devichand579/HPT
 plugins:
   - jekyll-default-layout
 
 navigation:
   - title: Home
-    url: https://ashu1069.github.io/HPTBenchmark
+    url: https://devichand579.github.io/HPT
 
   - title: Documentation
-    url: https://ashu1069.github.io/HPTBenchmark/documentation/
+    url: https://devichand579.github.io/HPT/documentation/
 
   - title: Leaderboard
-    url: https://ashu1069.github.io/HPTBenchmark/leaderboard/
+    url: https://devichand579.github.io/HPT/leaderboard/
