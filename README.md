@@ -188,7 +188,7 @@ HPT currently supports different datasets, models and prompt engineering methods
 </p>
 
 ## Benchmark Results
-The benchmark results for different datasets and models are available in the [leaderboad](..).
+The benchmark results for different datasets and models are available in the [leaderboad](https://devichand579.github.io/HPT/).
 ## References 
 ## Contributing 
 This project aims to build open-source evaluation frameworks for assessing LLMs and other agents. This project welcomes contributions and suggestions. Please see the details on [how to contribute](contribute.md).
