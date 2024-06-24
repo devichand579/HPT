@@ -15,7 +15,7 @@ body {
 header {
     text-align: center;
     padding: 2em 0;
-    background-color: #c7ecee; /* Dark Blue */
+    background-color: #ff9f3e; /* Dark Blue */
     color: #ffffff; /* White */
     width: 100%;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -40,6 +40,7 @@ main {
     background-color: #fafafa; /* White */
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    align-self: center;
 }
 
 /* Badge Section Styles */
@@ -49,7 +50,7 @@ main {
     gap: 2em;
     margin-top: 2em;
 }
-
+#ffcc99
 /* Badge Styles */
 .badge {
     background-color: #ffcc99; /* Light Blue */
@@ -80,7 +81,7 @@ main {
 
 /* Footer Styles */
 footer {
-    background-color: #c7ecee;; /* Dark Blue */
+    background-color: #ff9f3e;; /* Dark Blue */
     color: #ffffff; /* White */
     text-align: center;
     padding: 1em 0;
