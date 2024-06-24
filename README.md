@@ -46,7 +46,7 @@
 </details>
 
 ## News
-[18-06-24] HPT is published ! Check out the paper [here](https://arxiv.org/abs/2406.12644).
+[06-18-24] HPT is published ! Check out the paper [here](https://arxiv.org/abs/2406.12644).
 
 <p align="right" style="font-size: 14px; color: #555; margin-top: 20px;">
   <a href="#readme-top" style="text-decoration: none; color: blue; font-weight: bold;">
