@@ -8,6 +8,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between; /* Add space-between to distribute space evenly */
     min-height: 100vh;
 }
 
@@ -35,16 +36,13 @@ h1, h2 {
 /* Main Content Styles */
 main {
     text-align: center;
-    margin-bottom: 2em;
+    margin-top: 2em; /* Adjust margin-top instead of margin-bottom */
     padding: 2em;
-    background-color: #467599; /* White */
+    background-color: #ffffff; /* White */
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     /* Center the main content horizontally and vertically */
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Center horizontally */
-    justify-content: center; /* Center vertically */
+    width: 80%; /* Set a width to control the size of main */
 }
 
 /* Badge Section Styles */
@@ -54,7 +52,7 @@ main {
     gap: 2em;
     margin-top: 2em;
 }
-#ffcc99
+
 /* Badge Styles */
 .badge {
     background-color: #ff9f3e; /* Light Blue */
@@ -68,7 +66,7 @@ main {
 
 .badge-link {
     text-decoration: none;
-    color: #ffffff; /* White */
+    color: #ff9f3e; /* White */
     font-weight: bold;
     font-size: 1.2em;
     transition: color 0.3s;
@@ -80,12 +78,12 @@ main {
 }
 
 .badge-link:hover {
-    color: #ffffff; /* White */
+    color: #ff9f3e; /* White */
 }
 
 /* Footer Styles */
 footer {
-    background-color: #467599;; /* Dark Blue */
+    background-color: #467599; /* Dark Blue */
     color: #ffffff; /* White */
     text-align: center;
     padding: 1em 0;
