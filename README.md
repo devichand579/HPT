@@ -18,9 +18,9 @@
   <div style="margin-top: 10px;">
     <a href="https://arxiv.org/abs/2406.12644">Paper</a>
     ·
-    <a href="">Documentation</a>
+    <a href="https://devichand579.github.io/HPT/">Documentation</a>
     ·
-    <a href="">Leaderboard</a>
+    <a href="https://devichand579.github.io/HPT/">Leaderboard</a>
   </div>
   <div style="font-size: 1.5em; font-weight: bold; margin-top: 10px;">
     <strong>A Universal Evaluation Framework for Large Language Models</strong>
