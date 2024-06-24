@@ -15,7 +15,7 @@ body {
 header {
     text-align: center;
     padding: 2em 0;
-    background-color: #ff9f3e; /* Dark Blue */
+    background-color: #467599; /* Dark Blue */
     color: #ffffff; /* White */
     width: 100%;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -37,10 +37,14 @@ main {
     text-align: center;
     margin-bottom: 2em;
     padding: 2em;
-    background-color: #fafafa; /* White */
+    background-color: #467599; /* White */
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    align-self: center;
+    /* Center the main content horizontally and vertically */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center horizontally */
+    justify-content: center; /* Center vertically */
 }
 
 /* Badge Section Styles */
@@ -53,7 +57,7 @@ main {
 #ffcc99
 /* Badge Styles */
 .badge {
-    background-color: #ffcc99; /* Light Blue */
+    background-color: #ff9f3e; /* Light Blue */
     color: #ffffff; /* White */
     border-radius: 20px;
     padding: 1em 2em;
@@ -72,7 +76,7 @@ main {
 
 .badge:hover {
     transform: scale(1.05);
-    background-color: #ffcc99; /* Darker Blue */
+    background-color: #ff9f3e; /* Darker Blue */
 }
 
 .badge-link:hover {
@@ -81,7 +85,7 @@ main {
 
 /* Footer Styles */
 footer {
-    background-color: #ff9f3e;; /* Dark Blue */
+    background-color: #467599;; /* Dark Blue */
     color: #ffffff; /* White */
     text-align: center;
     padding: 1em 0;
