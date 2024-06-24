@@ -3,8 +3,8 @@ body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f2f2f2; /* Accent Color */
-    color: #333333; /* Text Color */
+    background-color: #f5f5f5; /* Light Grey */
+    color: #333333; /* Dark Grey */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -15,10 +15,14 @@ body {
 header {
     text-align: center;
     padding: 2em 0;
+    background-color: #34495e; /* Dark Blue */
+    color: #ffffff; /* White */
+    width: 100%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .project-image {
-    max-width: 100%;
+    max-width: 80%;
     height: auto;
     border-radius: 10px;
     margin-bottom: 1em;
@@ -32,6 +36,10 @@ h1, h2 {
 main {
     text-align: center;
     margin-bottom: 2em;
+    padding: 2em;
+    background-color: #ffffff; /* White */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* Badge Section Styles */
@@ -44,17 +52,18 @@ main {
 
 /* Badge Styles */
 .badge {
-    background-color: #ffffff; /* White */
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #5bc0de; /* Light Blue */
+    color: #ffffff; /* White */
+    border-radius: 20px;
     padding: 1em 2em;
     text-align: center;
     transition: transform 0.3s, background-color 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .badge-link {
     text-decoration: none;
-    color: #34495e; /* Primary Color */
+    color: #ffffff; /* White */
     font-weight: bold;
     font-size: 1.2em;
     transition: color 0.3s;
@@ -62,17 +71,17 @@ main {
 
 .badge:hover {
     transform: scale(1.05);
-    background-color: #f2f2f2; /* Accent Color */
+    background-color: #2c8dbf; /* Darker Blue */
 }
 
 .badge-link:hover {
-    color: #5bc0de; /* Secondary Color */
+    color: #ffffff; /* White */
 }
 
 /* Footer Styles */
 footer {
-    background-color: #34495e; /* Primary Color */
-    color: #ffffff; /* Text Color */
+    background-color: #34495e; /* Dark Blue */
+    color: #ffffff; /* White */
     text-align: center;
     padding: 1em 0;
     width: 100%;
