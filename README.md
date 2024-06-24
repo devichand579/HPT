@@ -175,11 +175,11 @@ HPT currently supports different datasets, models and prompt engineering methods
 
 ### Prompt Engineering
 
-- Role Prompting
-- Zero-shot Chain-of-Thought Prompting
-- Three-shot Chain-of-Thought Prompting
-- Least-to-Most Prompting
-- Generated Knowledge Prompting
+- Role Prompting [1]
+- Zero-shot Chain-of-Thought Prompting [2]
+- Three-shot Chain-of-Thought Prompting [3]
+- Least-to-Most Prompting [4]
+- Generated Knowledge Prompting [5]
 
 <p align="right" style="font-size: 14px; color: #555; margin-top: 20px;">
   <a href="#readme-top" style="text-decoration: none; color: blue; font-weight: bold;">
@@ -190,6 +190,11 @@ HPT currently supports different datasets, models and prompt engineering methods
 ## Benchmark Results
 The benchmark results for different datasets and models are available in the [leaderboad](https://devichand579.github.io/HPT/).
 ## References 
+1. Kong, A., Zhao, S., Chen, H., Li, Q., Qin, Y., Sun, R., & Zhou, X. (2023). Better Zero-Shot Reasoning with Role-Play Prompting. ArXiv, abs/2308.07702.
+2. Kojima, T., Gu, S.S., Reid, M., Matsuo, Y., & Iwasawa, Y. (2022). Large Language Models are Zero-Shot Reasoners. ArXiv, abs/2205.11916.
+3. Wei, J., Wang, X., Schuurmans, D., Bosma, M., Chi, E.H., Xia, F., Le, Q., & Zhou, D. (2022). Chain of Thought Prompting Elicits Reasoning in Large Language Models. ArXiv, abs/2201.11903.
+4. Zhou, D., Scharli, N., Hou, L., Wei, J., Scales, N., Wang, X., Schuurmans, D., Bousquet, O., Le, Q., & Chi, E.H. (2022). Least-to-Most Prompting Enables Complex Reasoning in Large Language Models. ArXiv, abs/2205.10625.
+5. Liu, J., Liu, A., Lu, X., Welleck, S., West, P., Le Bras, R., Choi, Y., & Hajishirzi, H. (2021). Generated Knowledge Prompting for Commonsense Reasoning. Annual Meeting of the Association for Computational Linguistics.
 ## Contributing 
 This project aims to build open-source evaluation frameworks for assessing LLMs and other agents. This project welcomes contributions and suggestions. Please see the details on [how to contribute](contribute.md).
 
