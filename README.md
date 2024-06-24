@@ -216,7 +216,7 @@ The benchmark results for different datasets and models are available in the [le
 </p>
 
 ## Contributing 
-This project aims to build open-source evaluation frameworks for assessing LLMs and other agents. This project welcomes contributions and suggestions. Please see the details on [how to contribute](contribute.md).
+This project aims to build open-source evaluation frameworks for assessing LLMs and other agents. This project welcomes contributions and suggestions. Please see the details on [how to contribute](CONTRIBUTING.md).
 
 If you are new to GitHub, [here](https://opensource.guide/how-to-contribute/#how-to-submit-a-contribution) is a detailed guide on getting involved with development on GitHub.
 <p align="right" style="font-size: 14px; color: #555; margin-top: 20px;">
