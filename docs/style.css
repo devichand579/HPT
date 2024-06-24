@@ -8,8 +8,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between; /* Add space-between to distribute space evenly */
-    min-height: 100vh;
+    justify-content: center 
 }
 
 /* Header Styles */
