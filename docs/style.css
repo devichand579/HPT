@@ -3,7 +3,7 @@ body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f5f5f5; /* Light Grey */
+    background-color: #fafafa; /* Light Grey */
     color: #333333; /* Dark Grey */
     display: flex;
     flex-direction: column;
@@ -15,7 +15,7 @@ body {
 header {
     text-align: center;
     padding: 2em 0;
-    background-color: #34495e; /* Dark Blue */
+    background-color: #c7ecee; /* Dark Blue */
     color: #ffffff; /* White */
     width: 100%;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -23,7 +23,7 @@ header {
 
 .project-image {
     max-width: 40%;
-    height: 20px;
+    height: 160px;
     border-radius: 10px;
     margin-bottom: 1em;
 }
@@ -37,7 +37,7 @@ main {
     text-align: center;
     margin-bottom: 2em;
     padding: 2em;
-    background-color: #ffffff; /* White */
+    background-color: #fafafa; /* White */
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -52,7 +52,7 @@ main {
 
 /* Badge Styles */
 .badge {
-    background-color: #5bc0de; /* Light Blue */
+    background-color: #ffcc99; /* Light Blue */
     color: #ffffff; /* White */
     border-radius: 20px;
     padding: 1em 2em;
@@ -71,7 +71,7 @@ main {
 
 .badge:hover {
     transform: scale(1.05);
-    background-color: #2c8dbf; /* Darker Blue */
+    background-color: #ffcc99; /* Darker Blue */
 }
 
 .badge-link:hover {
@@ -80,7 +80,7 @@ main {
 
 /* Footer Styles */
 footer {
-    background-color: #34495e; /* Dark Blue */
+    background-color: #c7ecee;; /* Dark Blue */
     color: #ffffff; /* White */
     text-align: center;
     padding: 1em 0;
