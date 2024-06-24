@@ -4,7 +4,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: #fafafa; /* Light Grey */
-    color: #333333; /* Dark Grey */
+    color: #fafafa; /* Dark Grey */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -37,7 +37,7 @@ main {
     text-align: center;
     margin-top: 2em; /* Adjust margin-top instead of margin-bottom */
     padding: 2em;
-    background-color: #ffffff; /* White */
+    background-color: #467599; /* White */
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     /* Center the main content horizontally and vertically */
