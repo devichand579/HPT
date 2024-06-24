@@ -72,6 +72,13 @@
 
 ## Demo
  Refer to [examples](./examples/) directory for using the framework on different datasets and models.
+
+ <p align="right" style="font-size: 14px; color: #555; margin-top: 20px;">
+  <a href="#readme-top" style="text-decoration: none; color: blue; font-weight: bold;">
+    ↑ Back to Top ↑
+  </a>
+</p>
+
 ## Installation
 <!-- ### pip install
 To install the package, run the following command:
@@ -189,6 +196,13 @@ HPT currently supports different datasets, models and prompt engineering methods
 
 ## Benchmark Results
 The benchmark results for different datasets and models are available in the [leaderboad](https://devichand579.github.io/HPT/).
+
+<p align="right" style="font-size: 14px; color: #555; margin-top: 20px;">
+  <a href="#readme-top" style="text-decoration: none; color: blue; font-weight: bold;">
+    ↑ Back to Top ↑
+  </a>
+</p>
+
 ## References 
 1. Kong, A., Zhao, S., Chen, H., Li, Q., Qin, Y., Sun, R., & Zhou, X. (2023). Better Zero-Shot Reasoning with Role-Play Prompting. ArXiv, abs/2308.07702.
 2. Kojima, T., Gu, S.S., Reid, M., Matsuo, Y., & Iwasawa, Y. (2022). Large Language Models are Zero-Shot Reasoners. ArXiv, abs/2205.11916.
