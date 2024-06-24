@@ -65,7 +65,7 @@ main {
 
 .badge-link {
     text-decoration: none;
-    color: #ff9f3e; /* White */
+    color: #ffffff; /* White */
     font-weight: bold;
     font-size: 1.2em;
     transition: color 0.3s;
@@ -77,7 +77,7 @@ main {
 }
 
 .badge-link:hover {
-    color: #ff9f3e; /* White */
+    color: #ffffff; /* White */
 }
 
 /* Footer Styles */
