@@ -3,29 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Documentation</title>
+    <title>Leaderboard</title>
 </head>
 <body>
-    <h1>Documentation</h1>
+    <h1>Leaderboard</h1>
 
-    <h2>Overview</h2>
-    <p>This documentation provides detailed information on our evaluation framework, including the datasets, evaluation metrics, and methodologies used.</p>
+    <h2>Evaluation Scores</h2>
+    <p>Below are the evaluation scores for each dataset using both the manual and adaptive frameworks. The scores are represented in a tabular format.</p>
 
-    <h2>Datasets</h2>
-    <ul>
-        <li><strong>BoolQ:</strong> A dataset for yes/no questions based on short passages.</li>
-        <li><strong>CSWA:</strong> A dataset for sentiment analysis.</li>
-        <li><strong>IWSLT:</strong> A dataset for machine translation tasks.</li>
-        <li><strong>SamSum:</strong> A dataset for abstractive dialogue summarization.</li>
-    </ul>
+    <h3>BoolQ</h3>
+    <table>
+        <tr>
+            <th>Hyperparameter Settings</th>
+            <th>Manual Framework Score</th>
+            <th>Adaptive Framework Score</th>
+        </tr>
+        <tr>
+            <td>HP-1</td>
+            <td>0.85</td>
+            <td>0.88</td>
+        </tr>
+        <tr>
+            <td>HP-2</td>
+            <td>0.83</td>
+            <td>0.86</td>
+        </tr>
+    </table>
 
-    <h2>Evaluation Metrics</h2>
-    <p>We use two main frameworks for evaluation:</p>
-    <ol>
-        <li><strong>Manual Framework:</strong> Involves human annotators evaluating the outputs.</li>
-        <li><strong>Adaptive Framework:</strong> Uses adaptive algorithms to evaluate the outputs.</li>
-    </ol>
+    <h3>CSWA</h3>
+    <table>
+        <tr>
+            <th>Hyperparameter Settings</th>
+            <th>Manual Framework Score</th>
+            <th>Adaptive Framework Score</th>
+        </tr>
+        <tr>
+            <td>HP-1</td>
+            <td>0.78</td>
+            <td>0.81</td>
+        </tr>
+        <tr>
+            <td>HP-2</td>
+            <td>0.80</td>
+            <td>0.82</td>
+        </tr>
+    </table>
 
-    <h2>Methodologies</h2>
+    <h3>IWSLT</h3>
+    <table>
+        <tr>
+            <th>Hyperparameter Settings</th>
+            <th>Manual Framework Score</th>
+            <th>Adaptive Framework Score</th>
+        </tr>
+        <tr>
+            <td>HP-1</td>
+            <td>0.90</td>
+            <td>0.92</td>
+        </tr>
+        <tr>
+            <td>HP-2</td>
+            <td>0.88</td>
+            <td>0.90</td>
+        </tr>
+    </table>
+
+    <h3>SamSum</h3>
+    <table>
+        <tr>
+            <th>Hyperparameter Settings</th>
+            <th>Manual Framework Score</th>
+            <th>Adaptive Framework Score</th>
+        </tr>
+        <tr>
+            <td>HP-1</td>
+            <td>0.76</td>
+            <td>0.78</td>
+        </tr>
+        <tr>
+            <td>HP-2</td>
+            <td>0.74</td>
+            <td>0.76</td>
+        </tr>
+    </table>
 </body>
 </html>
