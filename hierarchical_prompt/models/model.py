@@ -4,7 +4,9 @@ import os
 import numpy as np
 from abc import ABC
 import logging 
+import openai
 from dotenv import load_dotenv
+import requests
 load_dotenv()
 hf_token = os.getenv('HF_TOKEN')
 
@@ -16,7 +18,9 @@ class Model(ABC):
             "llama3":   "meta-llama/Meta-Llama-3-8B-Instruct",
             "phi3": "microsoft/Phi-3-mini-4k-instruct",
             "mistral": "mistralai/Mistral-7B-Instruct-v0.3",
-            "gemma": "google/gemma-1.1-7b-it"
+            "gemma": "google/gemma-1.1-7b-it",
+            "nemo": "mistralai/Mistral-Nemo-Instruct-2407",
+            "gemma2": "google/gemma-2-9b-it"
         }
         self.quantization_config = BitsAndBytesConfig(
             load_in_4bit=True,
@@ -184,3 +188,150 @@ class Gemma(Model):
 
         logging.info("***Gemma text generation pipelines created successfully***")
    
+class Nemo(Model):
+    def __init__(self):
+        super().__init__("nemo")
+        self.pipe_f = pipeline(
+                               "text-generation",
+                                model=self.model,
+                                tokenizer=self.tokenizer,
+                                do_sample=True,
+                                return_full_text=True,
+                                generation_config=self.generation_config
+                               )
+        self.pipe_nf = pipeline(
+                                "text-generation",
+                                model=self.model,
+                                tokenizer=self.tokenizer,
+                                do_sample=True,
+                                return_full_text=False,
+                                generation_config=self.generation_config
+                               )
+
+        logging.info("***Mistral-Nemo text generation pipelines created successfully***")
+
+
+class Gemma2(Model):
+    def __init__(self):
+        super().__init__("gemma2")
+        self.model.bfloat16()
+        self.pipe_f = pipeline(
+                                "text-generation",
+                                model=self.model,
+                                tokenizer=self.tokenizer,
+                                do_sample=True,
+                                return_full_text=True,
+                                generation_config=self.generation_config
+                               )
+        self.pipe_nf = pipeline(
+                                "text-generation",
+                                model=self.model,
+                                tokenizer=self.tokenizer,
+                                do_sample=True,
+                                return_full_text=False,
+                                generation_config=self.generation_config
+                               )
+
+        logging.info("***Gemma-2-9B text generation pipelines created successfully***")
+
+class GPT4Model(ABC):
+    def __init__(self, api_key, model_name="gpt-4-turbo"):
+        self.api_key = api_key
+        self.model_name = model_name
+        self.api_base = "https://api.openai.com/v1"
+        self.headers = {
+            "Authorization": f"Bearer {self.api_key}",
+            "Content-Type": "application/json"
+        }
+        self.generation_config = {
+            "max_tokens": 1024,
+            "temperature": 0.6,
+            "top_p": 0.9,
+            "frequency_penalty": 0.0,
+            "presence_penalty": 0.0,
+            "stop": None,
+        }
+
+    def generate_text(self, prompt, return_full_text=True):
+        data = {
+            "model": self.model_name,
+            "prompt": prompt,
+            **self.generation_config,
+        }
+        response = requests.post(
+            f"{self.api_base}/completions",
+            headers=self.headers,
+            json=data
+        )
+        if response.status_code == 200:
+            result = response.json()
+            generated_text = result['choices'][0]['text'].strip()
+            if return_full_text:
+                return generated_text
+            else:
+                return generated_text.replace(prompt, '').strip()
+        else:
+            raise Exception(f"API Request failed with status code {response.status_code}: {response.text}")
+
+class GPT4O(GPT4Model):
+    def __init__(self, api_key):
+        super().__init__(api_key)
+        logging.info("***GPT-4O text generation pipelines created successfully***")
+        self.pipe_f = self.create_pipeline(full_text=True)
+        self.pipe_nf = self.create_pipeline(full_text=False)
+
+    def create_pipeline(self, full_text=True):
+        def pipeline_func(prompt):
+            return self.generate_text(prompt, return_full_text=full_text)
+        return pipeline_func
+    
+class ClaudeModel(ABC):
+    def __init__(self, api_key, model_name="claude-3.5"):
+        self.api_key = api_key
+        self.model_name = model_name
+        self.api_base = "https://api.anthropic.com/v1"
+        self.headers = {
+            "x-api-key": self.api_key,
+            "Content-Type": "application/json"
+        }
+        self.generation_config = {
+            "max_tokens_to_sample": 1024,
+            "temperature": 0.6,
+            "top_p": 0.9,
+            "stop_sequences": [],
+        }
+
+    def generate_text(self, prompt, return_full_text=True):
+        data = {
+            "model": self.model_name,
+            "prompt": prompt,
+            **self.generation_config,
+        }
+        response = requests.post(  # Use the requests module to make the POST request
+            f"{self.api_base}/complete",
+            headers=self.headers,
+            json=data
+        )
+        if response.status_code == 200:
+            result = response.json()
+            generated_text = result['completion'].strip()
+            if return_full_text:
+                return generated_text
+            else:
+                return generated_text.replace(prompt, '').strip()
+        else:
+            raise Exception(f"API Request failed with status code {response.status_code}: {response.text}")
+
+class ClaudeSonnet(ClaudeModel):
+    def __init__(self, api_key):
+        super().__init__(api_key)
+        logging.info("***Claude 3.5 text generation pipelines created successfully***")
+        self.pipe_f = self.create_pipeline(full_text=True)
+        self.pipe_nf = self.create_pipeline(full_text=False)
+
+    def create_pipeline(self, full_text=True):
+        def pipeline_func(prompt):
+            return self.generate_text(prompt, return_full_text=full_text)
+        return pipeline_func
+
+

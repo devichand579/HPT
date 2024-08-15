@@ -23,3 +23,5 @@ flash-attn
 sentencepiece
 protobuf
 py7zr
+openai
+requests

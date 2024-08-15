@@ -1,6 +1,6 @@
 from dataloader import DatasetLoader
 from metrics import Eval
-from models import LLama3, Gemma, Phi3, Mistral
+from models import LLama3, Gemma, Phi3, Mistral, Nemo, Gemma2, GPT4O, ClaudeSonnet
 from prompts import Roleprompt, ZeroshotCoT, threeshotCoT, Leasttomost, generatedknowledge, Promptloader
 from utils import AnswerProcessor, AdaptiveProcessor
 from abc import ABC
@@ -989,6 +989,22 @@ def main(args):
         model = Mistral()
         prefix = "<s>[INST]\n"
         suffix = "[/INST]\n"
+    elif model_name == "nemo":
+        model = Nemo()
+        prefix = "<s>[INST]\n"
+        suffix = "[/INST]\n"
+    elif model_name == "gemma2":
+        model = Gemma2()
+        prefix = "<bos><start_of_turn>user\n"
+        suffix = "<end_of_turn>\n<start_of_turn>model\n"
+    elif model_name == "gpt4o":
+        model = GPT4O()
+        prefix = "<|startoftext|>### Instruction: "
+        suffix = "<|endoftext|>\n"
+    elif model_name == "claude":
+        model = ClaudeSonnet()
+        prefix = "<|startoftext|>### Instruction: "
+        suffix = "<|endoftext|>\n"
     
     dataset_name = args.arg3
     if dataset_name in ["iwslt", "samsum"]:
