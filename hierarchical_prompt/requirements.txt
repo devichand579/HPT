@@ -25,3 +25,7 @@ protobuf
 py7zr
 openai
 requests
+pydantic
+logging
+anthropic
+re

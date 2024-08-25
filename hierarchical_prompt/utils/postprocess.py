@@ -1,5 +1,6 @@
 from abc import ABC
 import logging
+import re
 
 class AnswerProcessor(ABC):
     """
@@ -10,7 +11,9 @@ class AnswerProcessor(ABC):
             "boolq": self.pp_boolq,
             "csqa": self.pp_csqa,
             "iwslt": self.pp_iwlst,
-            "samsum": self.pp_samsum
+            "samsum": self.pp_samsum,
+            "gsm8k": self.pp_gsm8k,
+            "humaneval": self.pp_humaneval
         }
         self.processor = self.dataset_processors.get(name, lambda x: x)
         logging.info(f"***{name} post-processor created successfully***")
@@ -63,6 +66,19 @@ class AnswerProcessor(ABC):
     def pp_samsum(self, passage):
         """Process SAMSum text."""
         result = passage.split("Summary:")[-1].strip()
+        return result
+    
+    def pp_gsm8k(self,text):
+        """Process GSM8K text."""
+        text = text.lower()
+        lines = text.split('\n')
+        for i, line in enumerate(lines):
+            if 'answer:' in line:
+                match = re.search(r'\d+(?:\.\d+)?', line)
+                return match.group() if match else 0
+            
+    def pp_humaneval(self, code):
+        result = code.split("Code:")[-1].strip()
         return result
     
     

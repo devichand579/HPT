@@ -14,7 +14,9 @@ class DatasetLoader(ABC):
             "boolq": None,
             "csqa": None,
             "iwslt": None,
-            "samsum": None
+            "samsum": None,
+            "humaneval": None,
+            "gsm8k": None
         }
 
     def load_datasets(self):
@@ -23,6 +25,9 @@ class DatasetLoader(ABC):
         self.datasets["csqa"] = load_dataset("tau/commonsense_qa", split="validation")
         self.datasets["iwslt"] = load_dataset("iwslt2017", "iwslt2017-en-fr", split="validation")
         self.datasets["samsum"] = load_dataset("samsum", split="test")
+        self.datasets["humaneval"] = load_dataset("openai/openai_humaneval", split="test")
+        self.datasets["gsm8k"] = load_dataset("openai/gsm8k", "main", split="test")
+
     
     def get_dataset(self, name):
         if name not in self.datasets:

@@ -4,11 +4,14 @@ import os
 import numpy as np
 from abc import ABC
 import logging 
-import openai
+from openai import OpenAI
+import anthropic
 from dotenv import load_dotenv
 import requests
 load_dotenv()
 hf_token = os.getenv('HF_TOKEN')
+gpt_api_key = os.getenv('OPENAI_API_KEY')
+claude_api_key = os.getenv('ANTHROPIC_API_KEY')
 
 
  
@@ -233,105 +236,102 @@ class Gemma2(Model):
                                )
 
         logging.info("***Gemma-2-9B text generation pipelines created successfully***")
+    
 
-class GPT4Model(ABC):
-    def __init__(self, api_key, model_name="gpt-4-turbo"):
-        self.api_key = api_key
-        self.model_name = model_name
-        self.api_base = "https://api.openai.com/v1"
-        self.headers = {
-            "Authorization": f"Bearer {self.api_key}",
-            "Content-Type": "application/json"
-        }
+class GPT4o(ABC):
+    def __init__(self):
+        self.client = OpenAI()
+        self.model = "gpt-4o-2024-08-06"
         self.generation_config = {
             "max_tokens": 1024,
             "temperature": 0.6,
-            "top_p": 0.9,
-            "frequency_penalty": 0.0,
-            "presence_penalty": 0.0,
-            "stop": None,
+            "top_p": 0.90,
+            "frequency_penalty": 1.15,
         }
 
-    def generate_text(self, prompt, return_full_text=True):
-        data = {
-            "model": self.model_name,
-            "prompt": prompt,
-            **self.generation_config,
-        }
-        response = requests.post(
-            f"{self.api_base}/completions",
-            headers=self.headers,
-            json=data
-        )
-        if response.status_code == 200:
-            result = response.json()
-            generated_text = result['choices'][0]['text'].strip()
-            if return_full_text:
-                return generated_text
-            else:
-                return generated_text.replace(prompt, '').strip()
-        else:
-            raise Exception(f"API Request failed with status code {response.status_code}: {response.text}")
-
-class GPT4O(GPT4Model):
-    def __init__(self, api_key):
-        super().__init__(api_key)
         logging.info("***GPT-4O text generation pipelines created successfully***")
-        self.pipe_f = self.create_pipeline(full_text=True)
-        self.pipe_nf = self.create_pipeline(full_text=False)
 
-    def create_pipeline(self, full_text=True):
-        def pipeline_func(prompt):
-            return self.generate_text(prompt, return_full_text=full_text)
-        return pipeline_func
+    @property
+    def pipe_f(self):
+        def generate(prompt):
+            completion = self.client.chat.completions.create(
+                model=self.model,
+                messages=[
+                    {
+                    "role": "system",
+                    "content": "Provide the answer in the first sentence"
+                },
+                    {
+                    "role": "user",
+                    "content": prompt
+                }
+                ],
+                **self.generation_config
+            )
+            return prompt + completion.choices[0].message.content
+
+        return generate
+
+    @property
+    def pipe_nf(self):
+        def generate(prompt):
+            completion = self.client.chat.completions.create(
+                model=self.model,
+                messages=[{
+                    "role": "user",
+                    "content": prompt
+                }
+                ],
+                **self.generation_config
+            )
+        
+            return  completion.choices[0].message.content
+
+        return generate
+
+
     
-class ClaudeModel(ABC):
-    def __init__(self, api_key, model_name="claude-3.5"):
-        self.api_key = api_key
-        self.model_name = model_name
-        self.api_base = "https://api.anthropic.com/v1"
-        self.headers = {
-            "x-api-key": self.api_key,
-            "Content-Type": "application/json"
-        }
-        self.generation_config = {
-            "max_tokens_to_sample": 1024,
-            "temperature": 0.6,
-            "top_p": 0.9,
-            "stop_sequences": [],
-        }
+class Claude:
+    def __init__(self):
+        self.client = anthropic.Anthropic()
+        self.model = "claude-3-5-sonnet-20240620"
+        logging.info("***Claude text generation pipelines created successfully***")
 
-    def generate_text(self, prompt, return_full_text=True):
-        data = {
-            "model": self.model_name,
-            "prompt": prompt,
-            **self.generation_config,
-        }
-        response = requests.post(  # Use the requests module to make the POST request
-            f"{self.api_base}/complete",
-            headers=self.headers,
-            json=data
+    @property
+    def pipe_f(self):
+        def generate(prompt):
+          message = self.client.messages.create(
+          model= self.model,
+          max_tokens=1024,
+          temperature=0.6,
+          top_p=0.90,
+          system = "Provide the answer in the first sentence",
+          messages=[
+                    {
+                     "role": "user",
+                     "content": (prompt)
+                    }
+          ]
         )
-        if response.status_code == 200:
-            result = response.json()
-            generated_text = result['completion'].strip()
-            if return_full_text:
-                return generated_text
-            else:
-                return generated_text.replace(prompt, '').strip()
-        else:
-            raise Exception(f"API Request failed with status code {response.status_code}: {response.text}")
-
-class ClaudeSonnet(ClaudeModel):
-    def __init__(self, api_key):
-        super().__init__(api_key)
-        logging.info("***Claude 3.5 text generation pipelines created successfully***")
-        self.pipe_f = self.create_pipeline(full_text=True)
-        self.pipe_nf = self.create_pipeline(full_text=False)
-
-    def create_pipeline(self, full_text=True):
-        def pipeline_func(prompt):
-            return self.generate_text(prompt, return_full_text=full_text)
-        return pipeline_func
+          return prompt + message.content[0].text
+        return generate
+    
+    @property
+    def pipe_nf(self):
+        def generate(prompt):
+          message = self.client.messages.create(
+          model= self.model,
+          max_tokens=1024,
+          temperature=0.6,
+          top_p=0.90,
+          messages=[
+                    {
+                     "role": "user",
+                     "content": (prompt)
+                    }
+          ]
+        )
+          return  message.content[0].text
+        return generate
 
 

@@ -1,6 +1,6 @@
 from dataloader import DatasetLoader
 from metrics import Eval
-from models import LLama3, Gemma, Phi3, Mistral, Nemo, Gemma2, GPT4O, ClaudeSonnet
+from models import LLama3, Gemma, Phi3, Mistral, Nemo, Gemma2, GPT4o, Claude
 from prompts import Roleprompt, ZeroshotCoT, threeshotCoT, Leasttomost, generatedknowledge, Promptloader
 from utils import AnswerProcessor, AdaptiveProcessor
 from abc import ABC
@@ -9,7 +9,6 @@ import json
 import logging
 import re
 
-#Prompts Dictionary
 prompts = {
     1 : Roleprompt(),
     2 : ZeroshotCoT(),
@@ -22,8 +21,12 @@ hp_scores = {
     "boolq": 1.71,
     "csqa": 2.52,
     "iwslt": 1.92,
-    "samsum": 2.23
+    "samsum": 2.23,
+    "humaneval":4.68,
+    "gsm8k": 2.14
 }
+
+
 
 
 class ManualHierarchicalPrompt(ABC):
@@ -50,9 +53,150 @@ class ManualHierarchicalPrompt(ABC):
         '''
         level = 1
         for i in range(1,6):
+    
             llm_f = self.model.pipe_f   # full_text pipeline
             llm_nf = self.model.pipe_nf # non_full_text pipeline
 
+            if self.task == "humaneval":
+                code = item['code']
+                test_case = item['test']
+
+                if i==4:
+                    pred_txt = ""
+                    templates = self.prompts[i].get_prompt(self.task)
+                    for i in range(len(templates)):
+                        template = self.prefix + templates[i].format(code=code, pred=pred_txt) + self.suffix + "Code:"
+                        if i != len(templates)-1:
+                            pred = llm_nf(template)
+                            pred_txt = pred[0]['generated_text']
+                        else:
+                            pred = llm_f(template)
+                            pred_txt = pred[0]['generated_text']
+
+                    #process the prediction
+                    final_ans = self.text_processor(pred_txt)
+                    code_eval = self.metrics[0]
+                    eval_score = code_eval([final_ans],[test_case])
+                    if eval_score == 1:
+                        self.scores.append(level)
+                        self.predictions.append(final_ans)
+                        self.references.append(test_case)
+                        break
+                    else:
+                        level = level + 1
+                        continue
+
+                elif i == 5:
+                    gen_prefix = "<|start_header_id|>user<|end_header_id|>\n"
+                    gen_suffix = "<|eot_id|><|start_header_id|>assistant<|end_header_id|>\n"
+
+                    template, gen_knowledge_template = self.prompts[i].get_prompt(self.task)
+                    gen_knowledge_template = gen_knowledge_template.format(passage=passage)
+                    knowledge_template = gen_prefix + gen_knowledge_template + gen_suffix
+                    know_prompts_list = []
+                    for i in range(3):
+                        know_prompts_list.append(knowledge_template)
+                    generated_knowledge = self.gen_model.generate_knowledge(know_prompts_list)
+              
+                    
+                    template = self.prefix + template.format(passage=passage, question=question, pred = generated_knowledge) + self.suffix + "Code:"
+                    pred = llm_f(template)
+                    # process the prediction
+                    final_ans = self.text_processor(pred[0]['generated_text'])
+                    code_eval = self.metrics[0]
+                    eval_score = code_eval([final_ans],[test_case])
+                    if eval_score == 1:
+                        self.scores.append(level)
+                        self.predictions.append(final_ans)
+                        self.references.append(test_case)
+                        break
+                    else:
+                        level = level + hp_scores[self.task]
+                        self.scores.append(level)
+                        self.predictions.append(final_ans)
+                        self.references.append(test_case)
+                     
+                else:
+                    template = self.prompts[i].get_prompt(self.task).format(passage=passage, question=question)
+                    template = self.prefix + template + self.suffix + "Code:"
+                    pred = llm_f(template)
+                    final_ans = self.text_processor(pred[0]['generated_text'])
+                    code_eval = self.metrics[0]
+                    eval_score = code_eval([final_ans],[test_case])
+                    if eval_score == 1:
+                        self.scores.append(level)
+                        self.predictions.append(final_ans)
+                        self.references.append(test_case)
+                        break
+                    else:
+                        level = level + 1
+                        continue
+
+            if self.task == "gsm8k":
+                question = item['question']
+                answer = item['answer'].split('#### ')[-1].strip()
+
+                if i==4:
+                    pred_txt = ""
+                    templates = self.prompts[i].get_prompt(self.task)
+                    for i in range(len(templates)):
+                        template = self.prefix + templates[i].format(question=question, pred=pred_txt) + self.suffix + "Answer:"
+                        if i != len(templates)-1:
+                            pred = llm_nf(template)
+                            pred_txt = pred[0]['generated_text']
+                        else:
+                            pred = llm_f(template)
+                            pred_txt = pred[0]['generated_text']
+                    final_ans = self.text_processor(pred_txt)
+                    if final_ans == answer:
+                        self.scores.append(level)
+                        self.predictions.append(final_ans)
+                        self.references.append(answer)
+                        break
+                    else:
+                        level = level + 1
+                        continue
+                
+                elif i == 5:
+                    gen_prefix = "<|start_header_id|>user<|end_header_id|>\n"
+                    gen_suffix = "<|eot_id|><|start_header_id|>assistant<|end_header_id|>\n"
+
+                    template, gen_knowledge_template = self.prompts[i].get_prompt(self.task)
+                    gen_knowledge_template = gen_knowledge_template.format(question=question)
+                    knowledge_template = gen_prefix + gen_knowledge_template + gen_suffix
+                    know_prompts_list = []
+                    for i in range(3):
+                        know_prompts_list.append(knowledge_template)
+                    generated_knowledge = self.gen_model.generate_knowledge(know_prompts_list)
+                    
+
+                    template = self.prefix + template.format(question=question, pred = generated_knowledge) + self.suffix + "Answer:"
+                    pred = llm_f(template)
+                    final_ans = self.text_processor(pred[0]['generated_text'])
+                    if final_ans == answer:
+                        self.scores.append(level)
+                        self.predictions.append(final_ans)
+                        self.references.append(answer)
+                        break
+                    else:
+                        level = level + hp_scores[self.task]
+                        self.scores.append(level)
+                        self.predictions.append(final_ans)
+                        self.references.append(answer)
+                
+                else:
+                    template = self.prompts[i].get_prompt(self.task).format(question=question)
+                    template = self.prefix + template + self.suffix + "Answer:"
+                    pred = llm_f(template)
+                    final_ans = self.text_processor(pred[0]['generated_text'])
+                    if final_ans == answer:
+                        self.scores.append(level)
+                        self.predictions.append(final_ans)
+                        self.references.append(answer)
+                        break
+                    else:
+                        level = level + 1
+                        continue
             # handles passage and ques-ans pairs
             if self.task == "boolq":
                 #extracting the passage, question, and answer from the item
@@ -444,7 +588,20 @@ class ManualHierarchicalPrompt(ABC):
                 "rouge": rouge
             }
             return scores
-
+        elif self.task == "gsm8k":
+            acc = self.metrics[0](self.predictions,self.references)
+            scores = {
+                "hp_score": hp_score,
+                "accuracy": acc
+            }
+            return scores
+        elif self.task == "humaneval":
+            pass_at_k = self.metrics[0](self.predictions,self.references)
+            scores = {
+                "hp_score": hp_score,
+                "pass_at_k": pass_at_k
+            }
+            return scores
             
 
 
@@ -998,11 +1155,11 @@ def main(args):
         prefix = "<bos><start_of_turn>user\n"
         suffix = "<end_of_turn>\n<start_of_turn>model\n"
     elif model_name == "gpt4o":
-        model = GPT4O()
+        model = GPT4o()
         prefix = "<|startoftext|>### Instruction: "
         suffix = "<|endoftext|>\n"
     elif model_name == "claude":
-        model = ClaudeSonnet()
+        model = Claude()
         prefix = "<|startoftext|>### Instruction: "
         suffix = "<|endoftext|>\n"
     
@@ -1023,7 +1180,7 @@ def main(args):
         gen_model = LLama3()
 
     if HP_framework == "man":
-        manual_hp = ManualHierarchicalPrompt(model, gen_model, dataset, eval_list, text_processor, prompts, dataset_name, prefix, suffix,thres)
+        manual_hp = ManualHierarchicalPrompt( model, gen_model, dataset, eval_list, text_processor, prompts, dataset_name, prefix, suffix,thres)
         logging.info("***Processing dataset using manual hierarchical prompt framework***")
         manual_hp.process_dataset()
         scores = manual_hp.compute_scores()

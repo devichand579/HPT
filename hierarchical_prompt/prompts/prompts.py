@@ -8,14 +8,18 @@ class Promptloader(ABC):
            "boolq": None,
            "csqa": None,
            "iwslt": None,
-           "samsum": None
+           "samsum": None,
+           "gsm8k": None,
+           "humaneval": None
        }
 
        self.generate_knowledge_prompts = {
               "boolq": ("Generate Knowledge about the passage: {0}").format("{passage}"),
                 "csqa": ("Generate Knowledge about the question: {0}").format("{question}"),
                 "iwslt": ("Generate definitions in french of each word in the text: {0}").format("{eng_text}"),
-                "samsum": ("Generate interpretation about the dialogue: {0}").format("{dialogue}")
+                "samsum": ("Generate interpretation about the dialogue: {0}").format("{dialogue}"),
+                "gsm8k": ("Generate Knowledge about the question: {0}").format("{question}"),
+                "humaneval": ("Generate interpretation about the code: {0}").format("{code}")
         }
        
        
@@ -29,6 +33,8 @@ class Roleprompt(Promptloader):
         self.prompts["csqa"] = ("Choose the answer.\n{0}\nA {1}\nB {2}\nC {3}\nD {4}\nE {5} as a critical thinker.").format("{question}", "{text1}", "{text2}", "{text3}", "{text4}", "{text5}")
         self.prompts["iwslt"] = ("Translate '{0}' to french as a Translator.").format("{eng_text}")
         self.prompts["samsum"] = ("Summarise the Dialogue: '{0}' as a Summariser.").format("{dialogue}")  
+        self.prompts["gsm8k"] = ("Based on the question:'{0}'\nCalculate the numerical answer to the question as a expert mathematician.").format( "{question}")
+        self.prompts["humaneval"] = ("Complete the given code based on the mentioned constraints: {0} as an expert programmer.").format("{code}")
 
     def get_prompt(self, task):
         if task not in self.prompts:
@@ -43,6 +49,8 @@ class ZeroshotCoT(Promptloader):
         self.prompts["csqa"] = ("Choose the answer.\n{0}\nA {1}\nB {2}\nC {3}\nD {4}\nE {5}\nLet's think step by step.").format("{question}", "{text1}", "{text2}", "{text3}", "{text4}", "{text5}")
         self.prompts["iwslt"] = ("Translate '{0}' to french.\nLet's think step by step.").format("{eng_text}")
         self.prompts["samsum"] = ("Summarise the Dialogue: '{0}'.\nLet's think step by step.").format("{dialogue}")   
+        self.prompts["gsm8k"] = ("Based on the question:'{0}'\nCalculate the numerical answer to the question.\nLet's think step by step.").format( "{question}")
+        self.prompts["humaneval"] = ("Complete the given code based on the mentioned constraints: {0}\nLet's think step by step.").format("{code}")
 
     def get_prompt(self, task):
         if task not in self.prompts:
@@ -72,10 +80,10 @@ class threeshotCoT(Promptloader):
         exp_1 = "Revolving doors are common in buildings with high foot traffic because they allow people to enter and exit simultaneously without creating drafts or requiring doors to be constantly opened and closed. In the context of a bank, security is a paramount concern. Revolving doors can serve as a controlled access point, making it harder for unauthorized individuals to enter or exit quickly. While libraries, department stores, and malls might also use revolving doors for the convenience of two-way travel, the specific mention of security measures aligns best with the stringent security requirements of a bank."
         exp_2 = "Bookstores are establishments that sell books and other printed materials. They are known for their wide selection of reading materials, including magazines, newspapers, and periodicals. While markets and train stations may also have printed materials available for purchase, bookstores are specifically designed to cater to readers and book enthusiasts. The mention of magazines alongside other printed works suggests a location that specializes in reading materials, making a bookstore the most appropriate choice."
         exp_3 = "Wallpaper is a type of material used to cover and decorate the interior walls of homes, offices, and other buildings. It is typically sold in rolls and comes in a variety of patterns and designs. While pants, record albums, and cheese are all items that can be purchased or consumed, they are not typically associated with a record store. A record store is a retail establishment that specializes in selling music recordings, such as vinyl records, CDs, and cassettes. The mention of wallpaper alongside other items suggests that it is an odd choice for a vinyl, making it the correct answer."
+       
         ex_en1 = "This drying around the world has lead to a dramatic increase in fires."
         ex_en2 = "Look carefully at the area of the eastern Pacific, from the Americas, extending westward, and on either side of the Indian subcontinent, where there is a radical depletion of oxygen in the oceans."
         ex_en3 = "If you look at in the context of history you can see what this is doing."
-
         ex_fr1 = "Cet assèchement global a causé une hausse spectaculaire du nombre d'incendies. Cet assèchement global a causé une hausse spectaculaire du nombre d'incendies."
         ex_fr2 = "Regardez le secteur oriental de l'océan pacifique depuis les Amériques vers l'ouest, et des deux côtés du sous-continent Indien, la raréfaction de l'oxygène y est dramatique."
         ex_fr3 = "Si vous la remettez dans son contexte, vous pouvez voir à quoi ressemble cette tendance."
@@ -87,10 +95,26 @@ class threeshotCoT(Promptloader):
         ex_sum2 = "Maddie will buy a white bread and apples on John's request."
         ex_sum3 = "Rob is doing shopping at the grocery store. Ann ordered him to buy a cucumber, some tomatoes, bananas and apples."
 
+        gsm8k_question1 = "Josh decides to try flipping a house. He buys a house for $80,000 and then puts in $50,000 in repairs. This increased the value of the house by 150%. How much profit did he make?"
+        gsm8k_question2 = "Vincent can buy flowers in packages of 3 for $2.50 or in packages of 2 for $1. How much money does he save by buying 18 flowers at the better price?"
+        gsm8k_question3 = "In a neighborhood, the number of rabbits pets is twelve less than the combined number of pet dogs and cats. If there are two cats for every dog, and the number of dogs is 60, how many pets in total are in the neighborhood?"
+        gsm8k_ans1 = "70000\nThe cost of the house and repairs came out to 80,000+50,000=$<<80000+50000=130000>>130,000 He increased the value of the house by 80,000*1.5=<<80000*1.5=120000>>120,000 So the new value of the house is 120,000+80,000=$<<120000+80000=200000>>200,000 So he made a profit of 200,000-130,000=$<<200000-130000=70000>>70,000 #### 70000"
+        gsm8k_ans2 = "6\nFind how many packages of 3 would be needed which is 18 ÷ 3 = <<18/3=6>>6. The cost of using packages of 3 is 6 × $2.50 = $<<6*2.5=15>>15. Find how many packages of 2 would be needed which is 18 ÷ 2 = <<18/2=9>>9. The cost of using packages of 2 is 9 × $1 = $<<9*1=9>>9. Vincent would save $15 - $9 = $<<15-9=6>>6. #### 6"
+        gsm8k_ans3 = "348\nIf there are two cats for every dog, and the number of dogs is 60, the number of cats is 2*60 = <<2*60=120>>120 The combined number of cats and dogs is 120+60 = <<120+60=180>>180 The number of rabbits pets is twelve less than the combined number of pet dogs and cats, a total of 180-12 = 168 The total number of pets in the compound is 168+180 = <<168+180=348>>348 #### 348"
+
+        humaneval_code1 = """from typing import List def has_close_elements(numbers: List[float], threshold: float) -> bool: """ Check if in given list of numbers, are any two numbers closer to each other than given threshold. >>> has_close_elements([1.0, 2.0, 3.0], 0.5) False >>> has_close_elements([1.0, 2.8, 3.0, 4.0, 5.0, 2.0], 0.3) True """""""
+        humaneval_code2 = """def is_prime(n): """Return true if a given number is prime, and false otherwise. >>> is_prime(6) False >>> is_prime(101) True >>> is_prime(11) True >>> is_prime(13441) True >>> is_prime(61) True >>> is_prime(4) False >>> is_prime(1) False """""""
+        humaneval_code3 = """def triangle_area(a, b, c): ''' Given the lengths of the three sides of a triangle. Return the area of the triangle rounded to 2 decimal points if the three sides form a valid triangle. Otherwise return -1 Three sides make a valid triangle when the sum of any two sides is greater than the third side. Example: triangle_area(3, 4, 5) == 6.00 triangle_area(1, 2, 10) == -1 '''"""
+        humaneval_sol1 = "for idx, elem in enumerate(numbers): for idx2, elem2 in enumerate(numbers): if idx != idx2: distance = abs(elem - elem2) if distance < threshold: return True return False"
+        humaneval_sol2 = "if n < 2: return False for k in range(2, n - 1): if n % k == 0: return False return True"
+        humaneval_sol3 = "if a + b <= c or a + c <= b or b + c <= a: return -1 s = (a + b + c)/2 area = (s * (s - a) * (s - b) * (s - c)) ** 0.5 area = round(area, 2) return area"
+
         self.prompts["boolq"] = ("Based on the passage:'{0}'\nAnswer True/False to the question: '{1}'.\nAnswer: {2}.\nExplaination: {3}.\nBased on the passage:'{4}'\nAnswer True/False to the question: '{5}'.\nAnswer: {6}.\nExplaination: {7}.\nBased on the passage:'{8}'\nAnswer True/False to the question: '{9}'.\nAnswer: {10}.\nExplaination: {11}.\nBased on the passage:'{12}'\nAnswer True/False to the question: '{13}'").format( passage1, question1, ans1, exp1, passage2, question2, ans2, exp2,  passage3, question3, ans3, exp3, "{passage}", "{question}" )
         self.prompts["csqa"] = ("Choose the answer.\n{0}\nA bank\nB library\nC department store\nD mall\nE new york\nAnswer: A\nExplanation: {1}.\nChoose the answer.\n{2}\nA doctor\nB bookstore\nC market\nD train station\nE mortuary\nAnswer: B\nExplanation: {3}.\nChoose the answer.\n{4}\nA pants\nB record albums\nC record store\nD cheese\nE wallpaper\nAnswer: E\nExplanation: {5}.\nChoose the answer.\n{6}\nA {7}\nB {8}\nC {9}\nD {10}\nE {11}").format( question_1, exp_1, question_2, exp_2, question_3, exp_3, "{question}", "{text1}", "{text2}", "{text3}", "{text4}", "{text5}" )
         self.prompts["iwslt"] = ("Translate '{0}' to French.\nFrench: {1}.\nTranslate '{2}' to French.\nFrench: {3}.\nTranslate '{4}' to French.\nFrench: {5}.\nTranslate '{6}' to French.").format( ex_en1, ex_fr1, ex_en2, ex_fr2, ex_en3, ex_fr3, "{eng_text}" )
         self.prompts["samsum"] = ("Summarise the Dialogue: '{0}'.\nSummary: {1}.\nSummarise the Dialogue: '{2}'.\nSummary: {3}.\nSummarise the Dialogue: '{4}'.\nSummary: {5}.\nSummarise the Dialogue: '{6}'").format( ex_dialogue1, ex_sum1, ex_dialogue2, ex_sum2, ex_dialogue3, ex_sum3, "{dialogue}" )
+        self.prompts["gsm8k"] = ("Based on the question:'{0}'\nCalculate the numerical answer to the question.\nAnswer: {1}.\nBased on the question:'{2}'\nCalculate the numerical answer to the question.\nAnswer: {3}.\nBased on the question:'{4}'\nCalculate the numerical answer to the question.\nAnswer: {5}\nBasedBased on the question:'{6}'\nCalculate the numerical answer to the question.").format( gsm8k_question1, gsm8k_ans1, gsm8k_question2, gsm8k_ans2, gsm8k_question3, gsm8k_ans3, "{question}" )
+        self.prompts["humaneval"] = ("Complete the given code based on the mentioned constraints: {0}\nCode: {1}.\nComplete the given code based on the mentioned constraints: {2}\nCode: {3}.\nComplete the given code based on the mentioned constraints: {4}\nCode: {5}\nComplete the given code based on the mentioned constraints: {6}\nCode: {7}").format( humaneval_code1, humaneval_sol1, humaneval_code2, humaneval_sol2, humaneval_code3, humaneval_sol3, "{code}" )
 
     def get_prompt(self, task):
         if task not in self.prompts:
@@ -105,6 +129,9 @@ class Leasttomost(Promptloader):
         self.prompts["csqa"] = [("Analyze this question: '{0}'").format("{question}"), ("Elaborate about each option for the question: '{0}'\noptions: A {1}\nB {2}\nC {3}\nD {4}\nE {5}").format("{question}","{text1}","{text2}","{text3}","{text4}","{text5}"),("Based on the analysis : '{0}', Discard wrong answers among the options:A {1}\nB {2}\nC {3}\nD {4}\nE {5}").format("{pred}", "{text1}","{text2}","{text3}","{text4}","{text5}"), ("Choose the correct answer from the options: A {0}\nB {1}\nC {2}\nD {3}\nE {4}").format("{text1}","{text2}","{text3}","{text4}","{text5}")]
         self.prompts["iwslt"] = [("What is the main idea or theme of this text? '{0}'").format("{eng_text}"),("Identify and list the key phrases or terms in this text: '{0}'").format("{eng_text}"),("Translate the following key phrases into french: '{0}'").format("{pred}"),("Translate '{0}' into french, incorporating the translations of the key phrases: '{1}'").format("{eng_text}","{pred}")]
         self.prompts["samsum"] = [("List the main points or key ideas present in this dialogue: '{0}'.").format("{dialogue}"),("Elaborate on the following key points, providing additional details or context: '{0}'.").format("{pred}"),("Using the listed key points and their elaborations, draft a concise summary of this text: '{0}'.").format("{dialogue}"),("Refine this draft summary to make it more concise and coherent, ensuring it captures the essence of the text: '{0}'.").format("{dialogue}")]
+        self.prompts["gsm8k"] = [("Analyze the question: '{0}'").format("{question}"),("Break the question into sub problems: '{0}'").format("{question}"),("Calulate answers for the subproblems of the question: '{0}'").format("{pred}"),("Calculate the numerical answer to this question: '{0}' based on the previous calculations: '{1}'").format("{question}","{pred}")]
+        self.prompts["humaneval"] = [("Analyze the code: '{0}'").format("{code}"),("Break the problem into sub problems: '{0}'").format("{code}"),("Complete code for the subproblems of the code: '{0}'").format("{pred}"),("Complete the code based on mentioned constraints: '{0}' based on the previous calculations: '{1}'").format("{code}","{pred}")]
+
 
     def get_prompt(self, task):
         if task not in self.prompts:
@@ -119,6 +146,8 @@ class generatedknowledge(Promptloader):
         self.prompts["csqa"] = ("Choose the answer.\n{0}\nA {1}\nB {2}\nC {3}\nD {4}\nE {5} using knowledge of the question:{6}").format("{question}", "{text1}", "{text2}", "{text3}", "{text4}", "{text5}", "{pred}")
         self.prompts["iwslt"] = ("Translate '{0}' to french using definitions of the keywords:{1}").format("{eng_text}", "{pred}")
         self.prompts["samsum"] = ("Summarise the Dialogue: '{0}' using interpretation of the dialogue:{1}").format("{dialogue}", "{pred}")
+        self.prompts["gsm8k"] = ("Based on the question:'{0}'\nCalculate the numerical answer to the question using interpretation of the question:{1}").format( "{question}", "{pred}")
+        self.prompts["humaneval"] = ("Complete the code based on the mentioned constraints:{0} using knowledge of the constraints:{1}").format("{code}", "{pred}")
  
 
     def get_prompt(self, task):

@@ -1,8 +1,10 @@
 """
-    An utility class for evaluating BoolQ, CSQA, IWSLT 2017 and Samsum datasets.
+    An utility class for evaluating BoolQ, CSQA, IWSLT 2017, Samsum, HumanEval and GSM8K datasets.
 """
 from abc import ABC
 import logging
+import os
+os.environ["HF_ALLOW_CODE_EVAL"] = "1"
 
 class Eval(ABC):
     """
@@ -21,7 +23,9 @@ class Eval(ABC):
             "boolq": [self.compute_cls_accuracy, self.compute_f1_score],
             "csqa": [self.compute_cls_accuracy, self.compute_f1_score],
             "iwslt": [self.compute_bleu],
-            "samsum": [self.compute_rouge]
+            "samsum": [self.compute_rouge],
+            "gsm8k": [self.compute_cls_accuracy, self.compute_f1_score],
+            "humaneval": [self.compute_human_eval]
         }
         self.metric = self.methods.get(name, lambda x: x)
         logging.info(f"***{name} evaluator created successfully***")
@@ -147,6 +151,29 @@ class Eval(ABC):
         metric = Rouge()
         results = metric.compute(predictions=preds, references=gts)
         return results
+    
+    @staticmethod
+    def compute_human_eval(preds, gts):
+        """
+        Computes the HumanEval score for code synthesis tasks.
+
+        Parameters:
+        -----------
+        preds : list
+            A list of predictions.
+        gts : list
+            A list of ground truth code solutions.
+
+        Returns:
+        --------
+        float
+            The HumanEval score.
+        """
+        from .code_eval.human_eval import CodeEval
+        metric = CodeEval()
+        pass_k, results = metric.compute(predictions=preds, references=gts, k=[1])
+        return pass_k
+
 
 
     
