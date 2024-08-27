@@ -24,8 +24,9 @@ class Eval(ABC):
             "csqa": [self.compute_cls_accuracy, self.compute_f1_score],
             "iwslt": [self.compute_bleu],
             "samsum": [self.compute_rouge],
-            "gsm8k": [self.compute_cls_accuracy, self.compute_f1_score],
-            "humaneval": [self.compute_human_eval]
+            "gsm8k": [self.compute_cls_accuracy],
+            "humaneval": [self.compute_human_eval],
+            "mmlu": [self.compute_cls_accuracy]
         }
         self.metric = self.methods.get(name, lambda x: x)
         logging.info(f"***{name} evaluator created successfully***")

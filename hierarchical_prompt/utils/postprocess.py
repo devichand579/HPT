@@ -13,7 +13,8 @@ class AnswerProcessor(ABC):
             "iwslt": self.pp_iwlst,
             "samsum": self.pp_samsum,
             "gsm8k": self.pp_gsm8k,
-            "humaneval": self.pp_humaneval
+            "humaneval": self.pp_humaneval,
+            "mmlu": self.pp_mmlu
         }
         self.processor = self.dataset_processors.get(name, lambda x: x)
         logging.info(f"***{name} post-processor created successfully***")
@@ -80,6 +81,24 @@ class AnswerProcessor(ABC):
     def pp_humaneval(self, code):
         result = code.split("Code:")[-1].strip()
         return result
+    
+    def pp_mmlu(self, text):
+        """Process Commonsense QA (CSQA) text."""
+        text = text.lower()
+        lines = text.split('\n')
+        for i, line in enumerate(lines):
+            if "answer:" in line:
+                answer_sentence = lines[i].replace('answer:', '').strip()
+                if answer_sentence.startswith('a') or answer_sentence.startswith('a.') or answer_sentence.startswith('a)') or answer_sentence.startswith('( a') or answer_sentence.startswith('** a') or answer_sentence.startswith('**a.') or answer_sentence.startswith('**( a') or answer_sentence.startswith('** a)'):
+                    return 0
+                elif answer_sentence.startswith('b') or answer_sentence.startswith('b.') or answer_sentence.startswith('b)') or answer_sentence.startswith('( b') or answer_sentence.startswith('** b') or answer_sentence.startswith('**b.') or answer_sentence.startswith('**( b') or answer_sentence.startswith('** b)'):
+                    return 1
+                elif answer_sentence.startswith('c') or answer_sentence.startswith('c.') or answer_sentence.startswith('c)') or answer_sentence.startswith('( c') or answer_sentence.startswith('** c') or answer_sentence.startswith('**c.') or answer_sentence.startswith('**( c') or answer_sentence.startswith('** c)'):
+                    return 2
+                elif answer_sentence.startswith('d') or answer_sentence.startswith('d.') or answer_sentence.startswith('d)') or answer_sentence.startswith('( d') or answer_sentence.startswith('** d') or answer_sentence.startswith('**d.') or answer_sentence.startswith('**( d') or answer_sentence.startswith('** d)'):
+                    return 3
+                else:
+                    return 0
     
     
     

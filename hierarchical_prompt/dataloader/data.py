@@ -16,7 +16,8 @@ class DatasetLoader(ABC):
             "iwslt": None,
             "samsum": None,
             "humaneval": None,
-            "gsm8k": None
+            "gsm8k": None,
+            "mmlu": None
         }
 
     def load_datasets(self):
@@ -27,6 +28,7 @@ class DatasetLoader(ABC):
         self.datasets["samsum"] = load_dataset("samsum", split="test")
         self.datasets["humaneval"] = load_dataset("openai/openai_humaneval", split="test")
         self.datasets["gsm8k"] = load_dataset("openai/gsm8k", "main", split="test")
+        self.datasets["mmlu"] = load_dataset("cais/mmlu", "all", split="test")
 
     
     def get_dataset(self, name):

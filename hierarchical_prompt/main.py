@@ -23,7 +23,8 @@ hp_scores = {
     "iwslt": 1.92,
     "samsum": 2.23,
     "humaneval":4.68,
-    "gsm8k": 2.14
+    "gsm8k": 2.14,
+    "mmlu": 3.03
 }
 
 
@@ -56,6 +57,98 @@ class ManualHierarchicalPrompt(ABC):
     
             llm_f = self.model.pipe_f   # full_text pipeline
             llm_nf = self.model.pipe_nf # non_full_text pipeline
+
+            if self.task == "mmlu":
+                # extract the question and choices 
+                question = item['question']
+                text1 = item['choices']['text'][0] 
+                text2 = item['choices']['text'][1] 
+                text3 = item['choices']['text'][2]
+                text4 = item['choices']['text'][3] 
+                # extract the answer 
+                answer = item['answer']
+                if answer == "A":
+                    ans = 0
+                elif answer == "B":
+                    ans = 1
+                elif answer == "C":
+                    ans = 2
+                elif answer == "D":
+                    ans = 3
+                # level 4
+                if i==4:
+                    # retrieve multiple levels of least-to-most prompting
+                    templates = self.prompts[i].get_prompt(self.task)
+                    pred_text = ""
+                    # iterate over the templates
+                    for i in range(len(templates)):
+                        
+                        template = self.prefix + templates[i].format(question=question, text1=text1, text2=text2, text3=text3, text4=text4, pred=pred_text) + self.suffix + "Answer:"
+
+                        # for intermediate templates, use llm_nf
+                        if i != len(templates)-1:
+                            pred = llm_nf(template)
+                            pred_text = pred[0]['generated_text']
+                        # for final template, use llm_f
+                        else:
+                            pred = llm_f(template)
+                            pred_text = pred[0]['generated_text']
+                    # process the prediction
+                    final_ans = self.text_processor(pred_text)
+                    if final_ans == ans:
+                        self.scores.append(level)
+                        self.predictions.append(final_ans)
+                        self.references.append(ans)
+                        break
+                    else:
+                        level = level + 1
+                        continue
+
+                # level 5
+                elif i==5:
+                    gen_prefix = "<|start_header_id|>user<|end_header_id|>\n"
+                    gen_suffix = "<|eot_id|><|start_header_id|>assistant<|end_header_id|>\n"
+
+                    template, gen_knowledge_template = self.prompts[i].get_prompt(self.task)
+                    gen_knowledge_template = gen_knowledge_template.format(question=question)
+                    knowledge_template = gen_prefix + gen_knowledge_template + gen_suffix
+                    know_prompts_list = []
+                    for i in range(3):
+                        know_prompts_list.append(knowledge_template)
+                    generated_knowledge = self.gen_model.generate_knowledge(know_prompts_list)
+              
+                    
+                    template = self.prefix + template.format(question=question, text1=text1, text2=text2, text3=text3, text4=text4, text5=text5, pred = generated_knowledge) + self.suffix + "Answer:"
+                    pred = llm_f(template)
+
+                    # process the prediction
+                    final_ans = self.text_processor(pred[0]['generated_text'])
+                    if final_ans == ans:
+                        self.scores.append(level)
+                        self.predictions.append(final_ans)
+                        self.references.append(ans)
+                        break
+                    else:
+                        level = level + hp_scores[self.task]
+                        self.scores.append(level)
+                        self.predictions.append(final_ans)
+                        self.references.append(ans)
+                    
+                
+                else :
+                    template = self.prompts[i].get_prompt(self.task).format(question=question, text1=text1, text2=text2, text3=text3, text4=text4, text5=text5)
+                    template = self.prefix + template + self.suffix +"Answer:"
+                    pred = llm_f(template)
+                    final_ans = self.text_processor(pred[0]['generated_text'])
+                    if final_ans == ans:
+                        self.scores.append(level)
+                        self.predictions.append(final_ans)
+                        self.references.append(ans)
+                        break
+                    else:
+                        level = level + 1
+                        continue
+
 
             if self.task == "humaneval":
                 code = item['code']

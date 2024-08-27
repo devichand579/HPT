@@ -19,7 +19,8 @@ class Promptloader(ABC):
                 "iwslt": ("Generate definitions in french of each word in the text: {0}").format("{eng_text}"),
                 "samsum": ("Generate interpretation about the dialogue: {0}").format("{dialogue}"),
                 "gsm8k": ("Generate Knowledge about the question: {0}").format("{question}"),
-                "humaneval": ("Generate interpretation about the code: {0}").format("{code}")
+                "humaneval": ("Generate interpretation about the code: {0}").format("{code}"),
+                "mmlu": ("Generate Knowledge about the question: {0}").format("{question}")
         }
        
        
@@ -35,6 +36,7 @@ class Roleprompt(Promptloader):
         self.prompts["samsum"] = ("Summarise the Dialogue: '{0}' as a Summariser.").format("{dialogue}")  
         self.prompts["gsm8k"] = ("Based on the question:'{0}'\nCalculate the numerical answer to the question as a expert mathematician.").format( "{question}")
         self.prompts["humaneval"] = ("Complete the given code based on the mentioned constraints: {0} as an expert programmer.").format("{code}")
+        self.prompts["mmlu"] = ("Choose the answer.\n{0}\nA {1}\nB {2}\nC {3}\nD {4} as a critical thinker.").format("{question}", "{text1}", "{text2}", "{text3}", "{text4}")
 
     def get_prompt(self, task):
         if task not in self.prompts:
@@ -51,7 +53,7 @@ class ZeroshotCoT(Promptloader):
         self.prompts["samsum"] = ("Summarise the Dialogue: '{0}'.\nLet's think step by step.").format("{dialogue}")   
         self.prompts["gsm8k"] = ("Based on the question:'{0}'\nCalculate the numerical answer to the question.\nLet's think step by step.").format( "{question}")
         self.prompts["humaneval"] = ("Complete the given code based on the mentioned constraints: {0}\nLet's think step by step.").format("{code}")
-
+        self.prompts["mmlu"] = ("Choose the answer.\n{0}\nA {1}\nB {2}\nC {3}\nD {4}\nLet's think step by step.").format("{question}", "{text1}", "{text2}", "{text3}", "{text4}")
     def get_prompt(self, task):
         if task not in self.prompts:
             return f"Prompt for '{task}' not found"
@@ -109,13 +111,22 @@ class threeshotCoT(Promptloader):
         humaneval_sol2 = "if n < 2: return False for k in range(2, n - 1): if n % k == 0: return False return True"
         humaneval_sol3 = "if a + b <= c or a + c <= b or b + c <= a: return -1 s = (a + b + c)/2 area = (s * (s - a) * (s - b) * (s - c)) ** 0.5 area = round(area, 2) return area"
 
+
+        mmlu_ques1 = "Any set of Boolean operators that is sufficient to represent all Boolean expressions is said to be complete. Which of the following is NOT complete?"
+        mmlu_ques2 = "The accused made a confession to the police, but his defense attorney needs to find out if the confession is admissible. In which of the following situations would a confession be inadmissible?"
+        mmlu_ques3 = "For which of these two scenarios does the main character (who uses I/me/my) do something clearly morally wrong, according to ordinary moral standards in the US as of 2020? Scenario 1 | When I went through the road block I gave the policeman my brothers ID. Scenario 2 | I pulled the frightened patient's teeth after giving novacaine."
+       
+        mmlu_exp1 = "The set {AND, OR} is not complete because it cannot represent all possible Boolean functions on its own. Specifically, it lacks the NOT operator, which is necessary to invert any Boolean value. Without the ability to perform negation, you cannot create expressions like XOR or NAND, making the set insufficient for full Boolean expression representation."
+        mmlu_exp2 = "Involuntary confessions are inadmissible because they are obtained through coercion, threats, or improper inducement, violating the defendant's rights and undermining the integrity of the legal process. For a confession to be admissible, it must be made voluntarily, with the defendant's awareness of their rights, and during a proper custodial interrogation."
+        mmlu_exp3 = "In Scenario 1, giving a policeman someone else's ID to evade a roadblock is morally wrong because it involves deceit and dishonesty, which violates ethical standards and legal norms. This act undermines trust in legal processes and can lead to legal consequences. In contrast, Scenario 2 involves pulling a patient's teeth under novocaine, which, if done by a qualified professional with informed consent, is a standard medical procedure and not considered morally wrong."
+
         self.prompts["boolq"] = ("Based on the passage:'{0}'\nAnswer True/False to the question: '{1}'.\nAnswer: {2}.\nExplaination: {3}.\nBased on the passage:'{4}'\nAnswer True/False to the question: '{5}'.\nAnswer: {6}.\nExplaination: {7}.\nBased on the passage:'{8}'\nAnswer True/False to the question: '{9}'.\nAnswer: {10}.\nExplaination: {11}.\nBased on the passage:'{12}'\nAnswer True/False to the question: '{13}'").format( passage1, question1, ans1, exp1, passage2, question2, ans2, exp2,  passage3, question3, ans3, exp3, "{passage}", "{question}" )
         self.prompts["csqa"] = ("Choose the answer.\n{0}\nA bank\nB library\nC department store\nD mall\nE new york\nAnswer: A\nExplanation: {1}.\nChoose the answer.\n{2}\nA doctor\nB bookstore\nC market\nD train station\nE mortuary\nAnswer: B\nExplanation: {3}.\nChoose the answer.\n{4}\nA pants\nB record albums\nC record store\nD cheese\nE wallpaper\nAnswer: E\nExplanation: {5}.\nChoose the answer.\n{6}\nA {7}\nB {8}\nC {9}\nD {10}\nE {11}").format( question_1, exp_1, question_2, exp_2, question_3, exp_3, "{question}", "{text1}", "{text2}", "{text3}", "{text4}", "{text5}" )
         self.prompts["iwslt"] = ("Translate '{0}' to French.\nFrench: {1}.\nTranslate '{2}' to French.\nFrench: {3}.\nTranslate '{4}' to French.\nFrench: {5}.\nTranslate '{6}' to French.").format( ex_en1, ex_fr1, ex_en2, ex_fr2, ex_en3, ex_fr3, "{eng_text}" )
         self.prompts["samsum"] = ("Summarise the Dialogue: '{0}'.\nSummary: {1}.\nSummarise the Dialogue: '{2}'.\nSummary: {3}.\nSummarise the Dialogue: '{4}'.\nSummary: {5}.\nSummarise the Dialogue: '{6}'").format( ex_dialogue1, ex_sum1, ex_dialogue2, ex_sum2, ex_dialogue3, ex_sum3, "{dialogue}" )
         self.prompts["gsm8k"] = ("Based on the question:'{0}'\nCalculate the numerical answer to the question.\nAnswer: {1}.\nBased on the question:'{2}'\nCalculate the numerical answer to the question.\nAnswer: {3}.\nBased on the question:'{4}'\nCalculate the numerical answer to the question.\nAnswer: {5}\nBasedBased on the question:'{6}'\nCalculate the numerical answer to the question.").format( gsm8k_question1, gsm8k_ans1, gsm8k_question2, gsm8k_ans2, gsm8k_question3, gsm8k_ans3, "{question}" )
         self.prompts["humaneval"] = ("Complete the given code based on the mentioned constraints: {0}\nCode: {1}.\nComplete the given code based on the mentioned constraints: {2}\nCode: {3}.\nComplete the given code based on the mentioned constraints: {4}\nCode: {5}\nComplete the given code based on the mentioned constraints: {6}\nCode: {7}").format( humaneval_code1, humaneval_sol1, humaneval_code2, humaneval_sol2, humaneval_code3, humaneval_sol3, "{code}" )
-
+        self.prompts["mmlu"] = ("Choose the answer.\n{0}\nA {AND, NOT}\nB {NOT, OR}\nC {AND, OR}\nD {NAND}\nAnswer: C\nExplanation: '{1}'.\nChoose the answer.\n{2}\nA The defendant's statement was involuntary.\nB The defendant's statement was voluntary.\nC The defendant was not in custody when the statement was made.\nD The statement was not made in response to a known police interrogation.\nAnswer: A\nExplanation: '{3}'.\nChoose the answer.\n{4}\nA Wrong, Wrong\nB Wrong, Not wrong\nC Not wrong, Wrong\nD Not wrong, Not wrong\nAnswer: B\nExplanation: '{5}'.\nChoose the answer.\n{6}\nA {7}\nB {8}\nC {9}\nD {10}").format( mmlu_ques1, mmlu_exp1, mmlu_ques2, mmlu_exp2, mmlu_ques3, mmlu_exp3, "{question}", "{text1}", "{text2}", "{text3}", "{text4}" )
     def get_prompt(self, task):
         if task not in self.prompts:
             return f"Prompt for '{task}' not found"
@@ -131,6 +142,7 @@ class Leasttomost(Promptloader):
         self.prompts["samsum"] = [("List the main points or key ideas present in this dialogue: '{0}'.").format("{dialogue}"),("Elaborate on the following key points, providing additional details or context: '{0}'.").format("{pred}"),("Using the listed key points and their elaborations, draft a concise summary of this text: '{0}'.").format("{dialogue}"),("Refine this draft summary to make it more concise and coherent, ensuring it captures the essence of the text: '{0}'.").format("{dialogue}")]
         self.prompts["gsm8k"] = [("Analyze the question: '{0}'").format("{question}"),("Break the question into sub problems: '{0}'").format("{question}"),("Calulate answers for the subproblems of the question: '{0}'").format("{pred}"),("Calculate the numerical answer to this question: '{0}' based on the previous calculations: '{1}'").format("{question}","{pred}")]
         self.prompts["humaneval"] = [("Analyze the code: '{0}'").format("{code}"),("Break the problem into sub problems: '{0}'").format("{code}"),("Complete code for the subproblems of the code: '{0}'").format("{pred}"),("Complete the code based on mentioned constraints: '{0}' based on the previous calculations: '{1}'").format("{code}","{pred}")]
+        self.prompts["mmlu"] = [("Analyze this question: '{0}'").format("{question}"), ("Elaborate about each option for the question: '{0}'\noptions: A {1}\nB {2}\nC {3}\nD {4}").format("{question}","{text1}","{text2}","{text3}","{text4}"),("Based on the analysis : '{0}', Discard wrong answers among the options:A {1}\nB {2}\nC {3}\nD {4}").format("{pred}", "{text1}","{text2}","{text3}","{text4}"), ("Choose the correct answer from the options: A {0}\nB {1}\nC {2}\nD {3}").format("{text1}","{text2}","{text3}","{text4}")]
 
 
     def get_prompt(self, task):
@@ -148,7 +160,7 @@ class generatedknowledge(Promptloader):
         self.prompts["samsum"] = ("Summarise the Dialogue: '{0}' using interpretation of the dialogue:{1}").format("{dialogue}", "{pred}")
         self.prompts["gsm8k"] = ("Based on the question:'{0}'\nCalculate the numerical answer to the question using interpretation of the question:{1}").format( "{question}", "{pred}")
         self.prompts["humaneval"] = ("Complete the code based on the mentioned constraints:{0} using knowledge of the constraints:{1}").format("{code}", "{pred}")
- 
+        self.prompts["mmlu"] = ("Choose the answer.\n{0}\nA {1}\nB {2}\nC {3}\nD {4} using knowledge of the question:{5}").format("{question}", "{text1}", "{text2}", "{text3}", "{text4}", "{pred}")
 
     def get_prompt(self, task):
         if task not in self.prompts:
