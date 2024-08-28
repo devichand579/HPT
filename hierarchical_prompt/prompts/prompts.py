@@ -10,7 +10,8 @@ class Promptloader(ABC):
            "iwslt": None,
            "samsum": None,
            "gsm8k": None,
-           "humaneval": None
+           "humaneval": None,
+           "mmlu": None
        }
 
        self.generate_knowledge_prompts = {

@@ -268,8 +268,10 @@ class GPT4o(ABC):
                 ],
                 **self.generation_config
             )
-            return prompt + completion.choices[0].message.content
-
+            pred = []
+            text = {"generated_text": prompt + completion.choices[0].message.content}
+            pred.append(text)
+            return pred
         return generate
 
     @property
@@ -284,8 +286,10 @@ class GPT4o(ABC):
                 ],
                 **self.generation_config
             )
-        
-            return  completion.choices[0].message.content
+            pred = []
+            text = {"generated_text": completion.choices[0].message.content}
+            pred.append(text)
+            return pred
 
         return generate
 
@@ -313,7 +317,10 @@ class Claude:
                     }
           ]
         )
-          return prompt + message.content[0].text
+          pred = []
+          text = {"generated_text": prompt + message.content[0].text}
+          pred.append(text)
+          return pred
         return generate
     
     @property
@@ -331,7 +338,10 @@ class Claude:
                     }
           ]
         )
-          return  message.content[0].text
+          pred = []
+          text = {"generated_text": message.content[0].text}
+          pred.append(text)
+          return pred
         return generate
 
 
