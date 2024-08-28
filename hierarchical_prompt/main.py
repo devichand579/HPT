@@ -66,15 +66,7 @@ class ManualHierarchicalPrompt(ABC):
                 text3 = item['choices']['text'][2]
                 text4 = item['choices']['text'][3] 
                 # extract the answer 
-                answer = item['answer']
-                if answer == "A":
-                    ans = 0
-                elif answer == "B":
-                    ans = 1
-                elif answer == "C":
-                    ans = 2
-                elif answer == "D":
-                    ans = 3
+                ans = item['answer']
                 # level 4
                 if i==4:
                     # retrieve multiple levels of least-to-most prompting
@@ -693,6 +685,13 @@ class ManualHierarchicalPrompt(ABC):
             scores = {
                 "hp_score": hp_score,
                 "pass_at_k": pass_at_k
+            }
+            return scores
+        elif self.task == "mmlu":
+            acc = self.metrics[0](self.predictions,self.references)
+            scores = {
+                "hp_score": hp_score,
+                "accuracy": acc
             }
             return scores
             
