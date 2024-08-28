@@ -104,9 +104,40 @@ class threeshotCoT(Promptloader):
         gsm8k_ans2 = "6\nFind how many packages of 3 would be needed which is 18 ÷ 3 = <<18/3=6>>6. The cost of using packages of 3 is 6 × $2.50 = $<<6*2.5=15>>15. Find how many packages of 2 would be needed which is 18 ÷ 2 = <<18/2=9>>9. The cost of using packages of 2 is 9 × $1 = $<<9*1=9>>9. Vincent would save $15 - $9 = $<<15-9=6>>6. #### 6"
         gsm8k_ans3 = "348\nIf there are two cats for every dog, and the number of dogs is 60, the number of cats is 2*60 = <<2*60=120>>120 The combined number of cats and dogs is 120+60 = <<120+60=180>>180 The number of rabbits pets is twelve less than the combined number of pet dogs and cats, a total of 180-12 = 168 The total number of pets in the compound is 168+180 = <<168+180=348>>348 #### 348"
 
-        humaneval_code1 = """from typing import List def has_close_elements(numbers: List[float], threshold: float) -> bool: """ Check if in given list of numbers, are any two numbers closer to each other than given threshold. >>> has_close_elements([1.0, 2.0, 3.0], 0.5) False >>> has_close_elements([1.0, 2.8, 3.0, 4.0, 5.0, 2.0], 0.3) True """""""
-        humaneval_code2 = """def is_prime(n): """Return true if a given number is prime, and false otherwise. >>> is_prime(6) False >>> is_prime(101) True >>> is_prime(11) True >>> is_prime(13441) True >>> is_prime(61) True >>> is_prime(4) False >>> is_prime(1) False """""""
-        humaneval_code3 = """def triangle_area(a, b, c): ''' Given the lengths of the three sides of a triangle. Return the area of the triangle rounded to 2 decimal points if the three sides form a valid triangle. Otherwise return -1 Three sides make a valid triangle when the sum of any two sides is greater than the third side. Example: triangle_area(3, 4, 5) == 6.00 triangle_area(1, 2, 10) == -1 '''"""
+        humaneval_code1 = '''from typing import List
+
+def has_close_elements(numbers: List[float], threshold: float) -> bool:
+    """
+    Check if in given list of numbers, are any two numbers closer to each other than given threshold.
+    >>> has_close_elements([1.0, 2.0, 3.0], 0.5)
+    False
+    >>> has_close_elements([1.0, 2.8, 3.0, 4.0, 5.0, 2.0], 0.3)
+    True
+    """'''
+        humaneval_code2 = '''def is_prime(n):
+    """Return true if a given number is prime, and false otherwise.
+    >>> is_prime(6)
+    False
+    >>> is_prime(101)
+    True
+    >>> is_prime(11)
+    True
+    >>> is_prime(13441)
+    True
+    >>> is_prime(61)
+    True
+    >>> is_prime(4)
+    False
+    >>> is_prime(1)
+    False
+    """'''
+        humaneval_code3 = '''def triangle_area(a, b, c):
+    """Given the lengths of the three sides of a triangle. Return the area of the triangle rounded to 2 decimal points if the three sides form a valid triangle. Otherwise return -1
+    Three sides make a valid triangle when the sum of any two sides is greater than the third side.
+    Example:
+    triangle_area(3, 4, 5) == 6.00
+    triangle_area(1, 2, 10) == -1
+    """'''
         humaneval_sol1 = "for idx, elem in enumerate(numbers): for idx2, elem2 in enumerate(numbers): if idx != idx2: distance = abs(elem - elem2) if distance < threshold: return True return False"
         humaneval_sol2 = "if n < 2: return False for k in range(2, n - 1): if n % k == 0: return False return True"
         humaneval_sol3 = "if a + b <= c or a + c <= b or b + c <= a: return -1 s = (a + b + c)/2 area = (s * (s - a) * (s - b) * (s - c)) ** 0.5 area = round(area, 2) return area"
@@ -125,7 +156,7 @@ class threeshotCoT(Promptloader):
         self.prompts["iwslt"] = ("Translate '{0}' to French.\nFrench: {1}.\nTranslate '{2}' to French.\nFrench: {3}.\nTranslate '{4}' to French.\nFrench: {5}.\nTranslate '{6}' to French.").format( ex_en1, ex_fr1, ex_en2, ex_fr2, ex_en3, ex_fr3, "{eng_text}" )
         self.prompts["samsum"] = ("Summarise the Dialogue: '{0}'.\nSummary: {1}.\nSummarise the Dialogue: '{2}'.\nSummary: {3}.\nSummarise the Dialogue: '{4}'.\nSummary: {5}.\nSummarise the Dialogue: '{6}'").format( ex_dialogue1, ex_sum1, ex_dialogue2, ex_sum2, ex_dialogue3, ex_sum3, "{dialogue}" )
         self.prompts["gsm8k"] = ("Based on the question:'{0}'\nCalculate the numerical answer to the question.\nAnswer: {1}.\nBased on the question:'{2}'\nCalculate the numerical answer to the question.\nAnswer: {3}.\nBased on the question:'{4}'\nCalculate the numerical answer to the question.\nAnswer: {5}\nBasedBased on the question:'{6}'\nCalculate the numerical answer to the question.").format( gsm8k_question1, gsm8k_ans1, gsm8k_question2, gsm8k_ans2, gsm8k_question3, gsm8k_ans3, "{question}" )
-        self.prompts["humaneval"] = ("Complete the given code based on the mentioned constraints: {0}\nCode: {1}.\nComplete the given code based on the mentioned constraints: {2}\nCode: {3}.\nComplete the given code based on the mentioned constraints: {4}\nCode: {5}\nComplete the given code based on the mentioned constraints: {6}\nCode: {7}").format( humaneval_code1, humaneval_sol1, humaneval_code2, humaneval_sol2, humaneval_code3, humaneval_sol3, "{code}" )
+        self.prompts["humaneval"] = ("Complete the given code based on the mentioned constraints: {0}\nCode: {1}.\nComplete the given code based on the mentioned constraints: {2}\nCode: {3}.\nComplete the given code based on the mentioned constraints: {4}\nCode: {5}.\nComplete the given code based on the mentioned constraints: {6}\nCode: {7}").format( humaneval_code1, humaneval_sol1, humaneval_code2, humaneval_sol2, humaneval_code3, humaneval_sol3, "{code}" )
         self.prompts["mmlu"] = ("Choose the answer.\n{0}\nA {AND, NOT}\nB {NOT, OR}\nC {AND, OR}\nD {NAND}\nAnswer: C\nExplanation: '{1}'.\nChoose the answer.\n{2}\nA The defendant's statement was involuntary.\nB The defendant's statement was voluntary.\nC The defendant was not in custody when the statement was made.\nD The statement was not made in response to a known police interrogation.\nAnswer: A\nExplanation: '{3}'.\nChoose the answer.\n{4}\nA Wrong, Wrong\nB Wrong, Not wrong\nC Not wrong, Wrong\nD Not wrong, Not wrong\nAnswer: B\nExplanation: '{5}'.\nChoose the answer.\n{6}\nA {7}\nB {8}\nC {9}\nD {10}").format( mmlu_ques1, mmlu_exp1, mmlu_ques2, mmlu_exp2, mmlu_ques3, mmlu_exp3, "{question}", "{text1}", "{text2}", "{text3}", "{text4}" )
     def get_prompt(self, task):
         if task not in self.prompts:
