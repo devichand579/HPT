@@ -110,7 +110,7 @@ class ManualHierarchicalPrompt(ABC):
                     generated_knowledge = self.gen_model.generate_knowledge(know_prompts_list)
               
                     
-                    template = self.prefix + template.format(question=question, text1=text1, text2=text2, text3=text3, text4=text4, text5=text5, pred = generated_knowledge) + self.suffix + "Answer:"
+                    template = self.prefix + template.format(question=question, text1=text1, text2=text2, text3=text3, text4=text4, pred = generated_knowledge) + self.suffix + "Answer:"
                     pred = llm_f(template)
 
                     # process the prediction
@@ -128,7 +128,7 @@ class ManualHierarchicalPrompt(ABC):
                     
                 
                 else :
-                    template = self.prompts[i].get_prompt(self.task).format(question=question, text1=text1, text2=text2, text3=text3, text4=text4, text5=text5)
+                    template = self.prompts[i].get_prompt(self.task).format(question=question, text1=text1, text2=text2, text3=text3, text4=text4)
                     template = self.prefix + template + self.suffix +"Answer:"
                     pred = llm_f(template)
                     final_ans = self.text_processor(pred[0]['generated_text'])
