@@ -32,15 +32,15 @@ hp_scores = {
 
 class ManualHierarchicalPrompt(ABC):
     def __init__(self, model, gen_model, dataset, metric_list, text_processor, prompts,task, prefix, suffix,thres=0):
-        self.model = model 
-        self.gen_model = gen_model 
-        self.dataset = dataset 
-        self.metrics = metric_list  
-        self.text_processor = text_processor    
+        self.model = model
+        self.gen_model = gen_model
+        self.dataset = dataset
+        self.metrics = metric_list
+        self.text_processor = text_processor
         self.prompts = prompts
-        self.task = task   
-        self.prefix = prefix  
-        self.suffix = suffix 
+        self.task = task
+        self.prefix = prefix
+        self.suffix = suffix
         self.thres = thres
         self.predictions = []
         self.references = []
@@ -54,18 +54,19 @@ class ManualHierarchicalPrompt(ABC):
         '''
         level = 1
         for i in range(1,6):
-    
+
             llm_f = self.model.pipe_f   # full_text pipeline
             llm_nf = self.model.pipe_nf # non_full_text pipeline
 
             if self.task == "mmlu":
-                # extract the question and choices 
+                # extract the question and choices
                 question = item['question']
-                text1 = item['choices']['text'][0] 
-                text2 = item['choices']['text'][1] 
-                text3 = item['choices']['text'][2]
-                text4 = item['choices']['text'][3] 
-                # extract the answer 
+
+                text1 = item['choices'][0]
+                text2 = item['choices'][1]
+                text3 = item['choices'][2]
+                text4 = item['choices'][3]
+                # extract the answer
                 ans = item['answer']
 
                 # -------- Check loaded values from the item ----------
@@ -76,7 +77,7 @@ class ManualHierarchicalPrompt(ABC):
                     pred_text = ""
                     # iterate over the templates
                     for i in range(len(templates)):
-                        
+
                         template = self.prefix + templates[i].format(question=question, text1=text1, text2=text2, text3=text3, text4=text4, pred=pred_text) + self.suffix + "Answer:"
                          # ---------- Check the prompt template -------------
                         # for intermediate templates, use llm_nf
@@ -114,8 +115,8 @@ class ManualHierarchicalPrompt(ABC):
                     for i in range(3):
                         know_prompts_list.append(knowledge_template)
                     generated_knowledge = self.gen_model.generate_knowledge(know_prompts_list)
-              
-                    
+
+
                     template = self.prefix + template.format(question=question, text1=text1, text2=text2, text3=text3, text4=text4, pred = generated_knowledge) + self.suffix + "Answer:"
                     pred = llm_f(template)
                     # ----- check the full prediction text ------------
@@ -132,8 +133,8 @@ class ManualHierarchicalPrompt(ABC):
                         self.scores.append(level)
                         self.predictions.append(final_ans)
                         self.references.append(ans)
-                    
-                
+
+
                 else :
                     template = self.prompts[i].get_prompt(self.task).format(question=question, text1=text1, text2=text2, text3=text3, text4=text4)
                     template = self.prefix + template + self.suffix +"Answer:"
@@ -149,7 +150,6 @@ class ManualHierarchicalPrompt(ABC):
                     else:
                         level = level + 1
                         continue
-
 
             if self.task == "humaneval":
                 code = item['code']
@@ -191,8 +191,8 @@ class ManualHierarchicalPrompt(ABC):
                     for i in range(3):
                         know_prompts_list.append(knowledge_template)
                     generated_knowledge = self.gen_model.generate_knowledge(know_prompts_list)
-              
-                    
+
+
                     template = self.prefix + template.format(passage=passage, question=question, pred = generated_knowledge) + self.suffix + "Code:"
                     pred = llm_f(template)
                     # process the prediction
@@ -209,7 +209,7 @@ class ManualHierarchicalPrompt(ABC):
                         self.scores.append(level)
                         self.predictions.append(final_ans)
                         self.references.append(test_case)
-                     
+
                 else:
                     template = self.prompts[i].get_prompt(self.task).format(passage=passage, question=question)
                     template = self.prefix + template + self.suffix + "Code:"
@@ -250,7 +250,7 @@ class ManualHierarchicalPrompt(ABC):
                     else:
                         level = level + 1
                         continue
-                
+
                 elif i == 5:
                     gen_prefix = "<|start_header_id|>user<|end_header_id|>\n"
                     gen_suffix = "<|eot_id|><|start_header_id|>assistant<|end_header_id|>\n"
@@ -262,7 +262,7 @@ class ManualHierarchicalPrompt(ABC):
                     for i in range(3):
                         know_prompts_list.append(knowledge_template)
                     generated_knowledge = self.gen_model.generate_knowledge(know_prompts_list)
-                    
+
 
                     template = self.prefix + template.format(question=question, pred = generated_knowledge) + self.suffix + "Answer:"
                     pred = llm_f(template)
@@ -277,7 +277,7 @@ class ManualHierarchicalPrompt(ABC):
                         self.scores.append(level)
                         self.predictions.append(final_ans)
                         self.references.append(answer)
-                
+
                 else:
                     template = self.prompts[i].get_prompt(self.task).format(question=question)
                     template = self.prefix + template + self.suffix + "Answer:"
@@ -291,6 +291,7 @@ class ManualHierarchicalPrompt(ABC):
                     else:
                         level = level + 1
                         continue
+
             # handles passage and ques-ans pairs
             if self.task == "boolq":
                 #extracting the passage, question, and answer from the item
@@ -309,7 +310,7 @@ class ManualHierarchicalPrompt(ABC):
                     templates = self.prompts[i].get_prompt(self.task)
                     # iterate over the templates
                     for i in range(len(templates)):
-                        
+
                         template = self.prefix + templates[i].format(passage=passage, question=question, pred=pred_txt) + self.suffix + "Answer:"
                         # for intermediate templates, use llm_nf
                         if i != len(templates)-1:
@@ -334,7 +335,7 @@ class ManualHierarchicalPrompt(ABC):
                 elif i==5:
                     gen_prefix = "<|start_header_id|>user<|end_header_id|>\n"
                     gen_suffix = "<|eot_id|><|start_header_id|>assistant<|end_header_id|>\n"
-                    
+
                     template, gen_knowledge_template = self.prompts[i].get_prompt(self.task)
                     gen_knowledge_template = gen_knowledge_template.format(passage=passage)
                     knowledge_template = gen_prefix + gen_knowledge_template + gen_suffix
@@ -342,8 +343,8 @@ class ManualHierarchicalPrompt(ABC):
                     for i in range(3):
                         know_prompts_list.append(knowledge_template)
                     generated_knowledge = self.gen_model.generate_knowledge(know_prompts_list)
-              
-                    
+
+
                     template = self.prefix + template.format(passage=passage, question=question, pred = generated_knowledge) + self.suffix + "Answer:"
                     pred = llm_f(template)
                     # process the prediction
@@ -358,8 +359,8 @@ class ManualHierarchicalPrompt(ABC):
                         self.scores.append(level)
                         self.predictions.append(final_ans)
                         self.references.append(ans)
-                    
-                
+
+
                 else :
                     template = self.prompts[i].get_prompt(self.task).format(passage=passage, question=question)
                     template = self.prefix + template + self.suffix + "Answer:"
@@ -376,13 +377,13 @@ class ManualHierarchicalPrompt(ABC):
 
             # handles multiple-choice questions
             elif self.task == "csqa":
-                # extract the question and choices 
+                # extract the question and choices
                 question = item['question']
-                text1 = item['choices']['text'][0] 
-                text2 = item['choices']['text'][1] 
+                text1 = item['choices']['text'][0]
+                text2 = item['choices']['text'][1]
                 text3 = item['choices']['text'][2]
-                text4 = item['choices']['text'][3] 
-                text5 = item['choices']['text'][4]  
+                text4 = item['choices']['text'][3]
+                text5 = item['choices']['text'][4]
                 # extract the answer key
                 answer = item['answerKey']
                 if answer == "A":
@@ -402,7 +403,7 @@ class ManualHierarchicalPrompt(ABC):
                     pred_text = ""
                     # iterate over the templates
                     for i in range(len(templates)):
-                        
+
                         template = self.prefix + templates[i].format(question=question, text1=text1, text2=text2, text3=text3, text4=text4, text5=text5, pred=pred_text) + self.suffix + "Answer:"
 
                         # for intermediate templates, use llm_nf
@@ -436,8 +437,8 @@ class ManualHierarchicalPrompt(ABC):
                     for i in range(3):
                         know_prompts_list.append(knowledge_template)
                     generated_knowledge = self.gen_model.generate_knowledge(know_prompts_list)
-              
-                    
+
+
                     template = self.prefix + template.format(question=question, text1=text1, text2=text2, text3=text3, text4=text4, text5=text5, pred = generated_knowledge) + self.suffix + "Answer:"
                     pred = llm_f(template)
 
@@ -453,8 +454,8 @@ class ManualHierarchicalPrompt(ABC):
                         self.scores.append(level)
                         self.predictions.append(final_ans)
                         self.references.append(ans)
-                    
-                
+
+
                 else :
                     template = self.prompts[i].get_prompt(self.task).format(question=question, text1=text1, text2=text2, text3=text3, text4=text4, text5=text5)
                     template = self.prefix + template + self.suffix +"Answer:"
@@ -481,7 +482,7 @@ class ManualHierarchicalPrompt(ABC):
                     pred_text = ""
                     # iterate over the templates
                     for i in range(len(templates)):
-                        
+
                         if i != len(templates)-1:
                             template = self.prefix + templates[i].format(eng_text=eng_text, pred=pred_text) + self.suffix
                             pred = llm_nf(template)
@@ -515,7 +516,7 @@ class ManualHierarchicalPrompt(ABC):
                     for i in range(3):
                         know_prompts_list.append(knowledge_template)
                     generated_knowledge = self.gen_model.generate_knowledge(know_prompts_list)
-              
+
                     # create the final prompt and chain using llm_f
                     template = self.prefix + template.format(eng_text=eng_text, pred = generated_knowledge) + self.suffix + "French:"
                     pred = llm_f(template)
@@ -533,8 +534,8 @@ class ManualHierarchicalPrompt(ABC):
                         self.scores.append(level)
                         self.predictions.append(final_ans)
                         self.references.append(answer)
-                
-                
+
+
                 # for other levels, retrieve the prompt template, add the prefix and suffix, and create a prompt chain using llm_f
                 else :
                     template = self.prompts[i].get_prompt(self.task).format(eng_text=eng_text)
@@ -552,13 +553,12 @@ class ManualHierarchicalPrompt(ABC):
                         level = level + 1
                         continue
 
-
             # handles dialogue summarization tasks
             elif self.task == "samsum":
                 # extract the dialogue and summary
                 dialogue = item['dialogue']
                 answer = item['summary']
-                
+
                 # level 4
                 if i==4:
                     # retrieve multiple levels of least-to-most prompting
@@ -566,7 +566,7 @@ class ManualHierarchicalPrompt(ABC):
                     pred_text = ""
                     # iterate over the templates
                     for i in range(len(templates)):
-                        
+
                         if i != len(templates)-1:
                             template = self.prefix + templates[i].format(dialogue=dialogue, pred=pred_text) + self.suffix
                             pred = llm_nf(template)
@@ -600,8 +600,8 @@ class ManualHierarchicalPrompt(ABC):
                     for i in range(3):
                         know_prompts_list.append(knowledge_template)
                     generated_knowledge = self.gen_model.generate_knowledge(know_prompts_list)
-              
-                  
+
+
                     template = self.prefix + template.format(dialogue=dialogue, pred = generated_knowledge) + self.suffix + "Summary:"
                     pred = llm_f(template)
                     # process the prediction
@@ -618,8 +618,8 @@ class ManualHierarchicalPrompt(ABC):
                         self.scores.append(level)
                         self.predictions.append(final_ans)
                         self.references.append(answer)
-                
-                
+
+
                 # for other levels, retrieve the prompt template, add the prefix and suffix, and create a prompt chain using llm_f
                 else :
                     template = self.prompts[i].get_prompt(self.task).format(dialogue=dialogue)
@@ -644,7 +644,7 @@ class ManualHierarchicalPrompt(ABC):
             self.prompt_process(item)
         logging.info("***Dataset processed successfully***")
 
-    
+
     def compute_scores(self):
         '''
         computes the scores for the predictions
@@ -703,20 +703,18 @@ class ManualHierarchicalPrompt(ABC):
                 "accuracy": acc
             }
             return scores
-            
-
 
 class AdaptiveHierarchicalPrompt(ABC):
     def __init__(self, model, gen_model, dataset, metric_list, text_processor, prompts,task, prefix, suffix,thres=0):
-        self.model = model 
-        self.gen_model = gen_model 
-        self.dataset = dataset 
-        self.metrics = metric_list  
-        self.text_processor = text_processor    
+        self.model = model
+        self.gen_model = gen_model
+        self.dataset = dataset
+        self.metrics = metric_list
+        self.text_processor = text_processor
         self.prompts = prompts
-        self.task = task   
-        self.prefix = prefix  
-        self.suffix = suffix 
+        self.task = task
+        self.prefix = prefix
+        self.suffix = suffix
         self.thres = thres
         self.predictions = []
         self.references = []
@@ -725,7 +723,7 @@ class AdaptiveHierarchicalPrompt(ABC):
                 "boolq":  ("Based on the passage:'{0}'\nAnswer True/False to the question: '{1}'").format("{passage}", "{question}"),
                 "csqa":   ("Choose the answer.\n{0}\nA {1}\nB {2}\nC {3}\nD {4}\nE {5}.").format("{question}", "{text1}", "{text2}", "{text3}", "{text4}", "{text5}"),
                 "iwslt":  ("Translate '{0}' to french.").format("{eng_text}"),
-                "samsum": ("Summarise the Dialogue: '{0}'.").format("{dialogue}") 
+                "samsum": ("Summarise the Dialogue: '{0}'.").format("{dialogue}")
         }
         self.prompt_loader = Promptloader()
         self.adaptive_processor = AdaptiveProcessor().processor
@@ -746,11 +744,11 @@ class AdaptiveHierarchicalPrompt(ABC):
             pred = llm_f(template)
         if self.task == "csqa":
             question = item['question']
-            text1 = item['choices']['text'][0] 
-            text2 = item['choices']['text'][1] 
+            text1 = item['choices']['text'][0]
+            text2 = item['choices']['text'][1]
             text3 = item['choices']['text'][2]
-            text4 = item['choices']['text'][3] 
-            text5 = item['choices']['text'][4]  
+            text4 = item['choices']['text'][3]
+            text5 = item['choices']['text'][4]
             template  = self.prompt_loader.adaptive_prompt
             task_template = self.basic_tasks[self.task].format(question=question, text1=text1, text2=text2, text3=text3, text4=text4, text5=text5)
             template = gen_prefix + template.format(prev_res=prev_res ,task = task_template) + gen_suffix + "Level:"
@@ -808,13 +806,13 @@ class AdaptiveHierarchicalPrompt(ABC):
                 else:
                     return 0, pred[0]['generated_text']
             if self.task == "csqa":
-               # extract the question and choices 
+               # extract the question and choices
                 question = item['question']
-                text1 = item['choices']['text'][0] 
-                text2 = item['choices']['text'][1] 
+                text1 = item['choices']['text'][0]
+                text2 = item['choices']['text'][1]
                 text3 = item['choices']['text'][2]
-                text4 = item['choices']['text'][3] 
-                text5 = item['choices']['text'][4]  
+                text4 = item['choices']['text'][3]
+                text5 = item['choices']['text'][4]
                 # extract the answer key
                 answer = item['answerKey']
                 if answer == "A":
@@ -834,9 +832,9 @@ class AdaptiveHierarchicalPrompt(ABC):
                 if final_ans == ans:
                     self.predictions.append(final_ans)
                     self.references.append(ans)
-                    return level, pred[0]['generated_text'] 
+                    return level, pred[0]['generated_text']
                 else:
-                    return 0, pred[0]['generated_text'] 
+                    return 0, pred[0]['generated_text']
             if self.task == "iwslt":
                 # extract english text and answer in french
                 eng_text = item['translation']['en']
@@ -869,7 +867,7 @@ class AdaptiveHierarchicalPrompt(ABC):
                     return level,pred[0]['generated_text']
                 else:
                     return 0, pred[0]['generated_text']
-                
+
 
         if level==4:
             # handles passage and ques-ans pairs
@@ -927,7 +925,7 @@ class AdaptiveHierarchicalPrompt(ABC):
                     ans = 4
                 # retrieve multiple levels of least-to-most prompting
                 templates = self.prompts[i].get_prompt(self.task)
-                pred_text = ""  
+                pred_text = ""
                 # iterate over the templates
                 for i in range(len(templates)):
                     template = self.prefix + templates[i].format(question=question, text1=text1, text2=text2, text3=text3, text4=text4, text5=text5, pred=pred_text) + self.suffix + "Answer:"
@@ -1017,7 +1015,7 @@ class AdaptiveHierarchicalPrompt(ABC):
                     ans = 0
                 gen_prefix = "<|start_header_id|>user<|end_header_id|>\n"
                 gen_suffix = "<|eot_id|><|start_header_id|>assistant<|end_header_id|>\n"
-                    
+
                 template, gen_knowledge_template = self.prompts[i].get_prompt(self.task)
                 gen_knowledge_template = gen_knowledge_template.format(passage=passage)
                 knowledge_template = gen_prefix + gen_knowledge_template + gen_suffix
@@ -1025,12 +1023,12 @@ class AdaptiveHierarchicalPrompt(ABC):
                 for i in range(3):
                     know_prompts_list.append(knowledge_template)
                 generated_knowledge = self.gen_model.generate_knowledge(know_prompts_list)
-              
-                    
+
+
                 template = self.prefix + template.format(passage=passage, question=question, pred = generated_knowledge) + self.suffix + "Answer:"
                 pred = llm_f(template)
                 # process the prediction
-                final_ans = self.text_processor(pred[0]['generated_text'])   
+                final_ans = self.text_processor(pred[0]['generated_text'])
                 if final_ans == ans:
                     self.predictions.append(final_ans)
                     self.references.append(ans)
@@ -1038,13 +1036,13 @@ class AdaptiveHierarchicalPrompt(ABC):
                 else:
                     return 0, pred[0]['generated_text']
             if self.task == "csqa":
-                # extract the question and choices 
+                # extract the question and choices
                 question = item['question']
-                text1 = item['choices']['text'][0] 
-                text2 = item['choices']['text'][1] 
+                text1 = item['choices']['text'][0]
+                text2 = item['choices']['text'][1]
                 text3 = item['choices']['text'][2]
-                text4 = item['choices']['text'][3] 
-                text5 = item['choices']['text'][4]  
+                text4 = item['choices']['text'][3]
+                text5 = item['choices']['text'][4]
                 # extract the answer key
                 answer = item['answerKey']
                 if answer == "A":
@@ -1067,8 +1065,8 @@ class AdaptiveHierarchicalPrompt(ABC):
                 for i in range(3):
                     know_prompts_list.append(knowledge_template)
                 generated_knowledge = self.gen_model.generate_knowledge(know_prompts_list)
-              
-                    
+
+
                 template = self.prefix + template.format(question=question, text1=text1, text2=text2, text3=text3, text4=text4, text5=text5, pred = generated_knowledge) + self.suffix + "Answer:"
                 pred = llm_f(template)
                 # process the prediction
@@ -1079,7 +1077,7 @@ class AdaptiveHierarchicalPrompt(ABC):
                     return level, pred[0]['generated_text']
                 else:
                     return 0, pred[0]['generated_text']
-                
+
             if self.task == "iwslt":
                 # extract english text and answer in french
                 eng_text = item['translation']['en']
@@ -1093,7 +1091,7 @@ class AdaptiveHierarchicalPrompt(ABC):
                 for i in range(3):
                     know_prompts_list.append(knowledge_template)
                 generated_knowledge = self.gen_model.generate_knowledge(know_prompts_list)
-              
+
                 # create the final prompt and chain using llm_f
                 template = self.prefix + template.format(eng_text=eng_text, pred = generated_knowledge) + self.suffix + "French:"
                 pred = llm_f(template)
@@ -1106,7 +1104,7 @@ class AdaptiveHierarchicalPrompt(ABC):
                     self.references.append(answer)
                     return level, pred[0]['generated_text']
                 else:
-                    return 0, pred[0]['generated_text'] 
+                    return 0, pred[0]['generated_text']
             if self.task == "samsum":
                 # extract the dialogue and summary
                 dialogue = item['dialogue']
@@ -1120,7 +1118,7 @@ class AdaptiveHierarchicalPrompt(ABC):
                 for i in range(3):
                     know_prompts_list.append(knowledge_template)
                 generated_knowledge = self.gen_model.generate_knowledge(know_prompts_list)
-              
+
                 # create the final prompt and chain using llm_f
                 template = self.prefix + template.format(dialogue=dialogue, pred = generated_knowledge) + self.suffix + "Summary:"
                 pred = llm_f(template)
@@ -1134,7 +1132,7 @@ class AdaptiveHierarchicalPrompt(ABC):
                     return level, pred[0]['generated_text']
                 else:
                     return 0, pred[0]['generated_text']
-                    
+
 
     def process_dataset(self):
         '''
@@ -1147,7 +1145,7 @@ class AdaptiveHierarchicalPrompt(ABC):
             if self.task == "boolq":
                 answer = item['answer']
                 if answer == True:
-                    ans = 1 
+                    ans = 1
                 else:
                     ans = 0
             if self.task == "csqa":
@@ -1187,7 +1185,7 @@ class AdaptiveHierarchicalPrompt(ABC):
                 self.predictions.append(final_ans)
                 self.references.append(ans)
         logging.info("***Dataset processed successfully***")
-    
+
     def compute_scores(self):
         '''
         computes the scores for the predictions
@@ -1230,7 +1228,7 @@ class AdaptiveHierarchicalPrompt(ABC):
 def main(args):
     HP_framework = args.arg1
     model_name = args.arg2
-    
+
     if model_name == "llama3":
         model = LLama3()
         prefix = "<|start_header_id|>user<|end_header_id|>\n"
@@ -1263,7 +1261,7 @@ def main(args):
         model = Claude()
         prefix = "<|startoftext|>### Instruction: "
         suffix = "<|endoftext|>\n"
-    
+
     dataset_name = args.arg3
     if dataset_name in ["iwslt", "samsum"]:
         thres = args.thres
