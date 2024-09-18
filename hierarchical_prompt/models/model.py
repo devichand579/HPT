@@ -259,7 +259,7 @@ class GPT4o(ABC):
                 messages=[
                     {
                     "role": "system",
-                    "content": "Provide the answer in the first sentence"
+                    "content": "Provide the answer at the start of first sentence"
                 },
                     {
                     "role": "user",
@@ -309,7 +309,7 @@ class Claude:
           max_tokens=1024,
           temperature=0.6,
           top_p=0.90,
-          system = "Provide the answer in the first sentence",
+          system = "Provide the answer at the start of first sentence",
           messages=[
                     {
                      "role": "user",
