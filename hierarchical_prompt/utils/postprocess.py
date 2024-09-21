@@ -83,7 +83,6 @@ class AnswerProcessor(ABC):
         result = code.split("Code:")[-1].strip()
         return result
     
-# --- Check the post process step
     def pp_mmlu(self, text):
         """Process MMLU text."""
         text = text.lower()
