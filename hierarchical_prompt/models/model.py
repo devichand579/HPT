@@ -248,48 +248,64 @@ class GPT4o(ABC):
             "top_p": 0.90,
             "frequency_penalty": 1.15,
         }
-
+        self.max_retries = 3  # Maximum number of retries
         logging.info("***GPT-4O text generation pipelines created successfully***")
 
     @property
     def pipe_f(self):
         def generate(prompt):
-            completion = self.client.chat.completions.create(
-                model=self.model,
-                messages=[
-                    {
-                    "role": "system",
-                    "content": "Provide the answer at the start of first sentence"
-                },
-                    {
-                    "role": "user",
-                    "content": prompt
-                }
-                ],
-                **self.generation_config
-            )
-            pred = []
-            text = {"generated_text": prompt + completion.choices[0].message.content}
-            pred.append(text)
-            return pred
+            for attempt in range(self.max_retries):
+                try:
+                    completion = self.client.chat.completions.create(
+                        model=self.model,
+                        messages=[
+                            {
+                                "role": "system",
+                                "content": "Provide the answer at the start of first sentence"
+                            },
+                            {
+                                "role": "user",
+                                "content": prompt
+                            }
+                        ],
+                        **self.generation_config
+                    )
+                    pred = []
+                    text = {"generated_text": prompt + completion.choices[0].message.content}
+                    pred.append(text)
+                    return pred
+                except Exception as e:
+                    if "rate limit" in str(e) and attempt < self.max_retries - 1:
+                        logging.warning(f"Rate limit reached, retrying... (Attempt {attempt + 1})")
+                        continue  # Retry on rate limit error
+                    else:
+                        raise e  # Raise other exceptions
+
         return generate
 
     @property
     def pipe_nf(self):
         def generate(prompt):
-            completion = self.client.chat.completions.create(
-                model=self.model,
-                messages=[{
-                    "role": "user",
-                    "content": prompt
-                }
-                ],
-                **self.generation_config
-            )
-            pred = []
-            text = {"generated_text": completion.choices[0].message.content}
-            pred.append(text)
-            return pred
+            for attempt in range(self.max_retries):
+                try:
+                    completion = self.client.chat.completions.create(
+                        model=self.model,
+                        messages=[{
+                            "role": "user",
+                            "content": prompt
+                        }],
+                        **self.generation_config
+                    )
+                    pred = []
+                    text = {"generated_text": completion.choices[0].message.content}
+                    pred.append(text)
+                    return pred
+                except Exception as e:
+                    if "rate limit" in str(e) and attempt < self.max_retries - 1:
+                        logging.warning(f"Rate limit reached, retrying... (Attempt {attempt + 1})")
+                        continue  # Retry on rate limit error
+                    else:
+                        raise e  # Raise other exceptions
 
         return generate
 
@@ -299,49 +315,68 @@ class Claude:
     def __init__(self):
         self.client = anthropic.Anthropic()
         self.model = "claude-3-5-sonnet-20240620"
+        self.max_retries = 3  # Maximum number of retries
         logging.info("***Claude text generation pipelines created successfully***")
 
     @property
     def pipe_f(self):
         def generate(prompt):
-          message = self.client.messages.create(
-          model= self.model,
-          max_tokens=1024,
-          temperature=0.6,
-          top_p=0.90,
-          system = "Provide the answer at the start of first sentence",
-          messages=[
-                    {
-                     "role": "user",
-                     "content": (prompt)
-                    }
-          ]
-        )
-          pred = []
-          text = {"generated_text": prompt + message.content[0].text}
-          pred.append(text)
-          return pred
+            for attempt in range(self.max_retries):
+                try:
+                    message = self.client.messages.create(
+                        model=self.model,
+                        max_tokens=1024,
+                        temperature=0.6,
+                        top_p=0.90,
+                        system="Provide the answer at the start of first sentence",
+                        messages=[
+                            {
+                                "role": "user",
+                                "content": (prompt)
+                            }
+                        ]
+                    )
+                    pred = []
+                    text = {"generated_text": prompt + message.content[0].text}
+                    pred.append(text)
+                    return pred
+                except Exception as e:
+                    if "rate limit" in str(e) and attempt < self.max_retries - 1:
+                        logging.warning(f"Rate limit reached, retrying... (Attempt {attempt + 1})")
+                        continue  # Retry on rate limit error
+                    else:
+                        raise e  # Raise other exceptions
+
         return generate
-    
+
     @property
     def pipe_nf(self):
         def generate(prompt):
-          message = self.client.messages.create(
-          model= self.model,
-          max_tokens=1024,
-          temperature=0.6,
-          top_p=0.90,
-          messages=[
-                    {
-                     "role": "user",
-                     "content": (prompt)
-                    }
-          ]
-        )
-          pred = []
-          text = {"generated_text": message.content[0].text}
-          pred.append(text)
-          return pred
+            for attempt in range(self.max_retries):
+                try:
+                    message = self.client.messages.create(
+                        model=self.model,
+                        max_tokens=1024,
+                        temperature=0.6,
+                        top_p=0.90,
+                        messages=[
+                            {
+                                "role": "user",
+                                "content": (prompt)
+                            }
+                        ]
+                    )
+                    pred = []
+                    text = {"generated_text": message.content[0].text}
+                    pred.append(text)
+                    return pred
+                except Exception as e:
+                    if "rate limit" in str(e) and attempt < self.max_retries - 1:
+                        logging.warning(f"Rate limit reached, retrying... (Attempt {attempt + 1})")
+                        continue  # Retry on rate limit error
+                    else:
+                        raise e  # Raise other exceptions
+
         return generate
 
 
