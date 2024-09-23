@@ -8,6 +8,7 @@ from openai import OpenAI
 import anthropic
 from dotenv import load_dotenv
 import requests
+import time
 load_dotenv()
 hf_token = os.getenv('HF_TOKEN')
 gpt_api_key = os.getenv('OPENAI_API_KEY')
@@ -276,8 +277,11 @@ class GPT4o(ABC):
                     return pred
                 except Exception as e:
                     if "rate limit" in str(e):
-                        logging.warning(f"Rate limit reached, skipping to next query...")
-                        return []  # Skip to next query
+                        logging.warning(f"Rate limit reached, {attempt} attempts made")
+                        if attempt < self.max_retries - 1:
+                            logging.warning("Rate limit reached, retrying after 60 seconds...")
+                            time.sleep(60)
+                        continue
                     else:
                         raise e  # Raise other exceptions
 
@@ -302,8 +306,11 @@ class GPT4o(ABC):
                     return pred
                 except Exception as e:
                     if "rate limit" in str(e):
-                        logging.warning(f"Rate limit reached, skipping to next query...")
-                        return []  # Skip to next query
+                        logging.warning(f"Rate limit reached, {attempt} attempts made")
+                        if attempt < self.max_retries - 1:
+                            logging.warning("Rate limit reached, retrying after 60 seconds...")
+                            time.sleep(60)
+                        continue
                     else:
                         raise e  # Raise other exceptions
 
@@ -342,8 +349,11 @@ class Claude:
                     return pred
                 except Exception as e:
                     if "rate limit" in str(e):
-                        logging.warning(f"Rate limit reached, skipping to next query...")
-                        return []  # Skip to next query
+                        logging.warning(f"Rate limit reached, {attempt} attempts made")
+                        if attempt < self.max_retries - 1:
+                            logging.warning("Rate limit reached, retrying after 60 seconds...")
+                            time.sleep(60)
+                        continue
                     else:
                         raise e  # Raise other exceptions
 
@@ -372,8 +382,11 @@ class Claude:
                     return pred
                 except Exception as e:
                     if "rate limit" in str(e):
-                        logging.warning(f"Rate limit reached, skipping to next query...")
-                        return []  # Skip to next query
+                        logging.warning(f"Rate limit reached, {attempt} attempts made")
+                        if attempt < self.max_retries - 1:
+                            logging.warning("Rate limit reached, retrying after 60 seconds...")
+                            time.sleep(60)
+                        continue
                     else:
                         raise e  # Raise other exceptions
 
