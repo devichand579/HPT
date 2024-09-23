@@ -320,7 +320,7 @@ class GPT4o(ABC):
 
 
     
-class Claude:
+class Claude(ABC):
     def __init__(self):
         self.client = anthropic.Anthropic()
         self.model = "claude-3-5-sonnet-20240620"
