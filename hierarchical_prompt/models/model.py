@@ -275,9 +275,9 @@ class GPT4o(ABC):
                     pred.append(text)
                     return pred
                 except Exception as e:
-                    if "rate limit" in str(e) and attempt < self.max_retries - 1:
-                        logging.warning(f"Rate limit reached, retrying... (Attempt {attempt + 1})")
-                        continue  # Retry on rate limit error
+                    if "rate limit" in str(e):
+                        logging.warning(f"Rate limit reached, skipping to next query...")
+                        return []  # Skip to next query
                     else:
                         raise e  # Raise other exceptions
 
@@ -301,9 +301,9 @@ class GPT4o(ABC):
                     pred.append(text)
                     return pred
                 except Exception as e:
-                    if "rate limit" in str(e) and attempt < self.max_retries - 1:
-                        logging.warning(f"Rate limit reached, retrying... (Attempt {attempt + 1})")
-                        continue  # Retry on rate limit error
+                    if "rate limit" in str(e):
+                        logging.warning(f"Rate limit reached, skipping to next query...")
+                        return []  # Skip to next query
                     else:
                         raise e  # Raise other exceptions
 
@@ -341,9 +341,9 @@ class Claude:
                     pred.append(text)
                     return pred
                 except Exception as e:
-                    if "rate limit" in str(e) and attempt < self.max_retries - 1:
-                        logging.warning(f"Rate limit reached, retrying... (Attempt {attempt + 1})")
-                        continue  # Retry on rate limit error
+                    if "rate limit" in str(e):
+                        logging.warning(f"Rate limit reached, skipping to next query...")
+                        return []  # Skip to next query
                     else:
                         raise e  # Raise other exceptions
 
@@ -371,9 +371,9 @@ class Claude:
                     pred.append(text)
                     return pred
                 except Exception as e:
-                    if "rate limit" in str(e) and attempt < self.max_retries - 1:
-                        logging.warning(f"Rate limit reached, retrying... (Attempt {attempt + 1})")
-                        continue  # Retry on rate limit error
+                    if "rate limit" in str(e):
+                        logging.warning(f"Rate limit reached, skipping to next query...")
+                        return []  # Skip to next query
                     else:
                         raise e  # Raise other exceptions
 
