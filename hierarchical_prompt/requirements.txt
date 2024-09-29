@@ -27,5 +27,4 @@ openai
 requests
 pydantic
 anthropic
-re
 ast
