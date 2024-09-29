@@ -244,6 +244,18 @@ class ManualHierarchicalPrompt(ABC):
                             pred = llm_f(template)
                             pred_txt = pred[0]['generated_text']
                     final_ans = self.text_processor(pred_txt)
+                    if isinstance(final_ans, (int, float)):
+                      final_ans =  float(final_ans)
+                    else:
+                      final_ans = final_ans.replace(',', '')
+                      final_ans =  float(final_ans)
+
+                    if isinstance(answer, (int, float)):
+                      answer =  float(answer)
+                    else:
+                      answer = answer.replace(',', '')
+                      answer =  float(answer)
+
                     if final_ans == answer:
                         self.scores.append(level)
                         self.predictions.append(final_ans)
@@ -269,6 +281,18 @@ class ManualHierarchicalPrompt(ABC):
                     template = self.prefix + template.format(question=question, pred = generated_knowledge) + self.suffix + "Answer:"
                     pred = llm_f(template)
                     final_ans = self.text_processor(pred[0]['generated_text'])
+                    if isinstance(final_ans, (int, float)):
+                      final_ans =  float(final_ans)
+                    else:
+                      final_ans = final_ans.replace(',', '')
+                      final_ans =  float(final_ans)
+
+                    if isinstance(answer, (int, float)):
+                      answer =  float(answer)
+                    else:
+                      answer = answer.replace(',', '')
+                      answer =  float(answer)
+
                     if final_ans == answer:
                         self.scores.append(level)
                         self.predictions.append(final_ans)
@@ -285,6 +309,17 @@ class ManualHierarchicalPrompt(ABC):
                     template = self.prefix + template + self.suffix + "Answer:"
                     pred = llm_f(template)
                     final_ans = self.text_processor(pred[0]['generated_text'])
+                    if isinstance(final_ans, (int, float)):
+                      final_ans =  float(final_ans)
+                    else:
+                      final_ans = final_ans.replace(',', '')
+                      final_ans =  float(final_ans)
+
+                    if isinstance(answer, (int, float)):
+                      answer =  float(answer)
+                    else:
+                      answer = answer.replace(',', '')
+                      answer =  float(answer)
                     if final_ans == answer:
                         self.scores.append(level)
                         self.predictions.append(final_ans)

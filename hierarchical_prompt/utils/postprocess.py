@@ -70,14 +70,21 @@ class AnswerProcessor(ABC):
         result = passage.split("Summary:")[-1].strip()
         return result
     
-    def pp_gsm8k(self,text):
-        """Process GSM8K text."""
+    def pp_gsm8k(self, text):
+        """Process GSM8K text to extract the answer."""
         text = text.lower()
         lines = text.split('\n')
-        for i, line in enumerate(lines):
+        for line in lines:
+            if ('####' in line or 'answer:####' in line or 'answer: ###' in line) and 'after: ####' not in line:
+                match = re.search(r'\.?\$?(\d+(?:[,.]\d+)*(?:[,.]\d+)?|\d+([,.]\d+)?)\s*\$?\.?', line)
+                if match:
+                  return match.group(1) 
+       
             if 'answer:' in line:
-                match = re.search(r'\d+(?:\.\d+)?', line)
-                return match.group() if match else 0
+              match = re.search(r'\*\*.*?(\d+).*?\*\*', line)
+              if match:
+                return match.group(1) 
+        return 0 
             
     def pp_humaneval(self, code):
         result = code.split("Code:")[-1].strip()
