@@ -283,6 +283,9 @@ class GPT4o(ABC):
                     elif attempt == self.initial_retries - 1:
                         logging.warning(f"Initial retries failed. Waiting {self.retry_delay} seconds before extended retry...")
                         time.sleep(self.retry_delay)
+                    elif attempt == self.initial_retries:
+                        logging.warning(f"Initial retries failed. Waiting 1 hour before extended retry...")
+                        time.sleep(3600)
                     else:
                         logging.error(f"All retries failed. Last exception: {str(e)}")
                         raise e  # Raise the last exception after all retries
@@ -312,6 +315,9 @@ class GPT4o(ABC):
                     elif attempt == self.initial_retries - 1:
                         logging.warning(f"Initial retries failed. Waiting {self.retry_delay} seconds before extended retry...")
                         time.sleep(self.retry_delay)
+                    elif attempt == self.initial_retries:
+                        logging.warning(f"Initial retries failed. Waiting 1 hour before extended retry...")
+                        time.sleep(3600)
                     else:
                         logging.error(f"All retries failed. Last exception: {str(e)}")
                         raise e  # Raise the last exception after all retries
@@ -357,6 +363,9 @@ class Claude(ABC):
                     elif attempt == self.initial_retries - 1:
                         logging.warning(f"Initial retries failed. Waiting {self.retry_delay} seconds before extended retry...")
                         time.sleep(self.retry_delay)
+                    elif attempt == self.initial_retries:
+                        logging.warning(f"Initial retries failed. Waiting 1 hour before extended retry...")
+                        time.sleep(3600)
                     else:
                         logging.error(f"All retries failed. Last exception: {str(e)}")
                         raise e  # Raise the last exception after all retries
@@ -387,12 +396,16 @@ class Claude(ABC):
                 except Exception as e:
                     if attempt < self.initial_retries-1:
                         logging.warning(f"Exception occurred: {str(e)}. Quick retry {attempt + 1}/{self.initial_retries}...")
-                    elif attempt == self.initial_retries - 1:
-                        logging.warning(f"Initial retries failed. Waiting {self.retry_delay} seconds before extended retry...")
+                    elif attempt == self.initial_retries-1:
+                        logging.warning(f"Initial retries failed. Waiting 1 hour seconds before extended retry...")
                         time.sleep(self.retry_delay)
+                    elif attempt == self.initial_retries:
+                        logging.warning(f"Initial retries failed. Waiting 1 hour before extended retry...")
+                        time.sleep(3600)
                     else:
                         logging.error(f"All retries failed. Last exception: {str(e)}")
                         raise e  # Raise the last exception after all retries
+
 
         return generate
 
