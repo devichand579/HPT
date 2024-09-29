@@ -8,6 +8,7 @@ from openai import OpenAI
 import anthropic
 from dotenv import load_dotenv
 import requests
+import random
 import time
 load_dotenv()
 hf_token = os.getenv('HF_TOKEN')
@@ -249,15 +250,14 @@ class GPT4o(ABC):
             "top_p": 0.90,
             "frequency_penalty": 1.15,
         }
-        self.initial_retries = 3 
-        self.extended_retries = 1  
-        self.retry_delay = 65  
         logging.info("***GPT-4O text generation pipelines created successfully***")
 
     @property
     def pipe_f(self):
         def generate(prompt):
-            for attempt in range(self.initial_retries + self.extended_retries):
+            attempt = 0
+            base_delay = 30  
+            while True:
                 try:
                     completion = self.client.chat.completions.create(
                         model=self.model,
@@ -274,28 +274,25 @@ class GPT4o(ABC):
                         **self.generation_config
                     )
                     pred = []
-                    text = {"generated_text": prompt + completion.choices[0].message.content}
+                    text = {"generated_text": completion.choices[0].message.content}
                     pred.append(text)
                     return pred
+                
                 except Exception as e:
-                    if attempt < self.initial_retries-1:
-                        logging.warning(f"Exception occurred: {str(e)}. Quick retry {attempt + 1}/{self.initial_retries}...")
-                    elif attempt == self.initial_retries - 1:
-                        logging.warning(f"Initial retries failed. Waiting {self.retry_delay} seconds before extended retry...")
-                        time.sleep(self.retry_delay)
-                    elif attempt == self.initial_retries:
-                        logging.warning(f"Initial retries failed. Waiting 1 hour before extended retry...")
-                        time.sleep(3600)
-                    else:
-                        logging.error(f"All retries failed. Last exception: {str(e)}")
-                        raise e  # Raise the last exception after all retries
+                    attempt += 1
+                    logging.warning(f"Exception occurred: {str(e)}. Attempt {attempt}...")
+                    delay = base_delay * (2 ** attempt) + random.uniform(0, 1)
+                    logging.warning(f"Retrying after {delay:.2f} seconds...")
+                    time.sleep(delay)
 
         return generate
 
     @property
     def pipe_nf(self):
         def generate(prompt):
-            for attempt in range(self.initial_retries + self.extended_retries):
+            attempt = 0
+            base_delay = 30  
+            while True:
                 try:
                     completion = self.client.chat.completions.create(
                         model=self.model,
@@ -309,18 +306,14 @@ class GPT4o(ABC):
                     text = {"generated_text": completion.choices[0].message.content}
                     pred.append(text)
                     return pred
+                
                 except Exception as e:
-                    if attempt < self.initial_retries-1:
-                        logging.warning(f"Exception occurred: {str(e)}. Quick retry {attempt + 1}/{self.initial_retries}...")
-                    elif attempt == self.initial_retries - 1:
-                        logging.warning(f"Initial retries failed. Waiting {self.retry_delay} seconds before extended retry...")
-                        time.sleep(self.retry_delay)
-                    elif attempt == self.initial_retries:
-                        logging.warning(f"Initial retries failed. Waiting 1 hour before extended retry...")
-                        time.sleep(3600)
-                    else:
-                        logging.error(f"All retries failed. Last exception: {str(e)}")
-                        raise e  # Raise the last exception after all retries
+                    attempt += 1
+                    logging.warning(f"Exception occurred: {str(e)}. Attempt {attempt}...")
+                    delay = base_delay * (2 ** attempt) + random.uniform(0, 1)
+                    logging.warning(f"Retrying after {delay:.2f} seconds...")
+                    time.sleep(delay)
+
 
         return generate
 
@@ -330,15 +323,14 @@ class Claude(ABC):
     def __init__(self):
         self.client = anthropic.Anthropic()
         self.model = "claude-3-5-sonnet-20240620"
-        self.initial_retries = 3 
-        self.extended_retries = 1  
-        self.retry_delay = 65 
         logging.info("***Claude text generation pipelines created successfully***")
 
     @property
     def pipe_f(self):
         def generate(prompt):
-            for attempt in range(self.initial_retries + self.extended_retries):
+            attempt = 0
+            base_delay = 30  
+            while True:
                 try:
                     message = self.client.messages.create(
                         model=self.model,
@@ -357,25 +349,22 @@ class Claude(ABC):
                     text = {"generated_text": prompt + message.content[0].text}
                     pred.append(text)
                     return pred
+                
                 except Exception as e:
-                    if attempt < self.initial_retries-1:
-                        logging.warning(f"Exception occurred: {str(e)}. Quick retry {attempt + 1}/{self.initial_retries}...")
-                    elif attempt == self.initial_retries - 1:
-                        logging.warning(f"Initial retries failed. Waiting {self.retry_delay} seconds before extended retry...")
-                        time.sleep(self.retry_delay)
-                    elif attempt == self.initial_retries:
-                        logging.warning(f"Initial retries failed. Waiting 1 hour before extended retry...")
-                        time.sleep(3600)
-                    else:
-                        logging.error(f"All retries failed. Last exception: {str(e)}")
-                        raise e  # Raise the last exception after all retries
+                    attempt += 1
+                    logging.warning(f"Exception occurred: {str(e)}. Attempt {attempt}...")
+                    delay = base_delay * (2 ** attempt) + random.uniform(0, 1)
+                    logging.warning(f"Retrying after {delay:.2f} seconds...")
+                    time.sleep(delay)
 
         return generate
 
     @property
     def pipe_nf(self):
         def generate(prompt):
-            for attempt in range(self.initial_retries + self.extended_retries):
+            attempt = 0
+            base_delay = 30  
+            while True:
                 try:
                     message = self.client.messages.create(
                         model=self.model,
@@ -393,19 +382,13 @@ class Claude(ABC):
                     text = {"generated_text": message.content[0].text}
                     pred.append(text)
                     return pred
+                
                 except Exception as e:
-                    if attempt < self.initial_retries-1:
-                        logging.warning(f"Exception occurred: {str(e)}. Quick retry {attempt + 1}/{self.initial_retries}...")
-                    elif attempt == self.initial_retries-1:
-                        logging.warning(f"Initial retries failed. Waiting 1 hour seconds before extended retry...")
-                        time.sleep(self.retry_delay)
-                    elif attempt == self.initial_retries:
-                        logging.warning(f"Initial retries failed. Waiting 1 hour before extended retry...")
-                        time.sleep(3600)
-                    else:
-                        logging.error(f"All retries failed. Last exception: {str(e)}")
-                        raise e  # Raise the last exception after all retries
-
+                    attempt += 1
+                    logging.warning(f"Exception occurred: {str(e)}. Attempt {attempt}...")
+                    delay = base_delay * (2 ** attempt) + random.uniform(0, 1)
+                    logging.warning(f"Retrying after {delay:.2f} seconds...")
+                    time.sleep(delay)
 
         return generate
 
