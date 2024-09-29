@@ -8,6 +8,7 @@ import argparse
 import json
 import logging
 import re
+import ast
 
 prompts = {
     1 : Roleprompt(),
@@ -26,6 +27,16 @@ hp_scores = {
     "gsm8k": 2.14,
     "mmlu": 3.03
 }
+
+def extract_asserts_from_function(func_code):
+    tree = ast.parse(func_code)
+    assert_statements = []  
+    for node in ast.walk(tree):
+        if isinstance(node, ast.Assert):
+            assert_stmt = ast.get_source_segment(func_code, node)
+            assert_statements.append(assert_stmt)
+    
+    return assert_statements
 
 
 
@@ -142,8 +153,9 @@ class ManualHierarchicalPrompt(ABC):
                         continue
 
             if self.task == "humaneval":
-                code = item['code']
+                code = item['prompt']
                 test_case = item['test']
+                ref_codes = extract_asserts_from_function(test_case)
 
                 if i==4:
                     pred_txt = ""
@@ -160,11 +172,11 @@ class ManualHierarchicalPrompt(ABC):
                     #process the prediction
                     final_ans = self.text_processor(pred_txt)
                     code_eval = self.metrics[0]
-                    eval_score = code_eval([final_ans],[test_case])
+                    eval_score = code_eval([final_ans],ref_codes)
                     if eval_score == 1:
                         self.scores.append(level)
-                        self.predictions.append(final_ans)
-                        self.references.append(test_case)
+                        self.predictions.append([final_ans])
+                        self.references.append(ref_codes)
                         break
                     else:
                         level = level + 1
@@ -183,34 +195,34 @@ class ManualHierarchicalPrompt(ABC):
                     generated_knowledge = self.gen_model.generate_knowledge(know_prompts_list)
 
 
-                    template = self.prefix + template.format(passage=passage, question=question, pred = generated_knowledge) + self.suffix + "Code:"
+                    template = self.prefix + template.format(code = code, pred = generated_knowledge) + self.suffix + "Code:"
                     pred = llm_f(template)
                     # process the prediction
                     final_ans = self.text_processor(pred[0]['generated_text'])
                     code_eval = self.metrics[0]
-                    eval_score = code_eval([final_ans],[test_case])
+                    eval_score = code_eval([final_ans], ref_codes)
                     if eval_score == 1:
                         self.scores.append(level)
-                        self.predictions.append(final_ans)
-                        self.references.append(test_case)
+                        self.predictions.append([final_ans])
+                        self.references.append(ref_codes)
                         break
                     else:
                         level = level + hp_scores[self.task]
                         self.scores.append(level)
-                        self.predictions.append(final_ans)
-                        self.references.append(test_case)
+                        self.predictions.append([final_ans])
+                        self.references.append(ref_codes)
 
                 else:
-                    template = self.prompts[i].get_prompt(self.task).format(passage=passage, question=question)
+                    template = self.prompts[i].get_prompt(self.task).format(code = code)
                     template = self.prefix + template + self.suffix + "Code:"
                     pred = llm_f(template)
                     final_ans = self.text_processor(pred[0]['generated_text'])
                     code_eval = self.metrics[0]
-                    eval_score = code_eval([final_ans],[test_case])
+                    eval_score = code_eval([final_ans], ref_codes)
                     if eval_score == 1:
                         self.scores.append(level)
-                        self.predictions.append(final_ans)
-                        self.references.append(test_case)
+                        self.predictions.append([final_ans])
+                        self.references.append([test_case])
                         break
                     else:
                         level = level + 1
