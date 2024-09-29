@@ -19,7 +19,6 @@ python-dotenv
 tiktoken
 einops
 pytest
-flash-attn
 sentencepiece
 protobuf
 py7zr
