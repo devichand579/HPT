@@ -155,8 +155,7 @@ class ManualHierarchicalPrompt(ABC):
             if self.task == "humaneval":
                 code = item['prompt']
                 test_case = item['test']
-                ref_codes = extract_asserts_from_function(test_case)
-
+                ref_codes = [re.sub(r"^\s*METADATA\s*=\s*\{.*?\}\s*$", "", test_case, flags=re.MULTILINE).strip()]
                 if i==4:
                     pred_txt = ""
                     templates = self.prompts[i].get_prompt(self.task)
@@ -173,7 +172,10 @@ class ManualHierarchicalPrompt(ABC):
                     final_ans = self.text_processor(pred_txt)
                     code_eval = self.metrics[0]
                     eval_score = code_eval([final_ans],ref_codes)
-                    if eval_score == 1.0:
+                    extracted_value = eval_score.get('pass@1')
+
+                    print(extracted_value)
+                    if float(extracted_value) == 1.0: 
                         self.scores.append(level)
                         self.predictions.append(1)
                         self.references.append(0)
@@ -201,7 +203,9 @@ class ManualHierarchicalPrompt(ABC):
                     final_ans = self.text_processor(pred[0]['generated_text'])
                     code_eval = self.metrics[0]
                     eval_score = code_eval([final_ans], ref_codes)
-                    if eval_score == 1.0:
+                    extracted_value = eval_score.get('pass@1')
+                    print(extracted_value)
+                    if float(extracted_value) == 1.0: 
                         self.scores.append(level)
                         self.predictions.append(1)
                         self.references.append(0)
@@ -219,7 +223,10 @@ class ManualHierarchicalPrompt(ABC):
                     final_ans = self.text_processor(pred[0]['generated_text'])
                     code_eval = self.metrics[0]
                     eval_score = code_eval([final_ans], ref_codes)
-                    if eval_score == 1.0:
+                    extracted_value = eval_score.get('pass@1')
+
+                    print(extracted_value)
+                    if float(extracted_value) == 1.0: 
                         self.scores.append(level)
                         self.predictions.append(1)
                         self.references.append(0)
