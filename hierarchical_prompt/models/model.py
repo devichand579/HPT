@@ -274,7 +274,7 @@ class GPT4o(ABC):
                         **self.generation_config
                     )
                     pred = []
-                    text = {"generated_text": completion.choices[0].message.content}
+                    text = {"generated_text": prompt + completion.choices[0].message.content}
                     pred.append(text)
                     return pred
                 
@@ -303,7 +303,7 @@ class GPT4o(ABC):
                         **self.generation_config
                     )
                     pred = []
-                    text = {"generated_text": prompt + completion.choices[0].message.content}
+                    text = {"generated_text": completion.choices[0].message.content}
                     pred.append(text)
                     return pred
                 
