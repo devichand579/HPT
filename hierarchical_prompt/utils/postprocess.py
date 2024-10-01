@@ -86,7 +86,6 @@ class AnswerProcessor(ABC):
                 return match.group(1) 
         return 0 
             
-    import re
 
     def pp_humaneval(self, code):
         # Extract code sections from the input using the specified regex

@@ -175,8 +175,8 @@ class ManualHierarchicalPrompt(ABC):
                     eval_score = code_eval([final_ans],ref_codes)
                     if eval_score == 1.0:
                         self.scores.append(level)
-                        self.predictions.append([final_ans])
-                        self.references.append(ref_codes)
+                        self.predictions.append(1)
+                        self.references.append(0)
                         break
                     else:
                         level = level + 1
@@ -203,14 +203,14 @@ class ManualHierarchicalPrompt(ABC):
                     eval_score = code_eval([final_ans], ref_codes)
                     if eval_score == 1.0:
                         self.scores.append(level)
-                        self.predictions.append([final_ans])
-                        self.references.append(ref_codes)
+                        self.predictions.append(1)
+                        self.references.append(0)
                         break
                     else:
                         level = level + hp_scores[self.task]
                         self.scores.append(level)
-                        self.predictions.append([final_ans])
-                        self.references.append(ref_codes)
+                        self.predictions.append(0)
+                        self.references.append(0)
 
                 else:
                     template = self.prompts[i].get_prompt(self.task).format(code = code)
@@ -221,8 +221,8 @@ class ManualHierarchicalPrompt(ABC):
                     eval_score = code_eval([final_ans], ref_codes)
                     if eval_score == 1.0:
                         self.scores.append(level)
-                        self.predictions.append([final_ans])
-                        self.references.append([test_case])
+                        self.predictions.append(1)
+                        self.references.append(0)
                         break
                     else:
                         level = level + 1
@@ -727,7 +727,7 @@ class ManualHierarchicalPrompt(ABC):
             }
             return scores
         elif self.task == "humaneval":
-            pass_at_k = self.metrics[0](self.predictions,self.references)
+            pass_at_k = sum(self.predictions) / len(self.predictions)
             scores = {
                 "hp_score": hp_score,
                 "pass_at_k": pass_at_k
