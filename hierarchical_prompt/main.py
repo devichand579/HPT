@@ -173,7 +173,7 @@ class ManualHierarchicalPrompt(ABC):
                     final_ans = self.text_processor(pred_txt)
                     code_eval = self.metrics[0]
                     eval_score = code_eval([final_ans],ref_codes)
-                    if eval_score == 1:
+                    if eval_score == 1.0:
                         self.scores.append(level)
                         self.predictions.append([final_ans])
                         self.references.append(ref_codes)
@@ -187,7 +187,7 @@ class ManualHierarchicalPrompt(ABC):
                     gen_suffix = "<|eot_id|><|start_header_id|>assistant<|end_header_id|>\n"
 
                     template, gen_knowledge_template = self.prompts[i].get_prompt(self.task)
-                    gen_knowledge_template = gen_knowledge_template.format(passage=passage)
+                    gen_knowledge_template = gen_knowledge_template.format(code=code)
                     knowledge_template = gen_prefix + gen_knowledge_template + gen_suffix
                     know_prompts_list = []
                     for i in range(3):
@@ -201,7 +201,7 @@ class ManualHierarchicalPrompt(ABC):
                     final_ans = self.text_processor(pred[0]['generated_text'])
                     code_eval = self.metrics[0]
                     eval_score = code_eval([final_ans], ref_codes)
-                    if eval_score == 1:
+                    if eval_score == 1.0:
                         self.scores.append(level)
                         self.predictions.append([final_ans])
                         self.references.append(ref_codes)
@@ -219,7 +219,7 @@ class ManualHierarchicalPrompt(ABC):
                     final_ans = self.text_processor(pred[0]['generated_text'])
                     code_eval = self.metrics[0]
                     eval_score = code_eval([final_ans], ref_codes)
-                    if eval_score == 1:
+                    if eval_score == 1.0:
                         self.scores.append(level)
                         self.predictions.append([final_ans])
                         self.references.append([test_case])

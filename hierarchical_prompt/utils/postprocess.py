@@ -86,9 +86,30 @@ class AnswerProcessor(ABC):
                 return match.group(1) 
         return 0 
             
+    import re
+
     def pp_humaneval(self, code):
-        result = code.split("Code:")[-1].strip()
+        # Extract code sections from the input using the specified regex
+        result = re.findall(r'Code:\s*([\s\S]+?)(?=\s*<\||$)', code)
+
+        # Check if the result contains any matches
+        if result:
+            if result[0].startswith("python"):
+                result[0] = result[0][len("python"):].lstrip()
+                
+            # Check if the first result contains triple backticks
+            if '```' in result[0]:
+                # Regex pattern to extract text between triple backticks
+                pattern = r'```(.*?)```'
+                # Find all matches
+                matches = re.findall(pattern, result[0], re.DOTALL)
+                # If matches are found, update result with extracted code
+                if matches:
+                    result[0] = matches[0].strip()  # Use the first match and strip whitespace
+
+        print(f'*************result = {result}')
         return result
+
     
     def pp_mmlu(self, text):
         """Process MMLU text."""

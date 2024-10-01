@@ -172,9 +172,13 @@ class Eval(ABC):
         """
         from .code_eval.human_eval import CodeEval
         metric = CodeEval()
-        pass_k, results = metric.compute(predictions=preds, references=gts, k=[1])
-        return pass_k
-
+        
+        try:
+            pass_k, results = metric.compute(predictions=preds, references=gts, k=[1])
+            return pass_k
+        except Exception as e:
+            print(f"An error occurred: {e}")
+            return 0  
 
 
     
