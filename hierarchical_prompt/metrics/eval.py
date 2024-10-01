@@ -175,6 +175,8 @@ class Eval(ABC):
         
         try:
             pass_k, results = metric.compute(predictions=preds, references=gts, k=[1])
+            if pass_k is None:
+                return 0
             return pass_k
         except Exception as e:
             print(f"An error occurred: {e}")
