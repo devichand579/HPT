@@ -92,7 +92,7 @@ class AnswerProcessor(ABC):
       code_text = text.split("Code:", 1)[-1].strip()  # Extract and strip extra spaces
 
       # Step 2: Extract the code inside triple backticks 
-      code_block = re.search(r'  ⁠([\s\S]+?)```', code_text)
+      code_block = re.search(r'```⁠([\s\S]+?)```', code_text)
       
       if code_block:
           extracted_code = code_block.group(1)
@@ -105,6 +105,7 @@ class AnswerProcessor(ABC):
           extracted_code = extracted_code[len("Python"):].strip()
       print(f'*****result = {extracted_code}')
       return [extracted_code]
+
 
     
     def pp_mmlu(self, text):
