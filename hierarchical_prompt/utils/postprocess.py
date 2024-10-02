@@ -73,6 +73,12 @@ class AnswerProcessor(ABC):
     def pp_gsm8k(self, text):
         """Process GSM8K text to extract the final answer from lines containing 'final answer'."""
         text = text.lower()
+
+        # Search for the pattern in the text
+        match = re.search(r'answer:\s?\*\*.*?\$?(\d+[,.]?\d*)', text)
+
+        if match:
+            return match.group(1)
         
         lines = text.split('\n')
         
