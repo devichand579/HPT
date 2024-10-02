@@ -74,6 +74,10 @@ class AnswerProcessor(ABC):
         """Process GSM8K text to extract the final answer from lines containing 'final answer'."""
         text = text.lower()
 
+        if "<|assistant|>" in text:
+            parts = text.split("<|assistant|>")
+            text = parts[1]
+                
         # Search for the pattern in the text
         match = re.search(r'answer:\s?\*\*.*?\$?(\d+[,.]?\d*)', text)
 
@@ -92,7 +96,7 @@ class AnswerProcessor(ABC):
 
         # If not found, check other relevant lines
         for line in reversed(lines):
-            if ('####' in line or 'answer:####' in line or 'answer: ###' in line or 'the answer is' in line) and 'after: ####' not in line:
+            if ('####' in line or 'answer:####' in line or 'answer:' in line or 'the answer is' in line) and 'after: ####' not in line:
                 match = re.search(r'##+.*?[\#\$\*\s]*\s*(\d+(?:[,.]\d+)?)\s*[\#\$\*\s]*', line)
                 if match:
                     return match.group(1)
