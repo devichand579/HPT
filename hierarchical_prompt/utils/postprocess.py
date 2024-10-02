@@ -87,27 +87,24 @@ class AnswerProcessor(ABC):
         return 0 
             
 
-    def pp_humaneval(self, code):
-        # Extract code sections from the input using the specified regex
-        result = re.findall(r'Code:\s*([\s\S]+?)(?=\s*<\||$)', code)
+    def pp_humaneval(self, text):
+    # Step 1: Extract the text after 'Code:'
+      code_text = text.split("Code:", 1)[-1].strip()  # Extract and strip extra spaces
 
-        # Check if the result contains any matches
-        if result:
-            if result[0].startswith("python"):
-                result[0] = result[0][len("python"):].lstrip()
-                
-            # Check if the first result contains triple backticks
-            if '```' in result[0]:
-                # Regex pattern to extract text between triple backticks
-                pattern = r'```(.*?)```'
-                # Find all matches
-                matches = re.findall(pattern, result[0], re.DOTALL)
-                # If matches are found, update result with extracted code
-                if matches:
-                    result[0] = matches[0].strip()  # Use the first match and strip whitespace
+      # Step 2: Extract the code inside triple backticks 
+      code_block = re.search(r'  ⁠([\s\S]+?)```', code_text)
+      
+      if code_block:
+          extracted_code = code_block.group(1)
+      else:
+          extracted_code = code_text  # If no code block is found, return an empty string
 
-        print(f'*************result = {result}')
-        return result
+      # Step 3: Check if the code starts with "Python" and remove it if present
+      if extracted_code.strip().lower().startswith("python"):
+          # Remove the word 'Python' from the start
+          extracted_code = extracted_code[len("Python"):].strip()
+      print(f'*****result = {extracted_code}')
+      return [extracted_code]
 
     
     def pp_mmlu(self, text):
