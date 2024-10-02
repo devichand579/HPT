@@ -92,7 +92,8 @@ class AnswerProcessor(ABC):
                     return match.group(1)
                 else:
                     match = re.search(r'answer.*?[\#\$\*\s]*\s*(\d+(?:[,.]\d+)?)\s*[\#\$\*\s]*$', line)
-                    return match.group(1)
+                    if match:
+                        return match.group(1)
 
   
 
