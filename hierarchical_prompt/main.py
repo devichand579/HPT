@@ -173,8 +173,6 @@ class ManualHierarchicalPrompt(ABC):
                     code_eval = self.metrics[0]
                     eval_score = code_eval([final_ans],ref_codes)
                     extracted_value = eval_score.get('pass@1')
-
-                    print(extracted_value)
                     if float(extracted_value) == 1.0: 
                         self.scores.append(level)
                         self.predictions.append(1)
@@ -204,7 +202,6 @@ class ManualHierarchicalPrompt(ABC):
                     code_eval = self.metrics[0]
                     eval_score = code_eval([final_ans], ref_codes)
                     extracted_value = eval_score.get('pass@1')
-                    print(extracted_value)
                     if float(extracted_value) == 1.0: 
                         self.scores.append(level)
                         self.predictions.append(1)
@@ -225,7 +222,6 @@ class ManualHierarchicalPrompt(ABC):
                     eval_score = code_eval([final_ans], ref_codes)
                     extracted_value = eval_score.get('pass@1')
 
-                    print(extracted_value)
                     if float(extracted_value) == 1.0: 
                         self.scores.append(level)
                         self.predictions.append(1)

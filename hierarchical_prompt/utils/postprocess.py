@@ -76,34 +76,22 @@ class AnswerProcessor(ABC):
         lines = text.split('\n')
         for line in lines:
             if ('####' in line or 'answer:####' in line or 'answer: ###' in line) and 'after: ####' not in line:
-                match = re.search(r'\.?\$?(\d+(?:[,.]\d+)*(?:[,.]\d+)?|\d+([,.]\d+)?)\s*\$?\.?', line)
+                match = re.search(r'\.?\$?(\d+(?:[,.]\d+)(?:[,.]\d+)?|\d+([,.]\d+)?)\s\$?\.?', line)
                 if match:
-                  return match.group(1) 
-       
-            if 'answer:' in line:
-              match = re.search(r'\*\*.*?(\d+).*?\*\*', line)
-              if match:
-                return match.group(1) 
-        return 0 
+                  return match.group(1)
             
 
     def pp_humaneval(self, text):
-    # Step 1: Extract the text after 'Code:'
-      code_text = text.split("Code:", 1)[-1].strip()  # Extract and strip extra spaces
-
-      # Step 2: Extract the code inside triple backticks 
+      """Process HumanEval text."""
+      code_text = text.split("Code:", 1)[-1].strip()  
       code_block = re.search(r'```([\s\S]+?)```', code_text)
       
       if code_block:
           extracted_code = code_block.group(1)
       else:
-          extracted_code = code_text  # If no code block is found, return an empty string
-
-      # Step 3: Check if the code starts with "Python" and remove it if present
+          extracted_code = code_text  
       if extracted_code.strip().lower().startswith("python"):
-          # Remove the word 'Python' from the start
           extracted_code = extracted_code[len("Python"):].strip()
-      print(f'*****result = {extracted_code}')
       return [extracted_code]
 
 
