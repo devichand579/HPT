@@ -73,7 +73,6 @@ class AnswerProcessor(ABC):
     def pp_gsm8k(self, text):
         """Process GSM8K text to extract the final answer from lines containing 'final answer'."""
         text = text.lower()
-        print(f'******* TEXT : {text}')
         
         lines = text.split('\n')
         
@@ -83,7 +82,6 @@ class AnswerProcessor(ABC):
                 match = re.search(r'final answer.*?[\#\$\*\s]*(\d+(?:[,.]\d+)?)\s*[\#\$\*\s]*$', line)
                 if match:
                     final_answer = match.group(1)
-                    print(f'RESULT : {final_answer}')
                     return final_answer
 
         # If not found, check other relevant lines
@@ -91,7 +89,6 @@ class AnswerProcessor(ABC):
             if ('####' in line or 'answer:####' in line or 'answer: ###' in line or 'the answer is' in line) and 'after: ####' not in line:
                 match = re.search(r'##+.*?[\#\$\*\s]*\s*(\d+(?:[,.]\d+)?)\s*[\#\$\*\s]*', line)
                 if match:
-                    print(f'RESULT : {match.group(1)}')
                     return match.group(1)
                 else:
                     match = re.search(r'answer.*?[\#\$\*\s]*\s*(\d+(?:[,.]\d+)?)\s*[\#\$\*\s]*$', line)

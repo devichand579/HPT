@@ -689,13 +689,8 @@ class ManualHierarchicalPrompt(ABC):
         '''
         processes the entire dataset using hierarchical prompts
         '''
-        count = 0
         for item in self.dataset:
-            if count < 10:
                 self.prompt_process(item)
-                count += 1
-            else:
-                break
         logging.info("***Dataset processed successfully***")
 
 
