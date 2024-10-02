@@ -254,7 +254,7 @@ class ManualHierarchicalPrompt(ABC):
                             final_ans = final_ans.replace(',', '')
                             final_ans = float(final_ans)
                     else:
-                        final_ans = 0.0  # Handle None case by assigning a default value, like 0.0
+                        final_ans = 0.0 
 
                     if isinstance(answer, (int, float)):
                       answer =  float(answer)
@@ -295,7 +295,7 @@ class ManualHierarchicalPrompt(ABC):
                             final_ans = final_ans.replace(',', '')
                             final_ans = float(final_ans)
                     else:
-                        final_ans = 0.0  # Handle None case by assigning a default value, like 0.0
+                        final_ans = 0.0  
 
                     if isinstance(answer, (int, float)):
                       answer =  float(answer)
@@ -326,7 +326,7 @@ class ManualHierarchicalPrompt(ABC):
                             final_ans = final_ans.replace(',', '')
                             final_ans = float(final_ans)
                     else:
-                        final_ans = 0.0  # Handle None case by assigning a default value, like 0.0
+                        final_ans = 0.0 
                     if isinstance(answer, (int, float)):
                       answer =  float(answer)
                     else:
