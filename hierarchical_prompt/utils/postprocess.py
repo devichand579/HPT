@@ -71,15 +71,32 @@ class AnswerProcessor(ABC):
         return result
     
     def pp_gsm8k(self, text):
-        """Process GSM8K text to extract the answer."""
+        """Process GSM8K text to extract the final answer from lines containing 'final answer'."""
         text = text.lower()
+        print(f'******* TEXT : {text}')
+        
         lines = text.split('\n')
-        for line in lines:
-            if ('####' in line or 'answer:####' in line or 'answer: ###' in line) and 'after: ####' not in line:
-                match = re.search(r'\.?\$?(\d+(?:[,.]\d+)(?:[,.]\d+)?|\d+([,.]\d+)?)\s\$?\.?', line)
+        
+        # Check lines for "final answer"
+        for line in reversed(lines):  # Loop through lines in reverse
+            if 'final answer' in line:
+                match = re.search(r'final answer.*?[\#\$\*\s]*(\d+(?:[,.]\d+)?)\s*[\#\$\*\s]*$', line)
                 if match:
-                  return match.group(1)
-            
+                    final_answer = match.group(1)
+                    print(f'RESULT : {final_answer}')
+                    return final_answer
+
+        # If not found, check other relevant lines
+        for line in reversed(lines):
+            if ('####' in line or 'answer:####' in line or 'answer: ###' in line or 'the answer is' in line) and 'after: ####' not in line:
+                match = re.search(r'##+.*?[\#\$\*\s]*\s*(\d+(?:[,.]\d+)?)\s*[\#\$\*\s]*', line)
+                if match:
+                    print(f'RESULT : {match.group(1)}')
+                    return match.group(1)
+                else:
+                    match = re.search(r'answer.*?[\#\$\*\s]*\s*(\d+(?:[,.]\d+)?)\s*[\#\$\*\s]*$', line)
+
+  
 
     def pp_humaneval(self, text):
       """Process HumanEval text."""
