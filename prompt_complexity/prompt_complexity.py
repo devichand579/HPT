@@ -420,3 +420,7 @@ def main():
         
         with open('scores.json', 'a') as f:
             json.dump({'prompt strategy':prompt_strategy, "score1": avg1, "score2": avg2, "score3": avg3, "score4": avg4, "total": avg_total}, f, indent=4)
+
+
+if __name__ == "__main__":
+    main()
