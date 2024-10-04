@@ -1,0 +1,980 @@
+[
+    {
+        "question": "is garrison from the ranch a real place",
+        "answer": "False",
+        "passage": "The Ranch is an American comedy web television series starring Ashton Kutcher, Danny Masterson, Debra Winger, Elisha Cuthbert, and Sam Elliott that debuted in 2016 on Netflix. The show takes place on the fictional Iron River Ranch in the fictitious small town of Garrison, Colorado; detailing the life of the Bennetts, a dysfunctional family consisting of two brothers, their rancher father, and his divorced wife and local bar owner. While the opening sequence shows scenes from Norwood and Ouray, Colorado and surrounding Ouray and San Miguel Counties, The Ranch is filmed on a sound stage in front of a live audience in Burbank, California. Each season consists of 20 episodes broken up into two parts, each containing 10 episodes.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "are babies in the womb covered in hair",
+        "answer": "True",
+        "passage": "Lanugo (/l\u0259\u02c8nju\u02d0\u0261o\u028a/; from Latin lana ``wool'') is very thin, soft, usually unpigmented, downy hair that is sometimes found on the body of a fetal or new-born human. It is the first hair to be produced by the fetal hair follicles, and it usually appears around sixteen weeks of gestation and is abundant by week twenty. It is normally shed before birth, around seven or eight months of gestation, but is sometimes present at birth. It disappears on its own within a few weeks.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "is an administrative law judge a real judge",
+        "answer": "True",
+        "passage": "An administrative law judge (ALJ) in the United States is a judge and trier of fact who both presides over trials and adjudicates the claims or disputes (in other words, ALJ-controlled proceedings are bench trials) involving administrative law.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "are there plants on the international space station",
+        "answer": "True",
+        "passage": "Plant research continued on the International Space Station. Biomass Production System was used on the ISS Expedition 4. The Vegetable Production System (Veggie) system was later used aboard ISS. Plants tested in Veggie before going into space included lettuce, Swiss chard, radishes, Chinese cabbage and peas. Red Romaine lettuce was grown in space on Expedition 40 which were harvested when mature, frozen and tested back on Earth. Expedition 44 members became the first American astronauts to eat plants grown in space on 10 August 2015, when their crop of Red Romaine was harvested. Since 2003 Russian cosmonauts have been eating half of their crop while the other half goes towards further research. In 2012, a sunflower bloomed aboard the ISS under the care of NASA astronaut Donald Pettit. In January 2016, US astronauts announced that a zinnia had blossomed aboard the ISS.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "is hcf a not for profit health fund",
+        "answer": "True",
+        "passage": "HCF (The Hospitals Contribution Fund of Australia) was formed in 1932 to provide health insurance cover to Australians. Since then, it has grown to become one of the country's largest combined registered private health fund and life insurance organisations. HCF is the 3rd largest health insurance company by market share (10.3% in FY2010) and is the largest not-for-profit health fund in Australia.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "does scotland have the same bank holidays as england",
+        "answer": "False",
+        "passage": "Bank and public holidays in Scotland are determined under the Banking and Financial Dealings Act 1971 and the St Andrew's Day Bank Holiday (Scotland) Act 2007. Unlike the rest of United Kingdom, most bank holidays are not recognised as statutory public holidays in Scotland, as most public holidays are determined by local authorities across Scotland. Some of these may be taken in lieu of statutory holidays, while others may be additional holidays, although many companies, including Royal Mail, do not follow all the holidays listed below; and many swap between English and local holidays. Many large shops and supermarkets continue to operate normally during public holidays, especially since there are no restrictions such as Sunday trading rules in Scotland.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "can i go to montenegro with a schengen visa",
+        "answer": "True",
+        "passage": "Nationals of any country may visit Montenegro without a visa for up to 30 days if they hold a passport with visas issued by Ireland, a Schengen Area member state, the United Kingdom or the United States or if they are permanent residents of those countries. Residents of the United Arab Emirates do not require a visa for up to 10 days, if they hold a return ticket and proof of accommodation.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "is the iphone se before the iphone 6",
+        "answer": "False",
+        "passage": "The previous major redesign of the iPhone, the 4.7-inch iPhone 6 and 5.5-inch iPhone 6 Plus, resulted in larger screen sizes. However a significant number of customers still preferred the 4-inch screen size of the iPhone 5 and 5S. Apple stated in their event that they sold 30 million 4-inch iPhones in 2015.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "can a tree have more than one trunk",
+        "answer": "True",
+        "passage": "Trees have a wide variety of sizes and shapes and growth habits. Specimens may grow as individual trunks, multitrunk masses, coppices, clonal colonies, or even more exotic tree complexes. Most champion tree programs focus finding and measuring the largest single-trunk example of each species. There are three basic parameters commonly measured to characterize the size of a single trunk tree: height, girth, and crown spread. Additional details on the methodology of Tree height measurement, Tree girth measurement, Tree crown measurement, and Tree volume measurement are presented in the links herein. A detailed guideline to these basic measurements is provided in The Tree Measuring Guidelines of the Eastern Native Tree Society by Will Blozan.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "does a sim free phone lock to a network",
+        "answer": "False",
+        "passage": "A SIM lock, simlock, network lock, carrier lock or (master) subsidy lock is a technical restriction built into GSM and CDMA mobile phones by mobile phone manufacturers for use by service providers to restrict the use of these phones to specific countries and/or networks. This is in contrast to a phone (retrospectively called SIM-free or unlocked) that does not impose any SIM restrictions.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "is the film tully based on the book",
+        "answer": "False",
+        "passage": "Tully is a 2018 American comedy-drama film directed by Jason Reitman and written by Diablo Cody. The film stars Charlize Theron, Mackenzie Davis, Mark Duplass, and Ron Livingston, and follows the friendship between a mother of three and her nanny. It is the fourth collaboration between Reitman and Cody, following Juno (2007), Jennifer's Body (2009), and Young Adult (2011), the last of which also starred Theron.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "does the governor die on the walking dead",
+        "answer": "False",
+        "passage": "In the television series, The Governor's disturbing motives are reflected in his authoritarian ways in dealing with threats to his community, primarily by executing most large groups and only accepting lone survivors into his community. His dark nature escalates when he comes into conflict with Rick Grimes and the latter's group, who are occupying the nearby prison. The Governor vows to eliminate the prison group, and in that pursuit, he leaves several key characters dead both in Rick's group and his own. The Governor has a romantic relationship with Andrea, who unsuccessfully seeks to broker a truce between the two groups. In season 4, The Governor attempts to redeem himself upon meeting a new family, to whom he introduces himself as Brian Heriot. However, he commits several brutal acts to ensure the family's survival. This leads to more characters' deaths and forces Rick and his group to abandon the prison.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "do college football players have to enter the draft",
+        "answer": "False",
+        "passage": "College football players who are considering entering the NFL draft but who still have eligibility to play football can request an expert opinion from the NFL-created Draft Advisory Board. The Board, composed of scouting experts and team executives, makes a prediction as to the likely round in which a player would be drafted. This information, which has proven to be fairly accurate, can help college players determine whether to enter the draft or to continue playing and improving at the college level. There are also many famous reporting scouts, such as Mel Kiper Jr.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "has any team won 3 championships in a row",
+        "answer": "True",
+        "passage": "There have been numerous instances of teams winning three or more consecutive championships in the National Basketball Association, National Hockey League, Major League Baseball and Australian Football League most of which occurred prior to the advent of the term three-peat.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "is 22 magnum and 22 wmr the same",
+        "answer": "True",
+        "passage": "The .22 Winchester Magnum Rimfire, also called .22 WMR, .22 Magnum, .22 MRF, or .22 Mag, is a rimfire cartridge. Originally loaded with a bullet weight of 40 grains (2.6 g) delivering velocities in the 2,000 feet per second (610 m/s) range from a rifle barrel, .22 WMR is now loaded with bullet weights ranging from 50 grains (3.2 g) at 1,530 feet per second (470 m/s) to 30 grains (1.9 g) at 2,200 feet per second (670 m/s). Accuracy around 1 MOA is achievable. Compared to the faster but lighter .17 HMR, the .22 WMR impacts targets with higher kinetic energy within its effective range, important for clean kills on larger small game such as coyote, albeit with a less flat-shooting bullet arc.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "is durham university part of the russell group",
+        "answer": "True",
+        "passage": "In March 2012 it was announced that four universities -- Durham, Exeter, Queen Mary University of London; and York -- would become members of the Russell Group in August of the same year. All of the new members had previously been members of the 1994 Group of British universities.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "is a crawfish and a crawdad the same thing",
+        "answer": "True",
+        "passage": "Crayfish, also known as crawfish, crawdads, crawldads, freshwater lobsters, mountain lobsters, mudbugs or yabbies, are freshwater crustaceans resembling small lobsters (to which they are related). Taxonomically, they are members of the superfamilies Astacoidea and Parastacoidea. They breathe through feather-like gills. Some species are found in brooks and streams where there is running fresh water, while others thrive in swamps, ditches, and paddy fields. Most crayfish cannot tolerate polluted water, although some species such as Procambarus clarkii are hardier. Crayfish feed on animals and plants, either living or decomposing, and detritus.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "can you use .224 bullets in a .223",
+        "answer": "True",
+        "passage": "The .223 Remington (.223 Rem) is a rifle cartridge. It started as the .222 Special and was renamed .223 Remington. It is commercially loaded with 0.224 inch (5.7 mm) diameter jacketed bullets, with weights ranging from 40 to 85 grains (2.6 to 5.8 g), with the most common loading by far being 55 grains (3.6 g). Ninety and ninety-five grain Sierra Matchking bullets are available for reloaders. The .223 Rem was first offered to the civilian sporting market in December 1963 in the Remington 760 rifle. In 1964 the .223 Rem cartridge was adopted for use in the Colt M16 rifle which became an alternate standard rifle of the U.S. Army. The military version of the cartridge uses a 55 gr full metal jacket boat tail design and was designated M193. In 1980 NATO modified the .223 Remington into a new design which is designated 5.56\u00d745mm NATO type SS109.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "does a ruby and a sapphire make a garnet",
+        "answer": "True",
+        "passage": "Garnet is a fictional character from the animated series Steven Universe, created by Rebecca Sugar. She is a ``gem'', a fictional alien being that exists as a magical gemstone projecting a holographic body. Garnet is a ``fusion gem'' -- i.e., two gemstones combining personalities and appearances as one shared holographic body -- formed by two Gems named Ruby and Sapphire; they chose to remain permanently fused out of love for each other.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "is soy sauce and worcester sauce the same",
+        "answer": "False",
+        "passage": "The ``flavourings'' are believed to include cloves, soy sauce, lemons, pickles and peppers.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "is gdp per capita the same as average income",
+        "answer": "False",
+        "passage": "Since 1980, U.S. gross domestic product (GDP) per capita has increased 67%, while median household income has only increased by 15%. Median household income is a politically sensitive indicator. Voters can be critical of their government if they perceive that their cost of living is rising faster than their income.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "does april get pregnant in parks and rec",
+        "answer": "True",
+        "passage": "In a series of flash-forwards in the final episode, April and Andy ask Leslie and Ben for advice regarding the prospect of having children, which Andy very much wants but April does not. They decide to try for it and their son Jack (short for Jack-o-Lantern) is born on Halloween 2023. By 2025 the couple is expecting their second child.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "is the enchanted forest in oregon still open",
+        "answer": "True",
+        "passage": "The Enchanted Forest is an amusement park located in Turner in the U.S. state of Oregon, next to Interstate 5 just south of Salem. Creator Roger Tofte opened the park in 1971 after seven years of construction. Today, the Tofte family still owns and operates the 20-acre (8.1 ha) park.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "does the little girl die in man on fire",
+        "answer": "False",
+        "passage": "Using the information provided by Creasy, The Voice's identity is revealed by Manzano to be Daniel S\u00e1nchez, who Mariana exposes on the front page of her newspaper. Creasy sneaks into the home of S\u00e1nchez's ex-wife and children, and is fatally shot by his brother Aurelio (Gero Camilo), whom Creasy then captures. Creasy finds out that he not only has The Voice's brother hostage, but his pregnant wife. Creasy calls Daniel S\u00e1nchez and threatens to kill all of his family unless he gives himself up (shooting Aurelio's fingers off with a shotgun as a warning while Sanchez listens on the phone), but S\u00e1nchez reveals that Pita is still alive, and offers her in exchange for Aurelio and Creasy. After Sanchez confirms Pita's identity (Creasy has him identify what Pita calls her teddy bear as proof), Creasy agrees to the demands. Creasy contacts Lisa to confirm that Pita is alive and to meet him at the exchange. He instructs her to hold the shotgun to Aurelio and to not let him go until Lisa has Pita. He surrenders himself to S\u00e1nchez' men, after Pita is released to him. After an embrace, Creasy instructs Pita to runs to her mother. Aurelio is then released and Creasy surrenders to the kidnappers as Lisa and Pita drive away. As Creasy drives off with the kidnappers, it is implied that Creasy, at peace with himself, succumbs to his wounds and dies. Daniel S\u00e1nchez is later shot and killed by Manzano during an AFI arrest raid.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "can a neurotransmitter be both excitatory and inhibitory",
+        "answer": "False",
+        "passage": "A neurotransmitter can influence the function of a neuron through a remarkable number of mechanisms. In its direct actions in influencing a neuron's electrical excitability, however, a neurotransmitter acts in only one of two ways: excitatory or inhibitory. A neurotransmitter influences trans-membrane ion flow either to increase (excitatory) or to decrease (inhibitory) the probability that the cell with which it comes in contact will produce an action potential. Thus, despite the wide variety of synapses, they all convey messages of only these two types, and they are labeled as such. Type I synapses are excitatory in their actions, whereas type II synapses are inhibitory. Each type has a different appearance and is located on different parts of the neurons under its influence. Each neuron receives thousands of excitatory and inhibitory signals every second.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "is it required to say check in chess",
+        "answer": "False",
+        "passage": "In informal games, it is customary to announce ``check'' when making a move that puts the opponent's king in check. In formal competitions, however, check is rarely announced.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "is a bmw 1 series front wheel drive",
+        "answer": "False",
+        "passage": "The 1 Series is BMW's entry level of model range. Unusually for a small car, the 1 Series range is mostly rear-wheel drive, (except for the F52 sedan, which is front-wheel drive) with optional all-wheel drive being available on some models.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "can you die from keeping a fan on",
+        "answer": "False",
+        "passage": "Fan death is a well-known superstition in Korean culture, where it is thought that running an electric fan in a closed room with unopened or no windows will prove fatal. Despite no concrete evidence to support the concept, belief in fan death persists to this day in Korea.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "do you have to bounce the ball in rugby",
+        "answer": "True",
+        "passage": "The rules of football state that a player running on the field with the ball must take a running bounce at least once every fifteen metres. If they run too far without taking a running bounce, the umpire pays a free kick for running too far to the opposition at the position where the player oversteps his limit. The umpire signals ``running too far'' by rolling their clenched fists around each other -- similar to false starts in American football or traveling in basketball.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "have both parts of the titanic been found",
+        "answer": "True",
+        "passage": "The wreck of the RMS Titanic lies at a depth of about 12,500 feet (3.8 km; 2.37 mi), about 370 miles (600 km) south-southeast off the coast of Newfoundland. It lies in two main pieces about a third of a mile (600 m) apart. The bow is still recognizable with many preserved interiors, despite deterioration and damage sustained hitting the sea floor. In contrast, the stern is completely ruined. A debris field around the wreck contains hundreds of thousands of items spilled from the ship as she sank. The bodies of the passengers and crew would have also been distributed across the sea bed, but have been consumed by other organisms.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "do the runners up on survivor win money",
+        "answer": "True",
+        "passage": "The Sole Survivor receives a cash prize of $1,000,000 prior to taxes and sometimes also receives a car provided by the show's sponsor. Every player receives a prize for participating on Survivor depending on how long he or she lasts in the game. In most seasons, the runner-up receives $100,000, and third place wins $85,000. All other players receive money on a sliding scale, though specific amounts have rarely been made public. Sonja Christopher, the first player voted off of Survivor: Borneo, received $2,500. In Survivor: Fiji, the first season with tied runners-up, the two runners-up received US$100,000 each, and Yau-Man Chan received US$60,000 for his fourth-place finish. All players also receive an additional $10,000 for their appearance on the reunion show.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "does the dulles toll road take credit cards",
+        "answer": "True",
+        "passage": "The main toll plaza for the Dulles Greenway is located just west of the exits for Route 28 and Dulles Airport. Additional toll plazas are located on westbound entrance ramps and eastbound exit ramps with the exception of Battlefield Parkway (Exit 2) in Leesburg. The toll varies depending on the toll plaza traversed. As of January 2013, the base toll collected for two-axle vehicles ranges from $3.00 ($2.55 with E-ZPass) at the Shreve Mill Rd plaza to $5.10 at the main plaza to and from the Dulles Toll Road (which includes the $1.00 toll for the Dulles Toll Road). Vehicles with more than two axles are charged higher rates. The maximum toll rises to $5.90 (including the 75\u00a2 Dulles Toll Road toll) during congestion pricing hours, which are 6:30 am to 9:00 am eastbound and 4:00 pm to 6:30 pm westbound. A previous increase in the base fare and the introduction of congestion pricing occurred in January 2009, and tolls rose an additional 30 cents per trip on January 1, 2012. Vehicles traveling through the main toll plaza to or from the Dulles Toll Road are charged two tolls: one for the Dulles Toll Road, and one for the Dulles Greenway. Cash tolls are accepted during limited hours, and credit cards and E-ZPass transponder payments are accepted at all times. The Greenway is also one of two routes where a subscription membership (exclusive to E-ZPass) allows for an additional discount. Alternate (free) routes include State Route 7 and State Route 28, both of which are generally more congested.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "is cedar oil the same as cedarwood oil",
+        "answer": "True",
+        "passage": "Cedar oil, also known as cedarwood oil, is an essential oil derived from various types of conifers, most in the pine or cypress botanical families. It is produced from the foliage, and sometimes the wood, roots, and stumps which have been left after cutting of trees for timber extraction. It has many uses in medicine, art, industry and perfumery, and while the characteristics of oils derived from various species may themselves vary, all have some degree of bactericidal and pesticidal effects.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "is there a season four of red rock",
+        "answer": "False",
+        "passage": "Following a major overhaul in the summer of 2016, each episode is now a single 60 minute transmission, including advertisements. The series was also moved to 9:00pm on Mondays, to allow for grittier storylines, as the series is now post-watershed. A special-double episode was broadcast on 9 January 2017 as a single 120 minute transmission. This episode was co-written by actor Shaun Williamson. The second series was broadcast in the UK between 17 July 2017 and 8 September 2017, with Series 3 scheduled for this year.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "did they used to make 1000 dollar bills",
+        "answer": "True",
+        "passage": "The Federal Reserve began taking high-denomination currency out of circulation (destroying large bills received by banks) in 1969. As of May 30, 2009, only 336 $10,000 bills were known to exist; 342 remaining $5,000 bills; and 165,372 remaining $1,000 bills. Due to their rarity, collectors often pay considerably more than the face value of the bills to acquire them. Some are in museums in other parts of the world.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "do they still make new episodes of dora",
+        "answer": "False",
+        "passage": "The series is co-produced by Nickelodeon Productions and Nickelodeon Animation Studio. Dora the Explorer is one of the longest-running shows of Nick Jr. During the sixth season, the show became the Nick Jr. series with the most episodes, surpassing Blue's Clues with 143 episodes, having 144 after it had completed broadcasting on television. It ended on June 5, 2014 after 8 seasons and 172 episodes.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "is teenage mutant ninja turtles still on tv",
+        "answer": "True",
+        "passage": "Nickelodeon announced a new 2D animated series based on the franchise, which will debut in July 2018.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "is there a such thing as a broken heart",
+        "answer": "False",
+        "passage": "Broken heart (also known as a heartbreak or heartache) is a metaphor for the intense emotional--and sometimes physical--stress or pain one feels at experiencing great longing. The concept is cross-cultural, often cited with reference to a desired or lost lover, and dates back at least 3,000 years.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "can you have citizenship in more than one country",
+        "answer": "True",
+        "passage": "Multiple citizenship, dual citizenship, multiple nationality or dual nationality, is a person's citizenship status, in which a person is concurrently regarded as a citizen of more than one state under the laws of those states. There is no international convention which determines the nationality or citizen status of a person. Citizenship status is defined exclusively by national laws, which can vary and can conflict. Multiple citizenship arises because different countries use different, and not necessarily mutually exclusive, criteria for citizenship. Colloquial speech refers to people ``holding'' multiple citizenship, but technically each nation makes a claim that a particular person is considered its national.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "is dragon ball gt after dragon ball z",
+        "answer": "True",
+        "passage": "It is a sequel to the previous Dragon Ball and Dragon Ball Z anime series.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "did france declare war on germany in ww2",
+        "answer": "True",
+        "passage": "The Declaration of war by France and the United Kingdom was given on 3 September 1939, after German forces invaded Poland. Despite the speech being the official announcement of both France and the United Kingdom, the speech was given by the British Prime Minister Neville Chamberlain, in Westminster, London.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "is a certification of birth the same as a birth certificate",
+        "answer": "True",
+        "passage": "The actual record of birth is stored with a government agency. That agency will issue certified copies or representations of the original birth record upon request, which can be used to apply for government benefits, such as passports. The certification is signed and/or sealed by the registrar or other custodian of birth records, who is commissioned by the government.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "are fixed assets and non current assets the same",
+        "answer": "True",
+        "passage": "Moreover, a fixed/non-current asset can also be defined as an asset not directly sold to a firm's consumers/end-users. As an example, a baking firm's current assets would be its inventory (in this case, flour, yeast, etc.), the value of sales owed to the firm via credit (i.e. debtors or accounts receivable), cash held in the bank, etc. Its non-current assets would be the oven used to bake bread, motor vehicles used to transport deliveries, cash registers used to handle cash payments, etc. While these non-current assets have value, they are not directly sold to consumers and cannot be easily converted to cash.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "are the inside of your cheeks called gums",
+        "answer": "False",
+        "passage": "Cheeks (Latin: buccae) constitute the area of the face below the eyes and between the nose and the left or right ear. ``Buccal'' means relating to the cheek. In humans, the region is innervated by the buccal nerve. The area between the inside of the cheek and the teeth and gums is called the vestibule or buccal pouch or buccal cavity and forms part of the mouth. In other animals the cheeks may also be referred to as jowls.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "is the old panama canal still in use",
+        "answer": "True",
+        "passage": "The new locks opened for commercial traffic on 26 June 2016, and the first ship to cross the canal using the third set of locks was a modern New Panamax vessel, the Chinese-owned container ship Cosco Shipping Panama. The original locks, now over 100 years old, allow engineers greater access for maintenance, and are projected to continue operating indefinitely.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "does the british monarchy have any power in canada",
+        "answer": "True",
+        "passage": "As all executive authority is vested in the sovereign, their assent is required to allow for bills to become law and for letters patent and orders in council to have legal effect. While the power for these acts stems from the Canadian people through the constitutional conventions of democracy, executive authority remains vested in the Crown and is only entrusted by the sovereign to their government on behalf of the people, underlining the Crown's role in safeguarding the rights, freedoms, and democratic system of government of Canadians, and reinforcing the fact that ``governments are the servants of the people and not the reverse''. Thus, within a constitutional monarchy the sovereign's direct participation in any of these areas of governance is limited, with the sovereign normally exercising executive authority only on the advice of the executive committee of the Queen's Privy Council for Canada, with the sovereign's legislative and judicial responsibilities largely carried out through parliamentarians as well as judges and justices of the peace. The Crown today primarily functions as a guarantor of continuous and stable governance and a nonpartisan safeguard against abuse of power, the sovereign acting as a custodian of the Crown's democratic powers and a representation of the ``power of the people above government and political parties''.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "can you marry more than one person in the us",
+        "answer": "False",
+        "passage": "Polygamy is the act or condition of a person marrying another person while still being lawfully married to another spouse. As this is the very definition of bigamy, it is illegal in the United States. The crime is punishable by a fine, imprisonment, or both, according to the law of the individual state and the circumstances of the offense. Polygamy was outlawed federally by the Edmunds Act, and there are laws against the practice in all 50 states, as well as the District of Columbia, Guam, and Puerto Rico. Because state laws exist, polygamy is not actively prosecuted at the federal level, but the practice is considered ``against public policy'' and, accordingly, the U.S. government won't recognize bigamous marriages for immigration purposes (that is, would not allow one of the spouses to petition for immigration benefits for the other), even if they are legal in the country where bigamous marriage was celebrated. Any immigrant who is coming to the United States to practice polygamy is inadmissible.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "is republic of ireland part of schengen visa",
+        "answer": "False",
+        "passage": "Although Ireland is a member of the European Union, it has an opt-out from the Schengen Area and is therefore able to set its own visa policy. Ireland also operates the Common Travel Area with the United Kingdom, the Channel Islands and the Isle of Man which allows for open internal borders between the countries and territories. Established in 1923, it permits British and Irish citizens to freely move around the Common Travel Area with minimal identity documents.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "does the t distribution have a standard deviation of 1",
+        "answer": "False",
+        "passage": "In probability and statistics, Student's t-distribution (or simply the t-distribution) is any member of a family of continuous probability distributions that arises when estimating the mean of a normally distributed population in situations where the sample size is small and population standard deviation is unknown. It was developed by William Sealy Gosset under the pseudonym Student.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "are audi and volkswagen made by the same company",
+        "answer": "True",
+        "passage": "Volkswagen AG (German: (\u02c8f\u0254lks\u02ccva\u02d0gn\u0329)), known internationally as the Volkswagen Group, is a German multinational automotive manufacturing company headquartered in Wolfsburg, Lower Saxony, Germany and indirectly majority owned by the Austrian Porsche-Piech family. It designs, manufactures and distributes passenger and commercial vehicles, motorcycles, engines, and turbomachinery and offers related services including financing, leasing and fleet management. In 2016, it was the world's largest automaker by sales, overtaking Toyota and keeping this title in 2017, selling 10.7 million vehicles. It has maintained the largest market share in Europe for over two decades. It ranked sixth in the 2017 Fortune Global 500 list of the world's largest companies. Volkswagen Group sells passenger cars under the Audi, Bentley, Bugatti, Lamborghini, Porsche, SEAT, \u0160koda and Volkswagen marques; motorcycles under the Ducati brand; and commercial vehicles under the marques MAN, Scania, and Volkswagen Commercial Vehicles. It is divided into two primary divisions, the Automotive Division and the Financial Services Division, and as of 2008 had approximately 342 subsidiary companies. VW also has two major joint-ventures in China (FAW-Volkswagen and SAIC Volkswagen). The company has operations in approximately 150 countries and operates 100 production facilities across 27 countries.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "are there other kinds of ketchup besides tomato",
+        "answer": "True",
+        "passage": "In the United Kingdom, preparations of ketchup were historically and originally prepared with mushrooms as a primary ingredient, rather than tomatoes. Ketchup recipes began to appear in British and then American cookbooks in the 18th century. In a 1742 London cookbook, the fish sauce had already taken on a very British flavor, with the addition of shallots and mushrooms. The mushrooms soon became the main ingredient, and from 1750 to 1850 the word ketchup began to mean any number of thin dark sauces made of mushrooms or even walnuts. In the United States, mushroom ketchup dates back to at least 1770, and was prepared by British colonists in ``English speaking colonies in North America''. In contemporary times, mushroom ketchup is available in the UK, although it is not a commonly used condiment.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "is a intel core 2 duo processor 64 bit",
+        "answer": "True",
+        "passage": "Core 2 is a brand encompassing a range of Intel's consumer 64-bit x86-64 single-, dual-, and quad-core microprocessors based on the Core microarchitecture. The single- and dual-core models are single-die, whereas the quad-core models comprise two dies, each containing two cores, packaged in a multi-chip module. The introduction of Core 2 relegated the Pentium brand to the mid-range market, and reunified laptop and desktop CPU lines for marketing purposes under the same product name, which previously had been divided into the Pentium 4, Pentium D, and Pentium M brands.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "is oasis of the seas the largest cruise ship",
+        "answer": "False",
+        "passage": "The Oasis class is a class of Royal Caribbean International cruise ships which are the world's largest passenger ships. The first two ships in the class, Oasis of the Seas and Allure of the Seas, were delivered respectively in 2009 and 2010 by STX Europe Turku Shipyard, Finland. A third Oasis class vessel, Harmony of the Seas, was delivered in 2016 built by STX France, and a fourth vessel, MS Symphony of the Seas, was completed in March 2018. One additional unnamed ship is currently under construction and is expected to be delivered in 2021. The first two ships in the class Oasis of the Seas and Allure of the Seas are slightly exceeded in size by the third ship Harmony of the Seas, while the Symphony of the Seas is the world's largest cruise ship. The fifth ship, due to be completed in Spring 2021, is planned to be larger than the Symphony of the Seas.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "can an ant colony have more than one queen",
+        "answer": "True",
+        "passage": "A queen ant (formally known as a gyne) is an adult, reproducing female ant in an ant colony; generally she will be the mother of all the other ants in that colony. Some female ants, such as Cataglyphis cursor, do not need to mate to produce offspring, reproducing through asexual parthenogenesis or cloning, and all of those offspring will be female. Others, like those in the genus Crematogaster, mate in a nuptial flight. Queen offspring develop from larvae specially fed in order to become sexually mature among most species. Depending on the species, there can be either a single mother queen, or potentially, hundreds of fertile queens in some species. Queen ants have one of the longest life-spans of any known insect -- up to 30 years. A queen of Lasius niger was held in captivity by German entomologist Hermann Appel for 283\u20444 years; also a Pogonomyrmex owyheei has a maximum estimated longevity of 30 years in the field.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "is there a season 5 of prison break",
+        "answer": "True",
+        "passage": "The fifth season of Prison Break (also known as Prison Break: Resurrection) is a limited event television series and a revival of the original series created by Paul Scheuring that aired on Fox from 2005 to 2009. The season is produced by 20th Century Fox Television in association with Adelstein/Parouse Productions and Original Film. Paul Scheuring serves as showrunner, with himself, Marty Adelstein, Neal H. Moritz and Dawn Olmstead, Vaun Wilmott, Michael Horowitz and Nelson McCormick serving as executive producers. McCormick also serves as director. The season premiered on April 4, 2017, and concluded on May 30, 2017, consisting of 9 episodes.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "is a sacrifice fly count as an at bat",
+        "answer": "False",
+        "passage": "As addressed within Rule 9.02(a)(1) of the Official Baseball Rules a sacrifice fly is not counted as a time at bat for the batter, though the batter is credited with a run batted in.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "is flexor pollicis longus in the carpal tunnel",
+        "answer": "True",
+        "passage": "The tendons of the flexor digitorum superficialis and profundus pass through a common ulnar sheath, while the tendon of the flexor pollicis longus passes through a separate radial sheath. The mesotendon shared by these tendons is attached to the radial and palmar walls of the carpal tunnel.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "has an nhl team ever come back from 3-0",
+        "answer": "True",
+        "passage": "The following is the list of teams to overcome 3--1 series deficits by winning three straight games to win a best-of-seven playoff series. In the history of major North American pro sports, teams that were down 3--1 in the series came back and won the series 52 times, more than half of them were accomplished by National Hockey League (NHL) teams. Teams overcame 3--1 deficit in the final championship round eight times, six were accomplished by Major League Baseball (MLB) teams in the World Series. Teams overcoming 3--0 deficit by winning four straight games were accomplished five times, four times in the NHL and once in MLB.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "can i use cast iron pans on an induction hob",
+        "answer": "True",
+        "passage": "For nearly all models of induction cooktops, a cooking vessel must be made of, or contain, a ferromagnetic metal such as cast iron or some stainless steels. However, copper, glass, non magnetic stainless steels, and aluminum vessels can be used if placed on a ferromagnetic disk which functions as a conventional hotplate.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "is an echocardiogram the same as a sonogram",
+        "answer": "True",
+        "passage": "An echocardiogram, often referred to as a cardiac echo or simply an echo, is a sonogram of the heart. (It is not abbreviated as ECG, because that is an abbreviation for an electrocardiogram.) Echocardiography uses standard two-dimensional, three-dimensional, and Doppler ultrasound to create images of the heart.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "is steel wool the same as wire wool",
+        "answer": "True",
+        "passage": "Steel wool, also known as iron wool, wire wool or wire sponge, is a bundle of very fine and flexible sharp-edged steel filaments. It was described as a new product in 1896. It is used as an abrasive in finishing and repair work for polishing wood or metal objects, cleaning household cookware, cleaning windows, and sanding surfaces.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "do i need a permit to open carry in missouri",
+        "answer": "True",
+        "passage": "Missouri allows any person who has a valid concealed carry endorsement or permit and is lawfully carrying a firearm in a concealed manner to briefly and openly display the firearm, so long as the firearm is not displayed in an angry or threatening manner. Some localities prohibit open carry; however, concealed carry license holders are exempted from this restriction.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "is a groundhog and a mole the same thing",
+        "answer": "False",
+        "passage": "The groundhog is the largest sciurid in its geographical range. Adults are 16 to 20 inches long, including a six inch tail. A large woodchuck thought to weigh twenty pounds when carried was exactly half that weight when weighed by scale. Woodchuck weight ranges from five to twelve pounds. Extremely large individuals may weigh up to 15 pounds. Seasonal weight changes indicate circannual deposition and use of fat. Progressive higher weights are attained each year for the first 2--3 years after which weights plateau. Groundhogs have four incisor teeth which grow 1/16'' per week. Constant usage wears them down again by about that much each week. Unlike the incisors of other rodents, the incisors of groundhogs are white to ivory white. Groundhogs are well adapted for digging, with short, powerful limbs and curved, thick claws. Unlike other sciurids, the groundhog's spine is curved, more like that of a mole, and the tail is comparably shorter as well -- only about one-fourth of body length. Suited to their temperate habitat, groundhogs are covered with two coats of fur: a dense grey undercoat and a longer coat of banded guard hairs that gives the groundhog its distinctive ``frosted'' appearance.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "was the black death in the victorian times",
+        "answer": "False",
+        "passage": "The Black Death was a bubonic plague pandemic, which reached England in June 1348. It was the first and most severe manifestation of the Second Pandemic, caused by Yersinia pestis bacteria. The term ``Black Death'' was not used until the late 17th century.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "are sweet peppers and bell peppers the same",
+        "answer": "True",
+        "passage": "The bell pepper (also known as sweet pepper, pepper or capsicum /\u02c8k\u00e6ps\u026ak\u0259m/) is a cultivar group of the species Capsicum annuum. Cultivars of the plant produce fruits in different colors, including red, yellow, orange, green, white, and purple. Bell peppers are sometimes grouped with less pungent pepper varieties as ``sweet peppers''.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "is a veteran someone who went to war",
+        "answer": "False",
+        "passage": "A veteran (from Latin vetus, meaning ``old'') is a person who has had long service or experience in a particular occupation or field. A military veteran is a person who has served or is serving in the armed forces. Those veterans that have had direct exposure to acts of military conflict may also be referred to as war veterans (although not all military conflicts, or areas in which armed combat takes place, are necessarily referred to as wars).",
+        "dataset": "boolq"
+    },
+    {
+        "question": "has a school shooting happened in a private school",
+        "answer": "True",
+        "passage": "This article lists in chronology and provides additional details of incidents in which a firearm was discharged at a school infrastructure or campus in the United States, including incidents of shootings on a school bus. This list contains school shooting incidents that occurred on the campuses of K-12 public schools and private schools as well as colleges and universities. It excludes incidents that occurred during wars or police actions as well as murder-suicides by rejected suitors or estranged spouses and suicides or suicide attempts involving only one person. Mass shootings by staff of schools that involve only other employees are covered at workplace killings. This list does not include bombings such as the Bath School disaster.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "are there any countries that don't have a football team",
+        "answer": "True",
+        "passage": "At present, Marshall Islands doesn't have any football team.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "is there a mandatory retirement age for supreme court justices",
+        "answer": "False",
+        "passage": "The Constitution provides that justices ``shall hold their offices during good behavior'' (unless appointed during a Senate recess). The term ``good behavior'' is understood to mean justices may serve for the remainder of their lives, unless they are impeached and convicted by Congress, resign, or retire. Only one justice has been impeached by the House of Representatives (Samuel Chase, March 1804), but he was acquitted in the Senate (March 1805). Moves to impeach sitting justices have occurred more recently (for example, William O. Douglas was the subject of hearings twice, in 1953 and again in 1970; and Abe Fortas resigned while hearings were being organized in 1969), but they did not reach a vote in the House. No mechanism exists for removing a justice who is permanently incapacitated by illness or injury, but unable (or unwilling) to resign.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "is the october revolution the same as the bolshevik revolution",
+        "answer": "True",
+        "passage": "The October Revolution (Russian: \u041e\u043a\u0442\u044f\u0301\u0431\u0440\u044c\u0441\u043a\u0430\u044f \u0440\u0435\u0432\u043e\u043b\u044e\u0301\u0446\u0438\u044f, tr. Oktyabr'skaya revolyutsiya, IPA: (\u0250k\u02c8tjabrjsk\u0259j\u0259 rj\u026av\u0250\u02c8ljuts\u0268j\u0259)), officially known in Soviet literature as the Great October Socialist Revolution (\u0412\u0435\u043b\u0438\u0301\u043a\u0430\u044f \u041e\u043a\u0442\u044f\u0301\u0431\u0440\u044c\u0441\u043a\u0430\u044f \u0441\u043e\u0446\u0438\u0430\u043b\u0438\u0441\u0442\u0438\u0301\u0447\u0435\u0441\u043a\u0430\u044f \u0440\u0435\u0432\u043e\u043b\u044e\u0301\u0446\u0438\u044f, Velikaya Oktyabr'skaya sotsialisti\u010deskaya revolyutsiya), and commonly referred to as Red October, the October Uprising, the Bolshevik Revolution, or the Bolshevik Coup, was a revolution in Russia led by the Bolsheviks and Vladimir Lenin that was instrumental in the larger Russian Revolution of 1917. It took place with an armed insurrection in Petrograd on 7 November (25 October, Old Style) 1917.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "is the supreme court the highest court in the land",
+        "answer": "True",
+        "passage": "A supreme court is the highest court within the hierarchy of courts in many legal jurisdictions. Other descriptions for such courts include court of last resort, apex court, and highest (or final) court of appeal. Broadly speaking, the decisions of a supreme court are not subject to further review by any other court. Supreme courts typically function primarily as appellate courts, hearing appeals from decisions of lower trial courts, or from intermediate-level appellate courts.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "is the hunchback of notre dame real story",
+        "answer": "False",
+        "passage": "Victor Hugo began writing Notre-Dame de Paris in 1829, largely to make his contemporaries more aware of the value of the Gothic architecture, which was neglected and often destroyed to be replaced by new buildings or defaced by replacement of parts of buildings in a newer style. For instance, the medieval stained glass panels of Notre-Dame de Paris had been replaced by white glass to let more light into the church. This explains the large descriptive sections of the book, which far exceed the requirements of the story. A few years earlier, Hugo had already published a paper entitled Guerre aux D\u00e9molisseurs (War to the Demolishers) specifically aimed at saving Paris' medieval architecture. The agreement with his original publisher, Gosselin, was that the book would be finished that same year, but Hugo was constantly delayed due to the demands of other projects. In the summer of 1830, Gosselin demanded that Hugo complete the book by February 1831. Beginning in September 1830, Hugo worked nonstop on the project thereafter. The book was finished six months later.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "do you have to be from america to be on americas got talent",
+        "answer": "False",
+        "passage": "The show attracts a variety of participants, from across the United States and abroad, to take part and who possess some form of talents, with acts ranging from singing, dancing, comedy, magic, stunts, variety, and other genres. Each participant who auditions attempts to secure a place in the live episodes of a season by impressing a panel of judges - the current line-up consists of Cowell, Howie Mandel, Mel B, and Heidi Klum. Those that make it into the live episodes compete against each other for both the judges' and public's vote in order to reach the live final, where the winner receives a large cash prize, paid over a period of time, and, since the third season, a chance to headline a show on the Las Vegas Strip.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "is there a limit on freedom of speech",
+        "answer": "True",
+        "passage": "The Supreme Court has held that ``advocacy of the use of force'' is unprotected when it is ``directed to inciting or producing imminent lawless action'' and is ``likely to incite or produce such action''. In Brandenburg v. Ohio (1969), the Supreme Court unanimously reversed the conviction of a Ku Klux Klan group for ``advocating ... violence ... as a means of accomplishing political reform'' because their statements at a rally did not express an immediate, or imminent intent to do violence. This rule amended a previous decision of the Court, in Schenck v. United States (1919), which simply decided that a ``clear and present danger'' could justify a congressional rule limiting speech. The primary distinction is that the latter test does not criminalize ``mere advocacy''.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "can someone with a phd be called a doctor",
+        "answer": "True",
+        "passage": "Doctor is an academic title that originates from the Latin word of the same spelling and meaning. The word is originally an agentive noun of the Latin verb doc\u0113re (d\u0254\u02c8ke\u02d0r\u025b) 'to teach'. It has been used as an academic title in Europe since the 13th century, when the first Doctorates were awarded at the University of Bologna and the University of Paris. Having become established in European universities, this usage spread around the world. Contracted ``Dr'' or ``Dr.'', it is used as a designation for a person who has obtained a Doctorate (e.g. PhD). In many parts of the world it is also used by medical practitioners, regardless of whether or not they hold a doctoral-level degree.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "do they have sharks in the mississippi river",
+        "answer": "True",
+        "passage": "Bull sharks can thrive in both salt and fresh water and can travel far up rivers. They have been known to travel up the Mississippi River as far as Alton, Illinois, about 700 miles (1100 km) from the ocean. However, few freshwater human-shark interactions have been recorded. Larger-sized bull sharks are probably responsible for the majority of near-shore shark attacks, including many bites attributed to other species.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "are kansas city ks and kansas city mo the same city",
+        "answer": "False",
+        "passage": "In Wyandotte County lies Kansas City, Kansas, which is locally called ``KCK'' to distinguish it from the larger Kansas City, Missouri (KCMO). It contains many residential neighborhoods, the Fairfax Industrial District, and the Village West entertainment district. The General Motors Fairfax Assembly Plant is located in the Fairfax Industrial District. Village West contains many area attractions. This includes many sporting venues such as Children's Mercy Park, home of the area MLS soccer team Sporting Kansas City, the Kansas Speedway, which hosts many NASCAR races, and Community America Ballpark, home of the independent baseball team, the Kansas City T-Bones. Other Village West attractions include the Legends shopping district, the Providence Medical Center Amphitheater, and Schlitterbahn Waterpark.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "are liquor stores open on memorial day oklahoma",
+        "answer": "False",
+        "passage": "It is illegal to sell packaged liquor (off-premises sales) on Sundays. Sales also are prohibited on Memorial Day, Independence Day, Labor Day, Thanksgiving Day, and Christmas Day. Low-point beer for consumption off-premises may not be sold between 2:00 a.m. and 6:00 a.m.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "is all i wanna do based on a true story",
+        "answer": "True",
+        "passage": "The film's setting, in 1963, is based loosely on Kernochan's experiences at Rosemary Hall around that time. Filming was done in Toronto, Ontario, Canada at the Trafalgar Castle School in Whitby. The song ``The Hairy Bird'' plays during the film's end credits; it was written by Kernochan and sung by a group which includes Kernochan and five of her Rosemary Hall classmates, including Glenn Close.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "can you get a caution without being arrested",
+        "answer": "False",
+        "passage": "In recent years a lower level resolution of offences has often been used by police forces in England and Wales instead of a caution. This is usually called a 'community resolution' and invariably requires less police time as offenders are not arrested. A community resolution does not require any formal record but the offender should admit the offence and the victim should be happy with this method of informal resolution. Concerns have been expressed over the use of community resolution for violent offences, in particular 'domestic violence'.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "is ross dress for less a thrift store",
+        "answer": "False",
+        "passage": "Ross Stores, Inc. is an American chain of off-price department stores headquartered in Dublin, California, officially operating under the brandname, Ross Dress for Less. It is the largest off-priced retailer in the U.S. As of August 2015, Ross operates 1,412 stores in 37 U.S. states, the District of Columbia and Guam, covering much of the country, but with no presence in New England, New York, northern New Jersey, Alaska, and areas of the Midwest.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "do anne and gilbert get together in the books",
+        "answer": "True",
+        "passage": "As the series ends, it is 1919 and they are happy; Gilbert is fifty-five and still sincerely in love with Anne of Green Gables.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "is the united states qualified for the world cup",
+        "answer": "False",
+        "passage": "The United States men's national soccer team has played in several World Cup finals, with their best result occurring during their first appearance at the 1930 World Cup, when the United States finished in third place. After the 1950 World Cup, in which the United States upset England in group play 1--0, the U.S. was absent from the finals until 1990. The United States has participated in every World Cup since 1990 until they failed to qualify for the 2018 competition after a loss to Trinidad and Tobago in 2017.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "will there be a second season of 11.22.63",
+        "answer": "False",
+        "passage": "When asked about developing a sequel series, King stated ``I'd love to revisit Jake and Sadie, and also revisit the rabbit hole that dumps people into the past, but sometimes it's best not to go back for a second helping.''.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "is mt evans part of rocky mountain national park",
+        "answer": "True",
+        "passage": "Mount Evans is the highest summit of the Chicago Peaks in the Front Range of the Rocky Mountains of North America. The prominent 14,271-foot (4350 m) fourteener is located in the Mount Evans Wilderness, 13.4 miles (21.6 km) southwest by south (bearing 214\u00b0) of the City of Idaho Springs in Clear Creek County, Colorado, United States, on the drainage divide between Arapaho National Forest and Pike National Forest.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "is the language the same in north and south korea",
+        "answer": "False",
+        "passage": "The Korean language has changed between the two states due to the length of time that North and South Korea have been separated.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "is it possible to type 200 words per minute",
+        "answer": "True",
+        "passage": "Stenotype keyboards enable the trained user to input text as fast as 225 wpm or faster at very high accuracy for an extended period of time, which is sufficient for real-time activities such as court reporting or closed captioning. While dropout rates are very high--in some cases, only 10% or even less graduate--stenotype students are usually able to reach speeds of 100--120 wpm within six months, which is faster than most alphanumeric typists. Guinness World Records gives 360 wpm with 97.23% accuracy as the highest achieved speed using a stenotype.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "is race 3 a continuation of race 2",
+        "answer": "False",
+        "passage": "Race is a series of Indian action-thriller films. The series is directed by Abbas-Mustan, Remo D'Souza and produced by Ramesh S. Taurani, Kumar S. Taurani and Salman Khan under the banner of Tips Industries and Salman Khan Films. The series stars Anil Kapoor and Saif Ali Khan as recurring roles for first 2 films, Race and Race 2. The third film, Race 3 has an unrelated plot. It stars Anil Kapoor, who plays a new role, and Salman Khan. Race 3 received poor reviews from critics, but became the third highest-grossing film . The makers are moving to make Race 4 which will again be a new story that will roll on 2020. The first film is loosely based on the 1998 Hollywood movie Goodbye Lover.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "are there any states where you can marry your sibling",
+        "answer": "False",
+        "passage": "In all but two states, incest is criminalized between consenting adults. In New Jersey and Rhode Island, incest between consenting adults (16 or over for Rhode Island, 18 or over for New Jersey) is not a criminal offense, though marriage is not allowed in either state. New Jersey also increases the severity of underage sex offenses by a degree if they're also incestuous, and criminalizes incest with 16-17 year olds (the normal age of consent in New Jersey is 16).",
+        "dataset": "boolq"
+    },
+    {
+        "question": "can i drive a car with learners permit",
+        "answer": "True",
+        "passage": "Typically, a driver operating with a learner's permit must be accompanied by an adult licensed driver who is at least 21 years of age or older and in the passenger seat of the vehicle at all times.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "was the king and i based on a true story",
+        "answer": "True",
+        "passage": "She became well-known with the publication of her memoirs, beginning with The English Governess at the Siamese Court (1870), which chronicled her experiences in Siam (modern Thailand), as teacher to the children of the Siamese King Mongkut. Leonowens' own account has been fictionalised in Margaret Landon's 1944 best-selling novel Anna and the King of Siam, as well as films and television series based on the book, most notably Rodgers and Hammerstein's 1951 hit musical The King and I.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "is the ball dead on an infield fly",
+        "answer": "False",
+        "passage": "If ``infield fly'' is called and the fly ball is caught, it is treated exactly as an ordinary caught fly ball; the batter is out, there is no force, and the runners must tag up. On the other hand, if ``infield fly'' is called and the ball lands fair without being caught, the batter is still out, there is still no force, but the runners are not required to tag up. In either case, the ball is live, and the runners may advance on the play, at their own peril.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "is boric acid and orthoboric acid the same",
+        "answer": "True",
+        "passage": "Boric acid, also called hydrogen borate, boracic acid, orthoboric acid and acidum boricum, is a weak, monobasic Lewis acid of boron, which is often used as an antiseptic, insecticide, flame retardant, neutron absorber, or precursor to other chemical compounds. It has the chemical formula HBO (sometimes written B(OH)), and exists in the form of colorless crystals or a white powder that dissolves in water. When occurring as a mineral, it is called sassolite.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "is state of decay coop on xbox one",
+        "answer": "True",
+        "passage": "State of Decay 2 was announced at Xbox's E3 2016. The game, which introduced cooperative multiplayer, which was the first in its series. The game was released on May 22, 2018.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "can a terminating decimal be written as a recurring decimal",
+        "answer": "True",
+        "passage": "The infinitely-repeated digit sequence is called the repetend or reptend. If the repetend is a zero, this decimal representation is called a terminating decimal rather than a repeating decimal, since the zeros can be omitted and the decimal terminates before these zeros. Every terminating decimal representation can be written as a decimal fraction, a fraction whose divisor is a power of 10 (e.g. 1.585 = 1585/1000); it may also be written as a ratio of the form k/25 (e.g. 1.585 = 317/25). However, every number with a terminating decimal representation also trivially has a second, alternative representation as a repeating decimal whose repetend is the digit 9. This is obtained by decreasing the final non-zero digit by one and appending a repetend of 9. 1.000... = 0.999... and 1.585000... = 1.584999... are two examples of this. (This type of repeating decimal can be obtained by long division if one uses a modified form of the usual division algorithm.)",
+        "dataset": "boolq"
+    },
+    {
+        "question": "is there a season 8 of once apon a time",
+        "answer": "False",
+        "passage": "Once Upon a Time is an American fantasy drama television series on ABC which debuted on October 23, 2011, and concluded on May 18, 2018. The first six seasons are largely set in the fictitious seaside town of Storybrooke, Maine, with the character of Emma Swan serving as the lead, while the seventh and final season takes place in a Seattle, Washington neighborhood called Hyperion Heights, with a new main narrative led by Swan's son, Henry Mills. The show borrows elements and characters from the Disney franchise and popular Western literature, folklore, and fairy tales.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "is things fall apart based on a true story",
+        "answer": "False",
+        "passage": "Things Fall Apart is a novel written by Nigerian author Chinua Achebe. Published in 1959, its story chronicles pre-colonial life in the south-eastern part of Nigeria and the arrival of the Europeans during the late nineteenth century. It is seen as the archetypal modern African novel in English, one of the first to receive global critical acclaim. It is a staple book in schools throughout Africa and is widely read and studied in English-speaking countries around the world. Achebe's debut novel, it was first published by William Heinemann Ltd in the UK; in 1962, it was also the first work published in Heinemann's African Writers Series. The title of the novel was borrowed from W.B. Yeats' 1919 poem ``The Second Coming''. (``Ibo'' in the novel) man and local wrestling champion in the fictional Nigerian clan of Umuofia. The work is split into three parts, with the first describing his family, personal history, and the customs and society of the Igbo, and the second and third sections introducing the influence of British colonialism and Christian missionaries on the Igbo community.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "does penne alla vodka have dairy in it",
+        "answer": "True",
+        "passage": "Vodka sauce is an Italian-American cuisine sauce made from a smooth tomato sauce, vodka, typical Italian herbs and heavy cream, which gives the sauce its distinctive orange coloration. It gained popularity in the 1970s, when a variation won a national recipe contest in Italy, although it may well have been a sauce before its popularization in the 1970s. It is a key ingredient in penne alla vodka.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "has there ever been an earthquake in tennessee",
+        "answer": "True",
+        "passage": "Damage was confined to Illinois, Indiana, Kentucky, Tennessee, and south-central Iowa, and largely consisted of fallen chimneys, foundation cracks, collapsed parapets, and overturned tombstones. In one home in Dale, Illinois, near Tuckers Corners and southwest of McLeansboro, the quake cracked interior walls, plaster, and chimneys. Using a type of victim study, the local post office surveyed residents and implemented a field inspection which indicated the strongest shaking (MM VII) took place in the Wabash Valley, Ohio Valley, and other nearby south-central Illinois lowlands. Outside this four-state zone, oscillating objects including cars, chimneys, and the Gateway Arch were reported to authorities.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "has the us won a fifa world cup",
+        "answer": "False",
+        "passage": "The United States men's national soccer team has played in several World Cup finals, with their best result occurring during their first appearance at the 1930 World Cup, when the United States finished in third place. After the 1950 World Cup, in which the United States upset England in group play 1--0, the U.S. was absent from the finals until 1990. The United States has participated in every World Cup since 1990 until they failed to qualify for the 2018 competition after a loss to Trinidad and Tobago in 2017.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "was the color purple based on a true story",
+        "answer": "False",
+        "passage": "The Color Purple is a 1982 epistolary novel by American author Alice Walker which won the 1983 Pulitzer Prize for Fiction and the National Book Award for Fiction. It was later adapted into a film and musical of the same name.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "is there gonna be a new halloween movie",
+        "answer": "True",
+        "passage": "Halloween is an upcoming American slasher film directed by David Gordon Green and written by Green, Jeff Fradley, and Danny McBride. It is the eleventh installment in the Halloween franchise, and is a direct sequel to Halloween, while disregarding the continuity of the previous sequels. Jamie Lee Curtis and Nick Castle reprise their roles as Laurie Strode and Michael Myers, respectively, with stuntman James Jude Courtney also portraying Michael. The film also stars Judy Greer, Andi Matichak, Will Patton, and Virginia Gardner. Set forty years after the events of the first film, Halloween centers on Laurie Strode, facing Michael Myers, the masked figure who has haunted her since she narrowly escaped his killing spree on Halloween night four decades ago.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "is baylor college of medicine related to baylor university",
+        "answer": "False",
+        "passage": "In 1969, the college separated from Baylor University and became an independent institution, which allowed it access to federal research funding, changing its name to Baylor College of Medicine. That same year, BCM negotiated with the Texas Legislature to double its class size in order to increase the number of physicians in Texas.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "was sorry to bother you filmed in oakland",
+        "answer": "True",
+        "passage": "Principal photography began in June 2017 in Oakland. Sorry to Bother You premiered at the Sundance Film Festival on January 20, 2018, and was theatrically released in the United States on July 6, 2018, by Annapurna Pictures. The film received largely positive reviews from critics, who praised the cast and concept, as well as Riley's script and direction.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "do we still follow the articles of confederation",
+        "answer": "False",
+        "passage": "As the Confederation Congress attempted to govern the continually growing American states, delegates discovered that the limitations placed upon the central government rendered it ineffective at doing so. As the government's weaknesses became apparent, especially after Shays' Rebellion, individuals began asking for changes to the Articles. Their hope was to create a stronger national government. Initially, some states met to deal with their trade and economic problems. However, as more states became interested in meeting to change the Articles, a meeting was set in Philadelphia on May 25, 1787. This became the Constitutional Convention. It was quickly realized that changes would not work, and instead the entire Articles needed to be replaced. On March 4, 1789, the government under the Articles was replaced with the federal government under the Constitution. The new Constitution provided for a much stronger federal government by establishing a chief executive (the President), courts, and taxing powers.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "can you get held back in elementary school",
+        "answer": "True",
+        "passage": "``Grade retention'' or ``grade repetition'' is the process of a kindergarten through twelfth grade student repeating the same grade due to failing it the previous year, these students are referred to as ``repeaters''. Repeaters can also be referred to as having been ``held back''. Students do not necessarily repeat in the same classroom, only the same grade.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "does host country have to qualify for world cup",
+        "answer": "True",
+        "passage": "The hosts of the World Cup receive an automatic berth. Unlike many other sports, results of the previous World Cups or of the continental championships are not taken into account. Until 2002, the defending champions also received an automatic berth, but starting from the 2006 World Cup this is no longer the case.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "is blue cross and blue shield the same company",
+        "answer": "True",
+        "passage": "Blue Cross Blue Shield Association (BCBSA) is a federation of 36 separate United States health insurance organizations and companies, providing health insurance in the United States to more than 106 million people. Blue Cross was founded in 1929 and became the Blue Cross Association in 1960, while Blue Shield emerged in 1939 and the Blue Shield Association was created in 1948. The two organizations merged in 1982.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "was the tower of london a royal residence",
+        "answer": "True",
+        "passage": "The Tower of London, officially Her Majesty's Royal Palace and Fortress of the Tower of London, is a historic castle located on the north bank of the River Thames in central London. It lies within the London Borough of Tower Hamlets, separated from the eastern edge of the square mile of the City of London by the open space known as Tower Hill. It was founded towards the end of 1066 as part of the Norman Conquest of England. The White Tower, which gives the entire castle its name, was built by William the Conqueror in 1078 and was a resented symbol of oppression, inflicted upon London by the new ruling elite. The castle was used as a prison from 1100 (Ranulf Flambard) until 1952 (Kray twins), although that was not its primary purpose. A grand palace early in its history, it served as a royal residence. As a whole, the Tower is a complex of several buildings set within two concentric rings of defensive walls and a moat. There were several phases of expansion, mainly under Kings Richard I, Henry III, and Edward I in the 12th and 13th centuries. The general layout established by the late 13th century remains despite later activity on the site.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "does america have a team in the world cup",
+        "answer": "False",
+        "passage": "The United States men's national soccer team is controlled by the United States Soccer Federation and competes in the Confederation of North, Central American and Caribbean Association Football. The team has appeared in ten FIFA World Cups, including the first in 1930, where they reached the semi-finals. The U.S. participated in the 1934 and 1950 World Cups, winning 1--0 against England in the latter. After 1950, the U.S. did not qualify for the World Cup until 1990. The U.S. hosted the 1994 World Cup, where they lost to Brazil in the round of sixteen. They qualified for five more consecutive World Cups after 1990 (for a total of seven straight appearances, a feat shared with only seven other nations), becoming one of the tournament's regular competitors and often advancing to the knockout stage. The U.S. reached the quarter-finals of the 2002 World Cup, where they lost to Germany. In the 2009 Confederations Cup, they eliminated top-ranked Spain in the semi-finals before losing to Brazil in the final, their only appearance in a final. The team failed to qualify for the 2018 World Cup, having been eliminated in continental qualifying, ending the streak of consecutive World Cups at seven.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "can paramedics make you go to the hospital",
+        "answer": "True",
+        "passage": "Most EMS providers operate on the principle of informed consent; that is, patients must know exactly what it is they are refusing, and what the possible consequences might be, in order to make a proper decision. This precludes parties who are intoxicated or otherwise incapable of making an informed decision, such as the mentally incompetent. Otherwise, agencies could release someone who was not able to understand what refusing might mean to their health.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "can an ectopic pregnancy be carried to term",
+        "answer": "True",
+        "passage": "On May 29, 2008 an Australian woman, Meera Thangarajah (age 34), who had an ectopic pregnancy in the ovary, gave birth to a healthy full term 6 pound 3 ounce (2.8 kg) baby girl, Durga, via caesarean section. She had no problems or complications during the 38\u2010week pregnancy.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "is rice syrup the same as rice malt syrup",
+        "answer": "True",
+        "passage": "Brown rice (malt) syrup, also known as rice syrup or rice malt, is a sweetener which is rich in compounds categorized as sugars and is derived by culturing cooked rice starch with saccharifying enzymes to break down the starches, followed by straining off the liquid and reducing it by evaporative heating until the desired consistency is reached. The enzymes used in the saccharification step are supplied by an addition of sprouted barley grains to the rice starch (the traditional method) or by adding bacterial- or fungal-derived purified enzyme isolates (the modern, industrialized method).",
+        "dataset": "boolq"
+    },
+    {
+        "question": "is iron man part of the justice league",
+        "answer": "False",
+        "passage": "The Justice League is an assemblage of superheroes who join together as a team. The seven original members were Aquaman, Batman, The Flash, Green Lantern, Martian Manhunter, Superman, and Wonder Woman. The team roster has rotated throughout the years, consisting of various superheroes from the DC Universe, such as The Atom, Big Barda, Black Canary, Cyborg, Green Arrow, Elongated Man, The Flash, Green Lantern, Hawkgirl, Hawkman, Metamorpho, Plastic Man, Power Girl, Orion, Red Tornado, Stargirl, Captain Marvel/Shazam, and Zatanna, among many others.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "are the make it or break it cast real gymnasts",
+        "answer": "False",
+        "passage": "Make It or Break It was created by Holly Sorensen who, along with Paul Stupin and John Ziffren, served as the show's executive producers. The stunt doubles were former elite, Olympian or NCAA champion gymnasts.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "are cable ties and zip ties the same thing",
+        "answer": "True",
+        "passage": "A cable tie (also known as a wire tie, hose tie, steggel tie, zap strap or zip tie, and by the brand names Ty-Rap and Panduit strap) is a type of fastener, for holding items together, primarily electrical cables or wires. Because of their low cost and ease of use, cable ties are ubiquitous, finding use in a wide range of other applications. Stainless steel versions, either naked or coated with a rugged plastic, cater for exterior applications and hazardous environments.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "has australia ever been in a world cup final",
+        "answer": "True",
+        "passage": "The Australia national soccer team, nicknamed the Socceroos, has represented Australia at the FIFA World Cup finals on five occasions: in 1974, 2006, 2010, 2014 and 2018.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "was everything everything based on a true story",
+        "answer": "False",
+        "passage": "Everything, Everything is a 2017 American romantic drama film directed by Stella Meghie and written by J. Mills Goodloe, based on the 2015 novel of the same name by Nicola Yoon. The film follows a young woman named Maddy (Amandla Stenberg) who is prevented by virtue of illness from going outside her house, and her neighbor Olly (Nick Robinson) who wants to help her experience life.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "can i put a restraining order on my landlord",
+        "answer": "True",
+        "passage": "If a landlord is found to be retaliating, he or she will not be able to evict the tenant, who may also be awarded damages from the landlord of one to three months' rent plus attorney's fees. The landlord also cannot willfully deprive the tenant of heat, hot water, gas, electricity, lights, water, or refrigeration service. Nor can the landlord lock out the tenant or remove him/her from their apartment without going through the proper court procedure. The tenant can ask the court to issue a restraining order, file a criminal complaint against the landlord, or sue him/her for money damages and attorney's fees. Because of these options for recourse, it may be to the tenant's advantage to complain about code violations in writing before the landlord issues a notice of an eviction or a rent increase. If a tenant attempts to claim retaliation, but did not complain about violations until after he or she received notice from the landlord, the tenant will be found to have no valid claim. The court will not find that the landlord was retaliating against the tenant for an action he or she had not yet taken.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "is there a series 9 of vampire diaries",
+        "answer": "False",
+        "passage": "The Vampire Diaries is an American supernatural drama television series developed by Kevin Williamson and Julie Plec, based on the popular book series of the same name written by L.J. Smith. The series premiered on The CW on September 10, 2009, and concluded on March 10, 2017, airing 171 episodes over eight seasons.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "do you have to pay to watch the itv hub",
+        "answer": "False",
+        "passage": "The service started out as a website before being extended to television and other platforms. Initially the website version used Microsoft Silverlight as opposed to Adobe Flash (used by BBC iPlayer and Channel 4's 4oD) and Windows Media Video. ITV adopted Flash for its player on 15 September 2009. In November 2009 the website was revamped again improving navigation as well as making the site more visually appealing. The service is free to use funded by pre-, mid- and post-roll adverts. Previously users have been able to use ad-blocking software to skip the adverts shown. During Summer 2010, the ITV website was upgraded to detect ad-blocking software. Video is sent at multiple bit rates and uses adaptive technology in the player to best determine rate based on users connection.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "are the leaves of the beet plant edible",
+        "answer": "True",
+        "passage": "The beetroot is the taproot portion of the beet plant, usually known in North America as the beet, also table beet, garden beet, red beet, or golden beet. It is one of several of the cultivated varieties of Beta vulgaris grown for their edible taproots and their leaves (called beet greens). These varieties have been classified as B. vulgaris subsp. vulgaris Conditiva Group.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "is nail acetone the same as paint acetone",
+        "answer": "True",
+        "passage": "Acetone is miscible with water and serves as an important solvent in its own right, typically for cleaning purposes in laboratories. About 6.7 million tonnes were produced worldwide in 2010, mainly for use as a solvent and production of methyl methacrylate and bisphenol A. It is a common building block in organic chemistry. Familiar household uses of acetone are as the active ingredient in nail polish remover, and as paint thinner.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "do cows have to keep getting pregnant to produce milk",
+        "answer": "True",
+        "passage": "To maintain lactation, a dairy cow must be bred and produce calves. Depending on market conditions, the cow may be bred with a ``dairy bull'' or a ``beef bull.'' Female calves (heifers) with dairy breeding may be kept as replacement cows for the dairy herd. If a replacement cow turns out to be a substandard producer of milk, she then goes to market and can be slaughtered for beef. Male calves can either be used later as a breeding bull or sold and used for veal or beef. Dairy farmers usually begin breeding or artificially inseminating heifers around 13 months of age. A cow's gestation period is approximately nine months. Newborn calves are removed from their mothers quickly, usually within three days, as the mother/calf bond intensifies over time and delayed separation can cause extreme stress on both cow and calf.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "is the indian motorcycle made in united states",
+        "answer": "True",
+        "passage": "In 2011, Polaris Industries purchased Indian Motorcycles and moved operations from North Carolina and merged them into their existing facilities in Minnesota and Iowa. Since August 2013, Polaris has marketed multiple modern Indian motorcycles that reflect Indian's traditional styling.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "is property tax the same as council tax",
+        "answer": "False",
+        "passage": "In the UK the ownership of residential property or land is not taxed, a situation almost unique in the OECD. Instead, the Council Tax is usually paid by the resident of a property, and only in the case of unoccupied property does the owner become liable to pay it (although owners can often obtain a discount or an exemption for empty properties).",
+        "dataset": "boolq"
+    },
+    {
+        "question": "has there been a duke of sussex before",
+        "answer": "True",
+        "passage": "The dukedom was first conferred on 24 November 1801 upon Prince Augustus Frederick, the sixth son of King George III. He was made Baron Arklow and Earl of Inverness at the same time, also in the Peerage of the United Kingdom. The title became extinct upon Prince Augustus Frederick's death in 1843. Although he was survived by a son and daughter by Lady Augusta Murray, their marriage had been annulled for lack of royal permission under the Royal Marriages Act 1772, rendering the children illegitimate under English law and unable to inherit titles from their father. Both children by the annulled marriage died childless, rendering the issue of their inheritance moot.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "does george w bush still own the texas rangers",
+        "answer": "False",
+        "passage": "In April 1989, Rangers owner and oil tycoon Eddie Chiles, sold the team to an investment group headed by George W. Bush for $89 million. While his own equity in the team was a small one ($500,000), Bush was named Managing General Partner of the new ownership group. He increased his investment to $600,000 the following year. Bush left his position with the Rangers when he was elected Governor of Texas in 1994, and he sold his stake in the team in 1998.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "is there going to be a season 13 of criminal minds",
+        "answer": "True",
+        "passage": "The thirteenth season of Criminal Minds was ordered on April 7, 2017, by CBS with an order of 22 episodes. The season premiered on September 27, 2017 in a new time slot at 10:00PM on Wednesday when it had previously been at 9:00PM on Wednesday since its inception. The season concluded on April 18, 2018 with a two-part season finale.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "have the washington capitals ever been in a stanley cup",
+        "answer": "True",
+        "passage": "The 1998 Stanley Cup Finals was the championship series of the National Hockey League's (NHL) 1997--98 season, and the culmination of the 1998 Stanley Cup playoffs. It was contested by the Western Conference champion and defending Stanley Cup champion Detroit Red Wings and the Eastern Conference champion Washington Capitals. It was the 105th year of the Stanley Cup being contested. The series was the Capitals' first appearance in a Stanley Cup Final since the franchise's inception in 1974. The Red Wings won the series for the second year in a row, four games to none. It was the Wings' ninth Stanley Cup, and the most recent time when a Finals concluded with a sweep (as of 2018). This was also the last time until 2002 that a Stanley Cup Finals ended after an NBA Finals in the same season had concluded. Detroit coach Scotty Bowman won his eighth Stanley Cup in that capacity (having previously done so with the Montreal Canadiens in 1973, 1976, 1977, 1978, and 1979, the Pittsburgh Penguins in 1992, and the Wings the previous year), tying him with former Canadiens coach Toe Blake for the record of most Cups won by a coach (which he would break when he helped the Red Wings win the 2002 Cup).",
+        "dataset": "boolq"
+    },
+    {
+        "question": "can you have too much oxygen in your body",
+        "answer": "True",
+        "passage": "The result of breathing increased partial pressures of oxygen is hyperoxia, an excess of oxygen in body tissues. The body is affected in different ways depending on the type of exposure. Central nervous system toxicity is caused by short exposure to high partial pressures of oxygen at greater than atmospheric pressure. Pulmonary and ocular toxicity result from longer exposure to increased oxygen levels at normal pressure. Symptoms may include disorientation, breathing problems, and vision changes such as myopia. Prolonged exposure to above-normal oxygen partial pressures, or shorter exposures to very high partial pressures, can cause oxidative damage to cell membranes, collapse of the alveoli in the lungs, retinal detachment, and seizures. Oxygen toxicity is managed by reducing the exposure to increased oxygen levels. Studies show that, in the long term, a robust recovery from most types of oxygen toxicity is possible.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "are there alligators in north or south carolina",
+        "answer": "True",
+        "passage": "American alligators are found in the wild in the southeastern United States, from the Great Dismal Swamp in Virginia and North Carolina, south to Everglades National Park in Florida, and west to the southern tip of Texas as well as the northern border region of the Mexican state of Tamaulipas. They are found in parts of Virginia, North Carolina, South Carolina, Georgia, Florida, Louisiana, Alabama, Mississippi, Arkansas, Oklahoma, and Texas. In 2018 there were several confirmed sightings of animals that had moved north into West Tennessee. Some of these locations appear to be relatively recent introductions, with often small but reproductive populations. They inhabit swamps, streams, rivers, ponds, and lakes. A lone American alligator was spotted for over ten years living in a river north of Atlanta, Georgia. Females and juveniles are also found in Carolina Bays and other seasonal wetlands. While they prefer fresh water, American alligators may sometimes wander into brackish water, but are less tolerant of salt water than crocodiles, as the salt glands on their tongues do not function. One study of alligators in north-central Florida found the males preferred open lake water during the spring, while females used both swampy and open water areas. During summer, males still preferred open water, while females remained in the swamps to construct their nests and lay their eggs. Both sexes may den underneath banks or clumps of trees during the winter.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "is whole wheat rice the same as brown rice",
+        "answer": "True",
+        "passage": "Brown rice is whole-grain rice with the inedible outer hull removed; white rice is the same grain with the hull, bran layer, and cereal germ removed. Red rice, gold rice, and black rice (also called purple rice) are all whole rices, but with differently pigmented outer layers.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "do flight paths go over the north pole",
+        "answer": "True",
+        "passage": "A polar route is an aircraft route across the uninhabited polar ice cap regions. The term ``polar route'' was originally applied to great circle routes between Europe and the west coast of North America in the 1950s.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "is keyless entry the same as remote start",
+        "answer": "True",
+        "passage": "The term remote keyless system (RKS), also called keyless entry or remote central locking, refers to a lock that uses an electronic remote control as a key which is activated by a handheld device or automatically by proximity.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "does the baseball all star game determine home field advantage",
+        "answer": "False",
+        "passage": "Since 2017, home field advantage in the World Series goes to the league champion team with the higher regular season win-loss record.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "is st maarten and st martin the same",
+        "answer": "True",
+        "passage": "Saint Martin (French: Saint-Martin; Dutch: Sint Maarten) is an island in the northeast Caribbean Sea, approximately 300 km (190 mi) east of Puerto Rico. The 87-square-kilometre (34 sq mi) island is divided roughly 60/40 between the French Republic (53 km, 20 sq mi) and the Kingdom of the Netherlands (34 km, 13 sq mi), but the two parts are roughly equal in population. The division dates to 1648. The southern Dutch part comprises Sint Maarten and is one of four constituent countries that form the Kingdom of the Netherlands. The northern French part comprises the Collectivity of Saint Martin and is an overseas collectivity of France.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "are stop and shop and giant owned by the same company",
+        "answer": "True",
+        "passage": "Stop & Shop/Giant-Landover was a combined supermarket chain owned by the American subsidiary of the Dutch retailer Ahold. The company took its form in 2004, after Ahold decided to combine the operations of its New England-based Stop & Shop chain with its DMV-based Giant Food chain to create the largest supermarket company in the Mid-Atlantic States. Giant's headquarters relocated in Landover, Maryland, and Stop & Shop kept their headquarters in Quincy, Massachusetts. This combination failed, as Mid-Atlantic market area shoppers grocery needs did not align with those of Stop & Shop's offerings. In 2011 the two companies were separated and now operate independently. The separation of Stop & Shop/Giant-Landover, also brought the separation of the Stop & Shop Supermarket into two separate operating divisions, Stop & Shop-New England and Stop & Shop-New York. Both Giant Food and Stop & Shop's two divisions continue to share the same Fruit Basket Logo even though they all operate independently.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "does the governor general have to sign all bills passed by federal parliament",
+        "answer": "True",
+        "passage": "The most important power is found in section 58: ``When a proposed law passed by both Houses of Parliament is presented to the Governor-General for the Queen's assent, he shall declare ... that he assents in the Queen's name.'' The royal assent brings such laws into effect, as legislation, from the date of signing.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "can a hiatal hernia cause an irregular heartbeat",
+        "answer": "True",
+        "passage": "Hiatal hernia has often been called the ``great mimic'' because its symptoms can resemble many disorders. Among them, a person with a hiatal hernia can experience dull pains in the chest, shortness of breath (caused by the hernia's effect on the diaphragm), heart palpitations (due to irritation of the vagus nerve), and swallowed food ``balling up'' and causing discomfort in the lower esophagus until it passes on to the stomach. In addition, hiatal hernias often result in heartburn but may also cause chest pain or pain with eating.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "does the ivy league have a basketball tournament",
+        "answer": "True",
+        "passage": "The 2017 Ivy League Men's Basketball Tournament was a postseason conference tournament for the Ivy League. The tournament was March 11 and 12, 2017 at the Palestra on the campus of the University of Pennsylvania in Philadelphia.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "does maple syrup come out of the tree sweet",
+        "answer": "True",
+        "passage": "Three species of maple trees are predominantly used to produce maple syrup: the sugar maple (Acer saccharum), the black maple (A. nigrum), and the red maple (A. rubrum), because of the high sugar content (roughly two to five percent) in the sap of these species. The black maple is included as a subspecies or variety in a more broadly viewed concept of A. saccharum, the sugar maple, by some botanists. Of these, the red maple has a shorter season because it buds earlier than sugar and black maples, which alters the flavour of the sap.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "is guys grocery games in real grocery store",
+        "answer": "False",
+        "passage": "Season 1 was shot inside of an actual grocery store, Field's Market in West Hills, California. For Season 2, the market was built in a 15,500 square foot warehouse in Santa Rosa, CA. It was built over two weeks and stocked with over $700,000 of food. After each episode, the perishable items were donated to local food banks and local farmers.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "are $10 000 bills still in circulation",
+        "answer": "False",
+        "passage": "Series 1934 gold certificates ($100, $1,000, $10,000 and $100,000) were issued after the gold standard was repealed and gold was compulsorily confiscated by order of President Franklin Roosevelt on March 9, 1933 (see United States Executive Order 6102). Thus the series 1934 notes were used only for intragovernmental (i.e., Federal Reserve Bank) transactions and were not issued to the public. This series was discontinued in 1940. The series 1928 gold certificate reverse was printed in black and green. See history of the United States dollar.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "is sodium lactate the same as lactic acid",
+        "answer": "False",
+        "passage": "Sodium lactate is the sodium salt of lactic acid, and has a mild saline taste. It is produced by fermentation of a sugar source, such as corn or beets, and then, by neutralizing the resulting lactic acid to create a compound having the formula NaCHO",
+        "dataset": "boolq"
+    },
+    {
+        "question": "do you get a medal for third place in world cup",
+        "answer": "True",
+        "passage": "A third place playoff, match/game for third place, bronze medal game or consolation game is a single match that is included in many sporting knockout tournaments to decide which competitor or team will be credited with finishing third and fourth. The teams that compete in the third place playoff game are usually the two losing semi-finalists in a particular knockout tournament.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "does dying light enhanced edition come with the base game",
+        "answer": "True",
+        "passage": "Dying Light: The Following is an expansion pack for the open-world first-person survival horror video game Dying Light. The game was developed by Techland, published by Warner Bros. Interactive Entertainment, and released for Microsoft Windows, Linux, PlayStation 4, and Xbox One on February 9, 2016. The expansion adds characters, a story campaign, weapons, and gameplay mechanics. Dying Light: The Following -- Enhanced Edition includes Dying Light, Dying Light: The Following, and downloadable content released for the original game.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "is it possible to die from a bee sting",
+        "answer": "True",
+        "passage": "Although for most people a bee sting is painful but otherwise relatively harmless, in people with insect sting allergy, stings may trigger a dangerous anaphylactic reaction that is potentially deadly. Additionally, honey bee stings release pheromones that prompt other nearby bees to attack.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "has cleveland ever beat golden state in the finals",
+        "answer": "True",
+        "passage": "The Cavaliers--Warriors rivalry is a National Basketball Association (NBA) rivalry between the Cleveland Cavaliers and the Golden State Warriors. While the two teams have played each other since the Cavaliers joined the league in 1970, their rivalry began to develop in the 2014--15 season, when they met in the first of four consecutive NBA Finals series. Prior to the streak beginning, no pair of teams had faced each other in more than two consecutive Finals. Of these four series, the Warriors have won three championships (2015, 2017, and 2018), and the Cavaliers won in 2016.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "is molly's game based on a book",
+        "answer": "True",
+        "passage": "Molly's Game is a 2017 American crime drama film written and directed by Aaron Sorkin (in his directorial debut), based on the memoir of the same name by Molly Bloom. It stars Jessica Chastain, Idris Elba, Kevin Costner, Michael Cera, Brian d'Arcy James, Chris O'Dowd, Bill Camp, Graham Greene, Claire Rankin, Joe Keery, and Jeremy Strong. The film follows Bloom (Chastain), who becomes the target of an FBI investigation of the underground poker empire she runs for Hollywood celebrities, athletes, business tycoons, and the Russian mob.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "does the us court of appeals have original jurisdiction",
+        "answer": "False",
+        "passage": "Because the courts of appeals possess only appellate jurisdiction, they do not hold trials. Only courts with original jurisdiction hold trials and thus determine punishments (in criminal cases) and remedies (in civil cases). Instead, appeals courts review decisions of trial courts for errors of law. Accordingly, an appeals court considers only the record (that is, the papers the parties filed and the transcripts and any exhibits from any trial) from the trial court, and the legal arguments of the parties. These arguments, which are presented in written form and can range in length from dozens to hundreds of pages, are known as briefs. Sometimes lawyers are permitted to add to their written briefs with oral arguments before the appeals judges. At such hearings, only the parties' lawyers speak to the court.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "does the queen bee die after she stings",
+        "answer": "False",
+        "passage": "Bees with barbed stingers can often sting other insects without harming themselves. Queen honeybees and bees of many other species, including bumblebees and many solitary bees, have smoother stingers with smaller barbs, and can sting mammals repeatedly.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "does the government give subsidies to oil companies",
+        "answer": "True",
+        "passage": "According to a 2015 estimate by the Obama administration, the US oil industry benefited from subsidies of about $4.6 billion per year. A 2017 study by researchers at Stockholm Environment Institute published in the journal Nature Energy estimated that nearly half of U.S. oil production would be unprofitable without subsidies.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "is equity in your home a liquid asset",
+        "answer": "False",
+        "passage": "Home equity is not liquid. Home equity management refers to the process of using equity extraction via loans, at favorable, and often tax-favored, interest rates, to invest otherwise illiquid equity in a target that offers higher returns.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "is there a monthly fee for google voice",
+        "answer": "False",
+        "passage": "Google Voice provides a U.S. telephone number, chosen by the user from available numbers in selected area codes, free of charge to each user account. Calls to this number are forwarded to telephone numbers that each user must configure in the account web portal. Multiple destinations may be specified that ring simultaneously for incoming calls. Service establishment requires a United States telephone number. A user may answer and receive calls on any of the ringing phones as configured in the web portal. During a received call the user may switch between the configured telephones.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "does the florida constitution give a minimum age for legislators",
+        "answer": "True",
+        "passage": "Each legislator shall be at least twenty-one years of age, an elector and resident of the District from which elected and shall have resided in the state for a period of two years prior to election.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "is we bought a zoo based on a real story",
+        "answer": "True",
+        "passage": "We Bought a Zoo is a 2011 American family comedy-drama film loosely based on the 2008 memoir of the same name by Benjamin Mee. It was written and directed by Cameron Crowe and stars Matt Damon as widowed father Benjamin Mee, who purchases a dilapidated zoo with his family and takes on the challenge of preparing the zoo for its reopening to the public. The film also stars Scarlett Johansson, Maggie Elizabeth Jones, Thomas Haden Church, Patrick Fugit, Elle Fanning, Colin Ford, and John Michael Higgins. The film was released in the United States on December 23, 2011 by 20th Century Fox. The film earned $120.1 million on a $50 million budget. We Bought a Zoo was released on DVD and Blu-ray on April 3, 2012 by 20th Century Fox Home Entertainment. Dartmoor Zoological Park (originally Dartmoor Wildlife Park), on which the film is based, is a 33-acre zoological garden located near the village of Sparkwell, Devon, England.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "did olivia from law and order have a baby",
+        "answer": "False",
+        "passage": "At the conclusion of the season 15 finale, Benson becomes the court-appointed custodial guardian of Noah Porter, an orphaned baby. The appointment is for a trial period of one year, with the option to apply for legal adoption at the end of that period. Although the year is rocky due to Noah's health issues and the demands of her job, Benson grows to love Noah and formally adopts him a year later.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "was the love boat filmed on a ship",
+        "answer": "True",
+        "passage": "The one-hour sitcom was usually set aboard Pacific Princess, at the time a real-life Princess Cruises cruise ship. Other ships used were the Pacific Princess twin sister vessel Island Princess, along with other cruise liners: SS Stella Solaris (for a Mediterranean Sea cruise), MS Pearl of Scandinavia (for a Chinese cruise), Royal Viking Sky (for European cruises, now MV Boudicca) and Royal Princess (now S.S. Artemis) and Sun Princess (for Caribbean Sea cruises). In 1981, P&O Cruises' line Sea Princess (now MS Veronica) was also used for the special two-hour episode ``Julie's Wedding'', set in and around Australia. Only the latter four ships still exist today.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "is the isle of man a part of great britain",
+        "answer": "False",
+        "passage": "In 1266, the island became part of Scotland under the Treaty of Perth, after being ruled by Norway. After a period of alternating rule by the kings of Scotland and England, the island came under the feudal lordship of the English Crown in 1399. The lordship revested into the British Crown in 1765, but the island never became part of the 18th-century Kingdom of Great Britain or its successors the United Kingdom of Great Britain and Ireland and the present-day United Kingdom: it retained its status as an internally self-governing Crown dependency.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "does it always rain when there's lightning",
+        "answer": "False",
+        "passage": "A dry thunderstorm or heat storm, is a thunderstorm that produces thunder and lightning, but most or all of its precipitation evaporates before reaching the ground, and dry lightning is the term which is used to refer to lightning strikes occurring in this situation. Both are so common in the American West that they are sometimes used interchangeably. The latter term is a technical misnomer since lightning itself is neither wet nor dry.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "has anyone hit a hole in one on a par 5",
+        "answer": "True",
+        "passage": "As of October 2008, a condor (four under par) hole-in-one on a par 5 hole had been recorded on four occasions, aided by thin air at high altitude, or by cutting the corner on a doglegged or horseshoe-shaped hole. A horseshoe-shaped par 5 hole once enabled a condor hole in one to be achieved with a 3-iron club. The longest recorded straight drive hole-in-one is believed to be 517 yards or 473 metres, on the par 5 No. 9 hole at Green Valley Ranch Golf Club in Denver in 2002, aided by the thin air due to the high altitude. None of these four par 5 holes-in-one were achieved during a professional tournament. A condor is also known as a double albatross, or a triple eagle.",
+        "dataset": "boolq"
+    },
+    {
+        "question": "has brazil ever been eliminated in the group stage",
+        "answer": "False",
+        "passage": "Brazil is the most successful national team in the history of the World Cup, having won five titles, earning second-place, third-place and fourth-place finishes twice each. Brazil is one of the countries besides Argentina, Spain and Germany to win a FIFA World Cup away from its continent (Sweden 1958, Mexico 1970, USA 1994 and South Korea/Japan 2002). Brazil is the only national team to have played in all FIFA World Cup editions without any absence or need for playoffs. Brazil also has the best overall performance in World Cup history in both proportional and absolute terms with a record of 73 victories in 109 matches played, 124 goal difference, 237 points and only 18 losses.",
+        "dataset": "boolq"
+    }
+]

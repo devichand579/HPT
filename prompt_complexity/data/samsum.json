@@ -1,0 +1,242 @@
+[
+    {
+        "id": "13716075",
+        "dialogue": "Claire: <file_photo>\r\nKim: Looks delicious...\r\nLinda: No way... Look what I'm cooking right now:\r\nLinda: <file_photo>\r\nClaire: hahahaha \r\nKim: Curry dream team\r\nClaire: Enjoy your dinner :*",
+        "summary": "Both Claire and Linda are making curry for dinner. ",
+        "dataset": "samsum"
+    },
+    {
+        "id": "13681165-1",
+        "dialogue": "Alyssa: Have you seen Fergie\u2019s national anthem? Illuminati does a great job.\r\nDerek: This is not normal. I saw it last week\u2026\r\nAlyssa: What do you think about it?\r\nDerek: I can fart bright stripes and bright stars better then she sings.\r\nAlyssa: The best part is that she acts like she nailed it. But at least it's funny in a good way.\r\nDerek: It is \ud83d\ude02",
+        "summary": "Derek and Alyssa make fun of Fergie's performance of the national anthem.",
+        "dataset": "samsum"
+    },
+    {
+        "id": "13612194",
+        "dialogue": "Ann: Hi, is the laptop still available?\r\nJosh: Yes it is\r\nAnn: I can pay 200 dollars\r\nJosh: The price is 250 and it's non-negotiable\r\nAnn: Do you have a bag for it? Some other accessories?\r\nJosh: I have a bag and a small usb mouse\r\nAnn: Sounds good, I'll take it, where can I pick it up?",
+        "summary": "Ann wants to buy Josh's laptop for $200. Josh doesn't want to negotiate the price. Ann will take it for $250 with accessories. ",
+        "dataset": "samsum"
+    },
+    {
+        "id": "13819045",
+        "dialogue": "Matt: have you heard that Bon Jovi are coming to Poland?\r\nPhil: No way!\r\nPhil: where, when?\r\nMatt: Warsaw, next July\r\nTony: would you like to go?\r\nMatt: Sure!\r\nPhil: how much are the tickets? Very expensive?\r\nPhil: they're huge, I guess tix can cost a bomb\r\nMatt: I read the cheapest ones start from pln 250\r\nPhil: not too bad, for Bon Jovi\r\nMatt: Yep!\r\nTony: maybe I will go too\r\nTony: Would you like to get the tix soon?\r\nMatt: Yes\r\nMatt: The sooner, the better\r\nTony: Right, they may be sold out pretty soon\r\nMatt: How about you, Phil?\r\nMatt: would you like to go too?\r\nPhil: Will think about it\r\nPhil: I liked them a lot when I was a kid\r\nPhil: It would be great to see them live\r\nMatt: I guess so!\r\nMatt: Think about it and let me know soon, ok?\r\nPhil: Sure",
+        "summary": "Matt and Tony want to go to the concert of Bon Jovi next July in Poland and are planning to buy the tickets that cost 250 PLN before they\u2019re sold out. Phil will think about it and let them know.",
+        "dataset": "samsum"
+    },
+    {
+        "id": "13814769",
+        "dialogue": "Anastasia: Our new school photos\r\nAnastasia: <file_photo>\r\nAnastasia: Look how happy I am\r\nDarrell: You don't look unhappy to me but it's like you're, uh\r\nDarrell: What was the word\r\nDarrell: Sceptical of something\r\nDarrell: \"what am I doing here\"\r\nAnastasia: Ahahaha\r\nAnastasia: That's my mood everywhere I step in\r\nDarrell: Hahaha\r\nAnastasia: Well\r\nAnastasia: They took the photo in less than a minute actually\r\nDarrell: Oh wow... well, I guess there were a lot of people?\r\nAnastasia: Yeah\r\nAnastasia: School photos always suck\r\nAnastasia: They take them so fast and carelessly\r\nDarrell: They would only really take group photos of us in middle and high school\r\nDarrell: If someone wanted a portrait photo, I guess it was possible\r\nDarrell: But not obligatory\r\nAnastasia: Well, I needed a new one for my school ID\r\nAnastasia: So I had no choice here\r\nDarrell: Luckily no one really has to look at your school ID most of the time, haha\r\nDarrell: Don't worry about it\r\nAnastasia: Ah no, I'm not worried, I actually find it kind of funny, it's fine",
+        "summary": "Anastasia sent her new school photos to Darrell.",
+        "dataset": "samsum"
+    },
+    {
+        "id": "13864917",
+        "dialogue": "Mike: who is going for the research trip?\nJake: Me, Florence, Margot and others\nJake: but that's not important\nFlorence: hahah\nMargot: true, we have our nice bunch of people\nMike: so maybe I'll apply too\nJake: but remember it can be harsh in Swazi now\nMike: gosh, Jake, have you realised at least that it's not even Swazi anymore?\nFlorence: hahaha, quite hilarious\nJake: ?\nMargot: they changed the name of the country last year\nJake: what? so what's the name now?\nMargot: Eswatini\nJake: are you kidding me?\nMargot: Jake, it's basic knowledge before the trip LOL",
+        "summary": "Jake, Florence, Margot and others are going on a research trip to Swazi. The name of the country was changed last year and it's now Eswatini.",
+        "dataset": "samsum"
+    },
+    {
+        "id": "13717309",
+        "dialogue": "Nathalie: have you thought about the holiday?\r\nPauline: me & tony are into greece really\r\nJacob: anywhere warm and sunny. greece cool\r\nAnthony: greece is warm sunny and cheapish\r\nNathalie: i guess cob we ok w that\r\nJacob: sure thing\r\nPauline: so august as we said?\r\nJacob: thats the thing. we need to be back by aug 10\r\nAnthony: what?? why??\r\nNathalie: sis wedding\r\nPauline: your lil sis getting married?!? lol\r\nJacob: she's not little. seen her tony?\r\nAnthony: worth a look?\r\nNathalie: shut up assholes. shes my sister for fucks sake\r\nPauline: idiots\r\nJacob: come one just kidding. we love you\r\nAnthony: we have no choice XD",
+        "summary": "Nathalie, Pauline, Jacob and Anthony are thinking about spending holidays in Greece together in August. Jacob and Nathalie need to be back by August 10 because of Nathalie's younger sister's wedding. ",
+        "dataset": "samsum"
+    },
+    {
+        "id": "13728313",
+        "dialogue": "Kim: Hey, listen, have you got any idea where I can get some fresh ramal fish in Warsaw?\r\nMargot: Hi, I don't know about \"fresh\", but you could try the marketplace at Polna street. \r\nMargot: Other than that, I haven't got a clue...\r\nKim: Already tried Polna :(\r\nMargot: Ah!\r\nMargot: Hm...\r\nMargot: And did you check Internet for fish market in Warsaw?\r\nKim: Yeah, there's none.\r\nKim: Or I didn't find it. \r\nMargot: You could have a look at restaurants' menus. And if you find it there, you could ask about their source. \r\nMargot: Although I'm not sure they'd eager to give you such infromation. But you can always try..\r\nKim: Great idea, I haven't though about this! Thx!\r\nKim: I'll try. After all, I have nothing to loose. \r\nMargot: Btw, is there a special occasion you want to cook it for?\r\nKim: Yes! Acctually I'll grill it ;)\r\nKim: And it's a surprise, so I'm not giving away any details!\r\nMargot: I'm so curious!\r\nMargot: I understant it's sth good, so I'm happy for you girl :)\r\nKim: Indeed, it's good. But you won't get any more infromation from me now.\r\nKim: All in good time :)\r\nMargot: Cruel you! Find that fish!!! ;)\r\nKim: :D",
+        "summary": "Kim needs to get some fresh fish in Warsaw. Kim will ask at restaurants about their source. Kim is planning something special but won't share any details with Margot for now.",
+        "dataset": "samsum"
+    },
+    {
+        "id": "13729680",
+        "dialogue": "Malik: have you heard of that paleo diet?\r\nMalik: i need to lose some weight and i really want to try it\r\nSamantha: i've heard of it but i've also heard about the keto diet\r\nSamantha: AAAAANNNDDDD... i also need to lose weight lol\r\nMalik: what are you talking about?!? lol\r\nMalik: you're so skinny\r\nSamantha: whatever :-)\r\nMalik: should we try one of those together?\r\nMalik: it's always easier when someone's doing it with you\r\nSamantha: YES!!!!\r\nMalik: we can also go for runs together like we used to :-D\r\nSamantha: let's do it!! i'm so pumped!\r\nMalik: so paleo or keto?\r\nSamantha: what's the difference?\r\nMalik: i think they're practically the same, but you can't have dairy on paleo\r\nSamantha: can you have dairy on keto?\r\nMalik: i think you can, i'm no sure though\r\nSamantha: ok let me go online and read more about this\r\nSamantha: and i'll text you back later with more info\r\nMalik: ok\r\nMalik: are you excited??\r\nSamantha: i really am!!!!!!!!! :-D",
+        "summary": "Malik and Samanta want to lose weight. They will try to keep a diet, keto or paleo, and go for runs together.",
+        "dataset": "samsum"
+    },
+    {
+        "id": "13862650",
+        "dialogue": "Suzy: don't forget to follow me on Instagram :P\nLinda: do I need to? :P\nSuzy: come on, nice pictures ;)\nLinda: done\nSuzy: :)\nLinda: you're welcome ;)",
+        "summary": "Suzy urges Linda to follow her on Instagram and she obliges.",
+        "dataset": "samsum"
+    },
+    {
+        "id": "13730333",
+        "dialogue": "Jones: Hey.\r\nAngelina: Hey.\r\nAngelina: Long time. How are you doing?\r\nJones: I'm fine\r\nJones: You?\r\nAngelina: I'm cool too.\r\nJones: You think we can meet today later in the afternoon in town?\r\nAngelina: Definitely.\r\nJones: Okay. I will call you to confirm where we will meet.\r\nAngelina: Cool",
+        "summary": "Jones and Angelina will meet in town in the afternoon.",
+        "dataset": "samsum"
+    },
+    {
+        "id": "13810336",
+        "dialogue": "Erin: hey Zach\r\nErin: look at this babe, I've just baked it\r\nErin: <file_photo>\r\nZachary: looks delicious!\r\nZachary: pls bring me a piece of this later on\r\nZachary: I'm pretty busy right now\r\nErin: oh what are you doing then?\r\nZachary: I decided to clean the flat, can you imagine?\r\nErin: hardly, I need hard evidence\r\nZachary: here it goes\r\nZachary: <file_photo>",
+        "summary": "Erin has just baked something that Zachary finds delicious. Zachary wants her to bring him a piece of it as now he's busy cleaning. ",
+        "dataset": "samsum"
+    },
+    {
+        "id": "13813401",
+        "dialogue": "Piper: When is the payment expected?\r\nBryan: I have asked my manager to send the payment\r\nPiper: When would he send it to me?\r\nBryan: He will send you tonight\r\nPiper: I would be waiting\r\nBryan: Sure, Client liked your work\r\nPiper: Hope to work with you long term ",
+        "summary": "Piper will get paid tonight. Client liked Piper's work and wants to work with her on a long-term basis.",
+        "dataset": "samsum"
+    },
+    {
+        "id": "13865430",
+        "dialogue": "Ulysses: Did you see your grades?\nPeter: Yes. \nUlysses: I got an A\nPeter: Me too\nJulia: B\nMartha: Where can I check them?\nJulia: Online\nJulia: On the course page",
+        "summary": "Ulysses and Peter got an A, Julia got a B. The grades are to be checked on the course page.",
+        "dataset": "samsum"
+    },
+    {
+        "id": "13829115",
+        "dialogue": "Cora: Have you heard how much fuss British media made about meet and greet with James Charles in Birmingham?\r\nEllie: no...! what happened?\r\nCora: Well, there was a meet and greet with James Charles in one of the malls in Birmingham and about 8000 fans showed up for it.\r\nCora: It cause a gridlock around the mall and - of course - British media had to make some (quite negative) comments on it.\r\nEllie: they came for sister James?! >:(\r\nEllie: i sister snapped!! :p :D\r\nCora: Haha :D\r\nCora: You shouldn't watch so much youtube, you're getting weirder and weirder. :d\r\nEllie: sister shut up :P so, what did they say?\r\nCora: ;) :* \"Daily Mail\" was surprised that a meet and greet with a \"virtually unknown\" youtuber gathered 8000 people. :p\r\nCora: A host from LBC tried to find an answer to an unanswerable question: \"Who is James Charles?\". Eventually James called him and introduced himself. On air. :D\r\nEllie: there's something called google lol\r\nCora: Right? :p\r\nCora: Some hosts from ITV Central couldn't wrap their heads around the fact that a guy can wear makeup.\r\nEllie: really???\r\nEllie: smh it's 21st century, they should have noticed already...  there are so many amazing male makeup artists\r\nCora: I agree! There are still plenty of dinosaurs in the media. :/",
+        "summary": "There was a meet-and-greet with James Charles in Birmingham which gathered 8000  people.",
+        "dataset": "samsum"
+    },
+    {
+        "id": "13865165",
+        "dialogue": "Adam: My friend told me he saw Tim with a guy.\nNate: And?\nAdam: <file_photo>\nNate: omg\nJulia: Yeah, what a shocker\nAdam: ??? You knew?!\nJulia: I thought everyone knew\nNate: I had no idea\nNate: Did he tell you anything?\nJulia: That he\u2019s gay? God no\nAdam: Why didn\u2019t you tell us?\nJulia: First: I assumed you knew\nJulia: Second: Why would I? it\u2019s not my business\nNate: I think he should\u2019ve told us ;/ not cool\nAdam: yeah, I made a completely idiot out of myself defending him\nJulia: Against whom? I\u2019m not surprised he didn\u2019t tell you\nNate: Well, it\u2019s not fair, we\u2019re his friends\nJulia: And? Does it change anything?",
+        "summary": "Julia knew Tim was gay, while Adam and Nate didn't. ",
+        "dataset": "samsum"
+    },
+    {
+        "id": "13728818",
+        "dialogue": "Lily: I need to rent a pop corn machine\r\nDaniel: :D\r\nLily: for our office Christmas party\r\nDaniel: very Christmasy\r\nLily: We will screen Love Actually :P\r\nDaniel: oh I get it now\r\nLily: Do you know someone who rents them?\r\nDaniel: I'll check!",
+        "summary": "Daniel will find out who rents a pop corn machines on Lily's request.",
+        "dataset": "samsum"
+    },
+    {
+        "id": "13682380",
+        "dialogue": "Phil: Hi. Are you home?\r\nNancy: Yes. Where are you?\r\nPhil: Still in the shop. \r\nNancy: What are you doing there? \r\nPhil: There are such crowds. Everywhere.\r\nNancy: Really?\r\nPhil: First, I couldn't find any parking place. Now I'm standing in a gigantic queue.\r\nNancy: Have you got everything?\r\nPhil: I think so.\r\nNancy: Oh, I'm sorry. I know you hate it before X-mas.\r\nPhil: Will you make an apple pie? Please? I was passing by a cafe and thought of that immediately. My mouth is watering when I think of that smell.\r\nNancy: Sure, honey. Of course I will.\r\nPhil: Wonderful! I think I'll be home in an hour.\r\nNancy: Ok. Waiting for you :-) I've got everything I need for the pie, so it will be in the oven when you arrive :-)\r\nPhil: Thanks, babe! :-*\r\nNancy: :-*",
+        "summary": "It took Phil a very long time to do the Christmas shopping but he probably managed to get everything. He will be home in an hour. Phil's apple pie will be in the oven when he arrives.",
+        "dataset": "samsum"
+    },
+    {
+        "id": "13729285",
+        "dialogue": "Gemma: How's it going?\r\nTimmy: A bit down 2day.\r\nGemma: Y?\r\nTimmy: Oh, bad day at work. Can u imagine? Boss snapped at me!\r\nGemma: That bitch! What did u do?\r\nTimmy: Nothing. Minding my own business, doing work stuff and suddenly starts shouting and screaming. Doesn't matter. How about u?\r\nGemma: Well, I think this might cheer u up a bit :)\r\nTimmy: What is it?\r\nGemma: I'm organising a bbq at the weekend :) wanna come?\r\nTimmy: Love to! What do I bring?\r\nGemma: Some wine will be fine.\r\nTimmy: What about food?\r\nGemma: Others and I will cover it.\r\nTimmy: Others? I thought it was a date :P\r\nGemma: U remember I have a bf, right?\r\nTimmy: Yeah. Just messing around ;) how many ppl?\r\nGemma: Don't know yet. ",
+        "summary": "Timmy had a bad day at work. Timmy will bring some wine to Gemma's bbq at the weekend.",
+        "dataset": "samsum"
+    },
+    {
+        "id": "13862566",
+        "dialogue": "Shaldona: WE ARE GONNA GET MARRIED \u2764\ufe0f\u2764\ufe0f\nShaldona: <file_others>\nShaldona: This is our mobile inviation for our wedding.\nShaldona: Invitation*\nPiper: Hey. You haven\u2019t sent me any messages for a few years.\nPiper: And now you are sending me your wedding invitation \nPiper: THROUGH MESSENGER?\nShaldona: .....\nShaldona: Well..\nShaldona: I had no enough time to meet everybody and give this in person.\nShaldona: Hope you understand.\nPiper: If you don't have time to give the invitation card in person but expect people go to your wedding\nPiper: Shaldona, if so, you are too greedy.",
+        "summary": "Shaldona sends mobile invitations to her wedding, as she has no time to give them in person.",
+        "dataset": "samsum"
+    },
+    {
+        "id": "13717011",
+        "dialogue": "Perry: have you thought about holiday yet?\r\nMarlow: Asia?\r\nPerry: you mean in July or August?\r\nMarlow: w/janet we thought about September it's cheaper i guess\r\nJanet: yeah but we need to check the weather and everything\r\nForster: Cloete wanted to go to the mountains so i guess that's my plan\r\nPerry: frankly we have no idea. went to seaside last year\r\nMarlow: Asia could be the place 2go. Janet would be cool yeah?\r\nJanet: sure thing. Would be gr8 2go 2gether\r\nPerry: dunno if we can afford. Need to talk to Nina\r\nJanet: why not meet 2nite over beer and talk?\r\nPerry: super but not 2day no. cinema :):)\r\nJanet: oh I forgot you won the tickets right?\r\nPerry: yeah but we could meet 2moro evening if ur free\r\nJanet: do we have plans Marlow? \r\nMarlow: no i dont think so\r\nForster: could we come over too\r\nPerry: yeah fantastic. byob tho\r\nForster: sure thing 8 pm is fine?\r\nPerry: perfect for me\r\nJanet: gr8 for us. we can visit pa first\r\nMarlow: fine by me. let's do it guys!",
+        "summary": "Perry, Marlow, Janet and Forster discuss their holiday plans. Marlow would like to go to Asia, others will think if they can join. The friends will meet tomorrow at 8 pm to discuss that. ",
+        "dataset": "samsum"
+    },
+    {
+        "id": "13611880",
+        "dialogue": "Joyce: Honey, can I take the car?\r\nKyle: No, I'm sorry.\r\nJoyce: Why not? How am I supposed to go get Harry?\r\nKyle: I've got to go to a mechanic. The car is making a weird noise.\r\nJoyce: Then can you get Harry on your way?\r\nKyle: I don't know, I'm already running late.\r\nJoyce: Am I supposed to go get him by bus? That's ridiculous.\r\nKyle: Fine, I'll get him.\r\nJoyce: Thank you.",
+        "summary": "Joyce wants to take Kyle's car to get Harry. Kyle is taking the car to a mechanic. Joyce refuses to get Harry by bus. Kyle agrees to pick Harry up. ",
+        "dataset": "samsum"
+    },
+    {
+        "id": "13680539",
+        "dialogue": "Tim: I'm running late\r\nGary: when will you be here?\r\nTim: About twenty past. You go in and just make some small talk, try and delay the main presentation\r\nGary: I'm on it.",
+        "summary": "Tim is running late and will arrive around twenty past. He asked Gary to do some small talk and try to delay the main presentation.",
+        "dataset": "samsum"
+    },
+    {
+        "id": "13681603",
+        "dialogue": "Ella: so? \r\nMolly: ?\r\nElla: come on! pics or it didn't happen\r\nMolly: what are you going on about?\r\nElla: I heard you met up with Chuck\r\nMolly: no... when was this suppossed to happen?\r\nElla: friday\r\nMolly: Holly fuck that little shit made a story up\r\nElla: ?\r\nMolly: I told him no and the little fucker made up a story\r\nMolly: Im gonna kill him ",
+        "summary": "Chuck told Ella that he'd met up with Molly. He made up the story, as actually Molly refused to go out with him. ",
+        "dataset": "samsum"
+    },
+    {
+        "id": "13730863",
+        "dialogue": "Taylor: Tomorrow, 8 PM, my house\r\nHarry: Lol, what\u2019s up?\r\nTaylor: My parents are away, 10 people confirmed already :D\r\nHarry: Im sooo in\r\nTaylor: You better, you\u2019d miss the party of the year!",
+        "summary": "Harry will go to Taylors party tomorrow at 8pm. ",
+        "dataset": "samsum"
+    },
+    {
+        "id": "13731506",
+        "dialogue": "Christie: how are you after the party?\r\nKatie: really tired... and you?\r\nChristie: same\r\nChristie: the party was great!\r\nKatie: Yeah, we had fun! :)",
+        "summary": "Christie and Katie are tired after the party. They both had fun.",
+        "dataset": "samsum"
+    },
+    {
+        "id": "13731212",
+        "dialogue": "Chandler: Phoebe!! Do you have money?? \r\nPhoebe: Yes I have .. But why do you need it..\r\nChandler: Open your door.. And pay the delivery guy standing outside my door..\r\nPhoebe: Oh chandler !! you idiot... On my way..",
+        "summary": "Chandler asks Phoebe to open the door and pay the delivery guy standing outside his door.",
+        "dataset": "samsum"
+    },
+    {
+        "id": "13819277",
+        "dialogue": "Katy: Hey Carlton\r\nAna: Hey Carlos\r\nCarlton: \ud83d\ude39\r\nCarlton: What are you up to? Any plans for the weekend?\r\nAna: Yep. We\u2019re going to see this film by Lola Arias actually. You know her, right?\r\nCarlton: Yes, she\u2019s pretty famous actually and she\u2019s done some work on my subject. I\u2019ve seen her play about the Malvinas last year - it was v good\r\nAna: Yeah, Katy told me. We thought you might be interested in joining us because the film is actually on the making of the play you saw \ud83d\ude02\r\nKaty: It\u2019s a multi-layered cultural sandwich we\u2019ve got for you Carlos\r\nCarlton: Sounds delicious. Where and when are we meeting?\r\nAna: Just come to ours for an early dinner/drinks and then we\u2019ll grab an uber\r\nKaty: Ana wants to avoid you getting lost on your way and/or being LATE\r\nCarlton: Ha ha ha sounds good to me\r\nKaty: So perhaps you could drop by at like 7. On Saturday!!\r\nCarlton: Erm, sorry - Saturday is fully booked\r\nCarlton: Just joking \ud83d\ude02 I\u2019ll see you then\r\nAna: \ud83d\ude02 cool\r\nKaty: \ud83d\ude0d\ud83d\ude0d\ud83d\ude0d\ud83d\ude18\ud83d\ude18\ud83d\ude18",
+        "summary": "Katy and Ana invite Carlton to join them for a movie by Lola Arias on the making of the play he had seen. He will come to their place earlier on Saturday.",
+        "dataset": "samsum"
+    },
+    {
+        "id": "13716128",
+        "dialogue": "Ollie: Okay, Kelly! Ur up nxt!\r\nKelly: Me? I don't wanna.\r\nMickey: C'mon!\r\nJessica: Yeah! What's yours?\r\nKelly: Fine. It's a sculpture garden in Finnland.\r\nOllie: What's scary about sculptures? Wait! Do they resemble vampires and stuff?\r\nMickey: Nah, I'm sure they look rly nice.\r\nKelly: It's not the sculptures, it's the amount of them and their faces!\r\nJessica: Faces? What faces?\r\nKelly: Well, they resemble ppl in different activities like hugging, training, doing sport and so on. But the faces are just morbid and there's like a hundred of them. All staring at you!\r\nOllie: Another one?\r\nMickey: Certainly!\r\nJessica: Well, Ollie, ur turn!\r\nOllie: Nagoro village in Japan!\r\nMickey: Y?\r\nOllie: Well, maybe it's not scary, but it similar to Kelly's place. It's just creepy as hell.\r\nJessica: Bt y?\r\nOllie: Imagine a village with ppl living in it. And in the same village u have these human-sized figures. And there's more of them than the ppl that actually live there!\r\nKelly: Creepy AH!\r\nMickey: WTF?! Y would ppl even do that?\r\nJessica: Idk. Idc. Never. Going. There.\r\nOllie: See! Mine was the worst!\r\nJessica: Bt not the scariest!\r\nOllie: Point taken.\r\nMickey: Listen, guys, fun talking to u, bt gotta go. \r\nKelly: Yeah, me too. Bye!\r\nJessica: Bye!\r\nOllie: Cu!",
+        "summary": "Kelly is scared of sculpture garden figures in Finnland, she finds figure's faces morbid. For Ollie it's Nagoro village in Japan, it's creepy. ",
+        "dataset": "samsum"
+    },
+    {
+        "id": "13727702",
+        "dialogue": "Ariana: I think I am going shopping\r\nAviana: Where? \r\nAviana: Midtown? \r\nAriana: Yeah\r\nAriana: I wanna buy some stuff\r\nAviana: I wish I could go with you \r\nAriana: Thats ok \ud83d\ude42",
+        "summary": "Ariana will do shopping in Midtown. Aviana can't join her.",
+        "dataset": "samsum"
+    },
+    {
+        "id": "13717250",
+        "dialogue": "Johnatan: yoo guys\r\nDarren: B-)\r\nLucas: hey wassup\r\nJohnatan: beer? now?\r\nDarren: hell yeah B-)\r\nLucas: I'm free in the evening",
+        "summary": "Lucas, Johnatan and Darren are going to get some beer.",
+        "dataset": "samsum"
+    },
+    {
+        "id": "13829756",
+        "dialogue": "Lisa: I have to clean the house.\r\nBob: Yes, it's very dirty.\r\nLisa: You can help me.\r\nBob: Why me?\r\nLisa: Because you helped make it dirty.\r\nBob: What do you want me to do?\r\nLisa: I want you to clean the bathroom.\r\nBob: Oh, that's easy.\r\nLisa: Clean the sink, the tub, the counter, and the toilet.\r\nBob: That's a lot of work.\r\nLisa: Tell me when you finish.\r\nBob: I don't think so. You'll just give me more work. ",
+        "summary": "Bob is going to help Lisa clean the house, he will clean the bathroom. ",
+        "dataset": "samsum"
+    },
+    {
+        "id": "13680702",
+        "dialogue": "Noah: Hi there! The quince we talked about the other day... Are you still interested?\r\nSophie: Hello Noah, but of course I am.Thank you.\r\nNoah: Actually William went to collect the rest of them for you immediately. They're in a basket on our terrace, so you call collect them any time.\r\nSophie: That's very very kind of him! He's really a darling.\r\nSophie: We won't be going your direction any time soon I'm afraid. How long will they keep? Is it windfall?\r\nNoah: Both really but they all look very healthy. No bruises afa one can see. Or only odd small ones. They' be alright for a couple of days I guess. The weather's cool.\r\nSophie: It would be a shame if they rotted. I'll talk to Frank and maybe to the twins too and go back to you asap.\r\nNoah: OK.\r\nSophie: Hey Noah, the twins will be on their way from Notts tomorrow afternoon and passing Windfield. Is it alright if they pop in and collect the quince?\r\nNoah: Absolutely! In fact anyone can come any time and just take them from our terrace. Of course it would be great to see your twins again. Haven't seen them for ages!\r\nSophie: Well we don't see that much of them either :( They'll be coming home this weekend only because of Alexa's ceremony.\r\nNoah: Notts is 3 hours' drive away so small wonder they don't fancy it so much.\r\nSophie: I don't blame them! We're both happy they've been doing fine at college. Everything's absolutely fine. You don't have William at home all that often either, do you?\r\nNoah: He gets 5 days at Xmas by way of \"family care\" and 2 weeks off spread over the whole year but never longer that 5 days. They have a strict regime at the academy. But after all these years we've learned to cope with it. What worries me is that he seems to have no time to even think about getting married and start a family of his own.\r\nSophie: The fate of most military I guess. Hugely unfair I'd say. Like being married to your regiment!\r\nNoah: That's what it sounds like when he talks about himself! I never hear a girl's name! And when I ask, he gets brusque.\r\nSophie: Oh dear! What could it mean?\r\nNoah: No, not what you think! We know from Capt. Broomsberg about their common escapades. Plenty of women but only that sort of women. No strings.\r\nSophie: I never even imagined he might be gay! Surely not. But there must be sth else.\r\nNoah: We think he's just so obsessively career-minded. Nothing else counts for him.\r\nSophie: He's always been very strong-willed. And he knows what he wants. Well if I were you I wouldn't worry at all.\r\nNoah: You're probably right. But you know I'd love it so much to have plenty of grandchildren around me.\r\nSophie: They'll come, don't you worry! Look the twins will contact you about the quince. Alright?\r\nNoah: Sure. Thank you Sophie for a nice chat!\r\nSophie: Thank you for the quince!",
+        "summary": "Sophie accepts some quince from Noah. Noah has left the quince in a basket on his terrace and the twins can pick it up any time. The twins are in college. Noah's son is in the military. He is still single but reportedly not gay.",
+        "dataset": "samsum"
+    },
+    {
+        "id": "13810120",
+        "dialogue": "Riley: Chloe is on tv!!\r\nJames: on which channel?\r\nJames: never mind i've found it\r\nJames: what is she doing? i don't get it\r\nRiley: this is a programme in which women undergo a complete metamorphosis.\r\nRiley: OMG she looks drop dead gorgeous!",
+        "summary": "Riley and James watch Chloe on tv undergoing a metamorphosis.",
+        "dataset": "samsum"
+    },
+    {
+        "id": "13682100",
+        "dialogue": "Stewart: Can you believe he even said that about the forests? Raking? Really?\r\nShari: Yes. I can believe that this is an ignorant man. He proves it daily. This just one more example!\r\nStewart: He just has no clue.\r\nShari: I mean, there are so many people dead and all he can think to do is criticize the forestry department? With a totally inappropriate suggestion? Puhleeze.\r\nStewart: I can't wait to vote for anyone else but him.\r\nShari: I know what you mean. Half my friends voted for him just to see what would happen! Well, guess what?\r\nStewart: Yeah, but we couldn't go another 4 years with a Democrat. The country would go broke!\r\nShari: Maybe, but at least we wouldn't be hated around the world and led by an ignorant piece of shit!\r\nStewart: You've got a point!\r\nShari: I'm not sure he will finish out his term, with all the legal problems, but he seems to be able to hold off the big stuff. Somehow.\r\nStewart: I know. How is that even possible?\r\nShari: I'm not sure. I mean, he's breaking amendments to the constitution here!\r\nStewart: Only on the fringe.\r\nShari: Maybe.\r\nStewart: We have to make the best of it now. Nothing we can do.\r\nShari: Except vote him out!\r\nStewart: Exactly. But that's not for a while.\r\nShari: Closer every day. If only there was a good candidate.\r\nStewart: From your mouth to the Dem National Committee's ears!\r\nShari: LOL!\r\nStewart: We should volunteer. Get out the voters or something.\r\nShari: Good idea.\r\nStewart: Let me see what's out there and I'll let you know.\r\nShari: Great! ",
+        "summary": "Stewart and Shari find the current president ignorant and incompetent. They hope he gets voted out. Stewart is going to see what possibilities there are of volunteering in the upcoming elections.",
+        "dataset": "samsum"
+    },
+    {
+        "id": "13810207",
+        "dialogue": "Harvey: Update?\r\nMichelle: Too soon, still researching.\r\nHarvey: That is an update, Michelle.\r\nMichelle: Fine. \r\nHarvey: I can't wait all day.\r\nMichelle: If you stop texting me, I could get on with it!\r\nHarvey: Fair point.\r\nMichelle: Besides, half of this stuff is black hat. I can't see most of it.\r\nHarvey: Why not?\r\nMichelle: It installs bugs on my computer.\r\nHarvey: Oh, right.\r\nMichelle: It's fine. I'm back on it.\r\nHarvey: Thanks.",
+        "summary": "Michelle is still researching and Harvey cannot wait all day for the update. Michelle can't see most of the things as it's black hat and it installs bugs on her computer.",
+        "dataset": "samsum"
+    },
+    {
+        "id": "13729249",
+        "dialogue": "Martin: I won two cinema tickets!\r\nAggie: oh cool, how come?\r\nMartin: online. on fb, the movie mag organized it\r\nAggie: so what did you do\r\nMartin: just write a short review and that's it\r\nAggie: well done :) so what and when. and where?\r\nMartin: the new film with Redford\r\nAggie: i guess i heard sth\r\nMartin: it's pretty cool i heard. till the end of the week\r\nAggie: sounds good. we'll find time XD",
+        "summary": "Martin wrote a short review and won 2 cinema tickets on FB. Martin wants Aggie to go with him this week for the new film with Redford.",
+        "dataset": "samsum"
+    },
+    {
+        "id": "13829899",
+        "dialogue": "Catherine: We're going to visit uncle Steve, want to come with us?\r\nBen: why would I?\r\nCatherine: He's family and we haven't seen him in a long time.\r\nBen: you know very well that I'm not fond of such visits\r\nBen: they stress me out\r\nCatherine: Come on, even you can do it from time to time.\r\nBen: maybe I can but I don't want to\r\nBen: it will end the same way as usual\r\nBen: with me being pissed at everyone\r\nCatherine: The boys want to see you\r\nBen: I can visit you and play with them some other day\r\nBen: I don't have to drive to another city to do it\r\nCatherine: You know that he'll be disappointed?\r\nBen: uncle Steve?\r\nCatherine: Yes.\r\nBen: I don't think so, we don't have anything in common\r\nBen: all he ever does is bothering me with stupid questions about my private life\r\nCatherine: Maybe that's his way of showing that he cares about you\r\nBen: yes... sure... sometimes I wonder if you're thinking about what you type :P\r\nCatherine: Depends on the day\r\nCatherine: Today I'm tired so I can't guarantee it\r\nBen: you should rest then\r\nBen: instead of asking me to do stuff I don't like\r\nCatherine: Alright, don't worry, I'll stop\r\nCatherine: But still the part about the boys missing you was true\r\nCatherine: So come and visit them when you'll have the chance\r\nBen: I will",
+        "summary": "Ben won't go with Catherine to visit uncle Steve. He will visit her and the boys. ",
+        "dataset": "samsum"
+    },
+    {
+        "id": "13821284",
+        "dialogue": "Abby: Have you talked to Miro?\r\nDylan: No, not really, I've never had an opportunity\r\nBrandon: me neither, but he seems a nice guy\r\nBrenda: you met him yesterday at the party?\r\nAbby: yes, he's so interesting\r\nAbby: told me the story of his father coming from Albania to the US in the early 1990s\r\nDylan: really, I had no idea he is Albanian\r\nAbby: he is, he speaks only Albanian with his parents\r\nDylan: fascinating, where does he come from in Albania?\r\nAbby: from the seacoast\r\nAbby: Duress I believe, he told me they are not from Tirana\r\nDylan: what else did he tell you?\r\nAbby: That they left kind of illegally\r\nAbby: it was a big mess and extreme poverty everywhere\r\nAbby: then suddenly the border was open and they just left \r\nAbby: people were boarding available ships, whatever, just to get out of there\r\nAbby: he showed me some pictures, like <file_photo>\r\nDylan: insane\r\nAbby: yes, and his father was among the people\r\nDylan: scary but interesting\r\nAbby: very!",
+        "summary": "Miro speaks Albanian with his parents. His family left Albania illegally in 1990s.",
+        "dataset": "samsum"
+    },
+    {
+        "id": "13730939",
+        "dialogue": "Marty: Hiya, I have a favour to ask... can you pick up Marcel from school?\r\nChristine: Sure, you ok?\r\nMarty: Not really, I think I have sprained my ankle...\r\nChristine: Oh no, have you seen see a doctor?\r\nMarty: I was gonna see how it went today and might go tomorrow...\r\nChristine: Are you sure? I'm happy to take you now if you want?\r\nMarty: Nah, it can wait, that'll leave us in trouble with the kids...\r\nChristine: OK, I'll pick up Marcel then.\r\nChristine: Do you need anything from the shops or something?\r\nMarty: No we are good thanks. we'll have pizza night, Marcel can sort us out...\r\nChristine: I'm on a late shift tomorrow, shall I take Marcel in tomorrow morning? I'll take you to the doctor afterwards if you want?\r\nMarty: That would be awesome, thank you for your help...\r\nChristine: No problem, you'll have to call the school though.\r\nMarty: Good one, will do that now...\r\nChristine: See you around 4.\r\nMarty: Thank you so much!",
+        "summary": "Marty thinks she has sprained her ankle. Marty wants to go to the doctor tomorrow. Christine will pick up Marcel from school today. Tomorrow Christine will take Marcel to school and Marty to the doctor. Marty will call the school. Christine and Marty will meet around 4. ",
+        "dataset": "samsum"
+    }
+]
