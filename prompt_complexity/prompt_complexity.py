@@ -67,6 +67,8 @@ class GPT4o(ABC):
                     logging.warning(f"Retrying after {delay:.2f} seconds...")
                     time.sleep(delay)
 
+        return generate
+
     @property
     def pipe_scores(self):
         def generate(prompt):
