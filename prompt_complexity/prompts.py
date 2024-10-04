@@ -10,7 +10,8 @@ class Promptloader(ABC):
            "iwslt": None,
            "samsum": None,
            "gsm8k": None,
-           "humaneval": None
+           "humaneval": None,
+           "mmlu": None
        }
 
        self.generate_knowledge_prompts = {
@@ -22,8 +23,8 @@ class Promptloader(ABC):
                 "humaneval": ("Generate interpretation about the code: {0}").format("{code}"),
                 "mmlu": ("Generate Knowledge about the question: {0}").format("{question}")
         }
-       
-       
+
+
        self.adaptive_prompt = ("{0}Choose the most effective prompting strategy among five prompting strategies for the task. Start with the least indexed prompting strategy which is most effective and move to higher indexed prompting strategies if lower level prompting strategies are not effective\nTask:{1}\nThe prompting strategies are:\n1: Role Prompting -  Defines a role for the model in solving the task.\n2: Zero-shot Chain of Thought prompting - stimulate reasoning and problem-solving by including the phrase 'Let's think step by step' without offering previous examples related to the task.\n3: Three-shot Chain of Thought prompting -  Offers three examples related to the task to guide the model's reasoning process.\n4: Least-to-most prompting  -  Uses a sequential method to derive essential insights from the task in order to solve it.\n5: Generated Knowledge Prompting - Integration and application of external knowledge to accomplish the task. The external knowledge is generated using some other model based on the task.\nSelect only the index(Don't provide the name) of the most effective prompting strategy.").format("{prev_res}","{task}")
 
 
@@ -33,8 +34,8 @@ class Roleprompt(Promptloader):
         self.prompts["boolq"] = ("Based on the passage:'{0}'\nAnswer True/False to the question: '{1}' as an Omniscent person.").format("{passage}", "{question}")
         self.prompts["csqa"] = ("Choose the answer.\n{0}\nA {1}\nB {2}\nC {3}\nD {4}\nE {5} as a critical thinker.").format("{question}", "{text1}", "{text2}", "{text3}", "{text4}", "{text5}")
         self.prompts["iwslt"] = ("Translate '{0}' to french as a Translator.").format("{eng_text}")
-        self.prompts["samsum"] = ("Summarise the Dialogue: '{0}' as a Summariser.").format("{dialogue}")  
-        self.prompts["gsm8k"] = ("Based on the question:'{0}'\nCalculate the numerical answer to the question as a expert mathematician.").format( "{question}")
+        self.prompts["samsum"] = ("Summarise the Dialogue: '{0}' as a Summariser.").format("{dialogue}")
+        self.prompts["gsm8k"] = ("Based on the question:'{0}'\nCalculate the numerical answer to the question as a expert mathematician. Give the final numerical answer at the end in the format ####answer.").format( "{question}")
         self.prompts["humaneval"] = ("Complete the given code based on the mentioned constraints: {0} as an expert programmer.").format("{code}")
         self.prompts["mmlu"] = ("Choose the answer.\n{0}\nA {1}\nB {2}\nC {3}\nD {4} as a critical thinker.").format("{question}", "{text1}", "{text2}", "{text3}", "{text4}")
 
@@ -43,15 +44,15 @@ class Roleprompt(Promptloader):
             return f"Prompt for '{task}' not found"
         else :
             return self.prompts[task]
-        
+
 class ZeroshotCoT(Promptloader):
     def __init__(self):
         super().__init__()
         self.prompts["boolq"] = ("Based on the passage:'{0}'\nAnswer True/False to the question: '{1}'.\nLet's think step by step.").format("{passage}", "{question}")
         self.prompts["csqa"] = ("Choose the answer.\n{0}\nA {1}\nB {2}\nC {3}\nD {4}\nE {5}\nLet's think step by step.").format("{question}", "{text1}", "{text2}", "{text3}", "{text4}", "{text5}")
         self.prompts["iwslt"] = ("Translate '{0}' to french.\nLet's think step by step.").format("{eng_text}")
-        self.prompts["samsum"] = ("Summarise the Dialogue: '{0}'.\nLet's think step by step.").format("{dialogue}")   
-        self.prompts["gsm8k"] = ("Based on the question:'{0}'\nCalculate the numerical answer to the question.\nLet's think step by step.").format( "{question}")
+        self.prompts["samsum"] = ("Summarise the Dialogue: '{0}'.\nLet's think step by step.").format("{dialogue}")
+        self.prompts["gsm8k"] = ("Based on the question:'{0}'\nCalculate the numerical answer to the question.\nLet's think step by step. Give the final numerical answer at the end in the format ####answer.").format( "{question}")
         self.prompts["humaneval"] = ("Complete the given code based on the mentioned constraints: {0}\nLet's think step by step.").format("{code}")
         self.prompts["mmlu"] = ("Choose the answer.\n{0}\nA {1}\nB {2}\nC {3}\nD {4}\nLet's think step by step.").format("{question}", "{text1}", "{text2}", "{text3}", "{text4}")
     def get_prompt(self, task):
@@ -75,21 +76,21 @@ class threeshotCoT(Promptloader):
         exp1 = "Harry Potter and the Escape from Gringotts is an indoor steel roller coaster at Universal Studios Florida, a theme park located within the Universal Orlando Resort."
         exp2 = "The total amount of energy input into the process for producing ethanol compared to the energy released by burning the resulting ethanol fuel is known as the energy balance, a 2007 report by National Geographic Magazine point to modest results for corn ethanol produced in the US: one unit of fossil-fuel energy is required to create 1.3 energy units from the resulting ethanol. another survey reports that production of ethanol from sugarcane, which requires a tropical climate to grow productively, returns from 8 to 9 units of energy for each unit expended, as compared to corn, which only returns about 1.34 units of fuel energy for each unit of energy expended. Both surveys suggest that ethanol produces more energy than it takes to produce ethanol."
         exp3 = "Puerto Ricans are also required to pay some US federal taxes, although most residents do not have to pay the federal personal income tax. Residents of Puerto Rico pay into Social Security which is different from federal income tax and provides benefits upon retirement."
-        
+
         question_1 = "A revolving door is convenient for two direction travel, but it also serves as a security measure at a what?"
         question_2 = "Where would you find magazines along side many other printed works?"
         question_3 = "What would vinyl be an odd thing to replace?"
         exp_1 = "Revolving doors are common in buildings with high foot traffic because they allow people to enter and exit simultaneously without creating drafts or requiring doors to be constantly opened and closed. In the context of a bank, security is a paramount concern. Revolving doors can serve as a controlled access point, making it harder for unauthorized individuals to enter or exit quickly. While libraries, department stores, and malls might also use revolving doors for the convenience of two-way travel, the specific mention of security measures aligns best with the stringent security requirements of a bank."
         exp_2 = "Bookstores are establishments that sell books and other printed materials. They are known for their wide selection of reading materials, including magazines, newspapers, and periodicals. While markets and train stations may also have printed materials available for purchase, bookstores are specifically designed to cater to readers and book enthusiasts. The mention of magazines alongside other printed works suggests a location that specializes in reading materials, making a bookstore the most appropriate choice."
         exp_3 = "Wallpaper is a type of material used to cover and decorate the interior walls of homes, offices, and other buildings. It is typically sold in rolls and comes in a variety of patterns and designs. While pants, record albums, and cheese are all items that can be purchased or consumed, they are not typically associated with a record store. A record store is a retail establishment that specializes in selling music recordings, such as vinyl records, CDs, and cassettes. The mention of wallpaper alongside other items suggests that it is an odd choice for a vinyl, making it the correct answer."
-       
+
         ex_en1 = "This drying around the world has lead to a dramatic increase in fires."
         ex_en2 = "Look carefully at the area of the eastern Pacific, from the Americas, extending westward, and on either side of the Indian subcontinent, where there is a radical depletion of oxygen in the oceans."
         ex_en3 = "If you look at in the context of history you can see what this is doing."
         ex_fr1 = "Cet assèchement global a causé une hausse spectaculaire du nombre d'incendies. Cet assèchement global a causé une hausse spectaculaire du nombre d'incendies."
         ex_fr2 = "Regardez le secteur oriental de l'océan pacifique depuis les Amériques vers l'ouest, et des deux côtés du sous-continent Indien, la raréfaction de l'oxygène y est dramatique."
         ex_fr3 = "Si vous la remettez dans son contexte, vous pouvez voir à quoi ressemble cette tendance."
-        
+
         ex_dialogue1 = "Antonio: Is everything okay? You've been quiet lately Alivia: Oh, hi, yeah, I've just been working on my thesis Alivia: Or rather trying to work, it's not going too well Antonio: Oh :( Problems finding research materials? Alivia: Well Alivia: That isn't really as big a problem, the worst part is actually sitting down and writing Alivia: I find the topic interesting and all, I don't mind reading articles and books Alivia: But when I'm supposed to write, it's like I blank out and can't type a single word w/o thinking I sound stupid... Antonio: I know the feeling... Antonio: You should probably stop thinking about it so seriously, just write and you can edit it later Antonio: Once you get past the initial difficulty, it'll get better, at least that's what it was like for me Alivia: I'd like to think so... Thanks... I'll try. And thanks for your concern <3"
         ex_dialogue2 = "Maddie: I'm in Asda, do you need anything? John: could do with a white bread and some apples Maddie: ok. Gala? John: yes please ta"
         ex_dialogue3 = "Rob: hey, pick up your phone :) Ann: can't - meeting :) Rob: sorry... Ann: no problem - super boring one :) Ann: what you need babe? Rob: I'm at the grocery store and was wondering if we need anything Ann: some food :) Rob: yeah, I figured that smartass :) Ann: :* Rob: details? so that you won't moan we don't have anything to eat :) Ann: from what I remember we have everything for supper and lunch tomorrow, maybe some fruit and vegetables? Rob: anything in particular? Ann: cucumber, tomatoes, bananas, apples and whatever you like Rob: ok"
@@ -100,9 +101,9 @@ class threeshotCoT(Promptloader):
         gsm8k_question1 = "Josh decides to try flipping a house. He buys a house for $80,000 and then puts in $50,000 in repairs. This increased the value of the house by 150%. How much profit did he make?"
         gsm8k_question2 = "Vincent can buy flowers in packages of 3 for $2.50 or in packages of 2 for $1. How much money does he save by buying 18 flowers at the better price?"
         gsm8k_question3 = "In a neighborhood, the number of rabbits pets is twelve less than the combined number of pet dogs and cats. If there are two cats for every dog, and the number of dogs is 60, how many pets in total are in the neighborhood?"
-        gsm8k_ans1 = "70000\nThe cost of the house and repairs came out to 80,000+50,000=$<<80000+50000=130000>>130,000 He increased the value of the house by 80,000*1.5=<<80000*1.5=120000>>120,000 So the new value of the house is 120,000+80,000=$<<120000+80000=200000>>200,000 So he made a profit of 200,000-130,000=$<<200000-130000=70000>>70,000 #### 70000"
-        gsm8k_ans2 = "6\nFind how many packages of 3 would be needed which is 18 ÷ 3 = <<18/3=6>>6. The cost of using packages of 3 is 6 × $2.50 = $<<6*2.5=15>>15. Find how many packages of 2 would be needed which is 18 ÷ 2 = <<18/2=9>>9. The cost of using packages of 2 is 9 × $1 = $<<9*1=9>>9. Vincent would save $15 - $9 = $<<15-9=6>>6. #### 6"
-        gsm8k_ans3 = "348\nIf there are two cats for every dog, and the number of dogs is 60, the number of cats is 2*60 = <<2*60=120>>120 The combined number of cats and dogs is 120+60 = <<120+60=180>>180 The number of rabbits pets is twelve less than the combined number of pet dogs and cats, a total of 180-12 = 168 The total number of pets in the compound is 168+180 = <<168+180=348>>348 #### 348"
+        gsm8k_ans1 = "The cost of the house and repairs came out to 80,000+50,000=$<<80000+50000=130000>>130,000 He increased the value of the house by 80,000*1.5=<<80000*1.5=120000>>120,000 So the new value of the house is 120,000+80,000=$<<120000+80000=200000>>200,000 So he made a profit of 200,000-130,000=$<<200000-130000=70000>>70,000\n####70000"
+        gsm8k_ans2 = "Find how many packages of 3 would be needed which is 18 ÷ 3 = <<18/3=6>>6. The cost of using packages of 3 is 6 × $2.50 = $<<6*2.5=15>>15. Find how many packages of 2 would be needed which is 18 ÷ 2 = <<18/2=9>>9. The cost of using packages of 2 is 9 × $1 = $<<9*1=9>>9. Vincent would save $15 - $9 = $<<15-9=6>>6.\n####6"
+        gsm8k_ans3 = "If there are two cats for every dog, and the number of dogs is 60, the number of cats is 2*60 = <<2*60=120>>120 The combined number of cats and dogs is 120+60 = <<120+60=180>>180 The number of rabbits pets is twelve less than the combined number of pet dogs and cats, a total of 180-12 = 168 The total number of pets in the compound is 168+180 = <<168+180=348>>348\n####348"
 
         humaneval_code1 = '''from typing import List
 
@@ -146,8 +147,8 @@ def has_close_elements(numbers: List[float], threshold: float) -> bool:
         mmlu_ques1 = "Any set of Boolean operators that is sufficient to represent all Boolean expressions is said to be complete. Which of the following is NOT complete?"
         mmlu_ques2 = "The accused made a confession to the police, but his defense attorney needs to find out if the confession is admissible. In which of the following situations would a confession be inadmissible?"
         mmlu_ques3 = "For which of these two scenarios does the main character (who uses I/me/my) do something clearly morally wrong, according to ordinary moral standards in the US as of 2020? Scenario 1 | When I went through the road block I gave the policeman my brothers ID. Scenario 2 | I pulled the frightened patient's teeth after giving novacaine."
-       
-        mmlu_exp1 = "The set {AND, OR} is not complete because it cannot represent all possible Boolean functions on its own. Specifically, it lacks the NOT operator, which is necessary to invert any Boolean value. Without the ability to perform negation, you cannot create expressions like XOR or NAND, making the set insufficient for full Boolean expression representation."
+
+        mmlu_exp1 = "The set [AND, OR] is not complete because it cannot represent all possible Boolean functions on its own. Specifically, it lacks the NOT operator, which is necessary to invert any Boolean value. Without the ability to perform negation, you cannot create expressions like XOR or NAND, making the set insufficient for full Boolean expression representation."
         mmlu_exp2 = "Involuntary confessions are inadmissible because they are obtained through coercion, threats, or improper inducement, violating the defendant's rights and undermining the integrity of the legal process. For a confession to be admissible, it must be made voluntarily, with the defendant's awareness of their rights, and during a proper custodial interrogation."
         mmlu_exp3 = "In Scenario 1, giving a policeman someone else's ID to evade a roadblock is morally wrong because it involves deceit and dishonesty, which violates ethical standards and legal norms. This act undermines trust in legal processes and can lead to legal consequences. In contrast, Scenario 2 involves pulling a patient's teeth under novocaine, which, if done by a qualified professional with informed consent, is a standard medical procedure and not considered morally wrong."
 
@@ -155,15 +156,15 @@ def has_close_elements(numbers: List[float], threshold: float) -> bool:
         self.prompts["csqa"] = ("Choose the answer.\n{0}\nA bank\nB library\nC department store\nD mall\nE new york\nAnswer: A\nExplanation: {1}.\nChoose the answer.\n{2}\nA doctor\nB bookstore\nC market\nD train station\nE mortuary\nAnswer: B\nExplanation: {3}.\nChoose the answer.\n{4}\nA pants\nB record albums\nC record store\nD cheese\nE wallpaper\nAnswer: E\nExplanation: {5}.\nChoose the answer.\n{6}\nA {7}\nB {8}\nC {9}\nD {10}\nE {11}").format( question_1, exp_1, question_2, exp_2, question_3, exp_3, "{question}", "{text1}", "{text2}", "{text3}", "{text4}", "{text5}" )
         self.prompts["iwslt"] = ("Translate '{0}' to French.\nFrench: {1}.\nTranslate '{2}' to French.\nFrench: {3}.\nTranslate '{4}' to French.\nFrench: {5}.\nTranslate '{6}' to French.").format( ex_en1, ex_fr1, ex_en2, ex_fr2, ex_en3, ex_fr3, "{eng_text}" )
         self.prompts["samsum"] = ("Summarise the Dialogue: '{0}'.\nSummary: {1}.\nSummarise the Dialogue: '{2}'.\nSummary: {3}.\nSummarise the Dialogue: '{4}'.\nSummary: {5}.\nSummarise the Dialogue: '{6}'").format( ex_dialogue1, ex_sum1, ex_dialogue2, ex_sum2, ex_dialogue3, ex_sum3, "{dialogue}" )
-        self.prompts["gsm8k"] = ("Based on the question:'{0}'\nCalculate the numerical answer to the question.\nAnswer: {1}.\nBased on the question:'{2}'\nCalculate the numerical answer to the question.\nAnswer: {3}.\nBased on the question:'{4}'\nCalculate the numerical answer to the question.\nAnswer: {5}\nBasedBased on the question:'{6}'\nCalculate the numerical answer to the question.").format( gsm8k_question1, gsm8k_ans1, gsm8k_question2, gsm8k_ans2, gsm8k_question3, gsm8k_ans3, "{question}" )
-        self.prompts["humaneval"] = ("Complete the given code based on the mentioned constraints: {0}\nCode: {1}.\nComplete the given code based on the mentioned constraints: {2}\nCode: {3}.\nComplete the given code based on the mentioned constraints: {4}\nCode: {5}.\nComplete the given code based on the mentioned constraints: {6}\nCode: {7}").format( humaneval_code1, humaneval_sol1, humaneval_code2, humaneval_sol2, humaneval_code3, humaneval_sol3, "{code}" )
-        self.prompts["mmlu"] = ("Choose the answer.\n{0}\nA {AND, NOT}\nB {NOT, OR}\nC {AND, OR}\nD {NAND}\nAnswer: C\nExplanation: '{1}'.\nChoose the answer.\n{2}\nA The defendant's statement was involuntary.\nB The defendant's statement was voluntary.\nC The defendant was not in custody when the statement was made.\nD The statement was not made in response to a known police interrogation.\nAnswer: A\nExplanation: '{3}'.\nChoose the answer.\n{4}\nA Wrong, Wrong\nB Wrong, Not wrong\nC Not wrong, Wrong\nD Not wrong, Not wrong\nAnswer: B\nExplanation: '{5}'.\nChoose the answer.\n{6}\nA {7}\nB {8}\nC {9}\nD {10}").format( mmlu_ques1, mmlu_exp1, mmlu_ques2, mmlu_exp2, mmlu_ques3, mmlu_exp3, "{question}", "{text1}", "{text2}", "{text3}", "{text4}" )
+        self.prompts["gsm8k"] = ("Based on the question:'{0}'\nCalculate the numerical answer to the question.\nAnswer: {1}.\nBased on the question:'{2}'\nCalculate the numerical answer to the question.\nAnswer: {3}.\nBased on the question:'{4}'\nCalculate the numerical answer to the question.\nAnswer: {5}\nBasedBased on the question:'{6}'\nCalculate the numerical answer to the question.Give the final numerical answer at the end in the format ####answer.").format( gsm8k_question1, gsm8k_ans1, gsm8k_question2, gsm8k_ans2, gsm8k_question3, gsm8k_ans3, "{question}" )
+        self.prompts["humaneval"] = ("Complete the given code based on the mentioned constraints: {0}\nCode: {1}.\nComplete the given code based on the mentioned constraints: {2}\nCode: {3}.\nComplete the given code based on the mentioned constraints: {4}\nCode: {5}.\nComplete the given code based on the mentioned constraints: {6}.").format( humaneval_code1, humaneval_sol1, humaneval_code2, humaneval_sol2, humaneval_code3, humaneval_sol3, "{code}" )
+        self.prompts["mmlu"] = ("Choose the answer.\n{0}\nA [AND, NOT] \nB [NOT, OR] \nC [AND, OR] \nD [NAND] \nAnswer: C\nExplanation: '{1}'.\nChoose the answer.\n{2}\nA The defendant's statement was involuntary.\nB The defendant's statement was voluntary.\nC The defendant was not in custody when the statement was made.\nD The statement was not made in response to a known police interrogation.\nAnswer: A\nExplanation: '{3}'.\nChoose the answer.\n{4}\nA Wrong, Wrong\nB Wrong, Not wrong\nC Not wrong, Wrong\nD Not wrong, Not wrong\nAnswer: B\nExplanation: '{5}'.\nChoose the answer.\n{6}\nA {7}\nB {8}\nC {9}\nD {10}").format( mmlu_ques1, mmlu_exp1, mmlu_ques2, mmlu_exp2, mmlu_ques3, mmlu_exp3, "{question}", "{text1}", "{text2}", "{text3}", "{text4}" )
     def get_prompt(self, task):
         if task not in self.prompts:
             return f"Prompt for '{task}' not found"
         else :
             return self.prompts[task]
-        
+
 class Leasttomost(Promptloader):
     def __init__(self):
         super().__init__()
@@ -171,7 +172,7 @@ class Leasttomost(Promptloader):
         self.prompts["csqa"] = [("Analyze this question: '{0}'").format("{question}"), ("Elaborate about each option for the question: '{0}'\noptions: A {1}\nB {2}\nC {3}\nD {4}\nE {5}").format("{question}","{text1}","{text2}","{text3}","{text4}","{text5}"),("Based on the analysis : '{0}', Discard wrong answers among the options:A {1}\nB {2}\nC {3}\nD {4}\nE {5}").format("{pred}", "{text1}","{text2}","{text3}","{text4}","{text5}"), ("Choose the correct answer from the options: A {0}\nB {1}\nC {2}\nD {3}\nE {4}").format("{text1}","{text2}","{text3}","{text4}","{text5}")]
         self.prompts["iwslt"] = [("What is the main idea or theme of this text? '{0}'").format("{eng_text}"),("Identify and list the key phrases or terms in this text: '{0}'").format("{eng_text}"),("Translate the following key phrases into french: '{0}'").format("{pred}"),("Translate '{0}' into french, incorporating the translations of the key phrases: '{1}'").format("{eng_text}","{pred}")]
         self.prompts["samsum"] = [("List the main points or key ideas present in this dialogue: '{0}'.").format("{dialogue}"),("Elaborate on the following key points, providing additional details or context: '{0}'.").format("{pred}"),("Using the listed key points and their elaborations, draft a concise summary of this text: '{0}'.").format("{dialogue}"),("Refine this draft summary to make it more concise and coherent, ensuring it captures the essence of the text: '{0}'.").format("{dialogue}")]
-        self.prompts["gsm8k"] = [("Analyze the question: '{0}'").format("{question}"),("Break the question into sub problems: '{0}'").format("{question}"),("Calulate answers for the subproblems of the question: '{0}'").format("{pred}"),("Calculate the numerical answer to this question: '{0}' based on the previous calculations: '{1}'").format("{question}","{pred}")]
+        self.prompts["gsm8k"] = [("Analyze the question: '{0}'").format("{question}"),("Break the question into sub problems: '{0}'").format("{question}"),("Calulate answers for the subproblems of the question: '{0}'").format("{pred}"),("Calculate the numerical answer to this question: '{0}' based on the previous calculations: '{1}'.Give the final numerical answer at the end in the format ####answer.").format("{question}","{pred}")]
         self.prompts["humaneval"] = [("Analyze the code: '{0}'").format("{code}"),("Break the problem into sub problems: '{0}'").format("{code}"),("Complete code for the subproblems of the code: '{0}'").format("{pred}"),("Complete the code based on mentioned constraints: '{0}' based on the previous calculations: '{1}'").format("{code}","{pred}")]
         self.prompts["mmlu"] = [("Analyze this question: '{0}'").format("{question}"), ("Elaborate about each option for the question: '{0}'\noptions: A {1}\nB {2}\nC {3}\nD {4}").format("{question}","{text1}","{text2}","{text3}","{text4}"),("Based on the analysis : '{0}', Discard wrong answers among the options:A {1}\nB {2}\nC {3}\nD {4}").format("{pred}", "{text1}","{text2}","{text3}","{text4}"), ("Choose the correct answer from the options: A {0}\nB {1}\nC {2}\nD {3}").format("{text1}","{text2}","{text3}","{text4}")]
 
@@ -181,7 +182,7 @@ class Leasttomost(Promptloader):
             return f"Prompt for '{task}' not found"
         else :
             return self.prompts[task]
-        
+
 class generatedknowledge(Promptloader):
     def __init__(self):
         super().__init__()
@@ -189,7 +190,7 @@ class generatedknowledge(Promptloader):
         self.prompts["csqa"] = ("Choose the answer.\n{0}\nA {1}\nB {2}\nC {3}\nD {4}\nE {5} using knowledge of the question:{6}").format("{question}", "{text1}", "{text2}", "{text3}", "{text4}", "{text5}", "{pred}")
         self.prompts["iwslt"] = ("Translate '{0}' to french using definitions of the keywords:{1}").format("{eng_text}", "{pred}")
         self.prompts["samsum"] = ("Summarise the Dialogue: '{0}' using interpretation of the dialogue:{1}").format("{dialogue}", "{pred}")
-        self.prompts["gsm8k"] = ("Based on the question:'{0}'\nCalculate the numerical answer to the question using interpretation of the question:{1}").format( "{question}", "{pred}")
+        self.prompts["gsm8k"] = ("Based on the question:'{0}'\nCalculate the numerical answer to the question using interpretation of the question:{1}.Give the final numerical answer at the end in the format ####answer.").format( "{question}", "{pred}")
         self.prompts["humaneval"] = ("Complete the code based on the mentioned constraints:{0} using knowledge of the constraints:{1}").format("{code}", "{pred}")
         self.prompts["mmlu"] = ("Choose the answer.\n{0}\nA {1}\nB {2}\nC {3}\nD {4} using knowledge of the question:{5}").format("{question}", "{text1}", "{text2}", "{text3}", "{text4}", "{pred}")
 
