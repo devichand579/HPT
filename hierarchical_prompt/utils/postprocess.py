@@ -78,7 +78,6 @@ class AnswerProcessor(ABC):
             parts = text.split("<|assistant|>")
             text = parts[1]
                 
-        # Search for the pattern in the text
         match = re.search(r'answer:\s?\*\*.*?\$?(\d+[,.]?\d*)', text)
 
         if match:
@@ -86,15 +85,13 @@ class AnswerProcessor(ABC):
         
         lines = text.split('\n')
         
-        # Check lines for "final answer"
-        for line in reversed(lines):  # Loop through lines in reverse
+        for line in reversed(lines):  
             if 'final answer' in line:
                 match = re.search(r'final answer.*?[\#\$\*\s]*(\d+(?:[,.]\d+)?)\s*[\#\$\*\s]*$', line)
                 if match:
                     final_answer = match.group(1)
                     return final_answer
 
-        # If not found, check other relevant lines
         for line in reversed(lines):
             if ('####' in line or 'answer:####' in line or 'answer:' in line or 'the answer is' in line) and 'after: ####' not in line:
                 match = re.search(r'##+.*?[\#\$\*\s]*\s*(\d+(?:[,.]\d+)?)\s*[\#\$\*\s]*', line)
