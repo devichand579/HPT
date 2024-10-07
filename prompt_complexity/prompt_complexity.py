@@ -117,9 +117,7 @@ def main():
         score3_list=[]
         score4_list=[]
         for process_dataset in dataset_list:
-            for j,item in enumerate(process_dataset['train']):
-                if j>3:
-                    break
+            for item in process_dataset['train']:
                 if item['dataset'] == "mmlu":
                     task = "mmlu"
                     question = item['question']
