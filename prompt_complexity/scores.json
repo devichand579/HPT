@@ -1,0 +1,42 @@
+[
+    {
+        "prompt strategy": "Role Prompting",
+        "score1": 3.0772,
+        "score2": 2.4783,
+        "score3": 2.4011,
+        "score4": 1.3879,
+        "total": 2.3362
+    },
+    {
+        "prompt strategy": "Zero-shot CoT Prompting",
+        "score1": 2.9303,
+        "score2": 2.5226,
+        "score3": 2.5782,
+        "score4": 1.5113,
+        "total": 2.3856
+    },
+    {
+        "prompt strategy": "Three-shot CoT Prompting",
+        "score1": 3.6073,
+        "score2": 3.177,
+        "score3": 2.9162,
+        "score4": 1.6271,
+        "total": 2.8319
+    },
+    {
+        "prompt strategy": "Least to Most Prompting",
+        "score1": 3.7053,
+        "score2": 3.2514,
+        "score3": 3.017,
+        "score4": 1.7063,
+        "total": 2.92
+    },
+    {
+        "prompt strategy": "Generated Knowledge Prompting",
+        "score1": 2.8098,
+        "score2": 3.3277,
+        "score3": 3.4049,
+        "score4": 2.451,
+        "total": 2.9984
+    }
+]

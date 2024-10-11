@@ -10,7 +10,9 @@ from datasets import load_dataset
 from openai import OpenAI
 from abc import ABC
 from pydantic import BaseModel
-gpt_api_key = os.getenv('OPENAI_API_KEY')
+from dotenv import load_dotenv
+load_dotenv()
+os.getenv("OPENAI_API_KEY")
 prompts = {
     1 : Roleprompt(),
     2 : ZeroshotCoT(),
@@ -163,7 +165,7 @@ def main():
                         score3_list.append(scores.score3)
                         score4_list.append(scores.score4)
                 
-                if item['dataset'] == "humaneval":
+                elif item['dataset'] == "humaneval":
                     task = "humaneval"
                     code = item['prompt']
                     test_case = item['canonical_solution']
@@ -202,7 +204,7 @@ def main():
                         score3_list.append(scores.score3)
                         score4_list.append(scores.score4)
             
-                if item['dataset'] == "gsm8k":
+                elif item['dataset'] == "gsm8k":
                     task = "gsm8k"
                     question = item['question']
                     answer = item['answer'].split('#### ')[-1].strip()
@@ -242,7 +244,7 @@ def main():
                         score3_list.append(scores.score3)
                         score4_list.append(scores.score4)
                 
-                if item['dataset'] == "boolq":
+                elif item['dataset'] == "boolq":
                     task = "boolq"
                     passage = item['passage']
                     question = item['question']
@@ -287,7 +289,7 @@ def main():
                         score3_list.append(scores.score3)
                         score4_list.append(scores.score4)
 
-                if item['dataset'] == "csqa":
+                elif item['dataset'] == "csqa":
                     task = "csqa"
                     question = item['question']
                     text1 = item['choices']['text'][0]
@@ -333,7 +335,7 @@ def main():
                         score4_list.append(scores.score4)
 
 
-                if item['dataset'] == "iwslt":
+                elif item['dataset'] == "iwslt":
                     task = "iwslt"
                     eng_text = item['translation']['en']
                     answer  = item['translation']['fr']
@@ -373,7 +375,7 @@ def main():
                         score3_list.append(scores.score3)
                         score4_list.append(scores.score4)
 
-                if item['dataset'] == "samsum":
+                elif item['dataset'] == "samsum":
                     task = "samsum"
                     dialogue = item['dialogue']
                     answer = item['summary']
