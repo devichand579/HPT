@@ -19,7 +19,7 @@
     <a href="https://arxiv.org/abs/2406.12644">Paper</a>
   </div>
   <div style="font-size: 1.5em; font-weight: bold; margin-top: 10px;">
-    <strong>A Universal Evaluation Framework for Large Language Models</strong>
+    <strong>A Universal Evaluation Framework for Large Language Models Aligned with Human Cognitive Principles</strong>
   </div>
 </div>
 
@@ -33,8 +33,7 @@
     <li><a href="#demo">Demo</a></li>
     <li><a href="#installation">Installation</a></li>
     <li><a href="#usage">Usage</a></li>
-    <li><a href="#supported-datasets-and-models">Datasets and Models</a></li>
-    <li><a href="#benchmark-results">Benchmark Results</a></li>
+    <li><a href="#Datasets and models">Datasets and Models</a></li>
     <li><a href="#references">References</a></li>
     <li><a href="#contributing">Contributing</a></li> 
     <li><a href="#cite-us">Cite Us</a></li>
