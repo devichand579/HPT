@@ -15,11 +15,11 @@
       <h1><strong>Hierarchical Prompting Taxonomy</strong></h1>
     </span>
   </div>
-  <div style="margin-top: 10px;">
-    <a href="https://arxiv.org/abs/2406.12644">Paper</a>
-  </div>
   <div style="font-size: 1.5em; font-weight: bold; margin-top: 10px;">
     <strong>A Universal Evaluation Framework for Large Language Models Aligned with Human Cognitive Principles</strong>
+  </div>
+  <div style="margin-top: 10px;">
+    <a href="https://arxiv.org/abs/2406.12644">Paper</a>
   </div>
 </div>
 
