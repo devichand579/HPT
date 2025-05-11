@@ -41,7 +41,7 @@
 </details>
 
 ## News
-- [02-26-25] HPT is accepted to AAAI 2025 CogSci-AI Bridge ! Check out the presentation at [here](https://sites.google.com/view/cosainsai/home-page).
+- [02-26-25] HPT is accepted to AAAI 2025 CogSci-AI Bridge ! Check out the presentation [here](https://sites.google.com/view/cosainsai/home-page).
 - [06-18-24] HPT is published ! Check out the paper [here](https://arxiv.org/abs/2406.12644).
 
 <p align="right" style="font-size: 14px; color: #555; margin-top: 20px;">
