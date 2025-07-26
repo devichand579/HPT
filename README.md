@@ -224,10 +224,10 @@ If you are new to GitHub, [here](https://opensource.guide/how-to-contribute/#how
 ## Cite Us
 If you find our work useful, please cite us !
 ```bibtex
-@misc{budagam2024hierarchicalpromptingtaxonomyuniversal,
+@misc{budagam2025hierarchicalpromptingtaxonomyuniversal,
       title={Hierarchical Prompting Taxonomy: A Universal Evaluation Framework for Large Language Models Aligned with Human Cognitive Principles}, 
       author={Devichand Budagam and Ashutosh Kumar and Mahsa Khoshnoodi and Sankalp KJ and Vinija Jain and Aman Chadha},
-      year={2024},
+      year={2025},
       eprint={2406.12644},
       archivePrefix={arXiv},
       primaryClass={cs.CL},
